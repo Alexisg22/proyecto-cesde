@@ -1,0 +1,32 @@
+.barraLateral{
+    width: 24vw;
+    height: 100vh;
+    background-color: #DDD;
+    gap:3em;  
+}
+
+.formularioCheckbox{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding-left: 1em;
+}
+
+.tituloBarraNavegacion{
+   padding: 1em ;
+   text-align: center;
+}
+
+.labelBarraLateral{
+    margin-left: 15px;
+}
+
+.hrBarraNavegaion{
+    margin-top: 1.5em;
+}
+
+.checkboxBarraLateral:checked{
+    cursor:pointer;
+    color: red;
+    
+}
