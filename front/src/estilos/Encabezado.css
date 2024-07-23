@@ -1,0 +1,42 @@
+.contenedorPrincipal{
+    display: flex;
+    
+}
+
+.contenedorLogoAndes{
+    width: 150px;
+    height: 80px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 100px;
+}
+
+#logoAndes{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.buscador{  
+    width: 600px;
+    height: 35px;
+    background-color: #DDDDDD;
+    margin-top: 20px;
+    margin-right: 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: end;
+
+    .material-symbols-outlined {
+        font-size: 38px;
+      }
+
+      &:hover{
+        cursor: pointer;
+      }
+}
+
+
