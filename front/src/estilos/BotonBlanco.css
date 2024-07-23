@@ -1,0 +1,16 @@
+.botonBlanco{
+    width: 120px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 40px;
+    background-color: white;
+    border-radius: 5px;
+    border: solid 1px black;
+    color: #13A438;
+    
+    &:hover{
+        background-color: #13A438;
+        color: white;
+        cursor: pointer;
+    }
+}

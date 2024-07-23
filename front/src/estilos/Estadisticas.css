@@ -1,0 +1,36 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contenedorEstadistica{
+    display: flex;
+    justify-content: end;
+       
+}
+.contenidoEstadistica{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    height: 45vh;
+    width: 76vw;
+    background-color: #DDDDDD;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 10px;
+    
+    
+    & .titulo {
+        margin: 0;
+        text-align: center;
+    }
+
+    & .contenido{
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+        gap: 2.5em;
+        margin: 15px;   
+        
+    }
+}

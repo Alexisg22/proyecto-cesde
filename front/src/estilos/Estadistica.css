@@ -1,0 +1,13 @@
+
+.parametro{
+    display: flex;
+    width: 13vw;
+    height: 8vh;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid black;
+    align-items: center;
+    justify-content: center; 
+    margin-top: .2em;
+}
+
