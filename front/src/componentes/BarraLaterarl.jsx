@@ -44,7 +44,7 @@ export const BarraLaterarl = () => {
 
         <CheckboxBarraLateral id="cboxEstadoUltimaGestion" value="estadoUltimaGestion" label="Estado última gestión" chequeado={chequeado} />
 
-        <CheckboxBarraLateral id="cboxCelAdicional1" value="celAdicional1" label="Celular aicional 1" />
+        <CheckboxBarraLateral id="cboxCelAdicional1" value="celAdicional1" label="Celular adicional" />
  
       </form>
       <hr className='hrBarraNavegaion'/>
@@ -53,7 +53,7 @@ export const BarraLaterarl = () => {
         <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalAsesores = {true} texto = {'Asesores'}/>  
       </div>
 
-      <ModalAsesores modalAbierto={modalAbierto}/>
+      <ModalAsesores modalAbierto={modalAbierto} cerrarModal={() =>{setModalAbierto(false)}}/>
       
     </aside>
   )
