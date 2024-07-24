@@ -5,19 +5,17 @@ body{
 .contenedorEstadistica{
     display: flex;
     justify-content: end;
-       
+    align-items: end;
 }
 .contenidoEstadistica{
     display: flex;
     flex-direction: column;
     padding: 5px;
     height: 45vh;
-    width: 76vw;
+    width: 74vw;
     background-color: #DDDDDD;
     border-radius: 5px;
-    position: absolute;
     bottom: 10px;
-    
     
     & .titulo {
         margin: 0;

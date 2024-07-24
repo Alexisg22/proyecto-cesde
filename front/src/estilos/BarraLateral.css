@@ -1,8 +1,10 @@
 .barraLateral{
     width: 24vw;
-    height: 100vh;
+    height: 100%;
     background-color: #DDD;
     gap:3em;  
+    border-radius: 5px;
+    margin-right: 1rem;
 }
 
 .formularioCheckbox{
@@ -29,4 +31,10 @@
     cursor:pointer;
     color: red;
     
+}
+
+.btnAsesores{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
