@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom/client'
 import Tabla from './componentes/Tabla.jsx'
 import { Encabezado } from './componentes/Encabezado.jsx'
@@ -7,7 +7,9 @@ import { Estadisticas } from './componentes/Estadisticas.jsx'
 import "./estilos/Main.css"
 import { BotonVerde } from './componentes/BotonVerde.jsx'
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
+
   <React.StrictMode>
     <header>
       <Encabezado/>
@@ -26,5 +28,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     {/* <footer>
       <Estadisticas/>
     </footer> */}
+
+    
   </React.StrictMode>,
 )

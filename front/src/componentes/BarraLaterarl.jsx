@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../estilos/BarraLateral.css'
 import { CheckboxBarraLateral } from './CheckboxBarraLateral'
 import { BotonVerde } from './BotonVerde'
+import { ModalAsesores } from './ModalAsesores'
 
 export const BarraLaterarl = ( ) => {
 
   const chequeado = true
+  const [modalAbierto, setModalAbierto] = useState(false)
 
   return (
     // el aside debe tener 22 de vw
@@ -49,9 +51,12 @@ export const BarraLaterarl = ( ) => {
         
       </form>
       <hr className='hrBarraNavegaion'/>
+
       <div className='btnAsesores'>
-        <BotonVerde texto = {'Asesores'}/>  
+        <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalAsesores = {true} texto = {'Asesores'}/>  
       </div>
+
+      <ModalAsesores modalAbierto={modalAbierto}/>
       
     </aside>
   )

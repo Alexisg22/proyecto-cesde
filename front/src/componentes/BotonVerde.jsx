@@ -1,10 +1,13 @@
 import React from 'react'
+import "../componentes/ModalAsesores.jsx"
 import "../estilos/BotonVerde.css"
 
-export const BotonVerde = ({texto}) => {
+export const BotonVerde = ({setModalAbierto, modalAbierto, texto, modalAsesores}) => {
+
   return (
     <div>
-        <button className='botonVerde'>{texto}</button>
+        {(modalAsesores) ? <button onClick={()=>{setModalAbierto(!modalAbierto)}} className='botonVerde'>{texto}2222</button> 
+        : <button className='botonVerde'>{texto}</button>}
     </div>
   )
 }
