@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "../estilos/ModalAsesores.css"
 
-export const ModalAsesores = ({modalAbierto}) => {
+export const ModalAsesores = ({cerrarModal, modalAbierto}) => {
     
     
     if(!modalAbierto) return null
@@ -10,10 +10,12 @@ export const ModalAsesores = ({modalAbierto}) => {
 
     <div className='cotenedorModal'>
         <div className='modalAsesores'>
-            <div>
+            <div className="tituloModalAsesor">
                 <h2>ModalAsesores</h2>
-                <input type="search" />
-                <button>Cerrar modal</button>
+                <button onClick={cerrarModal}>Cerrar modal</button>
+            </div>
+            <div className='buscadorAsesores' >
+               <input type="search" />
             </div>
         </div>
 

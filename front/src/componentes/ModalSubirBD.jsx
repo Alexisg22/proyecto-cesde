@@ -15,7 +15,7 @@ export const ModalSubirBD = ({modalAbierto}) => {
             <div className='modalSubirBD'>
                 <div className='contenedorBotones'>
                     <div>
-                    <BotonVerde className='Boton' texto={'Base de Datos 1'}/>
+                    <BotonVerde className='boton' texto={'Base de Datos 1'}/>
                     </div>
                     <div>
                     <BotonVerde texto={'Base de Datos 2'}/>
