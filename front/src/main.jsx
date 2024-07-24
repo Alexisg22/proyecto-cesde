@@ -6,6 +6,7 @@ import { BarraLaterarl } from './componentes/BarraLaterarl.jsx'
 import { Estadisticas } from './componentes/Estadisticas.jsx'
 import "./estilos/Main.css"
 import { BotonVerde } from './componentes/BotonVerde.jsx'
+import { SubirBD } from './componentes/SubirBD.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -15,7 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </header>
 
     <body>
-      <div>
+      <div className='boton1'>
         <BarraLaterarl/>
       </div>
       <div>
@@ -23,9 +24,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Estadisticas/>
       </div>
     </body>
-   
-    {/* <footer>
-      <Estadisticas/>
-    </footer> */}
   </React.StrictMode>,
 )
