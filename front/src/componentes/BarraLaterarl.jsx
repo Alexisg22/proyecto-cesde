@@ -1,6 +1,7 @@
 import React from 'react'
 import '../estilos/BarraLateral.css'
 import { CheckboxBarraLateral } from './CheckboxBarraLateral'
+import { BotonVerde } from './BotonVerde'
 
 export const BarraLaterarl = ( ) => {
 
@@ -48,8 +49,10 @@ export const BarraLaterarl = ( ) => {
         
       </form>
       <hr className='hrBarraNavegaion'/>
-
-      {/* <BotonVerde /> */}
+      <div className='btnAsesores'>
+        <BotonVerde texto = {'Asesores'}/>  
+      </div>
+      
     </aside>
   )
 }

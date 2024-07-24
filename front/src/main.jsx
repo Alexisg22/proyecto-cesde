@@ -1,14 +1,30 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BarraLaterarl } from './componentes/BarraLaterarl.jsx'
+import Tabla from './componentes/Tabla.jsx'
 import { Encabezado } from './componentes/Encabezado.jsx'
+import { BarraLaterarl } from './componentes/BarraLaterarl.jsx'
 import { Estadisticas } from './componentes/Estadisticas.jsx'
-import "./estilos/Index.css"
+import "./estilos/Main.css"
+import { BotonVerde } from './componentes/BotonVerde.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Encabezado />
-    <BarraLaterarl/>
-    <Estadisticas />
+    <header>
+      <Encabezado/>
+    </header>
+
+    <body>
+      <div>
+        <BarraLaterarl/>
+      </div>
+      <div>
+        <Tabla/>
+        <Estadisticas/>
+      </div>
+    </body>
+   
+    {/* <footer>
+      <Estadisticas/>
+    </footer> */}
   </React.StrictMode>,
 )
