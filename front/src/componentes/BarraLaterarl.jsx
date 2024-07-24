@@ -4,7 +4,7 @@ import { CheckboxBarraLateral } from './CheckboxBarraLateral'
 import { BotonVerde } from './BotonVerde'
 import { ModalAsesores } from './ModalAsesores'
 
-export const BarraLaterarl = ( ) => {
+export const BarraLaterarl = () => {
 
   const chequeado = true
   const [modalAbierto, setModalAbierto] = useState(false)
@@ -45,10 +45,7 @@ export const BarraLaterarl = ( ) => {
         <CheckboxBarraLateral id="cboxEstadoUltimaGestion" value="estadoUltimaGestion" label="Estado última gestión" chequeado={chequeado} />
 
         <CheckboxBarraLateral id="cboxCelAdicional1" value="celAdicional1" label="Celular aicional 1" />
-
-        <CheckboxBarraLateral id="cboxCelAdicional2" value="celAdicional2" label="Celular adicional 2" />
-
-        
+ 
       </form>
       <hr className='hrBarraNavegaion'/>
 
