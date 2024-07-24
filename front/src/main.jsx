@@ -7,6 +7,7 @@ import { Estadisticas } from './componentes/Estadisticas.jsx'
 import "./estilos/Main.css"
 import { BotonVerde } from './componentes/BotonVerde.jsx'
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <header>
