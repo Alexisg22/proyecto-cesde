@@ -21,7 +21,6 @@ export const ModalAsesores = ({cerrarModal, modalAbierto}) => {
 
     </div>
    
- 
-   
+
   )
 }
