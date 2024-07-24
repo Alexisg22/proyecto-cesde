@@ -1,6 +1,5 @@
 .barraLateral{
     width: 24vw;
-    height: 100vh;
     background-color: #DDD;
     gap:3em;  
 }
@@ -25,8 +24,6 @@
     margin-top: 1.5em;
 }
 
-.checkboxBarraLateral:checked{
-    cursor:pointer;
-    color: red;
-    
+input[type="checkbox"]{
+    accent-color: #13A438;
 }

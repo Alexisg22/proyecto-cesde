@@ -19,7 +19,7 @@ export const BarraLaterarl = ( ) => {
         <CheckboxBarraLateral id="cboxNit" value="nit" label="Nit" />
         
         <div>
-          <input type="checkbox" id="cboxNombre" value="nombreCompleto" checked />
+          <input  type="checkbox" id="cboxNombre" value="nombreCompleto" checked />
           <label className='labelBarraLateral' htmlFor="cboxNombre">Nombre completo</label>
         </div>
 

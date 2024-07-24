@@ -1,6 +1,7 @@
 import '../estilos/Estadisticas.css'
 import '../estilos/Estadistica.css'
-import { Estadistica } from './Estadistica'
+import { Estadistica } from './Estadistica.jsx'
+import React from 'react'
 
 export const Estadisticas = () => {
   return (

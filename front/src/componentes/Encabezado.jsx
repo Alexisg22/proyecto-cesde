@@ -11,9 +11,9 @@ export const Encabezado = () => {
             <img id='logoAndes' src="../../public/imagenes/AndesBPO.png"/>
         </div>
         
-        <div className='buscador'>
+        <input type='text' value="" className='buscador' />
         <span className="material-symbols-outlined">search</span>
-        </div>
+        
 
         <div>
             <BotonVerde texto="Subir BD"/>

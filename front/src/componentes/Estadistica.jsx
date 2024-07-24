@@ -1,4 +1,5 @@
 import '../estilos/Estadistica.css'
+import React from 'react'
 
 export const Estadistica = ({label, id, dato}) => {
   return (
