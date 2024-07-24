@@ -11,6 +11,7 @@
     align-items: center;
     justify-content: center;
     margin-right: 100px;
+    margin-left: 20px;
 }
 
 #logoAndes{
@@ -29,6 +30,7 @@
     border-radius: 5px;
     display: flex;
     justify-content: end;
+    text-align: center;
 
     .material-symbols-outlined {
         font-size: 38px;
