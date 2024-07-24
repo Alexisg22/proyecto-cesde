@@ -36,20 +36,95 @@ function Tabla({}) {
           </thead>
           <tbody>
             <tr>
-              <td>asdad</td>
-              <td>awdads</td>
-              <td>adsdawdad</td>
-              <td>asda</td>
-              <td>asd</td>
-              <td>asdsa</td>
-              <td>ads</td>
-              <td>dsad</td>
-              <td>wq</td>
-              <td> qwe</td>
-              <td>rqw</td>
-              <td><p className="matriculado">Matriculado</p></td>
-              <td>qrw</td>
+              <td>3162840984</td>
+              <td>34567890</td>
+              <td>Sofía Gómez</td>
+              <td>3</td>
+              <td>2</td>
+              <td>1</td>
+              <td>6</td>
+              <td>No intereado</td>
+              <td><p className="cancelado">Cancelado</p></td>
+              <td>1</td>
+              <td>23/07/2024</td>
+              <td>No intereado</td>
+              <td>3002106542</td>
             </tr>         
+            <tr>
+              <td>3001724890</td>
+              <td>87654321</td>
+              <td>Mateo Fernández</td>
+              <td>8</td>
+              <td>6</td>
+              <td>6</td>
+              <td>20</td>
+              <td>Interesado</td>
+              <td><p className="liquidado">Liquidado</p></td>
+              <td>2</td>
+              <td>22/07/2024</td>
+              <td>Buzon de boz</td>
+              <td></td>
+            </tr> 
+            <tr>
+              <td>3109623890</td>
+              <td>23456789</td>
+              <td>Lucía Rodríguez</td>
+              <td>10</td>
+              <td>9</td>
+              <td>3</td>
+              <td>22</td>
+              <td>Interesado</td>
+              <td><p className="matriculado">Matriculado</p></td>
+              <td>3</td>
+              <td>21/07/2024</td>
+              <td>Interesado</td>
+              <td>3142808726</td>
+            </tr> 
+            <tr>
+              <td>3112458906</td>
+              <td>45678901</td>
+              <td>Alejandro Sánchez</td>
+              <td>3</td>
+              <td>3</td>
+              <td>2</td>
+              <td>8</td>
+              <td>Interesado</td>
+              <td><p className="matriculado">Matriculado</p></td>
+              <td>1</td>
+              <td>23/07/2024</td>
+              <td>Interesado</td>
+              <td></td>
+            </tr> 
+            <tr>
+              <td>3205371099</td>
+              <td>12345678</td>
+              <td>Emma Moreno</td>
+              <td>4</td>
+              <td>1</td>
+              <td>0</td>
+              <td>5</td>
+              <td>MSM</td>
+              <td><p className="cancelado">Cancelado</p></td>
+              <td>1</td>
+              <td>23/072024</td>
+              <td>Buzon de</td>
+              <td></td>
+            </tr> 
+            <tr>
+              <td>3227439836</td>
+              <td>98765432</td>
+              <td>Valentina Vega</td>
+              <td>2</td>
+              <td>1</td>
+              <td>1</td>
+              <td>4</td>
+              <td>Volver a llamar</td>
+              <td><p className="liquidado">Liquidado</p></td>
+              <td>2</td>
+              <td>22/07/2024</td>
+              <td>No interesado</td>
+              <td></td>
+            </tr> 
           </tbody>
         </table>
       </section>
