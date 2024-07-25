@@ -1,9 +1,9 @@
 import React from 'react'
 import '../estilos/HistoricoGestiones.css'
 
-export const HistoricoGestiones = ({cerrarModal, modalAbierto}) => {
+export const HistoricoGestiones = ({cerrarModal, modalAbiertoHistorico}) => {
 
-    if(!modalAbierto) return 
+    if(!modalAbiertoHistorico) return 
 
   return (
 

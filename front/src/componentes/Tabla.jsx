@@ -71,6 +71,7 @@ function Tabla({ visibilidadColumna }) {
   ];
 
   const [modalAbierto, setModalAbierto] = useState(false)
+  const [modalAbiertoHistorico, setModalAbiertoHistorico] = useState(false)
 
   return (
     <>
@@ -103,7 +104,7 @@ function Tabla({ visibilidadColumna }) {
           </thead>
           <tbody className='cuerpoTabla'>
             {datos.map((row, index) => (
-              <tr className='filaTablaAspirantes' onClick={() =>{setModalAbierto(true)}} key={index}>
+              <tr className='filaTablaAspirantes' onClick={() =>{setModalAbiertoHistorico(true)}} key={index}>
                 {columnas.map(columna => 
                   visibilidadColumna[columna.id] && (
                     <td key={columna.id}>
@@ -122,7 +123,7 @@ function Tabla({ visibilidadColumna }) {
       </section>
     </main>
 
-    <HistoricoGestiones  modalAbierto={modalAbierto}  cerrarModal={() =>{setModalAbierto(false)}} />
+    <HistoricoGestiones  modalAbiertoHistorico={modalAbiertoHistorico}  cerrarModal={() =>{setModalAbiertoHistorico(false)}} />
     
     <ModalFiltrar modalAbierto={modalAbierto} cerrarModal={() =>{setModalAbierto(false)}}/>
 
