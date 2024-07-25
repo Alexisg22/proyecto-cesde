@@ -209,7 +209,7 @@ thead th:first-child {
 }
 
 thead th:nth-child(3) {
-    left: 5rem;     
+    left: 7rem;     
     z-index: 2;
 }
 
