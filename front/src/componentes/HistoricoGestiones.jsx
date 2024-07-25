@@ -1,9 +1,9 @@
 import React from 'react'
 import '../estilos/HistoricoGestiones.css'
 
-export const HistoricoGestiones = ({cerrarModal, modalAbierto}) => {
+export const HistoricoGestiones = ({cerrarModal, modalAbiertoHistorico}) => {
 
-    if(!modalAbierto) return 
+    if(!modalAbiertoHistorico) return 
 
   return (
 
@@ -18,7 +18,7 @@ export const HistoricoGestiones = ({cerrarModal, modalAbierto}) => {
                 <p><strong>Aspirante: </strong>Alexander Santa Ortega</p>
                 <p><strong>Celular: </strong>3044233452</p>
                 <p><strong>Nit: </strong>1007282206</p>
-                <p><strong>Ciudad residencia: </strong>Marinilla</p>
+                <p><strong>Ciudad residencia: </strong>Rionegro</p>
             </div>
 
             <hr />

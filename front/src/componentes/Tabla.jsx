@@ -1,6 +1,8 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import '../estilos/Tabla.css';
-import { BotonVerde } from './BotonVerde';
+import { BotonVerde } from './BotonVerde.jsx';
+import { HistoricoGestiones } from './HistoricoGestiones.jsx';
+import { ModalFiltrar } from './ModalFiltrar.jsx';
 
 function Tabla({ visibilidadColumna }) {
   const columnas = [
@@ -68,7 +70,11 @@ function Tabla({ visibilidadColumna }) {
     // ... más filas de datos
   ];
 
+  const [modalAbierto, setModalAbierto] = useState(false)
+  const [modalAbiertoHistorico, setModalAbiertoHistorico] = useState(false)
+
   return (
+  <>
     <main className="tabla" id="tablaClientes">
       <section className="encabezadoTabla">
         <h1>Información clientes</h1>
@@ -77,7 +83,7 @@ function Tabla({ visibilidadColumna }) {
           <button className="botonBuscar">Buscar</button>
         </div>
         <div className='filtrar'>
-          <BotonVerde texto={'Filtrar'}/>
+        <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true} texto={"Filtrar"} ide={'botonVerde'}/>
         </div>
       </section>
       <section className="cuerpoTabla">
@@ -95,7 +101,7 @@ function Tabla({ visibilidadColumna }) {
           </thead>
           <tbody className='cuerpoTabla'>
             {datos.map((row, index) => (
-              <tr key={index}>
+              <tr className='filaTablaAspirantes' onClick={() =>{setModalAbiertoHistorico(true)}} key={index}>
                 {columnas.map(columna => 
                   visibilidadColumna[columna.id] && (
                     <td key={columna.id}>
@@ -112,7 +118,13 @@ function Tabla({ visibilidadColumna }) {
           </tbody>
         </table>
       </section>
+      
     </main>
+
+    <HistoricoGestiones modalAbiertoHistorico={modalAbiertoHistorico}  cerrarModal={() =>{setModalAbiertoHistorico(false)}} />
+    
+    <ModalFiltrar modalAbierto={modalAbierto} cerrarModal={() =>{setModalAbierto(false)}} />
+  </>
   );
 }
 
