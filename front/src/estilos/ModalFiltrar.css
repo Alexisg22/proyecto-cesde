@@ -1,4 +1,4 @@
-.modalSubirBD{
+.modalFiltrar{
     width: 74vw;
     height: 80vh;
     background-color: #DDDDDD;
@@ -21,7 +21,7 @@
     
 }
 
-.contenedorSubirBD{
+.contenedorFiltrar{
     z-index: 1;
     position: absolute;
     top: 0;
@@ -31,10 +31,10 @@
     background-color: rgba(0, 0, 0, 0.5); 
 } 
 
-.contenedorBotones{
+.contenedorFiltros{
     display: flex;
     justify-content: space-around;
-    margin-top: 8em;
+    margin-top: 3em;
 }
 
 .botonCerrar{
@@ -55,6 +55,31 @@
     cursor: pointer;
 }
 
-.botonGuardar{
-    margin-top: 4em;
+.botonFiltrar{
+    display: flex;
+    justify-content: end;
+    margin-top: 0.5em;
+    margin-right: 2em;
+}
+
+.filtrosSeleccionados{
+    margin: auto;
+    margin-top: 5em;
+    width: 90%;
+    height: 35%;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.seleccionDeFiltro{
+    height: 2em;
+    width: 18em;
+    border-radius: 5px;
+}
+
+.campoFiltro{
+    height: 2em;
+    width: 18em;
+    border-radius: 5px;
 }

@@ -83,9 +83,11 @@ function Tabla({ visibilidadColumna }) {
           <button className="botonBuscar">Buscar</button>
         </div>
         <div className='filtrar'>
-          <BotonVerde texto={'Filtrar'}/>
+          <BotonVerde texto={'Filtrar'} setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true}  ide={'botonVerde'}/>
         </div>
+       
       </section>
+      
       <section className="cuerpoTabla">
         <table className='tabla'>
           <thead className='cabezaTabla'>
@@ -121,6 +123,9 @@ function Tabla({ visibilidadColumna }) {
     </main>
 
     <HistoricoGestiones  modalAbierto={modalAbierto}  cerrarModal={() =>{setModalAbierto(false)}} />
+    
+    <ModalFiltrar modalAbierto={modalAbierto} cerrarModal={() =>{setModalAbierto(false)}}/>
+
     </>
   );
 }
