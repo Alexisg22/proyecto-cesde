@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React,{ useState } from 'react';
 import '../estilos/Tabla.css';
-import { BotonVerde } from './BotonVerde';
+import { BotonVerde } from './BotonVerde.jsx';
 import { HistoricoGestiones } from './HistoricoGestiones.jsx';
 import { ModalFiltrar } from './ModalFiltrar.jsx';
 
@@ -10,12 +10,12 @@ function Tabla({ visibilidadColumna }) {
     { id: 'nit', etiqueta: 'Nit' },
     { id: 'nombreCompleto', etiqueta: 'Nombre Completo' },
     { id: 'cantLlamadas', etiqueta: 'Cant. Llamadas' },
-    { id: 'cantSMS', etiqueta: 'Cant. SMS' },
-    { id: 'cantWhatsApps', etiqueta: 'Cant. WhatsApps' },
+    { id: 'cantMensajesDeTexto', etiqueta: 'Cant. SMS' },
+    { id: 'cantWhatsapps', etiqueta: 'Cant. WhatsApps' },
     { id: 'cantGestiones', etiqueta: 'Cant. Gestiones' },
     { id: 'mejorGestion', etiqueta: 'Mejor Gestión' },
     { id: 'estadoAspirante', etiqueta: 'Estado Aspirante' },
-    { id: 'diasHabilesUltGestion', etiqueta: 'Dias Habiles Ult. Gestión' },
+    { id: 'diasHabilesUlt.Gestion', etiqueta: 'Dias Habiles Ult. Gestión' },
     { id: 'fechaUltGestion', etiqueta: 'Fecha Ult. Gestión' },
     { id: 'estadoUltGestion', etiqueta: 'Est. Ult. Gestión' },
     { id: 'celularAdicional', etiqueta: 'Celular Adicional' },
@@ -28,8 +28,9 @@ function Tabla({ visibilidadColumna }) {
       nit: '34567890',
       nombreCompleto: 'Sofía Gómez',
       cantLlamadas: '3',
+      cantMensajesDeTexto: '3',
       cantSMS: '2',
-      cantWhatsApps: '1',
+      cantWhatsapps: '1',
       cantGestiones: '6',
       mejorGestion: 'No interesado',
       estadoAspirante: 'Cancelado',
@@ -43,8 +44,8 @@ function Tabla({ visibilidadColumna }) {
       nit: '34567890',
       nombreCompleto: 'Sofía Gómez',
       cantLlamadas: '3',
-      cantSMS: '2',
-      cantWhatsApps: '1',
+      cantMensajesDeTexto: '2',
+      cantWhatsapps: '1',
       cantGestiones: '6',
       mejorGestion: 'No interesado',
       estadoAspirante: 'Liquidado',
@@ -57,8 +58,8 @@ function Tabla({ visibilidadColumna }) {
       nit: '34567890',
       nombreCompleto: 'Sofía Gómez',
       cantLlamadas: '3',
-      cantSMS: '2',
-      cantWhatsApps: '1',
+      cantMensajesDeTexto: '2',
+      cantWhatsapps: '1',
       cantGestiones: '6',
       mejorGestion: 'No interesado',
       estadoAspirante: 'Matriculado',
@@ -74,8 +75,7 @@ function Tabla({ visibilidadColumna }) {
   const [modalAbiertoHistorico, setModalAbiertoHistorico] = useState(false)
 
   return (
-    <>
-    
+  <>
     <main className="tabla" id="tablaClientes">
       <section className="encabezadoTabla">
         <h1>Información clientes</h1>
@@ -84,11 +84,9 @@ function Tabla({ visibilidadColumna }) {
           <button className="botonBuscar">Buscar</button>
         </div>
         <div className='filtrar'>
-          <BotonVerde texto={'Filtrar'} setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true}  ide={'botonVerde'}/>
+        <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true} texto={"Filtrar"} ide={'botonVerde'}/>
         </div>
-       
       </section>
-      
       <section className="cuerpoTabla">
         <table className='tabla'>
           <thead className='cabezaTabla'>
@@ -121,13 +119,13 @@ function Tabla({ visibilidadColumna }) {
           </tbody>
         </table>
       </section>
+      
     </main>
 
-    <HistoricoGestiones  modalAbiertoHistorico={modalAbiertoHistorico}  cerrarModal={() =>{setModalAbiertoHistorico(false)}} />
+    <HistoricoGestiones modalAbiertoHistorico={modalAbiertoHistorico}  cerrarModal={() =>{setModalAbiertoHistorico(false)}} />
     
-    <ModalFiltrar modalAbierto={modalAbierto} cerrarModal={() =>{setModalAbierto(false)}}/>
-
-    </>
+    <ModalFiltrar modalAbierto={modalAbierto} cerrarModal={() =>{setModalAbierto(false)}} />
+  </>
   );
 }
 

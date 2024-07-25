@@ -25,7 +25,7 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial }
             key={key}
             id={key}
             value={key}
-            label={key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
+            label={key.replace(/([A-Z])/g, ' $1').replace(/^./g, str => str.toUpperCase())}
             chequeado={value}
             onChange={() => manejarCambioCasillaVerificacion(key)}
           />
