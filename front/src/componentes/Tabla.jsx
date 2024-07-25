@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../estilos/Tabla.css';
 import { BotonVerde } from './BotonVerde';
-import { HistoricoGestiones } from './HistoricoGestiones.jsx';
-import { ModalFiltrar } from './ModalFiltrar.jsx';
 
 function Tabla({ visibilidadColumna }) {
   const columnas = [
@@ -10,12 +8,12 @@ function Tabla({ visibilidadColumna }) {
     { id: 'nit', etiqueta: 'Nit' },
     { id: 'nombreCompleto', etiqueta: 'Nombre Completo' },
     { id: 'cantLlamadas', etiqueta: 'Cant. Llamadas' },
-    { id: 'cantSMS', etiqueta: 'Cant. SMS' },
-    { id: 'cantWhatsApps', etiqueta: 'Cant. WhatsApps' },
+    { id: 'cantMensajesDeTexto', etiqueta: 'Cant. SMS' },
+    { id: 'cantWhatsapps', etiqueta: 'Cant. WhatsApps' },
     { id: 'cantGestiones', etiqueta: 'Cant. Gestiones' },
     { id: 'mejorGestion', etiqueta: 'Mejor Gestión' },
     { id: 'estadoAspirante', etiqueta: 'Estado Aspirante' },
-    { id: 'diasHabilesUltGestion', etiqueta: 'Dias Habiles Ult. Gestión' },
+    { id: 'diasHabilesUlt.Gestion', etiqueta: 'Dias Habiles Ult. Gestión' },
     { id: 'fechaUltGestion', etiqueta: 'Fecha Ult. Gestión' },
     { id: 'estadoUltGestion', etiqueta: 'Est. Ult. Gestión' },
     { id: 'celularAdicional', etiqueta: 'Celular Adicional' },
@@ -27,9 +25,9 @@ function Tabla({ visibilidadColumna }) {
       celular: '3162840984',
       nit: '34567890',
       nombreCompleto: 'Sofía Gómez',
-      cantLlamadas: '3',
+      cantMensajesDeTexto: '3',
       cantSMS: '2',
-      cantWhatsApps: '1',
+      cantWhatsapps: '1',
       cantGestiones: '6',
       mejorGestion: 'No interesado',
       estadoAspirante: 'Cancelado',
@@ -43,8 +41,8 @@ function Tabla({ visibilidadColumna }) {
       nit: '34567890',
       nombreCompleto: 'Sofía Gómez',
       cantLlamadas: '3',
-      cantSMS: '2',
-      cantWhatsApps: '1',
+      cantMensajesDeTexto: '2',
+      cantWhatsapps: '1',
       cantGestiones: '6',
       mejorGestion: 'No interesado',
       estadoAspirante: 'Liquidado',
@@ -57,8 +55,8 @@ function Tabla({ visibilidadColumna }) {
       nit: '34567890',
       nombreCompleto: 'Sofía Gómez',
       cantLlamadas: '3',
-      cantSMS: '2',
-      cantWhatsApps: '1',
+      cantMensajesDeTexto: '2',
+      cantWhatsapps: '1',
       cantGestiones: '6',
       mejorGestion: 'No interesado',
       estadoAspirante: 'Matriculado',
@@ -70,11 +68,7 @@ function Tabla({ visibilidadColumna }) {
     // ... más filas de datos
   ];
 
-  const [modalAbierto, setModalAbierto] = useState(false)
-
   return (
-    <>
-    
     <main className="tabla" id="tablaClientes">
       <section className="encabezadoTabla">
         <h1>Información clientes</h1>
@@ -83,11 +77,9 @@ function Tabla({ visibilidadColumna }) {
           <button className="botonBuscar">Buscar</button>
         </div>
         <div className='filtrar'>
-          <BotonVerde texto={'Filtrar'} setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true}  ide={'botonVerde'}/>
+          <BotonVerde texto={'Filtrar'}/>
         </div>
-       
       </section>
-      
       <section className="cuerpoTabla">
         <table className='tabla'>
           <thead className='cabezaTabla'>
@@ -103,7 +95,7 @@ function Tabla({ visibilidadColumna }) {
           </thead>
           <tbody className='cuerpoTabla'>
             {datos.map((row, index) => (
-              <tr className='filaTablaAspirantes' onClick={() =>{setModalAbierto(true)}} key={index}>
+              <tr key={index}>
                 {columnas.map(columna => 
                   visibilidadColumna[columna.id] && (
                     <td key={columna.id}>
@@ -121,12 +113,6 @@ function Tabla({ visibilidadColumna }) {
         </table>
       </section>
     </main>
-
-    <HistoricoGestiones  modalAbierto={modalAbierto}  cerrarModal={() =>{setModalAbierto(false)}} />
-    
-    <ModalFiltrar modalAbierto={modalAbierto} cerrarModal={() =>{setModalAbierto(false)}}/>
-
-    </>
   );
 }
 
