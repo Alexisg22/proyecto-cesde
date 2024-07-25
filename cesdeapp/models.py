@@ -16,6 +16,17 @@ class Ciudad(models.Model):
 class Estados(models.Model):
     nombre = models.CharField(max_length=15)
 
+<<<<<<< HEAD
+  
+    def __str__(self):
+        return self.nombre
+=======
+class Programa(models.Model):
+    nombre = models.CharField(max_length=40)
+    descripcion = models.TextField(max_length=300)
+
+>>>>>>> 0b05deb191e6fb09300740c0442e366d73293322
+
 class Aspirantes(models.Model):
     celular = models.CharField(max_length=15, primary_key=True)
     nombre = models.CharField(max_length=40)
@@ -23,7 +34,11 @@ class Aspirantes(models.Model):
     documento = models.CharField(max_length=15)
     correo = models.CharField(max_length=50)
     ciudad = models.ForeignKey(Ciudad, on_delete=models.CASCADE)
+<<<<<<< HEAD
     cel_opcional = models.CharField(max_length=15, null=True)
+=======
+    cel_opcional = models.CharField(max_length=15, blank=True)
+>>>>>>> 0b05deb191e6fb09300740c0442e366d73293322
     estado = models.ForeignKey(Estados, on_delete=models.CASCADE)
     programa = models.ForeignKey(Programa, on_delete=models.CASCADE)
 
