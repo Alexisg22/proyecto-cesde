@@ -27,6 +27,7 @@ function Tabla({ visibilidadColumna }) {
       celular: '3162840984',
       nit: '34567890',
       nombreCompleto: 'Sofía Gómez',
+      cantLlamadas: '3',
       cantMensajesDeTexto: '3',
       cantSMS: '2',
       cantWhatsapps: '1',
