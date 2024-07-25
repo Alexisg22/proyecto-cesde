@@ -8,19 +8,19 @@ import "./estilos/Main.css"
 
 function App() {
   const [visibilidadColumna, setVisibilidadColumna] = useState({
-    celular: true,
-    nit: false,
-    nombreCompleto: true,
-    cantLlamadas: true,
-    cantSMS: false,
-    cantWhatsApps: false,
-    cantGestiones: true,
-    mejorGestion: true,
-    estadoAspirante: true,
-    diasHabilesUltGestion: false,
-    fechaUltGestion: true,
-    estadoUltGestion: true,
-    celularAdicional: false,
+    'celular': true,
+    'nit': false,
+    'nombreCompleto': true,
+    'cantLlamadas': true,
+    'cantMensajesDeTexto': false,
+    'cantWhatsapps': false,
+    'cantGestiones': true,
+    'mejorGestion': true,
+    'estadoAspirante': true,
+    'diasHabilesUlt.Gestion': false,
+    'fechaUltGestion': true,
+    'estadoUltGestion': true,
+    'celularAdicional': false,
   });
 
   const manejarCambioVisibilidadColumna = (nuevaVisibilidad) => {
