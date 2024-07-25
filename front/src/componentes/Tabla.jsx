@@ -2,8 +2,71 @@ import React from 'react';
 import '../estilos/Tabla.css';
 import { BotonVerde } from './BotonVerde';
 
-function Tabla({}) {
-  
+function Tabla({ visibilidadColumna }) {
+  const columnas = [
+    { id: 'celular', etiqueta: 'Celular' },
+    { id: 'nit', etiqueta: 'Nit' },
+    { id: 'nombreCompleto', etiqueta: 'Nombre Completo' },
+    { id: 'cantLlamadas', etiqueta: 'Cant. Llamadas' },
+    { id: 'cantSMS', etiqueta: 'Cant. SMS' },
+    { id: 'cantWhatsApps', etiqueta: 'Cant. WhatsApps' },
+    { id: 'cantGestiones', etiqueta: 'Cant. Gestiones' },
+    { id: 'mejorGestion', etiqueta: 'Mejor Gestión' },
+    { id: 'estadoAspirante', etiqueta: 'Estado Aspirante' },
+    { id: 'diasHabilesUltGestion', etiqueta: 'Dias Habiles Ult. Gestión' },
+    { id: 'fechaUltGestion', etiqueta: 'Fecha Ult. Gestión' },
+    { id: 'estadoUltGestion', etiqueta: 'Est. Ult. Gestión' },
+    { id: 'celularAdicional', etiqueta: 'Celular Adicional' },
+  ];
+
+  // Datos de ejemplo (reemplazar con tus datos reales)
+  const datos = [
+    {
+      celular: '3162840984',
+      nit: '34567890',
+      nombreCompleto: 'Sofía Gómez',
+      cantLlamadas: '3',
+      cantSMS: '2',
+      cantWhatsApps: '1',
+      cantGestiones: '6',
+      mejorGestion: 'No interesado',
+      estadoAspirante: 'Cancelado',
+      diasHabilesUltGestion: '1',
+      fechaUltGestion: '23/07/2024',
+      estadoUltGestion: 'No interesado',
+      celularAdicional: '3002106542',
+    },
+    {
+      celular: '3162840984',
+      nit: '34567890',
+      nombreCompleto: 'Sofía Gómez',
+      cantLlamadas: '3',
+      cantSMS: '2',
+      cantWhatsApps: '1',
+      cantGestiones: '6',
+      mejorGestion: 'No interesado',
+      estadoAspirante: 'Liquidado',
+      diasHabilesUltGestion: '1',
+      fechaUltGestion: '23/07/2024',
+      estadoUltGestion: 'No interesado',
+      celularAdicional: '3002106542',
+    },{
+      celular: '3162840984',
+      nit: '34567890',
+      nombreCompleto: 'Sofía Gómez',
+      cantLlamadas: '3',
+      cantSMS: '2',
+      cantWhatsApps: '1',
+      cantGestiones: '6',
+      mejorGestion: 'No interesado',
+      estadoAspirante: 'Matriculado',
+      diasHabilesUltGestion: '1',
+      fechaUltGestion: '23/07/2024',
+      estadoUltGestion: 'No interesado',
+      celularAdicional: '3002106542',
+    },
+    // ... más filas de datos
+  ];
 
   return (
     <main className="tabla" id="tablaClientes">
@@ -21,112 +84,31 @@ function Tabla({}) {
         <table className='tabla'>
           <thead className='cabezaTabla'>
             <tr>
-              <th id='celular' estado='{chequeado}'>Celular</th>
-              <th id='nit' estado='{chequeado}'>Nit</th>
-              <th id='nombre' estado='{chequeado}'>Nombre Completo</th>
-              <th id='cantLlamadas' estado='{chequeado}'>Cant. Llamadas</th>
-              <th id='cantSMS' estado='{chequeado}'>Cant. SMS</th>
-              <th id='cantWhatsApps' estado='{chequeado}'>Cant. WhatsApps</th>
-              <th id='cantGestiones' estado='{chequeado}'>Cant. Gestiones</th>
-              <th id='mejorGestion' estado='{chequeado}'>Mejor Gestión</th>
-              <th id='estadoAspirante' estado='{chequeado}'>Estado Aspirante</th>
-              <th id='diasHabilesUltGestion' estado='{chequeado}'>Dias Habiles Ult. Gestión</th>        
-              <th id='fechaUltGestion' estado='{chequeado}'>Fecha Ult. Gestión</th>
-              <th id='estadoUltGestion' estado='{chequeado}'>Est. Ult. Gestión</th>
-              <th id='celularAdicional' estado='{chequeado}'>Celular Adicional </th>
+              {columnas.map(columna => 
+                visibilidadColumna[columna.id] && (
+                  <th key={columna.id} id={columna.id}>
+                    {columna.etiqueta}
+                  </th>
+                )
+              )}
             </tr>
           </thead>
           <tbody className='cuerpoTabla'>
-            <tr>
-              <td>3162840984</td>
-              <td>34567890</td>
-              <td>Sofía Gómez</td>
-              <td>3</td>
-              <td>2</td>
-              <td>1</td>
-              <td>6</td>
-              <td>No intereado</td>
-              <td><p className="cancelado">Cancelado</p></td>
-              <td>1</td>
-              <td>23/07/2024</td>
-              <td>No intereado</td>
-              <td>3002106542</td>
-            </tr>         
-            <tr>
-              <td>3001724890</td>
-              <td>87654321</td>
-              <td>Mateo Fernández</td>
-              <td>8</td>
-              <td>6</td>
-              <td>6</td>
-              <td>20</td>
-              <td>Interesado</td>
-              <td><p className="liquidado">Liquidado</p></td>
-              <td>2</td>
-              <td>22/07/2024</td>
-              <td>Buzon de boz</td>
-              <td></td>
-            </tr> 
-            <tr>
-              <td>3109623890</td>
-              <td>23456789</td>
-              <td>Lucía Rodríguez</td>
-              <td>10</td>
-              <td>9</td>
-              <td>3</td>
-              <td>22</td>
-              <td>Interesado</td>
-              <td><p className="matriculado">Matriculado</p></td>
-              <td>3</td>
-              <td>21/07/2024</td>
-              <td>Interesado</td>
-              <td>3142808726</td>
-            </tr> 
-            <tr>
-              <td>3112458906</td>
-              <td>45678901</td>
-              <td>Alejandro Sánchez</td>
-              <td>3</td>
-              <td>3</td>
-              <td>2</td>
-              <td>8</td>
-              <td>Interesado</td>
-              <td><p className="matriculado">Matriculado</p></td>
-              <td>1</td>
-              <td>23/07/2024</td>
-              <td>Interesado</td>
-              <td></td>
-            </tr> 
-            <tr>
-              <td>3205371099</td>
-              <td>12345678</td>
-              <td>Emma Moreno</td>
-              <td>4</td>
-              <td>1</td>
-              <td>0</td>
-              <td>5</td>
-              <td>MSM</td>
-              <td><p className="cancelado">Cancelado</p></td>
-              <td>1</td>
-              <td>23/072024</td>
-              <td>Buzon de</td>
-              <td></td>
-            </tr> 
-            <tr>
-              <td>3227439836</td>
-              <td>98765432</td>
-              <td>Valentina Vega</td>
-              <td>2</td>
-              <td>1</td>
-              <td>1</td>
-              <td>4</td>
-              <td>Volver a llamar</td>
-              <td><p className="liquidado">Liquidado</p></td>
-              <td>2</td>
-              <td>22/07/2024</td>
-              <td>No interesado</td>
-              <td></td>
-            </tr> 
+            {datos.map((row, index) => (
+              <tr key={index}>
+                {columnas.map(columna => 
+                  visibilidadColumna[columna.id] && (
+                    <td key={columna.id}>
+                      {columna.id === 'estadoAspirante' ? (
+                        <p className={row[columna.id].toLowerCase()}>{row[columna.id]}</p>
+                      ) : (
+                        row[columna.id]
+                      )}
+                    </td>
+                  )
+                )}
+              </tr>
+            ))}
           </tbody>
         </table>
       </section>
