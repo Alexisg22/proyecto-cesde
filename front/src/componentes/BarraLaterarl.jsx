@@ -33,7 +33,8 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial }
       </form>
       <hr className='hrBarraNavegaion'/>
       <div className='btnAsesores'>
-        <BotonVerde 
+        <BotonVerde
+          ide={'botonGrande'} 
           setModalAbierto={setModalAbierto} 
           modalAbierto={modalAbierto} 
           modalAsesores={true} 

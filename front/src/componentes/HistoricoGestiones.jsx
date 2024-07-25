@@ -3,7 +3,7 @@ import '../estilos/HistoricoGestiones.css'
 
 export const HistoricoGestiones = ({cerrarModal, modalAbierto}) => {
 
-    if(!modalAbierto) return
+    if(!modalAbierto) return 
 
   return (
 

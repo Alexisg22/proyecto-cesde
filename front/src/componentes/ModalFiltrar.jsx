@@ -2,7 +2,9 @@ import { BotonVerde } from './BotonVerde.jsx'
 import React, {useState} from 'react'
 import '../estilos/ModalFiltrar.css'
 
+
 export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
+
     //Estado para almacenar la opción seleccionada
     const [seleccionOpcion, setSeleccionOpcion] = useState('');
     const [filtrosAgregados, setFiltrosAgregados] = useState([{}])
@@ -13,7 +15,7 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
         console.log(filtrosAgregados)
       };
 
-    if(!modalAbierto) return null
+    if(!modalAbierto) return
 
   return (
     <>

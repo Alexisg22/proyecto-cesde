@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import '../estilos/Tabla.css';
 import { BotonVerde } from './BotonVerde';
-import { HistoricoGestiones } from './HistoricoGestiones';
-
+import { HistoricoGestiones } from './HistoricoGestiones.jsx';
+import { ModalFiltrar } from './ModalFiltrar.jsx';
 
 function Tabla({ visibilidadColumna }) {
   const columnas = [
