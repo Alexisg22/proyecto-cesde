@@ -1,0 +1,66 @@
+.modalHistoricoGestiones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 74vw;
+    height: 80vh;
+    background-color: #fff;
+    position: fixed;
+    top: 10%;
+    left: 15%;
+    z-index: 1;
+
+    & h2{
+        margin-top: 1em;
+    }
+}
+
+.datosAspiranteHistorico{
+    display: flex;
+    gap:2em;
+    margin-top: 1.3em;
+    margin-bottom: 1em;
+}
+
+.tituloModalHistorico{
+    margin-top: 1em;
+    display: flex;
+    width: 100%;
+     & h2{
+         text-align: center;
+         width: 100%;
+     }
+     & button{
+         width: 2.5em;
+         height: 2.5em;
+         position: fixed;
+         left: 85%;
+         margin: 1em;
+     }
+ 
+     & button:hover{
+         cursor: pointer;
+         background-color: red;
+         border: 1px solid black;
+         border-radius: 2px;
+     }
+}
+
+.tablaHistorico{
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.tablaHistoricoEncabezado{
+    background-color: #d5d1defe;
+}
+
+.tablaHistorico tbody tr:nth-child(even) {
+    background-color: #e3e3e3; 
+}
+
+.contenedorTabla{
+    max-height: 350px ;
+    overflow-y: auto;
+}
+

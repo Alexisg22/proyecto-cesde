@@ -1,31 +1,48 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom/client'
 import Tabla from './componentes/Tabla.jsx'
 import { Encabezado } from './componentes/Encabezado.jsx'
 import { BarraLaterarl } from './componentes/BarraLaterarl.jsx'
 import { Estadisticas } from './componentes/Estadisticas.jsx'
 import "./estilos/Main.css"
-import { BotonVerde } from './componentes/BotonVerde.jsx'
 
+function App() {
+  const [visibilidadColumna, setVisibilidadColumna] = useState({
+    'celular': true,
+    'nit': false,
+    'nombreCompleto': true,
+    'cantLlamadas': true,
+    'cantMensajesDeTexto': false,
+    'cantWhatsapps': false,
+    'cantGestiones': true,
+    'mejorGestion': true,
+    'estadoAspirante': true,
+    'diasHabilesUlt.Gestion': false,
+    'fechaUltGestion': true,
+    'estadoUltGestion': true,
+    'celularAdicional': false,
+  });
 
+  const manejarCambioVisibilidadColumna = (nuevaVisibilidad) => {
+    setVisibilidadColumna(nuevaVisibilidad);
+  };
+
+  return (
+    <React.Fragment>
+      <Encabezado />
+      <main className="contenedorPrincipal">
+        <BarraLaterarl onCambioVisibilidadColumna={manejarCambioVisibilidadColumna} visibilidadInicial={visibilidadColumna} />
+        <div className="contenedorSecundario">
+          <Tabla visibilidadColumna={visibilidadColumna} />
+          <Estadisticas />
+        </div>
+      </main>
+    </React.Fragment>
+  );
+}
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <header>
-      <Encabezado/>
-    </header>
 
-    <body>
-      <div>
-        <BarraLaterarl/>
-      </div>
-      <div>
-        <Tabla/>
-        <Estadisticas/>
-      </div>
-    </body>
-   
-    {/* <footer>
-      <Estadisticas/>
-    </footer> */}
+  <React.StrictMode>
+    <App/> 
   </React.StrictMode>,
 )
