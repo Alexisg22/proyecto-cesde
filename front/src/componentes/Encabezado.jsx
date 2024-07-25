@@ -24,7 +24,7 @@ const [modalAbierto, setModalAbierto] =useState(false)
         </div>
 
         <div>
-            <BotonBlanco setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true}  ide={'botonVerde'}/>    
+            <BotonBlanco/>    
         </div>
             
     </div>
