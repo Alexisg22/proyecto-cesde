@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../estilos/Tabla.css';
 import { BotonVerde } from './BotonVerde';
+import { HistoricoGestiones } from './HistoricoGestiones';
 
 function Tabla({}) {
+
+  const [modalAbierto, setModalAbierto] = useState(false)
+
   return (
+    <>
+    
     <main className="tabla" id="tablaClientes">
       <section className="encabezadoTabla">
         <h1>Información clientes</h1>
@@ -35,7 +41,7 @@ function Tabla({}) {
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr onClick={() => {setModalAbierto(true)}}>
               <td>3162840984</td>
               <td>34567890</td>
               <td>Sofía Gómez</td>
@@ -129,6 +135,9 @@ function Tabla({}) {
         </table>
       </section>
     </main>
+
+    <HistoricoGestiones  modalAbierto={modalAbierto}  cerrarModal={() =>{setModalAbierto(false)}} />
+    </>
   );
 }
 

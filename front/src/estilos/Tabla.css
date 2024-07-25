@@ -90,18 +90,17 @@ main.tabla {
 
 tbody tr:nth-child(even) {
     background-color: #0000000b;
+
+    
+}
+
+tbody tr:hover{
+    cursor:pointer;
+    border: 1px solid black;
 }
 
 table {
     width: 100%;
-}
-
-td img {
-    width: 36px;
-    height: 36px;
-    margin-right: .5rem;
-    border-radius: 50%;
-    vertical-align: middle;
 }
 
 table, th, td {

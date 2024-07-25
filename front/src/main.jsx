@@ -6,6 +6,7 @@ import { BarraLaterarl } from './componentes/BarraLaterarl.jsx'
 import { Estadisticas } from './componentes/Estadisticas.jsx'
 import "./estilos/Main.css"
 import { BotonVerde } from './componentes/BotonVerde.jsx'
+import { HistoricoGestiones } from './componentes/HistoricoGestiones.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -29,6 +30,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Estadisticas/>
     </footer> */}
 
+     
     
   </React.StrictMode>,
 )
