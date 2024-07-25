@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Tabla from './Tabla'
 
 export const CheckboxBarraLateral = ({id, value, label, chequeado}) => {
 
@@ -11,9 +10,6 @@ export const CheckboxBarraLateral = ({id, value, label, chequeado}) => {
             {(chequeo) ? <input onClick={() => {setChequeo(false)}} type="checkbox" id={id} value={value} checked /> 
             : <input onClick={() => {setChequeo(true)}} type="checkbox" id={id} value={value} />}
           <label className='labelBarraLateral' htmlFor={id}>{label}</label>
-
-            {}
-        </div>
-        
+        </div>       
     )
 }

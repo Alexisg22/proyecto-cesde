@@ -3,6 +3,8 @@ import '../estilos/Tabla.css';
 import { BotonVerde } from './BotonVerde';
 
 function Tabla({}) {
+  
+
   return (
     <main className="tabla" id="tablaClientes">
       <section className="encabezadoTabla">
@@ -19,7 +21,7 @@ function Tabla({}) {
         <table>
           <thead>
             <tr>
-              <th id='celular' estado='{chequeado}' >Celular</th>
+              <th id='celular' estado='{chequeado}'>Celular</th>
               <th id='nit' estado='{chequeado}'>Nit</th>
               <th id='nombre' estado='{chequeado}'>Nombre Completo</th>
               <th id='cantLlamadas' estado='{chequeado}'>Cant. Llamadas</th>

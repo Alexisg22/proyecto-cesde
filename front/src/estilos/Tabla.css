@@ -89,7 +89,7 @@ main.tabla {
 }
 
 tbody tr:nth-child(even) {
-    background-color: #0000000b;
+    background-color: #e3e3e3;
 }
 
 table {
@@ -213,14 +213,38 @@ thead th:nth-child(3) {
     z-index: 2;
 }
 
-tbody td:first-child{
+
+tbody tr:nth-child(odd) td:first-child{
+    left: 0;
+    background-color: #ffffff;
+    position: sticky; /* Fondo blanco para columnas 1 y 3 en filas impares */
+}
+
+tbody tr:nth-child(odd) td:nth-child(3){
+    left: 7rem;
+    background-color: #ffffff;
+    position: sticky;
+}
+/* Filas pares */
+tbody tr:nth-child(even) td:first-child{
+    left: 0;
+    background-color: #e3e3e3;
+    position: sticky;
+}
+tbody tr:nth-child(even) td:nth-child(3) {
+    left: 7rem;
+    background-color: #e3e3e3;
+    position: sticky; /* Fondo rojo claro para columnas 1 y 3 en filas pares */
+}
+
+/* tbody td:first-child{
     left: 0; 
     position: sticky;
     background-color: white;
 }
 
 tbody td:nth-child(3) {
-    left: 5rem; 
+    left: 6rem; 
     position: sticky;
-    background-color: white; 
-}
+    background-color: white;
+} */
