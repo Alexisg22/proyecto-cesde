@@ -23,9 +23,9 @@ export const HistoricoGestiones = ({cerrarModal, modalAbiertoHistorico}) => {
 
             <hr />
             <div className='contenedorTabla'>
-                <table>
+                <table className='tablaHistorico'>
                     <thead>
-                        <tr>
+                        <tr className='tablaHistoricoEncabezado'>
                             <th>Fecha gestión</th>
                             <th>Asesor</th>
                             <th>Descripción</th>
@@ -37,7 +37,7 @@ export const HistoricoGestiones = ({cerrarModal, modalAbiertoHistorico}) => {
                         <tr>
                             <td>25/07/2024</td>
                             <td>107292207 - julian gialdo</td>
-                            <td>El aspirante realizará la matricula mañana</td>
+                            <td>lorem40</td>
                             <td>Contacto</td>
                            
                         </tr>
@@ -62,7 +62,34 @@ export const HistoricoGestiones = ({cerrarModal, modalAbiertoHistorico}) => {
                             <td>Contesta el hijo del titular</td>
                             <td>Se deja mensaje con tercero</td>
                         </tr>
-                        
+                        <tr>
+                            <td>18/06/2024</td>
+                            <td>107292207 - julian gialdo</td>
+                            <td>Contesta el hijo del titular</td>
+                            <td>Se deja mensaje con tercero</td>
+                        </tr>
+
+                        <tr>
+                            <td>18/06/2024</td>
+                            <td>107292207 - julian gialdo</td>
+                            <td>Contesta el hijo del titular</td>
+                            <td>Se deja mensaje con tercero</td>
+                        </tr>
+
+                        <tr>
+                            <td>18/06/2024</td>
+                            <td>107292207 - julian gialdo</td>
+                            <td>Contesta el hijo del titular</td>
+                            <td>Se deja mensaje con tercero</td>
+                        </tr>
+
+                        <tr>
+                            <td>18/06/2024</td>
+                            <td>107292207 - julian gialdo</td>
+                            <td>Contesta el hijo del titular</td>
+                            <td>Se deja mensaje con tercero</td>
+                        </tr>
+
 
                     </tbody>
                 </table>

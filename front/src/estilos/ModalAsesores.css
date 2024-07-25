@@ -7,7 +7,7 @@
     height: 88vh;
     background-color: #DDD;
     position: fixed;
-    top: 10%;
+    top: 6%;
     left: 15%;
     z-index: 1;
 
@@ -68,8 +68,8 @@
 .contenedorTablaAsesores{
     background-color: #FFF;
     width: 96%;
-    height: 70%;
-    border-radius: 5px;
+    max-height: 70%;
+    
 
     table {
         width: 100%;
@@ -86,8 +86,15 @@
     background-color: #d5d1defe;
 }
 
-.tablaAsesores tbody tr:nth-child(even) {
-    background-color: #f2f2f2; /* Color de fondo para filas pares */
+.tablaAsesores{
+    border: 1px solid black;
+    display: table;
+    border-radius: 5px;
+
+}
+
+.tablaAsesores tbody tr:nth-child(odd) {
+    background-color: #e3e3e3; /* Color de fondo para filas pares */
 }
 
 
