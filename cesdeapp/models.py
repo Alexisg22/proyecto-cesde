@@ -12,6 +12,11 @@ class Ciudad(models.Model):
 class Estados(models.Model):
     nombre = models.CharField(max_length=15)
 
+class Programa(models.Model):
+    nombre = models.CharField(max_length=40)
+    descripcion = models.TextField(max_length=300)
+
+
 class Aspirantes(models.Model):
     celular = models.CharField(max_length=15, primary_key=True)
     nombre = models.CharField(max_length=40)
@@ -19,9 +24,9 @@ class Aspirantes(models.Model):
     documento = models.CharField(max_length=15)
     correo = models.CharField(max_length=50)
     ciudad = models.ForeignKey(Ciudad, on_delete=models.CASCADE)
-    cel_opcional = models.CharField(max_length=15, null=True)
-    teefono = models.CharField(max_length=15, null=True)
+    cel_opcional = models.CharField(max_length=15, blank=True)
     estado = models.ForeignKey(Estados, on_delete=models.CASCADE)
+    programa = models.ForeignKey(Programa, on_delete=models.CASCADE)
 
 class Tipo_gestion(models.Model): 
     nombre = models.CharField(max_length=12)
@@ -33,7 +38,7 @@ class Gestiones(models.Model):
     cel_aspirante = models.ForeignKey(Aspirantes, on_delete=models.CASCADE)
     fecha = models.DateTimeField()
     tipo_gestion = models.ForeignKey(Tipo_gestion, on_delete=models.CASCADE)
-    observaciones = models.TextField(max_length=300, null=True)
+    observaciones = models.TextField(max_length=300, blank=True)
     asesor = models.ForeignKey(Asesores, on_delete=models.CASCADE)
 
 
