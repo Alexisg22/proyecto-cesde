@@ -7,12 +7,9 @@ export const ModalSubirBD = ({modalAbierto}) => {
     if(!modalAbierto) return null
 
     return (
-    <div>
-        <header className='titulo'>
-           <h2>Subir Base de Datos</h2> 
-        </header>
-        
+    <div> 
             <div className='modalSubirBD'>
+                <h2>Subir Base de Datos</h2>
                 <div className='contenedorBotones'>
                     <div>
                     <BotonVerde className='boton' texto={'Base de Datos 1'}/>
