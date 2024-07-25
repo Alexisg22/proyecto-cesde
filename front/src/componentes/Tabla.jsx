@@ -18,8 +18,8 @@ function Tabla({}) {
         </div>
       </section>
       <section className="cuerpoTabla">
-        <table>
-          <thead>
+        <table className='tabla'>
+          <thead className='cabezaTabla'>
             <tr>
               <th id='celular' estado='{chequeado}'>Celular</th>
               <th id='nit' estado='{chequeado}'>Nit</th>
@@ -36,7 +36,7 @@ function Tabla({}) {
               <th id='celularAdicional' estado='{chequeado}'>Celular Adicional </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className='cuerpoTabla'>
             <tr>
               <td>3162840984</td>
               <td>34567890</td>
