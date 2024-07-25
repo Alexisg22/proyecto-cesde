@@ -6,6 +6,7 @@ body{
     display: flex;
     justify-content: end;
     align-items: end;
+    margin-bottom: 1rem;
 }
 .contenidoEstadistica{
     display: flex;

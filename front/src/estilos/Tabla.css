@@ -88,28 +88,21 @@ main.tabla {
     visibility: visible;
 }
 
-tbody tr:nth-child(even) {
-    background-color: #0000000b;
-
-    
+.cuerpoTabla tr:nth-child(even) {
+    background-color: #e3e3e3;
 }
 
-tbody tr:hover{
-    cursor:pointer;
-    border: 1px solid black;
-}
-
-table {
+.tabla {
     width: 100%;
 }
 
-table, th, td {
+.tabla, th, td {
     border-collapse: collapse;
     padding: 1rem;
     text-align: left;
 }
 
-thead th {
+.cabezaTabla th {
     position: sticky;
     top: 0; 
     background-color: #d5d1defe; 
@@ -120,7 +113,7 @@ thead th {
 }
 
 
-tbody tr.hide td img {
+.cuerpoTabla tr.hide td img {
     width: 0;
     height: 0;
     transition: .2s ease-in-out .5s;
@@ -150,7 +143,7 @@ tbody tr.hide td img {
     text-align: center;
 }
 
-thead th span.icon-arrow {
+.cabezaTabla th span.icon-arrow {
     display: inline-block;
     width: 1.3rem;
     height: 1.3rem;
@@ -162,15 +155,15 @@ thead th span.icon-arrow {
     transition: .2s ease-in-out;
 }
 
-thead th:hover span.icon-arrow {
+.cabezaTabla th:hover span.icon-arrow {
     border: 1.4px solid #6c00bd;
 }
 
-thead th:hover {
+.cabezaTabla th:hover {
     color: #13A438;
 }
 
-thead th.active span.icon-arrow {
+.cabezaTabla th.active span.icon-arrow {
     background-color: #6c00bd;
     color: #fff;
 }
@@ -201,25 +194,53 @@ thead th.active span.icon-arrow {
     text-align: center;
 }
 
-
-thead th:first-child {
+.cabezaTabla th:first-child {
     left: 0; 
     z-index: 2; 
 }
 
-thead th:nth-child(3) {
-    left: 5rem;     
+.cabezaTabla th:nth-child(3) {
+    left: 7rem;     
     z-index: 2;
 }
 
-tbody td:first-child{
+
+.cuerpoTabla tr:nth-child(odd) td:first-child{
+    left: 0;
+    background-color: #ffffff;
+    position: sticky;
+}
+
+.cuerpoTabla tr:nth-child(odd) td:nth-child(3){
+    left: 7rem;
+    background-color: #ffffff;
+    position: sticky;
+}
+/* Filas pares */
+.cuerpoTabla tr:nth-child(even) td:first-child{
+    left: 0;
+    background-color: #e3e3e3;
+    position: sticky;
+}
+.cuerpoTabla tr:nth-child(even) td:nth-child(3) {
+    left: 7rem;
+    background-color: #e3e3e3;
+    position: sticky;
+}
+.filaTablaAspirantes:hover{
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+/* tbody td:first-child{
     left: 0; 
     position: sticky;
     background-color: white;
 }
 
 tbody td:nth-child(3) {
-    left: 5rem; 
+    left: 6rem; 
     position: sticky;
-    background-color: white; 
-}
+    background-color: white;
+} */

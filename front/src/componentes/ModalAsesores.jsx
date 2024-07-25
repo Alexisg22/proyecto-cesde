@@ -16,7 +16,7 @@ export const ModalAsesores = ({cerrarModal, modalAbierto}) => {
             </div>
 
             <div className='buscadorAsesores' >
-              <input type="search" />
+              <input className="buscadorAsesores" type="search" />
             </div>
             <hr />
             <div className='contenedorTablaAsesores'>
