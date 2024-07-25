@@ -64,6 +64,15 @@ export const ModalAsesores = ({cerrarModal, modalAbierto}) => {
                             <td>4</td>
                             <td>1</td>
                         </tr>
+
+                        <tr>
+                            <td>1007292207</td>
+                            <td>Julian Giraldo</td>
+                            <td> 20</td>
+                            <td>15</td>
+                            <td>4</td>
+                            <td>1</td>
+                        </tr>
                    
                     </tbody>
                 </table>
