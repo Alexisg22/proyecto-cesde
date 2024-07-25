@@ -88,21 +88,21 @@ main.tabla {
     visibility: visible;
 }
 
-tbody tr:nth-child(even) {
+.cuerpoTabla tr:nth-child(even) {
     background-color: #e3e3e3;
 }
 
-table {
+.tabla {
     width: 100%;
 }
 
-table, th, td {
+.tabla, th, td {
     border-collapse: collapse;
     padding: 1rem;
     text-align: left;
 }
 
-thead th {
+.cabezaTabla th {
     position: sticky;
     top: 0; 
     background-color: #d5d1defe; 
@@ -113,7 +113,7 @@ thead th {
 }
 
 
-tbody tr.hide td img {
+.cuerpoTabla tr.hide td img {
     width: 0;
     height: 0;
     transition: .2s ease-in-out .5s;
@@ -143,7 +143,7 @@ tbody tr.hide td img {
     text-align: center;
 }
 
-thead th span.icon-arrow {
+.cabezaTabla th span.icon-arrow {
     display: inline-block;
     width: 1.3rem;
     height: 1.3rem;
@@ -155,15 +155,15 @@ thead th span.icon-arrow {
     transition: .2s ease-in-out;
 }
 
-thead th:hover span.icon-arrow {
+.cabezaTabla th:hover span.icon-arrow {
     border: 1.4px solid #6c00bd;
 }
 
-thead th:hover {
+.cabezaTabla th:hover {
     color: #13A438;
 }
 
-thead th.active span.icon-arrow {
+.cabezaTabla th.active span.icon-arrow {
     background-color: #6c00bd;
     color: #fff;
 }
@@ -194,36 +194,35 @@ thead th.active span.icon-arrow {
     text-align: center;
 }
 
-
-thead th:first-child {
+.cabezaTabla th:first-child {
     left: 0; 
     z-index: 2; 
 }
 
-thead th:nth-child(3) {
+.cabezaTabla th:nth-child(3) {
     left: 7rem;     
     z-index: 2;
 }
 
 
-tbody tr:nth-child(odd) td:first-child{
+.cuerpoTabla tr:nth-child(odd) td:first-child{
     left: 0;
     background-color: #ffffff;
     position: sticky;
 }
 
-tbody tr:nth-child(odd) td:nth-child(3){
+.cuerpoTabla tr:nth-child(odd) td:nth-child(3){
     left: 7rem;
     background-color: #ffffff;
     position: sticky;
 }
-
-tbody tr:nth-child(even) td:first-child{
+/* Filas pares */
+.cuerpoTabla tr:nth-child(even) td:first-child{
     left: 0;
     background-color: #e3e3e3;
     position: sticky;
 }
-tbody tr:nth-child(even) td:nth-child(3) {
+.cuerpoTabla tr:nth-child(even) td:nth-child(3) {
     left: 7rem;
     background-color: #e3e3e3;
     position: sticky;
