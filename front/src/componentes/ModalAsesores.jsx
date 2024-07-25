@@ -20,9 +20,9 @@ export const ModalAsesores = ({cerrarModal, modalAbierto}) => {
             </div>
             <hr />
             <div className='contenedorTablaAsesores'>
-                <table>
+                <table className='tablaAsesores'>
                     <thead>
-                        <tr>
+                        <tr className='tablaAsesoresCabezera'>
                             <th>Documento identidad</th>
                             <th>Nombres</th>
                             <th>Cantidad gestiones</th>

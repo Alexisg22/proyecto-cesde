@@ -1,10 +1,11 @@
 .modalAsesores{
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 74vw;
     height: 88vh;
-    background-color: #fff;
+    background-color: #DDD;
     position: fixed;
     top: 10%;
     left: 15%;
@@ -48,7 +49,7 @@
     & input{
         width: 60%;
         height: 35px;
-        background-color: #DDD;
+        background-color: #FFF;
         border-radius: 5px;
         border: 1px solid black;
     }
@@ -62,17 +63,18 @@
     width: 100%;
     height: 142%;
     background-color: rgba(0, 0, 0, 0.5); 
-<<<<<<< HEAD
 }
 
 .contenedorTablaAsesores{
-    background-color: #ddd;
+    background-color: #FFF;
     width: 96%;
     height: 70%;
+    border-radius: 5px;
 
     table {
         width: 100%;
         height: 100%;
+        border-collapse: collapse;
     }
 }
 
@@ -80,6 +82,12 @@
     margin-bottom: 1em;
 }
 
-=======
-}  
->>>>>>> a12d31c800c8129ed3c64db23e2b39694232d240
+.tablaAsesoresCabezera{
+    background-color: #d5d1defe;
+}
+
+.tablaAsesores tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color de fondo para filas pares */
+}
+
+
