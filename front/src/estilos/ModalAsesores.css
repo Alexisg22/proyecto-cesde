@@ -34,7 +34,7 @@
     }
 }
 
-/* .cotenedorModal{
+.cotenedorModal{
     z-index: 1;
     position: absolute;
     top: 0;
@@ -42,4 +42,4 @@
     width: 100%;
     height: 142%;
     background-color: rgba(0, 0, 0, 0.5); 
-} */
+}  

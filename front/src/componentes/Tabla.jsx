@@ -1,9 +1,14 @@
-import React from 'react';
 import '../estilos/Tabla.css';
 import { BotonVerde } from './BotonVerde';
+import { ModalFiltrar } from './ModalFiltrar';
+import React, {useState} from 'react'
 
 function Tabla({}) {
+
+  const [modalAbierto, setModalAbierto] =useState(false)
+
   return (
+    <>
     <main className="tabla" id="tablaClientes">
       <section className="encabezadoTabla">
         <h1>Información clientes</h1>
@@ -12,9 +17,11 @@ function Tabla({}) {
           <button className="botonBuscar">Buscar</button>
         </div>
         <div className='filtrar'>
-          <BotonVerde texto={'Filtrar'}/>
+          <BotonVerde texto={'Filtrar'} setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true}  ide={'botonVerde'}/>
         </div>
+       
       </section>
+      
       <section className="cuerpoTabla">
         <table>
           <thead>
@@ -129,6 +136,10 @@ function Tabla({}) {
         </table>
       </section>
     </main>
+    
+      <ModalFiltrar modalAbierto={modalAbierto} cerrarModal={() =>{setModalAbierto(false)}}/>
+
+    </>
   );
 }
 

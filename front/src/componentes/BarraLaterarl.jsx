@@ -50,7 +50,7 @@ export const BarraLaterarl = () => {
       <hr className='hrBarraNavegaion'/>
 
       <div className='btnAsesores'>
-        <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalAsesores = {true} texto = {'Asesores'}/>  
+        <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalAsesores = {true} texto = {'Asesores'} ide={'botonAsesores'}/>  
       </div>
 
       <ModalAsesores modalAbierto={modalAbierto} cerrarModal={() =>{setModalAbierto(false)}}/>

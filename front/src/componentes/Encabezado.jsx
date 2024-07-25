@@ -6,8 +6,7 @@ import { ModalSubirBD } from './ModalSubirBD.jsx'
 
 export const Encabezado = () => {
  
-const [modalAbierto, setModalAbierto] =
-useState(false)
+const [modalAbierto, setModalAbierto] =useState(false)
 
   return (
     <header>
@@ -21,16 +20,16 @@ useState(false)
         </div>
 
         <div className='btnSubirBD'>
-            <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true} texto="Subir BD"/>
+            <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true} texto={"Subir BD"} ide={'botonVerde'}/>
         </div>
 
         <div>
-            <BotonBlanco/>    
+            <BotonBlanco setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true}  ide={'botonVerde'}/>    
         </div>
             
     </div>
 
-    <ModalSubirBD modalAbierto={modalAbierto}/>
+    <ModalSubirBD modalAbierto={modalAbierto} cerrarModal={() =>{setModalAbierto(false)}}/>
 
     </header>
   )
