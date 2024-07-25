@@ -1,9 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import "../estilos/Encabezado.css"
 import { BotonVerde } from './BotonVerde.jsx'
 import { BotonBlanco } from './BotonBlanco.jsx'
+import { ModalSubirBD } from './ModalSubirBD.jsx'
 
 export const Encabezado = () => {
+ 
+const [modalAbierto, setModalAbierto] =useState(false)
+
   return (
     <header>
     <div className='contenedorPrincipal'>
@@ -15,8 +19,8 @@ export const Encabezado = () => {
           <input type="search" className='buscador' placeholder="Buscar Datos..." />
         </div>
 
-        <div>
-            <BotonVerde texto="Subir BD"/>
+        <div className='btnSubirBD'>
+            <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true} texto={"Subir BD"} ide={'botonVerde'}/>
         </div>
 
         <div>
@@ -24,6 +28,9 @@ export const Encabezado = () => {
         </div>
             
     </div>
+
+    <ModalSubirBD modalAbierto={modalAbierto} cerrarModal={() =>{setModalAbierto(false)}}/>
+
     </header>
   )
 }

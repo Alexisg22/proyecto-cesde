@@ -1,0 +1,85 @@
+.modalFiltrar{
+    width: 74vw;
+    height: 80vh;
+    background-color: #DDDDDD;
+    position: fixed;
+    top: 10%;
+    left: 15%;
+    z-index: 1;
+    text-align: center;
+    border-radius: 5px;
+
+    & h2 {
+        margin-top: 2em;
+    }
+}
+
+.contenedorBotones{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.contenedorFiltrar{
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 142%;
+    background-color: rgba(0, 0, 0, 0.5); 
+} 
+
+.contenedorFiltros{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3em;
+}
+
+.botonCerrar{
+    display: flex;
+    justify-content: end;
+    margin: 1em;
+}
+
+.cerrarModal{
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.cerrarModal:hover{
+    background-color: red;
+    border: 1px solid black;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.botonFiltrar{
+    display: flex;
+    justify-content: end;
+    margin-top: 0.5em;
+    margin-right: 2em;
+}
+
+.filtrosSeleccionados{
+    margin: auto;
+    margin-top: 5em;
+    width: 90%;
+    height: 35%;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.seleccionDeFiltro{
+    height: 2em;
+    width: 18em;
+    border-radius: 5px;
+}
+
+.campoFiltro{
+    height: 2em;
+    width: 18em;
+    border-radius: 5px;
+}

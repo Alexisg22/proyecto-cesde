@@ -1,0 +1,93 @@
+.modalAsesores{
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 74vw;
+    height: 88vh;
+    background-color: #DDD;
+    position: fixed;
+    top: 10%;
+    left: 15%;
+    z-index: 1;
+
+    & h2{
+        
+        margin-top: 1em;
+    }
+}
+
+.tituloModalAsesor{
+   display: flex;
+   width: 100%;
+    & h2{
+        text-align: center;
+        width: 100%;
+    }
+    & button{
+        width: 2.5em;
+        height: 2.5em;
+        position: fixed;
+        left: 85%;
+        margin: 1em;
+    }
+
+    & button:hover{
+        cursor: pointer;
+        background-color: red;
+        border: 1px solid black;
+        border-radius: 2px;
+    }
+}
+
+.buscadorAsesores{
+    display: flex;
+    justify-content: center;
+    margin-top: .5em;
+    width: 100%;
+
+    & input{
+        width: 60%;
+        height: 35px;
+        background-color: #FFF;
+        border-radius: 5px;
+        border: 1px solid black;
+    }
+}
+
+.cotenedorModal{
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 142%;
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.contenedorTablaAsesores{
+    background-color: #FFF;
+    width: 96%;
+    height: 70%;
+    border-radius: 5px;
+
+    table {
+        width: 100%;
+        height: 100%;
+        border-collapse: collapse;
+    }
+}
+
+.buscadorAsesores{
+    margin-bottom: 1em;
+}
+
+.tablaAsesoresCabezera{
+    background-color: #d5d1defe;
+}
+
+.tablaAsesores tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color de fondo para filas pares */
+}
+
+
