@@ -5,9 +5,12 @@ import '../estilos/ModalFiltrar.css'
 export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
     //Estado para almacenar la opción seleccionada
     const [seleccionOpcion, setSeleccionOpcion] = useState('');
+    const [filtrosAgregados, setFiltrosAgregados] = useState([{}])
     // Función para manejar el cambio en el seleccion
     const cambioSeleccion = (event) => {
-        setSelectedOption(event.target.value);
+        setSeleccionOpcion(event.target.value);
+        setFiltrosAgregados(...setSeleccionOpcion)
+        console.log(filtrosAgregados)
       };
 
     if(!modalAbierto) return null
@@ -25,7 +28,7 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
                     <select name="filtro" id="filtro" className='seleccionDeFiltro' value={seleccionOpcion} onChange={cambioSeleccion}>
 
                         <option value={null}>Selecione los filtros</option>
-                        <option value="fechaGestion">Fecha de gestion</option>
+                        <option value="Fecha de gestion">Fecha de gestion</option>
                         <option value="diasUltimaGestion">Dias de la ultima gestion</option>
                         <option value="mejorGestion">Mejor gestion</option>
                         <option value="cantidadGestiones">Cantidad de gestiondes</option>
