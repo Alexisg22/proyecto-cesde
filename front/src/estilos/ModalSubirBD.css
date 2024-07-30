@@ -31,10 +31,11 @@
     background-color: rgba(0, 0, 0, 0.5); 
 } 
 
-.contenedorBotones{
+.contenedorBotonesBD{
+    height: 30vh;
     display: flex;
     justify-content: space-around;
-    margin-top: 8em;
+    margin-top: 5rem;
 }
 
 .botonCerrar{
@@ -53,8 +54,4 @@
     border: 1px solid black;
     border-radius: 2px;
     cursor: pointer;
-}
-
-.botonGuardar{
-    margin-top: 4em;
 }
