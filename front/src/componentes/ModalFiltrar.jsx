@@ -14,13 +14,12 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
 
     const cambioSeleccion = (e) => {
         setSeleccionOpcion(e.target.value);
-      };
+    };
     
-      const cambioValorInput = (e) => {
+    const cambioValorInput = (e) => {
         
-        setValorInput(e.target.value);
-        console.log(valorInput)  
-      };
+        setValorInput(e.target.value);  
+    };
 
     const agregarFiltro = (event) => {
         event.preventDefault()
@@ -29,7 +28,11 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
             setSeleccionOpcion('');
             setValorInput('');
         }
-      };
+    };
+
+    const eliminarFiltro = (index) => {
+        setFiltrosSeleccionados(filtrosSeleccionados.filter((_, i) => i !== index));
+    };
 
     if(!modalAbierto) return
 
@@ -47,15 +50,19 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
                         <select name="filtro" id="filtro" className='seleccionDeFiltro' value={seleccionOpcion} onChange={cambioSeleccion}>
 
                             <option value="">Selecione los filtros</option>
-                            <option value="fecha de gestion">Fecha de gestion</option>
-                            <option value="dias ultima gestion">Dias de la ultima gestion</option>
-                            <option value="mejor gestion">Mejor gestion</option>
-                            <option value="cantidad gestiones">Cantidad de gestiondes</option>
                             <option value="cantidad llamadas">Cantidad de llamadas</option>
                             <option value="cantidad SMS">Cantidad de SMS</option>
                             <option value="cantidad whatsapp">Cantidad de Whatsapp</option>
+                            <option value="cantidad gestiones">Cantidad de gestiones</option>
+                            <option value="mejor gestion">Mejor gestion</option>
+                            <option value="estado del aspirante">Estado del aspirante</option>
+                            <option value="dias ultima gestion">Dias de la ultima gestion</option>
                             <option value="fecha ultima gestion">Fecha de ultima gestion</option>
-                            <option value="estado">Estado de la gestion</option>
+                            <option value="estado ultima gestion">Estado ultima gestion</option>
+                            <option value="programa de formacion">Programa de formacion</option>
+                            <option value="cede">Cede</option>
+                            <option value="empresa">Empresa</option>
+
 
                         </select>                
 
@@ -74,7 +81,8 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
 
                     {filtrosSeleccionados.map((filtro, index) => (
                         <div key={index}>
-                            <span> Filtro seleccionado: {filtro.filtro}: {filtro.valor}</span>
+                            <span> Filtro seleccionado: {filtro.filtro}: {filtro.valor}</span> 
+                            <button className='btnEliminarFiltro' onClick={() => eliminarFiltro(index)}> X </button>
                         </div>
                     ))}
 
