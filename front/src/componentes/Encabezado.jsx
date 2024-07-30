@@ -16,7 +16,7 @@ const [modalAbierto, setModalAbierto] =useState(false)
         
 
         <div className='btnSubirBD'>
-            <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true} texto={"Subir BD"} ide={'botonVerde'}/>
+            <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true} texto={"Subir BD"} ide={'botonSubirBD'}/>
         </div>
 
         <div>

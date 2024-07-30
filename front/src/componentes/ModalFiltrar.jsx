@@ -23,8 +23,6 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
       };
 
     const agregarFiltro = (event) => {
-        console.log(seleccionOpcion)
-        console.log(valorInput)
         event.preventDefault()
         if (seleccionOpcion && valorInput) {
             setFiltrosSeleccionados([...filtrosSeleccionados, { filtro: seleccionOpcion, valor: valorInput }]);
@@ -82,8 +80,8 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
 
                 </div>
 
-                <div className='botonFiltrar'>
-                    <BotonVerde ide={'botonVerde'} texto={'Filtrar'}/>
+                <div>
+                    <BotonVerde ide={'botonFiltrar'} texto={'Filtrar'}/>
                 </div>
                 
         </div>

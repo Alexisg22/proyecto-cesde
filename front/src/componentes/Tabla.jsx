@@ -95,7 +95,7 @@ function Tabla({ visibilidadColumna }) {
           <button className="botonBuscar">Buscar</button>
         </div>
         <div className='filtrar'>
-        <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true} texto={"Filtrar"} ide={'botonVerde'}/>
+        <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true} texto={"Filtrar"} ide={'botonFiltrar'}/>
         </div>
       </section>
       <section className="cuerpoTabla">
