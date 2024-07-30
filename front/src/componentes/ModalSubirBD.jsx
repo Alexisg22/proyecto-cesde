@@ -1,7 +1,6 @@
 
 import { BotonVerde } from '../componentes/BotonVerde.jsx'
 import "../estilos/ModalSubirBD.css"
-import "../estilos/BotonVerde.css"
 
 export const ModalSubirBD = ({cerrarModal, modalAbierto}) => {
   
@@ -14,7 +13,7 @@ export const ModalSubirBD = ({cerrarModal, modalAbierto}) => {
                     <button className='cerrarModal' onClick={cerrarModal}>X</button>
                 </div>
             <h1>Subir Base de Datos</h1>
-                <div className='contenedorBotones'>
+                <div className='contenedorBotonesBD'>
                 
                     <BotonVerde ide={'botonGrande'} texto={'Base de Datos 1'}/>
                     <BotonVerde ide={'botonGrande'} texto={'Base de Datos 2'}/>
