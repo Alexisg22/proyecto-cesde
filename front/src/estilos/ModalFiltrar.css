@@ -14,13 +14,6 @@
     }
 }
 
-.contenedorBotones{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-}
-
 .contenedorFiltrar{
     z-index: 1;
     position: absolute;
@@ -31,10 +24,26 @@
     background-color: rgba(0, 0, 0, 0.5); 
 } 
 
-.contenedorFiltros{
+.formularioFiltros{
     display: flex;
-    justify-content: space-around;
-    margin-top: 3em;
+    justify-content: center;
+    gap: 5em;
+    margin-top: 2em;
+}
+
+.btnAgregarFiltro{
+    width: 120px;
+    height: 30px;
+    background-color: #13A438;
+    border-radius: 5px;
+    border: solid 1px black;
+    color: white;
+
+    &:hover{
+        background-color: white;
+        color: #13A438;
+        cursor: pointer;
+    }
 }
 
 .botonCerrar{
@@ -61,6 +70,7 @@
     margin-top: 0.5em;
     margin-right: 2em;
 }
+ 
 
 .filtrosSeleccionados{
     margin: auto;
@@ -82,4 +92,5 @@
     height: 2em;
     width: 18em;
     border-radius: 5px;
+    border: 1px solid black;
 }
