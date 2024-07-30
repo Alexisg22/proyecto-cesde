@@ -19,6 +19,7 @@ function Tabla({ visibilidadColumna }) {
     { id: 'fechaUltGestion', etiqueta: 'Fecha Ult. Gestión' },
     { id: 'estadoUltGestion', etiqueta: 'Est. Ult. Gestión' },
     { id: 'celularAdicional', etiqueta: 'Celular Adicional' },
+    { id: 'empresa', etiqueta: 'Empresa' },
   ];
 
   // Datos de ejemplo (reemplazar con tus datos reales)
@@ -38,6 +39,7 @@ function Tabla({ visibilidadColumna }) {
       fechaUltGestion: '23/07/2024',
       estadoUltGestion: 'No interesado',
       celularAdicional: '3002106542',
+      empresa: 'Empresa 1',
     },
     {
       celular: '3162840984',
@@ -53,6 +55,7 @@ function Tabla({ visibilidadColumna }) {
       fechaUltGestion: '23/07/2024',
       estadoUltGestion: 'No interesado',
       celularAdicional: '3002106542',
+      empresa: 'Empresa 2',
     },{
       celular: '3162840984',
       nit: '34567890',
@@ -67,6 +70,7 @@ function Tabla({ visibilidadColumna }) {
       fechaUltGestion: '23/07/2024',
       estadoUltGestion: 'No interesado',
       celularAdicional: '3002106542',
+      empresa: 'Empresa 3',
     },
     // ... más filas de datos
   ];

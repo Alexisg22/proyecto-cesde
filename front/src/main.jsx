@@ -8,6 +8,7 @@ import "./estilos/Main.css"
 
 function App() {
   const [visibilidadColumna, setVisibilidadColumna] = useState({
+    'seleccionarTodos': false,
     'celular': true,
     'nit': false,
     'nombreCompleto': true,
@@ -21,6 +22,7 @@ function App() {
     'fechaUltGestion': true,
     'estadoUltGestion': true,
     'celularAdicional': false,
+    'empresa': false,
   });
 
   const manejarCambioVisibilidadColumna = (nuevaVisibilidad) => {
