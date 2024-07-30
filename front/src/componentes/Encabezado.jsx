@@ -15,9 +15,6 @@ const [modalAbierto, setModalAbierto] =useState(false)
             <img id='logoAndes' src="../../public/imagenes/AndesBPO.png"/>
         </div>
         
-        <div>
-          <input type="search" className='buscador' placeholder="Buscar Datos..." />
-        </div>
 
         <div className='btnSubirBD'>
             <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true} texto={"Subir BD"} ide={'botonVerde'}/>
