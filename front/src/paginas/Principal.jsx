@@ -21,6 +21,10 @@ export const Principal = () => {
         'fechaUltGestion': true,
         'estadoUltGestion': true,
         'celularAdicional': false,
+        'empresa': false,
+        'sede': false,
+        'programaFormacion': false,
+
       });
     
       const manejarCambioVisibilidadColumna = (nuevaVisibilidad) => {
@@ -29,7 +33,11 @@ export const Principal = () => {
 
   return (
     <div>
-        <Encabezado />
+        <Encabezado 
+        mostrarBotonSubirBD={true}
+        mostrarBotonDescargarBD={true}
+        mostrarBotonInicio={false}
+        />
     <main className="contenedorPrincipal">
       <BarraLaterarl onCambioVisibilidadColumna={manejarCambioVisibilidadColumna} visibilidadInicial={visibilidadColumna} />
       <div className="contenedorSecundario">
@@ -40,3 +48,5 @@ export const Principal = () => {
     </div>
   )
 }
+
+export default Principal

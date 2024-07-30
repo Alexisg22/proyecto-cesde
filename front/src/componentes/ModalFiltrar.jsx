@@ -88,8 +88,8 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
 
                 </div>
 
-                <div className='botonFiltrar'>
-                    <BotonVerde ide={'botonVerde'} texto={'Filtrar'}/>
+                <div>
+                    <BotonVerde ide={'botonFiltrar'} texto={'Filtrar'}/>
                 </div>
                 
         </div>

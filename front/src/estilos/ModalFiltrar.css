@@ -69,14 +69,6 @@
     cursor: pointer;
 }
 
-.botonFiltrar{
-    display: flex;
-    justify-content: end;
-    margin-top: 0.5em;
-    margin-right: 2em;
-}
- 
-
 .filtrosSeleccionados{
     display: flex;
     flex-direction: column;

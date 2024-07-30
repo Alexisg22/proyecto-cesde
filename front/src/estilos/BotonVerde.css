@@ -2,6 +2,25 @@
     width: 120px;
     height: 30px;
     margin-top: 20px;
+    /* margin-left: 120px; */
+    background-color: #13A438;
+    border-radius: 5px;
+    border: solid 1px black;
+    
+
+    &:hover{
+        background-color: white;
+        color: #13A438;
+        cursor: pointer;
+        
+    }
+}
+
+.botonSubirBD{
+    width: 120px;
+    height: 30px;
+    margin-top: 20px;
+    /* margin-left: 120px; */
     background-color: #13A438;
     border-radius: 5px;
     border: solid 1px black;
@@ -11,6 +30,39 @@
         color: #13A438;
         cursor: pointer;
         
+    }
+}
+
+.botonFiltrar{
+    width: 120px;
+    height: 30px;
+    margin-top: 20px;
+    background-color: #13A438;
+    border-radius: 5px;
+    border: solid 1px black;
+    text-align: center;
+    &:hover{
+        background-color: white;
+        color: #13A438;
+        cursor: pointer;
+        
+    }
+}
+
+.botonGrande{
+    width: 200px;
+    height: 60px;
+    margin-top: 20px;
+    background-color: #13A438;
+    border-radius: 5px;
+    border: solid 1px black;
+    color: white;
+    font-size: 1.1em;
+
+    &:hover{
+        background-color: white;
+        color: #13A438;
+        cursor: pointer;
     }
 }
 
