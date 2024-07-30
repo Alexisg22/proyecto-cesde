@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import '../estilos/BarraLateral.css'
 import { CheckboxBarraLateral } from './CheckboxBarraLateral'
-import { BotonVerde } from './BotonVerde'
 import { ModalAsesores } from './ModalAsesores'
+import { useNavigate } from 'react-router-dom';
+import { BotonNavegar } from './BotonNavegar.jsx'
+
 
 export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial }) => {
+
+  const navigate = useNavigate(); // Hook para navegación
   const [visibilidadColumna, setVisibilidadColumna] = useState(visibilidadInicial)
   const [modalAbierto, setModalAbierto] = useState(false)
   const [todoSeleccionado, setTodoSeleccionado] = useState(false)
@@ -33,6 +37,10 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial }
     setTodoSeleccionado(nuevoEstado);
   };
 
+  const manejarClicBotonAsesores = () => {
+    navigate('/asesores'); // Navega a la ruta /asesores
+  };
+
   return (
     <aside className='barraLateral'>
       <h1 className='tituloBarraNavegacion'>Datos aspirantes</h1>
@@ -57,12 +65,11 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial }
       </form>
       <hr className='hrBarraNavegaion'/>
       <div className='btnAsesores'>
-        <BotonVerde
-          ide={'botonGrande'}
-          setModalAbierto={setModalAbierto}
-          modalAbierto={modalAbierto}
-          modalAsesores={true}
+
+        <BotonNavegar
+          onClick={manejarClicBotonAsesores}
           texto={'Asesores'}
+          ide={'botonAsesores'}
         />
       </div>
       <ModalAsesores
