@@ -79,6 +79,41 @@ function Tabla({ visibilidadColumna }) {
       sede: 'Rionegro',
       programaFormacion: 'Programador',
     },
+    {
+      celular: '3162840984',
+      nit: '34567890',
+      nombreCompleto: 'Sofía Gómez',
+      cantLlamadas: '3',
+      cantMensajesDeTexto: '2',
+      cantWhatsapps: '1',
+      cantGestiones: '6',
+      mejorGestion: 'No interesado',
+      estadoAspirante: 'Liquidado',
+      diasHabilesUltGestion: '1',
+      fechaUltGestion: '23/07/2024',
+      estadoUltGestion: 'No interesado',
+      celularAdicional: '3002106542',
+      empresa: 'Andes 2',
+      sede: 'Rionegro',
+      programaFormacion: 'Programador',
+    },{
+      celular: '3162840984',
+      nit: '34567890',
+      nombreCompleto: 'Sofía Gómez',
+      cantLlamadas: '3',
+      cantMensajesDeTexto: '2',
+      cantWhatsapps: '1',
+      cantGestiones: '6',
+      mejorGestion: 'No interesado',
+      estadoAspirante: 'Matriculado',
+      diasHabilesUltGestion: '1',
+      fechaUltGestion: '23/07/2024',
+      estadoUltGestion: 'No interesado',
+      celularAdicional: '3002106542',
+      empresa: 'Andes 3',
+      sede: 'Rionegro',
+      programaFormacion: 'Programador',
+    },
     // ... más filas de datos
   ];
 
@@ -95,7 +130,7 @@ function Tabla({ visibilidadColumna }) {
           <button className="botonBuscar">Buscar</button>
         </div>
         <div className='filtrar'>
-        <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true} texto={"Filtrar"} ide={'botonVerde'}/>
+        <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true} texto={"Filtrar"} ide={'botonFiltrar'}/>
         </div>
       </section>
       <section className="cuerpoTabla">
