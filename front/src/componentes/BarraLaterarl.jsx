@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../estilos/BarraLateral.css'
 import { CheckboxBarraLateral } from './CheckboxBarraLateral'
 import { BotonVerde } from './BotonVerde'
@@ -7,6 +7,12 @@ import { ModalAsesores } from './ModalAsesores'
 export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial }) => {
   const [visibilidadColumna, setVisibilidadColumna] = useState(visibilidadInicial)
   const [modalAbierto, setModalAbierto] = useState(false)
+  const [todoSeleccionado, setTodoSeleccionado] = useState(false)
+
+  useEffect(() => {
+    const todasSeleccionadas = Object.values(visibilidadColumna).every(value => value)
+    setTodoSeleccionado(todasSeleccionadas)
+  }, [visibilidadColumna])
 
   const manejarCambioCasillaVerificacion = (id) => {
     setVisibilidadColumna(prev => {
@@ -16,10 +22,28 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial }
     });
   };
 
+  const manejarSeleccionarTodo = () => {
+    const nuevoEstado = !todoSeleccionado
+    const nuevaVisibilidad = Object.keys(visibilidadColumna).reduce((acc, key) => {
+      acc[key] = nuevoEstado;
+      return acc;
+    }, {});
+    setVisibilidadColumna(nuevaVisibilidad);
+    onCambioVisibilidadColumna(nuevaVisibilidad);
+    setTodoSeleccionado(nuevoEstado);
+  };
+
   return (
     <aside className='barraLateral'>
       <h1 className='tituloBarraNavegacion'>Datos aspirantes</h1>
       <form className='formularioCheckbox'>
+        <CheckboxBarraLateral
+          id="seleccionarTodo"
+          value="seleccionarTodo"
+          label="Seleccionar todo"
+          chequeado={todoSeleccionado}
+          onChange={manejarSeleccionarTodo}
+        />
         {Object.entries(visibilidadColumna).map(([key, value]) => (
           <CheckboxBarraLateral
             key={key}
@@ -34,15 +58,15 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial }
       <hr className='hrBarraNavegaion'/>
       <div className='btnAsesores'>
         <BotonVerde
-          ide={'botonGrande'} 
-          setModalAbierto={setModalAbierto} 
-          modalAbierto={modalAbierto} 
-          modalAsesores={true} 
+          ide={'botonGrande'}
+          setModalAbierto={setModalAbierto}
+          modalAbierto={modalAbierto}
+          modalAsesores={true}
           texto={'Asesores'}
         />
       </div>
-      <ModalAsesores 
-        modalAbierto={modalAbierto} 
+      <ModalAsesores
+        modalAbierto={modalAbierto}
         cerrarModal={() => setModalAbierto(false)}
       />
     </aside>
