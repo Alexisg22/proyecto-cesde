@@ -19,6 +19,9 @@ function Tabla({ visibilidadColumna }) {
     { id: 'fechaUltGestion', etiqueta: 'Fecha Ult. Gestión' },
     { id: 'estadoUltGestion', etiqueta: 'Est. Ult. Gestión' },
     { id: 'celularAdicional', etiqueta: 'Celular Adicional' },
+    { id: 'empresa', etiqueta: 'Empresa' },
+    { id: 'sede', etiqueta: 'Sede' },
+    { id: 'programaFormacion', etiqueta: 'Programa de Formacion' },
   ];
 
   // Datos de ejemplo (reemplazar con tus datos reales)
@@ -38,6 +41,9 @@ function Tabla({ visibilidadColumna }) {
       fechaUltGestion: '23/07/2024',
       estadoUltGestion: 'No interesado',
       celularAdicional: '3002106542',
+      empresa: 'Andes 1',
+      sede: 'Rionegro',
+      programaFormacion: 'Programador',
     },
     {
       celular: '3162840984',
@@ -53,6 +59,9 @@ function Tabla({ visibilidadColumna }) {
       fechaUltGestion: '23/07/2024',
       estadoUltGestion: 'No interesado',
       celularAdicional: '3002106542',
+      empresa: 'Andes 2',
+      sede: 'Rionegro',
+      programaFormacion: 'Programador',
     },{
       celular: '3162840984',
       nit: '34567890',
@@ -67,6 +76,9 @@ function Tabla({ visibilidadColumna }) {
       fechaUltGestion: '23/07/2024',
       estadoUltGestion: 'No interesado',
       celularAdicional: '3002106542',
+      empresa: 'Andes 3',
+      sede: 'Rionegro',
+      programaFormacion: 'Programador',
     },
     // ... más filas de datos
   ];
