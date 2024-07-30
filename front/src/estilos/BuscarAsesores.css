@@ -1,0 +1,80 @@
+.contenedor-buscar-asesores {
+    display: flex;
+    align-items: center; 
+    padding: 1rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.formulario-buscar-asesores {
+    display: flex;
+    flex-wrap: nowrap; 
+    align-items: center; 
+    width: 100%; 
+}
+
+.formulario-buscar-asesores > * {
+    margin-right: 1rem; 
+}
+
+.formulario-buscar-asesores > *:last-child {
+    margin-right: 0; 
+}
+
+.contenedor-entrada-busqueda {
+    flex-grow: 1;
+}
+
+.entrada-busqueda {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+}
+
+.entrada-busqueda::placeholder {
+    color: #9ca3af;
+}
+
+.contenedor-fechas {
+    display: flex;
+    align-items: center;
+}
+
+.contenedor-fecha-individual {
+    display: flex;
+    align-items: center;
+}
+
+.entrada-fecha {
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+}
+
+.separador-fechas {
+    margin: 0 0.5rem;
+    color: #000000;
+}
+
+.boton-buscar {
+    background-color: #13A438;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    text-align: center;
+    white-space: nowrap; 
+    margin-top: 1px;
+}
+
+.boton-buscar:hover {
+    background-color: #0f8c2f;
+    
+
+}
+
