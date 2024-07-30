@@ -47,21 +47,67 @@
      }
 }
 
-.tablaHistorico{
-    border: 1px solid black;
+.cabezaTablaHistorico th {
+    position: sticky;
+    top: 0; 
+    background-color: #d5d1defe; 
+    cursor: pointer;
+    text-transform: capitalize;
+    z-index: 1; 
+    
+}
+
+main.tablaHistorico {
+    width: 100%;
+    height: 100%;
+    background-color: #fff5;
     border-radius: 5px;
+    overflow: hidden;
 }
 
-.tablaHistoricoEncabezado{
-    background-color: #d5d1defe;
+.cuerpoTablaHistorico {
+    width: 95%;
+    max-height: calc(89% - 1.6rem);
+    margin: .8rem auto;
+    border-radius: .6rem;
+    overflow: auto;
+    overflow: overlay;
+    
 }
 
-.tablaHistorico tbody tr:nth-child(even) {
-    background-color: #e3e3e3; 
+.cuerpoTablaHistorico::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
 }
 
-.contenedorTabla{
-    max-height: 350px ;
-    overflow-y: auto;
+.cuerpoTablaHistorico::-webkit-scrollbar-thumb {
+    border-radius: .5rem;
+    background-color: #0004;
+    visibility: hidden;
 }
+
+.cuerpoTablaHistorico:hover::-webkit-scrollbar-thumb {
+    visibility: visible;
+}
+
+.cuerpoTablaHistorico tr:nth-child(even) {
+    background-color: #e3e3e3;
+}
+
+.tablaHistorico {
+    width: 100%;
+}
+
+.tablaHistorico, th, td {
+    border-collapse: collapse;
+    padding: 1rem;
+    text-align: left;
+}
+
+.filaTablaAspirantesHistorico:hover{
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
 

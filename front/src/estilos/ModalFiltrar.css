@@ -64,14 +64,6 @@
     cursor: pointer;
 }
 
-.botonFiltrar{
-    display: flex;
-    justify-content: end;
-    margin-top: 0.5em;
-    margin-right: 2em;
-}
- 
-
 .filtrosSeleccionados{
     margin: auto;
     margin-top: 5em;

@@ -21,6 +21,10 @@ export const Principal = () => {
         'fechaUltGestion': true,
         'estadoUltGestion': true,
         'celularAdicional': false,
+        'empresa': false,
+        'sede': false,
+        'programaFormacion': false,
+
       });
     
       const manejarCambioVisibilidadColumna = (nuevaVisibilidad) => {
