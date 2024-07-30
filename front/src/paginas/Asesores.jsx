@@ -1,11 +1,15 @@
 import React from 'react'
 import { Encabezado } from '../componentes/Encabezado.jsx'
-import { Estadisticas } from '../componentes/Estadisticas.jsx'
+import "../estilos/Asesores.css"
 
 export const Asesores = () => {
   return (
     <div>
-        <Encabezado />
+        <Encabezado
+            mostrarBotonSubirBD={false}
+            mostrarBotonDescargarBD={false}
+            mostrarBotonInicio={true}
+         />
     </div>
   )
 }
