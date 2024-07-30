@@ -32,7 +32,6 @@ function Tabla({ visibilidadColumna }) {
       nombreCompleto: 'Sofía Gómez',
       cantLlamadas: '3',
       cantMensajesDeTexto: '3',
-      cantSMS: '2',
       cantWhatsapps: '1',
       cantGestiones: '6',
       mejorGestion: 'No interesado',
