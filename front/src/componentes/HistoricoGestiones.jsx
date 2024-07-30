@@ -5,6 +5,49 @@ export const HistoricoGestiones = ({cerrarModal, modalAbiertoHistorico}) => {
 
     if(!modalAbiertoHistorico) return 
 
+    const columnas = [
+        { id: 'fechaGestion', etiqueta: 'Fecha Gestion' },
+        { id: 'asesor', etiqueta: 'Asesor' },
+        { id: 'descripcion', etiqueta: 'Descripcion' },
+        { id: 'resultadoGestion', etiqueta: 'Resultado Gestion' },
+      ];
+    
+      // Datos de ejemplo (reemplazar con tus datos reales)
+      const datos = [
+        {
+            fechaGestion: '3162840984',
+            asesor: '34567890',
+            descripcion: 'Sofía Gómez',
+            resultadoGestion: '3',
+        },
+        {
+            fechaGestion: '3162840984',
+            asesor: '34567890',
+            descripcion: 'Sofía Gómez',
+            resultadoGestion: '3',
+        },{
+            fechaGestion: '3162840984',
+            asesor: '34567890',
+            descripcion: 'Sofía Gómez',
+            resultadoGestion: '3',
+        },{
+            fechaGestion: '3162840984',
+            asesor: '34567890',
+            descripcion: 'Sofía Gómez',
+            resultadoGestion: '3',
+        },{
+            fechaGestion: '3162840984',
+            asesor: '34567890',
+            descripcion: 'Sofía Gómez',
+            resultadoGestion: '3',
+        },{
+            fechaGestion: '3162840984',
+            asesor: '34567890',
+            descripcion: 'Sofía Gómez',
+            resultadoGestion: '3',
+        },
+      ];
+      
   return (
 
     <div className='cotenedorModal'>
@@ -22,78 +65,39 @@ export const HistoricoGestiones = ({cerrarModal, modalAbiertoHistorico}) => {
             </div>
 
             <hr />
-            <div className='contenedorTabla'>
-                <table className='tablaHistorico'>
-                    <thead>
-                        <tr className='tablaHistoricoEncabezado'>
-                            <th>Fecha gestión</th>
-                            <th>Asesor</th>
-                            <th>Descripción</th>
-                            <th>Resultado de la gestión</th>
-                      
+            <main className="tablaHistorico" id="tablaClientesHistorico">     
+                <section className="cuerpoTablaHistorico">
+                    <table className='tablaHistorico'>
+                    <thead className='cabezaTablaHistorico'>
+                        <tr>
+                        {columnas.map(columna => [columna.id] && (
+                            <th key={columna.id} id={columna.id}>
+                                {columna.etiqueta}
+                            </th>
+                            )
+                        )}
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>25/07/2024</td>
-                            <td>107292207 - julian gialdo</td>
-                            <td>lorem40</td>
-                            <td>Contacto</td>
-                           
+                    <tbody className='cuerpoTablaHistorico'>
+                        {datos.map((row, index) => (
+                        <tr className='filaTablaAspirantesHistorico'>
+                            {columnas.map(columna => [columna.id] && (
+                                <td key={columna.id}>
+                                {columna.id === 'estadoAspirante' ? (
+                                    <p className={row[columna.id].toLowerCase()}>{row[columna.id]}</p>
+                                ) : (
+                                    row[columna.id]
+                                )}
+                                </td>
+                            )
+                            )}
                         </tr>
-
-                        <tr>
-                            <td>18/06/2024</td>
-                            <td>107292207 - julian gialdo</td>
-                            <td>Contesta el hijo del titular</td>
-                            <td>Se deja mensaje con tercero</td>
-                        </tr>
-
-                        <tr>
-                            <td>18/06/2024</td>
-                            <td>107292207 - julian gialdo</td>
-                            <td>Contesta el hijo del titular</td>
-                            <td>Se deja mensaje con tercero</td>
-                        </tr>
-
-                        <tr>
-                            <td>18/06/2024</td>
-                            <td>107292207 - julian gialdo</td>
-                            <td>Contesta el hijo del titular</td>
-                            <td>Se deja mensaje con tercero</td>
-                        </tr>
-                        <tr>
-                            <td>18/06/2024</td>
-                            <td>107292207 - julian gialdo</td>
-                            <td>Contesta el hijo del titular</td>
-                            <td>Se deja mensaje con tercero</td>
-                        </tr>
-
-                        <tr>
-                            <td>18/06/2024</td>
-                            <td>107292207 - julian gialdo</td>
-                            <td>Contesta el hijo del titular</td>
-                            <td>Se deja mensaje con tercero</td>
-                        </tr>
-
-                        <tr>
-                            <td>18/06/2024</td>
-                            <td>107292207 - julian gialdo</td>
-                            <td>Contesta el hijo del titular</td>
-                            <td>Se deja mensaje con tercero</td>
-                        </tr>
-
-                        <tr>
-                            <td>18/06/2024</td>
-                            <td>107292207 - julian gialdo</td>
-                            <td>Contesta el hijo del titular</td>
-                            <td>Se deja mensaje con tercero</td>
-                        </tr>
-
-
+                        ))}
                     </tbody>
-                </table>
-            </div>
+                    </table>
+                </section>
+      
+    </main>
 
         </div>
     </div>
