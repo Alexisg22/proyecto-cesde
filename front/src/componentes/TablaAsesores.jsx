@@ -1,10 +1,7 @@
 import React,{ useState } from 'react';
 import '../estilos/TablaAsesores.css';
-import { BotonVerde } from './BotonVerde.jsx';
-import { HistoricoGestiones } from './HistoricoGestiones.jsx';
-import { ModalFiltrar } from './ModalFiltrar.jsx';
 
-function TablaAsesores({ visibilidadColumna }) {
+function TablaAsesores() {
     const columnas = [
       { id: 'idWolkvox', etiqueta: 'Id Wolkvox' },
       { id: 'nombreCompleto', etiqueta: 'Nombre Completo' },
@@ -48,29 +45,15 @@ function TablaAsesores({ visibilidadColumna }) {
         cantLiquidaciones: '4',
       },
     ];
-  
-    const [modalAbierto, setModalAbierto] = useState(false)
-    const [modalAbiertoHistorico, setModalAbiertoHistorico] = useState(false)
-  
+
     return (
     <>
-      <main className="tabla" id="tablaAsesores">
-        <section className="encabezadoTabla">
-          <h1>Información clientes</h1>
-          <div className="espacioBuscador">
-            <input type="search" placeholder="Buscar Datos..." />
-            <button className="botonBuscar">Buscar</button>
-          </div>
-          <div className='filtrar'>
-          <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true} texto={"Filtrar"} ide={'botonVerde'}/>
-          </div>
-        </section>
-        <section className="cuerpoTabla">
-          <table className='tabla'>
-            <thead className='cabezaTabla'>
+      <main className="tablaAsesores" id="tablaAsesores">
+        <section className="cuerpoTablaAsesores">
+          <table className='tablaAsesores'>
+            <thead className='cabezaTablaAsesores'>
               <tr>
-                {columnas.map(columna => 
-                  visibilidadColumna[columna.id] && (
+                {columnas.map(columna => [columna.id] && (
                     <th key={columna.id} id={columna.id}>
                       {columna.etiqueta}
                     </th>
@@ -78,11 +61,10 @@ function TablaAsesores({ visibilidadColumna }) {
                 )}
               </tr>
             </thead>
-            <tbody className='cuerpoTabla'>
+            <tbody className='cuerpoTablaAsesores'>
               {datos.map((row, index) => (
-                <tr className='filaTablaAsesores' onClick={() =>{setModalAbiertoHistorico(true)}} key={index}>
-                  {columnas.map(columna => 
-                    visibilidadColumna[columna.id] && (
+                <tr className='filaTablaAsesores' key={index}>
+                  {columnas.map(columna => [columna.id] && (
                       <td key={columna.id} id={columna.id}>
                         {columna.etiqueta}
                       </td>
@@ -95,10 +77,6 @@ function TablaAsesores({ visibilidadColumna }) {
         </section>
         
       </main>
-  
-      <HistoricoGestiones modalAbiertoHistorico={modalAbiertoHistorico}  cerrarModal={() =>{setModalAbiertoHistorico(false)}} />
-      
-      <ModalFiltrar modalAbierto={modalAbierto} cerrarModal={() =>{setModalAbierto(false)}} />
     </>
     );
   }

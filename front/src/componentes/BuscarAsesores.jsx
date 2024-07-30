@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { BotonVerde } from './BotonVerde'
 import "../estilos/BuscarAsesores.css"
 
 const BuscarAsesores = ({ onBuscar }) => {

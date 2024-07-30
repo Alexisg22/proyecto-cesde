@@ -2,8 +2,10 @@
     display: flex;
     align-items: center; 
     padding: 1rem;
-    margin-left: 1rem;
-    margin-top: 1rem;
+    /* margin-left: 1rem;
+    margin-top: 1rem; */
+    justify-content: space-between;
+    
 }
 
 .formulario-buscar-asesores {
@@ -23,6 +25,8 @@
 
 .contenedor-entrada-busqueda {
     flex-grow: 1;
+    margin-left: 10vw;
+    margin-right: 5rem;
 }
 
 .entrada-busqueda {
@@ -40,6 +44,8 @@
 .contenedor-fechas {
     display: flex;
     align-items: center;
+    margin-right: 10vw;
+    margin-left: 4rem;
 }
 
 .contenedor-fecha-individual {
@@ -70,6 +76,7 @@
     text-align: center;
     white-space: nowrap; 
     margin-top: 1px;
+    margin-left: 10vh;
 }
 
 .boton-buscar:hover {

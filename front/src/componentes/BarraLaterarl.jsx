@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import '../estilos/BarraLateral.css'
 import { CheckboxBarraLateral } from './CheckboxBarraLateral'
-import { ModalAsesores } from './ModalAsesores'
 import { useNavigate } from 'react-router-dom';
 import { BotonNavegar } from './BotonNavegar.jsx'
 
@@ -72,10 +71,6 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial }
           ide={'botonAsesores'}
         />
       </div>
-      <ModalAsesores
-        modalAbierto={modalAbierto}
-        cerrarModal={() => setModalAbierto(false)}
-      />
     </aside>
   )
 }

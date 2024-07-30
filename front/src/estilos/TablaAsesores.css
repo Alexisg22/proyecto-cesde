@@ -1,69 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-}
-
-body {
-    min-height: 100vh;
-    background: rgb(255, 255, 255);
-    display: flex;
-}
-
-main.tabla {
-    width: 74vw;
-    height: 80vh;
-    background-color: #fff5;
-    backdrop-filter: blur(7px);
-    box-shadow: 0 .4rem .8rem #0005;
-    border-radius: 5px;
-    overflow: hidden;
-    margin-bottom: 1rem;
-}
-
-.encabezadoTabla {
-    width: 100%;
-    height: 10%;
-    background-color: #fff4;
-    padding: .8rem 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.encabezadoTabla .espacioBuscador {
-    width: 35%;
-    height: 100%;
-    background-color: #fff5;
-    padding: 0 .8rem;
-    border-radius: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: .2s;
-}
-
-.encabezadoTabla .espacioBuscador:hover {
-    width: 45%;
-    background-color: #fff8;
-    box-shadow: 0 .1rem .4rem #0002;
-}
-
-.encabezadoTabla .espacioBuscador img {
-    width: 1.2rem;
-    height: 1.2rem;
-}
-
-.encabezadoTabla .espacioBuscador input {
-    width: 100%;
-    padding: 0 .5rem 0 .3rem;
-    background-color: transparent;
-    border: none;
-    outline: none;
-}
-
-.cuerpoTabla {
+    .cuerpoTablaAsesores {
     width: 95%;
     max-height: calc(89% - 1.6rem);
     margin: .8rem auto;
@@ -73,36 +8,36 @@ main.tabla {
     
 }
 
-.cuerpoTabla::-webkit-scrollbar {
+.cuerpoTablaAsesores::-webkit-scrollbar {
     width: 0.5rem;
     height: 0.5rem;
 }
 
-.cuerpoTabla::-webkit-scrollbar-thumb {
+.cuerpoTablaAsesores::-webkit-scrollbar-thumb {
     border-radius: .5rem;
     background-color: #0004;
     visibility: hidden;
 }
 
-.cuerpoTabla:hover::-webkit-scrollbar-thumb {
+.cuerpoTablaAsesores:hover::-webkit-scrollbar-thumb {
     visibility: visible;
 }
 
-.cuerpoTabla tr:nth-child(even) {
+.cuerpoTablaAsesores tr:nth-child(even) {
     background-color: #e3e3e3;
 }
 
-.tabla {
+.tablaAsesores {
     width: 100%;
 }
 
-.tabla, th, td {
+.tablaAsesores, th, td {
     border-collapse: collapse;
     padding: 1rem;
     text-align: left;
 }
 
-.cabezaTabla th {
+.cabezaTablaAsesores th {
     position: sticky;
     top: 0; 
     background-color: #d5d1defe; 
@@ -112,15 +47,14 @@ main.tabla {
     
 }
 
-
-.cuerpoTabla tr.hide td img {
+.cuerpoTablaAsesores tr.hide td img {
     width: 0;
     height: 0;
     transition: .2s ease-in-out .5s;
 }
 
 
-.cabezaTabla th span.icon-arrow {
+.cabezaTablaAasesores th span.icon-arrow {
     display: inline-block;
     width: 1.3rem;
     height: 1.3rem;
@@ -132,92 +66,21 @@ main.tabla {
     transition: .2s ease-in-out;
 }
 
-.cabezaTabla th:hover span.icon-arrow {
+.cabezaTablaAsesores th:hover span.icon-arrow {
     border: 1.4px solid #6c00bd;
 }
 
-.cabezaTabla th:hover {
+.cabezaTablaAsesores th:hover {
     color: #13A438;
 }
 
-.cabezaTabla th.active span.icon-arrow {
+.cabezaTablaAsesores th.active span.icon-arrow {
     background-color: #6c00bd;
     color: #fff;
 }
 
-.botonBuscar {
-    background-color: #13A438; 
-    color: white; 
-    border: none;
-    border-radius: 1rem; 
-    padding: 0.3rem 0.7rem; 
-    cursor: pointer;
-    margin-left: 0.5rem; 
-    transition: background-color 0.2s;
-    text-align: center;
-
-}
-
-.filtrar{
-    margin-bottom: 1rem;
-    margin-right: 10px;
-}
-
-.botonBuscar:hover {
-    background-color: #004812; 
-}
-
-.h1{
-    text-align: center;
-}
-
-.cabezaTabla th:first-child {
-    left: 0; 
-    z-index: 2; 
-}
-
-.cabezaTabla th:nth-child(3) {
-    left: 7rem;     
-    z-index: 2;
-}
-
-
-.cuerpoTabla tr:nth-child(odd) td:first-child{
-    left: 0;
-    background-color: #ffffff;
-    position: sticky;
-}
-
-.cuerpoTabla tr:nth-child(odd) td:nth-child(3){
-    left: 7rem;
-    background-color: #ffffff;
-    position: sticky;
-}
-/* Filas pares */
-.cuerpoTabla tr:nth-child(even) td:first-child{
-    left: 0;
-    background-color: #e3e3e3;
-    position: sticky;
-}
-.cuerpoTabla tr:nth-child(even) td:nth-child(3) {
-    left: 7rem;
-    background-color: #e3e3e3;
-    position: sticky;
-}
 .filaTablaAsesores:hover{
     cursor: pointer;
     border: 1px solid black;
     border-radius: 10px;
 }
-
-/* tbody td:first-child{
-    left: 0; 
-    position: sticky;
-    background-color: white;
-}
-
-tbody td:nth-child(3) {
-    left: 6rem; 
-    position: sticky;
-    background-color: white;
-} */
