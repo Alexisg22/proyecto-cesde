@@ -1,43 +1,20 @@
 import React, { useState } from 'react'
+import { Principal } from './paginas/Principal.jsx'
+import { Asesores } from './paginas/Asesores.jsx'
 import ReactDOM from 'react-dom/client'
-import Tabla from './componentes/Tabla.jsx'
-import { Encabezado } from './componentes/Encabezado.jsx'
-import { BarraLaterarl } from './componentes/BarraLaterarl.jsx'
-import { Estadisticas } from './componentes/Estadisticas.jsx'
-import "./estilos/Main.css"
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
-  const [visibilidadColumna, setVisibilidadColumna] = useState({
-    'celular': true,
-    'nit': false,
-    'nombreCompleto': true,
-    'cantLlamadas': true,
-    'cantMensajesDeTexto': false,
-    'cantWhatsapps': false,
-    'cantGestiones': true,
-    'mejorGestion': true,
-    'estadoAspirante': true,
-    'diasHabilesUlt.Gestion': false,
-    'fechaUltGestion': true,
-    'estadoUltGestion': true,
-    'celularAdicional': false,
-  });
-
-  const manejarCambioVisibilidadColumna = (nuevaVisibilidad) => {
-    setVisibilidadColumna(nuevaVisibilidad);
-  };
-
+  
   return (
-    <React.Fragment>
-      <Encabezado />
-      <main className="contenedorPrincipal">
-        <BarraLaterarl onCambioVisibilidadColumna={manejarCambioVisibilidadColumna} visibilidadInicial={visibilidadColumna} />
-        <div className="contenedorSecundario">
-          <Tabla visibilidadColumna={visibilidadColumna} />
-          <Estadisticas />
-        </div>
-      </main>
-    </React.Fragment>
+      <React.Fragment>
+        <Router>
+      <Routes>
+        <Route path="/" element={<Principal />} />
+        <Route path="/asesores" element={<Asesores />} />
+      </Routes>
+    </Router>
+      </React.Fragment>
   );
 }
 ReactDOM.createRoot(document.getElementById('root')).render(

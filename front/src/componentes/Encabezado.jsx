@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import "../estilos/Encabezado.css"
 import { BotonVerde } from './BotonVerde.jsx'
-import { BotonBlanco } from './BotonBlanco.jsx'
 import { ModalSubirBD } from './ModalSubirBD.jsx'
 
 export const Encabezado = () => {
@@ -21,7 +20,7 @@ const [modalAbierto, setModalAbierto] =useState(false)
         </div>
 
         <div>
-            <BotonBlanco/>    
+        <BotonVerde texto={"Descargar BD"} ide={'botonBlanco'}/>    
         </div>
             
     </div>
