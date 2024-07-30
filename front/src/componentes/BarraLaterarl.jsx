@@ -40,7 +40,6 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial }
     navigate('/asesores'); // Navega a la ruta /asesores
   };
   
-
   return (
     <aside className='barraLateral'>
       <h1 className='tituloBarraNavegacion'>Datos aspirantes</h1>
