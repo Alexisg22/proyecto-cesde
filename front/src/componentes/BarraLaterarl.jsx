@@ -39,6 +39,7 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial }
   const manejarClicBotonAsesores = () => {
     navigate('/asesores'); // Navega a la ruta /asesores
   };
+  
 
   return (
     <aside className='barraLateral'>
