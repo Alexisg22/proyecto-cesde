@@ -17,8 +17,8 @@ export const HistoricoGestiones = ({cerrarModal, modalAbiertoHistorico}) => {
             <div className='datosAspiranteHistorico' >
                 <p><strong>Aspirante: </strong>Alexander Santa Ortega</p>
                 <p><strong>Celular: </strong>3044233452</p>
-                <p><strong>Nit: </strong>1007282206</p>
-                <p><strong>Ciudad residencia: </strong>Rionegro</p>
+                <p><strong>Programa: </strong>Tecnico en desarrollo de software</p>
+                <p><strong>Sede: </strong>Rionegro</p>
             </div>
 
             <hr />

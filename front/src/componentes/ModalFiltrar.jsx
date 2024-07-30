@@ -44,6 +44,8 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
                     
                     <input type="text" className='campoFiltro' />
 
+                    <BotonVerde ide={'botonVerde'} texto={'Agregar filtro'}/>
+
                 </div>
 
                 <div className='filtrosSeleccionados'>
