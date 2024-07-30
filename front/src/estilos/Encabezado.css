@@ -1,6 +1,7 @@
 .contenedorPrincipal{
     display: flex;
-    
+    justify-content: space-between;
+    height: 5em;
 }
 
 .contenedorLogoAndes{
@@ -18,6 +19,19 @@
     height: 100%;
     width: 100%;
     object-fit: contain;
+}
+
+.contenedorBotones{
+   
+    height: 100%;
+    margin-top: -8px;
+    display: flex;
+
+}
+
+.btnSubirBD{
+    align-items: center;
+    justify-content: center;
 }
 
 

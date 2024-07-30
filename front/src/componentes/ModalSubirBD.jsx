@@ -1,6 +1,7 @@
 
-import "../estilos/ModalSubirBD.css"
 import { BotonVerde } from '../componentes/BotonVerde.jsx'
+import "../estilos/ModalSubirBD.css"
+import "../estilos/BotonVerde.css"
 
 export const ModalSubirBD = ({cerrarModal, modalAbierto}) => {
   
