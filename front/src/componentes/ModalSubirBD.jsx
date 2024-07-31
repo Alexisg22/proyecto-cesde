@@ -14,7 +14,7 @@ export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
                     <button className='cerrarModal' onClick={cerrarModal}>X</button>
                 </div>
                 <h1>Subir Base de Datos</h1>
-                <form className='contenedorBotonesBD'>
+                <form className='contenedorBotonesBD' encType='multipart/form-data'>
 
                     <input type="file" id='baseDatos1' className='inputSubirBD' />
                     <label htmlFor="baseDatos1" className='labelSubirBD'>
