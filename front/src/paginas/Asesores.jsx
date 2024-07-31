@@ -12,6 +12,8 @@ export const Asesores = () => {
           mostrarBotonSubirBD={false}
           mostrarBotonDescargarBD={false}
           mostrarBotonInicio={true}
+          textoEncabezado={'Asesores'}
+          ide={'asesores'}
         />
       </div>
 

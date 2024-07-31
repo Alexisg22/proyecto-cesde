@@ -6,7 +6,7 @@ import { BotonNavegar } from './BotonNavegar.jsx';
 import "../estilos/Encabezado.css"
 
 
-export const Encabezado = ({ mostrarBotonSubirBD, mostrarBotonDescargarBD, mostrarBotonInicio }) => {
+export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonDescargarBD, mostrarBotonInicio, textoEncabezado }) => {
 
   const [modalAbierto, setModalAbierto] = useState(false)
 
@@ -23,7 +23,7 @@ export const Encabezado = ({ mostrarBotonSubirBD, mostrarBotonDescargarBD, mostr
         <div className='contenedorLogoAndes'>
           <img id='logoAndes' src="../../public/imagenes/AndesBPO.png" />
         </div>
-
+          <h1 id={ide} className='textoInicio'>{textoEncabezado}</h1>
         <div className='contenedorBotones'>
         <div className='btnSubirBD'>
           {mostrarBotonSubirBD && (

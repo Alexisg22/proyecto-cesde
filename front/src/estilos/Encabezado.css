@@ -33,6 +33,12 @@
     justify-content: center;
 }
 
+.textoInicio{
+    font-size: 2rem;
+    margin-top: 3vh;
+}
 
-
+#asesores{
+    margin-right: 9rem;
+}
 

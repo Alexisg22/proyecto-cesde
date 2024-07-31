@@ -37,6 +37,8 @@ export const Principal = () => {
         mostrarBotonSubirBD={true}
         mostrarBotonDescargarBD={true}
         mostrarBotonInicio={false}
+        textoEncabezado={'Aspirantes'}
+        ide={'asesores'}
         />
     <main className="contenedorPrincipal">
       <BarraLaterarl onCambioVisibilidadColumna={manejarCambioVisibilidadColumna} visibilidadInicial={visibilidadColumna} />
