@@ -58,7 +58,7 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
         return (
           <select className="campoFiltro" onChange={cambioValorInput}>
             <option value="">Seleccione tipificación</option>
-            <option value="Sin interes">Sin interes</option>
+            <option value="Sin interés">Sin interés</option>
             <option value="Información General">Información general</option>
             <option value="Interesado en seguimiento">Interesado en seguimiento</option>
             <option value="Sin tipificar">Sin tipificar</option>
