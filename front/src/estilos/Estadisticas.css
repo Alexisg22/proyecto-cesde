@@ -12,14 +12,15 @@ body{
     display: flex;
     flex-direction: column;
     padding: 5px;
-    height: 45vh;
+    height: 58vh;
     width: 74vw;
     background-color: #DDDDDD;
     border-radius: 5px;
     bottom: 10px;
+    margin-bottom: 1em;
     
     & .titulo {
-        margin: 0;
+        margin: 0.5em;
         text-align: center;
     }
 
