@@ -9,7 +9,7 @@ function TablaAsesores() {
       { id: 'cantMensajesDeTexto', etiqueta: 'Cant. SMS' },
       { id: 'cantWhatsapps', etiqueta: 'Cant. WhatsApps' },
       { id: 'cantGestiones', etiqueta: 'Cant. Gestiones' },
-      { id: 'cantMatriculas', etiqueta: 'Cant. Matriculas' },
+      { id: 'cantMatriculas', etiqueta: 'Cant. Matrículas' },
       { id: 'cantLiquidaciones', etiqueta: 'Cant. Liquidaciones' },
     ];
   

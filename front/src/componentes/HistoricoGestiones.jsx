@@ -6,10 +6,10 @@ export const HistoricoGestiones = ({cerrarModal, modalAbiertoHistorico}) => {
     if(!modalAbiertoHistorico) return 
 
     const columnas = [
-        { id: 'fechaGestion', etiqueta: 'Fecha Gestion' },
+        { id: 'fechaGestion', etiqueta: 'Fecha Gestión' },
         { id: 'asesor', etiqueta: 'Asesor' },
         { id: 'descripcion', etiqueta: 'Descripcion' },
-        { id: 'resultadoGestion', etiqueta: 'Resultado Gestion' },
+        { id: 'resultadoGestion', etiqueta: 'Resultado Gestión' },
       ];
     
       // Datos de ejemplo (reemplazar con tus datos reales)
