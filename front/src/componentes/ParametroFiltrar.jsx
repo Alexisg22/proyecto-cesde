@@ -17,11 +17,27 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
         return (
           <select className="campoFiltro" onChange={cambioValorInput}>
             <option value="">Seleccione mejor gestion</option>
-            <option value="mejor gestion 1">mejor gestion 1</option>
-            <option value="mejor gestion 2">mejor gestion 2</option>
-            <option value="mejor gestion 3">mejor gestion 3</option>
-            <option value="mejor gestion 4">mejor gestion 4</option>
-            <option value="mejor gestion 5">mejor gestion 5</option>
+            <option value="Sin interés">Sin interés</option>
+            <option value="Información General">Información general</option>
+            <option value="Interesado en seguimiento">Interesado en seguimiento</option>
+            <option value="Sin tipificar">Sin tipificar</option>
+            <option value="Sin tiempo">Sin tiempo</option>
+            <option value="Volver a llamar">Volver a llamar</option>
+            <option value="En proceso de selección">En proceso de selección</option>
+            <option value="Motivos económicos">Motivos económicos</option>
+            <option value="Primer intento de contacto">Primer intento de contacto</option>
+            <option value="Segundo intento de contacto">Segundo intento de contacto</option>
+            <option value="Tercer intento de contacto">Tercer intento de contacto</option>
+            <option value="Cliente en seguimiento">Cliente en seguimiento</option>
+            <option value="Se remite a otras areas">Se remite a otras areas</option>
+            <option value="Liquidación">Liquidación</option>
+            <option value="Sin perfil">Sin perfil</option>
+            <option value="Cuelga teléfono">Cuelga teléfono</option>
+            <option value="Estudiando en otra universidad">Estudiando en otra universidad</option>
+            <option value="Proxima convocatoria">Proxima convocatoria</option>
+            <option value="Por ubicación">Por ubicación</option>
+            <option value="Matriculado">Matriculado</option>
+            <option value="Otra área de interés">Otra área de interés</option>
           </select>
         );
   
@@ -38,16 +54,31 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
           </select>
         );
   
-      case "estado ultima gestion":
+      case "tipificación ultima gestion":
         return (
           <select className="campoFiltro" onChange={cambioValorInput}>
-            <option value="">Seleccione estado</option>
-            <option value="Estado ultima gestion 1">Estado ultima gestion 1</option>
-            <option value="Estado ultima gestion 2">Estado ultima gestion 2</option>
-            <option value="Estado ultima gestion 3">Estado ultima gestion 3</option>
-            <option value="Estado ultima gestion 4">Estado ultima gestion 4</option>
-            <option value="Estado ultima gestion 5">Estado ultima gestion 5</option>
-            <option value="Estado ultima gestion 6">Estado ultima gestion 6</option>
+            <option value="">Seleccione tipificación</option>
+            <option value="Sin interés">Sin interés</option>
+            <option value="Información General">Información general</option>
+            <option value="Interesado en seguimiento">Interesado en seguimiento</option>
+            <option value="Sin tipificar">Sin tipificar</option>
+            <option value="Sin tiempo">Sin tiempo</option>
+            <option value="Volver a llamar">Volver a llamar</option>
+            <option value="En proceso de selección">En proceso de selección</option>
+            <option value="Motivos económicos">Motivos económicos</option>
+            <option value="Primer intento de contacto">Primer intento de contacto</option>
+            <option value="Segundo intento de contacto">Segundo intento de contacto</option>
+            <option value="Tercer intento de contacto">Tercer intento de contacto</option>
+            <option value="Cliente en seguimiento">Cliente en seguimiento</option>
+            <option value="Se remite a otras areas">Se remite a otras areas</option>
+            <option value="Liquidación">Liquidación</option>
+            <option value="Sin perfil">Sin perfil</option>
+            <option value="Cuelga teléfono">Cuelga teléfono</option>
+            <option value="Estudiando en otra universidad">Estudiando en otra universidad</option>
+            <option value="Proxima convocatoria">Proxima convocatoria</option>
+            <option value="Por ubicación">Por ubicación</option>
+            <option value="Matriculado">Matriculado</option>
+            <option value="Otra área de interés">Otra área de interés</option>
           </select>
         );
   

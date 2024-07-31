@@ -19,7 +19,7 @@ export const Principal = () => {
         'estadoAspirante': true,
         'diasHábilesUltGestión': false,
         'fechaUltGestión': true,
-        'estadoUltGestión': true,
+        'tipificaciónUltGestión': true,
         'celularAdicional': false,
         'empresa': false,
         'sede': false,
