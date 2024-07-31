@@ -4,8 +4,6 @@ import { ModalFiltrar } from '../componentes/ModalFiltrar.jsx'
 
 export const BotonVerde = ({setModalAbierto, modalAbierto, texto, ide}) => {
 
- 
-
   return (
     <div>
         {(ModalFiltrar) ? <button onClick={()=>{setModalAbierto(!modalAbierto)}} className={ide}>{texto}</button> 

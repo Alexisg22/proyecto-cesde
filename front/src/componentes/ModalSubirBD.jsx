@@ -19,6 +19,7 @@ export const ModalSubirBD = ({cerrarModal, modalAbierto}) => {
                     <BotonVerde ide={'botonGrande'} texto={'Base de Datos 1'}/>
                     <BotonVerde ide={'botonGrande'} texto={'Base de Datos 2'}/>
                     <BotonVerde ide={'botonGrande'} texto={'Base de Datos 3'}/>
+                    <BotonVerde ide={'botonGrande'} texto={'Base de Datos 4'}/>
 
                 </div>
                 <div className='botonGuardar'>
