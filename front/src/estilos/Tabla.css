@@ -121,7 +121,27 @@ main.tabla {
 
 .matriculado {
     background-color: #13A438;
-    color: #084F21;
+    padding: .4rem 0;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.en {
+    background-color: #e5ff23;
+    padding: .4rem 0;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.sin{
+    background-color: rgb(254, 178, 46);
+    padding: .4rem 0;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.no{
+    background-color: gray;
     padding: .4rem 0;
     border-radius: 2rem;
     text-align: center;
@@ -129,7 +149,6 @@ main.tabla {
 
 .cancelado {
     background-color: #FF571D;
-    color: #8c001a;
     padding: .4rem 0;
     border-radius: 2rem;
     text-align: center;
@@ -137,7 +156,6 @@ main.tabla {
 
 .liquidado {
     background-color: #14CDE0;
-    color: #005b7f;
     padding: .4rem 0;
     border-radius: 2rem;
     text-align: center;

@@ -88,7 +88,7 @@ function Tabla({ visibilidadColumna }) {
       cantWhatsapps: '1',
       cantGestiones: '6',
       mejorGestion: 'No interesado',
-      estadoAspirante: 'Liquidado',
+      estadoAspirante: 'En gestión',
       diasHabilesUltGestion: '1',
       fechaUltGestion: '23/07/2024',
       estadoUltGestion: 'No interesado',
@@ -105,7 +105,24 @@ function Tabla({ visibilidadColumna }) {
       cantWhatsapps: '1',
       cantGestiones: '6',
       mejorGestion: 'No interesado',
-      estadoAspirante: 'Matriculado',
+      estadoAspirante: 'Sin gestión',
+      diasHabilesUltGestion: '1',
+      fechaUltGestion: '23/07/2024',
+      estadoUltGestion: 'No interesado',
+      celularAdicional: '3002106542',
+      empresa: 'Andes 3',
+      sede: 'Rionegro',
+      programaFormacion: 'Programador',
+    },,{
+      celular: '3162840984',
+      nit: '34567890',
+      nombreCompleto: 'Sofía Gómez',
+      cantLlamadas: '3',
+      cantMensajesDeTexto: '2',
+      cantWhatsapps: '1',
+      cantGestiones: '6',
+      mejorGestion: 'No interesado',
+      estadoAspirante: 'No gestionable',
       diasHabilesUltGestion: '1',
       fechaUltGestion: '23/07/2024',
       estadoUltGestion: 'No interesado',
@@ -114,7 +131,6 @@ function Tabla({ visibilidadColumna }) {
       sede: 'Rionegro',
       programaFormacion: 'Programador',
     },
-    // ... más filas de datos
   ];
 
   const [modalAbierto, setModalAbierto] = useState(false)
