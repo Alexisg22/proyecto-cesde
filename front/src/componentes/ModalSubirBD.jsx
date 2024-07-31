@@ -32,12 +32,14 @@ export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
                     <label htmlFor="baseDatos4" className='labelSubirBD'>
                         Subir BD 4
                     </label>
+                    
+                    <input type="submit" id='baseDatos4' className='inputEnviarFormulario' />
 
 
                 </form>
-                <div className='botonGuardar'>
-                    <BotonVerde ide={'botonVerde'} texto={'Guardar'} />
-                </div>
+                
+                
+                
 
             </div>
         </div>
