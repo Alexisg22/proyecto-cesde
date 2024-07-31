@@ -3,30 +3,43 @@ import { BotonVerde } from '../componentes/BotonVerde.jsx'
 import "../estilos/ModalSubirBD.css"
 import "../estilos/BotonVerde.css"
 
-export const ModalSubirBD = ({cerrarModal, modalAbierto}) => {
-  
-    if(!modalAbierto) return null
+export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
+
+    if (!modalAbierto) return null
 
     return (
-    <div className='contenedorSubirBD'> 
+        <div className='contenedorSubirBD'>
             <div className='modalSubirBD'>
-                 <div className='botonCerrar'>
+                <div className='botonCerrar'>
                     <button className='cerrarModal' onClick={cerrarModal}>X</button>
                 </div>
-            <h1>Subir Base de Datos</h1>
-                <div className='contenedorBotonesBD'>
-                
-                    <BotonVerde ide={'botonGrande'} texto={'Base de Datos 1'}/>
-                    <BotonVerde ide={'botonGrande'} texto={'Base de Datos 2'}/>
-                    <BotonVerde ide={'botonGrande'} texto={'Base de Datos 3'}/>
-                    <BotonVerde ide={'botonGrande'} texto={'Base de Datos 4'}/>
+                <h1>Subir Base de Datos</h1>
+                <form className='contenedorBotonesBD'>
 
-                </div>
+                    <input type="file" id='baseDatos1' className='inputSubirBD' />
+                    <label htmlFor="baseDatos1" className='labelSubirBD'>
+                        Subir BD 1
+                    </label>
+                    <input type="file" id='baseDatos2' className='inputSubirBD' />
+                    <label htmlFor="baseDatos2" className='labelSubirBD'>
+                        Subir BD 2
+                    </label>
+                    <input type="file" id='baseDatos3' className='inputSubirBD' />
+                    <label htmlFor="baseDatos3" className='labelSubirBD'>
+                        Subir BD 3
+                    </label>
+                    <input type="file" id='baseDatos4' className='inputSubirBD' />
+                    <label htmlFor="baseDatos4" className='labelSubirBD'>
+                        Subir BD 4
+                    </label>
+
+
+                </form>
                 <div className='botonGuardar'>
-                    <BotonVerde ide={'botonVerde'} texto={'Guardar'}/>
+                    <BotonVerde ide={'botonVerde'} texto={'Guardar'} />
                 </div>
-                
+
+            </div>
         </div>
-    </div>
-  )
+    )
 }
