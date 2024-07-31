@@ -51,14 +51,16 @@ const BuscarAsesores = ({ onBuscar }) => {
               onChange={manejarCambioFechaFin}
               className="entrada-fecha"
             />
+
+            <button
+              onClick={manejarBusqueda}
+              className="boton-buscar"
+            >
+              Buscar
+            </button>
           </div>
         </div>
-        <button
-          onClick={manejarBusqueda}
-          className="boton-buscar"
-        >
-          Buscar
-        </button>
+       
       </div>
     </div>
   )

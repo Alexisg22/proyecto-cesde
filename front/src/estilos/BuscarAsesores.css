@@ -1,32 +1,21 @@
-.contenedor-buscar-asesores {
-    display: flex;
-    align-items: center; 
-    padding: 1rem;
-    /* margin-left: 1rem;
-    margin-top: 1rem; */
-    justify-content: space-between;
-    
+.contenedor-buscar-asesores { 
+    padding: 1rem;  
+    width: 100%;
 }
 
 .formulario-buscar-asesores {
-    display: flex;
-    flex-wrap: nowrap; 
-    align-items: center; 
-    width: 100%; 
+    width: 100%;
+    display: flex; 
+    justify-content: center;
 }
 
 .formulario-buscar-asesores > * {
     margin-right: 1rem; 
 }
 
-.formulario-buscar-asesores > *:last-child {
-    margin-right: 0; 
-}
 
 .contenedor-entrada-busqueda {
-    flex-grow: 1;
-    margin-left: 10vw;
-    margin-right: 5rem;
+    width: 25%
 }
 
 .entrada-busqueda {
@@ -42,6 +31,7 @@
 }
 
 .contenedor-fechas {
+    width: 40%;
     display: flex;
     align-items: center;
     margin-right: 10vw;
@@ -63,6 +53,10 @@
 .separador-fechas {
     margin: 0 0.5rem;
     color: #000000;
+}
+
+.contenedor-buscar{
+    width: 25%;
 }
 
 .boton-buscar {
