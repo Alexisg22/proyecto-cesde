@@ -60,10 +60,10 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
           </select>
         );
   
-      case "cede":
+      case "sede":
         return (
           <select className="campoFiltro" onChange={cambioValorInput}>
-            <option value="">Seleccione la cede</option>
+            <option value="">Seleccione la sede</option>
             <option value="principal">principal</option>
             <option value="bogota">Bogota</option>
             <option value="medellin">Medellin</option>

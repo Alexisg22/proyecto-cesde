@@ -60,7 +60,7 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
                             <option value="fecha ultima gestion">Fecha de ultima gestion</option>
                             <option value="estado ultima gestion">Estado ultima gestion</option>
                             <option value="programa de formacion">Programa de formacion</option>
-                            <option value="cede">Cede</option>
+                            <option value="sede">Sede</option>
                             <option value="empresa">Empresa</option>
 
 
@@ -88,7 +88,7 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
 
                 </div>
 
-                <div>
+                <div className='filtrarBD'>
                     <BotonVerde ide={'botonFiltrar'} texto={'Filtrar'}/>
                 </div>
                 
