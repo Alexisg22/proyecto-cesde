@@ -15,15 +15,15 @@ export const Principal = () => {
         'cantMensajesDeTexto': false,
         'cantWhatsapps': false,
         'cantGestiones': true,
-        'mejorGestion': true,
+        'mejorGestión': true,
         'estadoAspirante': true,
-        'diasHabilesUlt.Gestion': false,
-        'fechaUltGestion': true,
-        'estadoUltGestion': true,
+        'diasHábilesUltGestión': false,
+        'fechaUltGestión': true,
+        'estadoUltGestión': true,
         'celularAdicional': false,
         'empresa': false,
         'sede': false,
-        'programaFormacion': false,
+        'programaFormación': false,
 
       });
     

@@ -14,14 +14,18 @@ export const Estadisticas = () => {
             </div>
             <div className='contenido'>
             
-                <Estadistica id='estadistica1' label='estadistica 1' dato='dato 1'/>
-                <Estadistica id='estadistica2' label='estadistica 2' dato='dato 2'/>
-                <Estadistica id='estadistica3' label='estadistica 3' dato='dato 3'/>
-                <Estadistica id='estadistica4' label='estadistica 4' dato='dato 4'/>
-                <Estadistica id='estadistica5' label='estadistica 5' dato='dato 5'/>
-                <Estadistica id='estadistica6' label='estadistica 6' dato='dato 6'/>
-                <Estadistica id='estadistica7' label='estadistica 7' dato='dato 7'/>
-                <Estadistica id='estadistica8' label='estadistica 8' dato='dato 8'/>
+                <Estadistica id='contactabilidad' label='Contactabilidad' dato='20'/>
+                <Estadistica id='noContactabilidad' label='No contactabilidad' dato='10'/>
+                <Estadistica id='porcentajeConversion' label='Porcentaje de conversion' dato='25'/>
+                <Estadistica id='cantidadMatriculas' label='Cantidad de matriculas' dato='50'/>
+                <Estadistica id='cantidadLiquidaciones' label='Cantidad de liquidaciones' dato='100'/>
+                <Estadistica id='enGestion' label='En gestion' dato='150'/>
+                <Estadistica id='sinGestion' label='Sin gestion' dato='30'/>
+                <Estadistica id='matriculado' label='Matriculado' dato='90'/>
+                <Estadistica id='liquidacion' label='Liquidacion' dato='11'/>
+                <Estadistica id='cancelado' label='Cancelados' dato='5'/>
+                <Estadistica id='noGestionable' label='No gestionable' dato='16'/>
+               
             </div>
 
         </section>
