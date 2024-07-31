@@ -56,10 +56,10 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
                             <option value="cantidad gestiones">Cantidad de gestiones</option>
                             <option value="mejor gestion">Mejor gestion</option>
                             <option value="estado del aspirante">Estado del aspirante</option>
-                            <option value="dias ultima gestion">Dias de la ultima gestion</option>
-                            <option value="fecha ultima gestion">Fecha de ultima gestion</option>
-                            <option value="estado ultima gestion">Estado ultima gestion</option>
-                            <option value="programa de formacion">Programa de formacion</option>
+                            <option value="dias ultima gestion">Dias de la última gestión</option>
+                            <option value="fecha ultima gestion">Fecha de última gestión</option>
+                            <option value="estado ultima gestion">Estado última gestión</option>
+                            <option value="programa de formacion">Programa de formación</option>
                             <option value="cede">Cede</option>
                             <option value="empresa">Empresa</option>
 
