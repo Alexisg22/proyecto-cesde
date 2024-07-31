@@ -33,8 +33,7 @@ main.tabla {
 }
 
 .encabezadoTabla .espacioBuscador {
-    width: 35%;
-    height: 100%;
+    width: 40%;
     background-color: #fff5;
     padding: 0 .8rem;
     border-radius: 2rem;
@@ -42,6 +41,7 @@ main.tabla {
     justify-content: center;
     align-items: center;
     transition: .2s;
+    box-shadow: 0 .1rem .4rem #0002;
 }
 
 .encabezadoTabla .espacioBuscador:hover {
@@ -61,6 +61,7 @@ main.tabla {
     background-color: transparent;
     border: none;
     outline: none;
+    height: 3em;
 }
 
 .cuerpoTabla {
@@ -196,6 +197,7 @@ main.tabla {
     margin-left: 0.5rem; 
     transition: background-color 0.2s;
     text-align: center;
+    height: 2.5em;
 
 }
 

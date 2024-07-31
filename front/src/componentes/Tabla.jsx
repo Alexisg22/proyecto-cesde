@@ -141,7 +141,7 @@ function Tabla({ visibilidadColumna }) {
       <section className="encabezadoTabla">
         <h1>Información clientes</h1>
         <div className="espacioBuscador">
-          <input type="search" placeholder="Buscar Datos..." />
+          <input type="search" placeholder="Buscar un aspirante..." />
           <button className="botonBuscar">Buscar</button>
         </div>
         <div className='filtrar'>

@@ -19,5 +19,7 @@
     width: 90vw;
     background-color: #fff;
     box-shadow: 0 .4rem .8rem #0005;
+    overflow-y: auto;
+    margin-bottom: 3em;
 }
 
