@@ -23,42 +23,31 @@ const BuscarAsesores = ({ onBuscar }) => {
   }
 
   return (
-    <div className="contenedor-buscar-asesores">
-      <div className="formulario-buscar-asesores">
-        <div className="contenedor-entrada-busqueda">
-          <input
-            type="search"
-            placeholder="Id - Nombre"
-            value={terminoBusqueda}
-            onChange={manejarCambioBusqueda}
-            className="entrada-busqueda"
-          />
+    <div className="contenedorBuscarAsesores">
+      <div className="formularioBuscarAsesores">
+        <div className="contenedorEntradaBusqueda">
+          <input type="search" placeholder="Id - Nombre" />
+          <button className="botonBuscar">Buscar</button>
         </div>
-        <div className="contenedor-fechas">
-          <div className="contenedor-fecha-individual">
+        <div className="contenedorFechas">
+          <div className="contenedorFechaIndividual">
             <input
               type="date"
               value={fechaInicio}
               onChange={manejarCambioFechaInicio}
-              className="entrada-fecha"
+              className="fechaEntrada"
             />
           </div>
-          <span className="separador-fechas">a</span>
-          <div className="contenedor-fecha-individual">
+          <span className="separadorFechas">a</span>
+          <div className="contenedorFechaIndividual">
             <input
               type="date"
               value={fechaFin}
               onChange={manejarCambioFechaFin}
-              className="entrada-fecha"
+              className="fechaEntrada"
             />
           </div>
         </div>
-        <button
-          onClick={manejarBusqueda}
-          className="boton-buscar"
-        >
-          Buscar
-        </button>
       </div>
     </div>
   )
