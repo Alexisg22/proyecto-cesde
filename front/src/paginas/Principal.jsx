@@ -4,6 +4,7 @@ import { BarraLaterarl } from '../componentes/BarraLaterarl.jsx'
 import { Estadisticas } from '../componentes/Estadisticas.jsx'
 import Tabla from '../componentes/Tabla.jsx'
 import "../estilos/Asesores.css"
+import { Paginador } from '../componentes/Paginador.jsx'
 
 export const Principal = () => {
 
@@ -26,7 +27,6 @@ export const Principal = () => {
         'programaFormación': false,
 
       });
-
     
       const manejarCambioVisibilidadColumna = (nuevaVisibilidad) => {
         setVisibilidadColumna(nuevaVisibilidad);
@@ -44,7 +44,7 @@ export const Principal = () => {
     <main className="contenedorPrincipal">
       <BarraLaterarl onCambioVisibilidadColumna={manejarCambioVisibilidadColumna} visibilidadInicial={visibilidadColumna} />
       <div className="contenedorSecundario">
-        <Tabla visibilidadColumna={visibilidadColumna} />
+        <Tabla visibilidadColumna={visibilidadColumna}  />
         <Estadisticas />
       </div>
     </main>

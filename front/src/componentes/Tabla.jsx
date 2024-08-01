@@ -3,8 +3,10 @@ import '../estilos/Tabla.css';
 import { BotonVerde } from './BotonVerde.jsx';
 import { HistoricoGestiones } from './HistoricoGestiones.jsx';
 import { ModalFiltrar } from './ModalFiltrar.jsx';
+import { Paginador } from './Paginador.jsx';
 
-function Tabla({ visibilidadColumna }) {
+function Tabla({ visibilidadColumna}) {
+
   const columnas = [
     { id: 'celular', etiqueta: 'Celular' },
     { id: 'nit', etiqueta: 'Nit' },
@@ -112,7 +114,169 @@ function Tabla({ visibilidadColumna }) {
       empresa: 'Andes 3',
       sede: 'Rionegro',
       programaFormación: 'Programador',
-    },,{
+    },{
+      celular: '3162840984',
+      nit: '34567890',
+      nombreCompleto: 'Sofía Gómez',
+      cantLlamadas: '3',
+      cantMensajesDeTexto: '2',
+      cantWhatsapps: '1',
+      cantGestiones: '6',
+      mejorGestión: 'No interesado',
+      estadoAspirante: 'No gestionable',
+      diasHábilesUltGestión: '1',
+      fechaUltGestión: '23/07/2024',
+      tipificaciónUltGestión: 'No interesado',
+      celularAdicional: '3002106542',
+      empresa: 'Andes 3',
+      sede: 'Rionegro',
+      programaFormación: 'Programador',
+    },
+    {
+      celular: '3162840984',
+      nit: '34567890',
+      nombreCompleto: 'Sofía Gómez',
+      cantLlamadas: '3',
+      cantMensajesDeTexto: '2',
+      cantWhatsapps: '1',
+      cantGestiones: '6',
+      mejorGestión: 'No interesado',
+      estadoAspirante: 'No gestionable',
+      diasHábilesUltGestión: '1',
+      fechaUltGestión: '23/07/2024',
+      tipificaciónUltGestión: 'No interesado',
+      celularAdicional: '3002106542',
+      empresa: 'Andes 3',
+      sede: 'Rionegro',
+      programaFormación: 'Programador',
+    },
+    {
+      celular: '3162840984',
+      nit: '34567890',
+      nombreCompleto: 'Sofía Gómez',
+      cantLlamadas: '3',
+      cantMensajesDeTexto: '2',
+      cantWhatsapps: '1',
+      cantGestiones: '6',
+      mejorGestión: 'No interesado',
+      estadoAspirante: 'No gestionable',
+      diasHábilesUltGestión: '1',
+      fechaUltGestión: '23/07/2024',
+      tipificaciónUltGestión: 'No interesado',
+      celularAdicional: '3002106542',
+      empresa: 'Andes 3',
+      sede: 'Rionegro',
+      programaFormación: 'Programador',
+    },
+    {
+      celular: '3162840984',
+      nit: '34567890',
+      nombreCompleto: 'Sofía Gómez',
+      cantLlamadas: '3',
+      cantMensajesDeTexto: '2',
+      cantWhatsapps: '1',
+      cantGestiones: '6',
+      mejorGestión: 'No interesado',
+      estadoAspirante: 'No gestionable',
+      diasHábilesUltGestión: '1',
+      fechaUltGestión: '23/07/2024',
+      tipificaciónUltGestión: 'No interesado',
+      celularAdicional: '3002106542',
+      empresa: 'Andes 3',
+      sede: 'Rionegro',
+      programaFormación: 'Programador',
+    },
+    {
+      celular: '3162840984',
+      nit: '34567890',
+      nombreCompleto: 'Sofía Gómez',
+      cantLlamadas: '3',
+      cantMensajesDeTexto: '2',
+      cantWhatsapps: '1',
+      cantGestiones: '6',
+      mejorGestión: 'No interesado',
+      estadoAspirante: 'No gestionable',
+      diasHábilesUltGestión: '1',
+      fechaUltGestión: '23/07/2024',
+      tipificaciónUltGestión: 'No interesado',
+      celularAdicional: '3002106542',
+      empresa: 'Andes 3',
+      sede: 'Rionegro',
+      programaFormación: 'Programador',
+    },
+    {
+      celular: '3162840984',
+      nit: '34567890',
+      nombreCompleto: 'Sofía Gómez',
+      cantLlamadas: '3',
+      cantMensajesDeTexto: '2',
+      cantWhatsapps: '1',
+      cantGestiones: '6',
+      mejorGestión: 'No interesado',
+      estadoAspirante: 'No gestionable',
+      diasHábilesUltGestión: '1',
+      fechaUltGestión: '23/07/2024',
+      tipificaciónUltGestión: 'No interesado',
+      celularAdicional: '3002106542',
+      empresa: 'Andes 3',
+      sede: 'Rionegro',
+      programaFormación: 'Programador',
+    },
+    {
+      celular: '3162840984',
+      nit: '34567890',
+      nombreCompleto: 'Sofía Gómez',
+      cantLlamadas: '3',
+      cantMensajesDeTexto: '2',
+      cantWhatsapps: '1',
+      cantGestiones: '6',
+      mejorGestión: 'No interesado',
+      estadoAspirante: 'No gestionable',
+      diasHábilesUltGestión: '1',
+      fechaUltGestión: '23/07/2024',
+      tipificaciónUltGestión: 'No interesado',
+      celularAdicional: '3002106542',
+      empresa: 'Andes 3',
+      sede: 'Rionegro',
+      programaFormación: 'Programador',
+    },
+    {
+      celular: '3162840984',
+      nit: '34567890',
+      nombreCompleto: 'Sofía Gómez',
+      cantLlamadas: '3',
+      cantMensajesDeTexto: '2',
+      cantWhatsapps: '1',
+      cantGestiones: '6',
+      mejorGestión: 'No interesado',
+      estadoAspirante: 'No gestionable',
+      diasHábilesUltGestión: '1',
+      fechaUltGestión: '23/07/2024',
+      tipificaciónUltGestión: 'No interesado',
+      celularAdicional: '3002106542',
+      empresa: 'Andes 3',
+      sede: 'Rionegro',
+      programaFormación: 'Programador',
+    },
+    {
+      celular: '3162840984',
+      nit: '34567890',
+      nombreCompleto: 'Sofía Gómez',
+      cantLlamadas: '3',
+      cantMensajesDeTexto: '2',
+      cantWhatsapps: '1',
+      cantGestiones: '6',
+      mejorGestión: 'No interesado',
+      estadoAspirante: 'No gestionable',
+      diasHábilesUltGestión: '1',
+      fechaUltGestión: '23/07/2024',
+      tipificaciónUltGestión: 'No interesado',
+      celularAdicional: '3002106542',
+      empresa: 'Andes 3',
+      sede: 'Rionegro',
+      programaFormación: 'Programador',
+    },
+    {
       celular: '3162840984',
       nit: '34567890',
       nombreCompleto: 'Sofía Gómez',
@@ -131,6 +295,14 @@ function Tabla({ visibilidadColumna }) {
       programaFormación: 'Programador',
     },
   ];
+  const [cantiadFilas, setCantidadFilas] = useState(10)
+  const [paginaActual, setPaginaActual] = useState(1)
+
+  const  indexFinal = paginaActual * cantiadFilas
+  const  indexInicial = indexFinal - cantiadFilas  
+  
+  const nAspirantesPorPagina = datos.slice(indexInicial, indexFinal)
+  const numeroPaginas = Math.ceil(datos.length / cantiadFilas)
 
   const [modalAbierto, setModalAbierto] = useState(false)
   const [modalAbiertoHistorico, setModalAbiertoHistorico] = useState(false)
@@ -162,7 +334,7 @@ function Tabla({ visibilidadColumna }) {
             </tr>
           </thead>
           <tbody className='cuerpoTabla'>
-            {datos.map((row, index) => (
+            {nAspirantesPorPagina.map((row, index) => (
               <tr className='filaTablaAspirantes' onClick={() =>{setModalAbiertoHistorico(true)}} key={index}>
                 {columnas.map(columna => 
                   visibilidadColumna[columna.id] && (
@@ -180,7 +352,11 @@ function Tabla({ visibilidadColumna }) {
           </tbody>
         </table>
       </section>
-      
+      <Paginador 
+        paginaActual = {paginaActual}
+        setPaginaActual = {setPaginaActual}
+        numeroPaginas = {numeroPaginas}
+        />
     </main>
 
     <HistoricoGestiones modalAbiertoHistorico={modalAbiertoHistorico}  cerrarModal={() =>{setModalAbiertoHistorico(false)}} />

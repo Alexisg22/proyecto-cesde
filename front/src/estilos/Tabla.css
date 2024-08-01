@@ -21,6 +21,7 @@ main.tabla {
     border-radius: 5px;
     overflow: hidden;
     margin-bottom: 1rem;
+    padding-bottom: 3em;
 }
 
 .encabezadoTabla {
