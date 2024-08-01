@@ -13,6 +13,7 @@ export const Asesores = () => {
           mostrarBotonDescargarTabla={true}
           textoEncabezado={'Asesores'}
           ide={'asesores'}
+          vista={'asesoresFiltro'}
         />
       </div>
 

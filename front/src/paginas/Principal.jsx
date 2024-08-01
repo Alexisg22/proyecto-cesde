@@ -22,7 +22,6 @@ export const Principal = () => {
         'fechaUltGestión': true,
         'tipificaciónUltGestión': true,
         'celularAdicional': false,
-        'empresa': false,
         'sede': false,
         'programaFormación': false,
 
@@ -40,6 +39,7 @@ export const Principal = () => {
         mostrarBotonInicio={false}
         textoEncabezado={'Aspirantes'}
         ide={'aspirantes'}
+        vista={'aspirantesFiltro'}
         />
     <main className="contenedorPrincipal">
       <BarraLaterarl onCambioVisibilidadColumna={manejarCambioVisibilidadColumna} visibilidadInicial={visibilidadColumna} />

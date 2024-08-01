@@ -9,7 +9,6 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial }
 
   const navigate = useNavigate(); // Hook para navegación
   const [visibilidadColumna, setVisibilidadColumna] = useState(visibilidadInicial)
-  const [modalAbierto, setModalAbierto] = useState(false)
   const [todoSeleccionado, setTodoSeleccionado] = useState(false)
 
   useEffect(() => {

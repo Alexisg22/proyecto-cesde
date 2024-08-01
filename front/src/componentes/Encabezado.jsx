@@ -6,9 +6,10 @@ import { BotonNavegar } from './BotonNavegar.jsx';
 import "../estilos/Encabezado.css"
 
 
-export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonDescargarBD, mostrarBotonInicio, textoEncabezado, mostrarBotonDescargarTabla }) => {
+export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonDescargarBD, mostrarBotonInicio, textoEncabezado, mostrarBotonDescargarTabla, vista }) => {
 
   const [modalAbierto, setModalAbierto] = useState(false)
+
 
   const navigate = useNavigate()
 
@@ -23,6 +24,18 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonDescargarBD, 
         <div className='contenedorLogoAndes'>
           <img id='logoAndes' src="../../public/imagenes/AndesBPO.png" />
         </div>
+
+        <div>
+          <form id={vista}>
+            <select className='filtroAspirante'>
+              <option value="">General</option>
+              <option value="empresas">Empresas</option>
+              <option value="tecnicos">Técnicos</option>
+              <option value="extensiones">Extensiones</option>             
+            </select>
+          </form>
+        </div>
+
         <h1 id={ide} className='textoInicio'>{textoEncabezado}</h1>
         <div className='contenedorBotones'>
           <div className='btnSubirBD'>

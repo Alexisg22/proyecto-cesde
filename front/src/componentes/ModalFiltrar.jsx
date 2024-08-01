@@ -6,11 +6,11 @@ import { ParametroFiltrar } from './ParametroFiltrar.jsx';
 
 export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
 
-    //Estado para almacenar la opción seleccionada
+    
     const [seleccionOpcion, setSeleccionOpcion] = useState('');
     const [valorInput, setValorInput] = useState('');
     const [filtrosSeleccionados, setFiltrosSeleccionados] = useState([]);
-    // Función para manejar el cambio en el seleccion
+    
 
     const cambioSeleccion = (e) => {
         setSeleccionOpcion(e.target.value);
@@ -64,10 +64,10 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
                             <option value="cantidad gestiones">Cantidad de gestiones</option>
                             <option value="mejor gestion">Mejor gestion</option>
                             <option value="estado del aspirante">Estado del aspirante</option>
-                            <option value="dias ultima gestion">Dias de la ultima gestion</option>
-                            <option value="fecha ultima gestion">Fecha de ultima gestion</option>
-                            <option value="tipificación ultima gestion">Tipificación ultima gestion</option>
-                            <option value="programa de formacion">Programa de formacion</option>
+                            <option value="dias ultima gestion">Dias de la ultima gestión</option>
+                            <option value="fecha ultima gestion">Fecha de ultima gestión</option>
+                            <option value="tipificación ultima gestion">Tipificación ultima gestión</option>
+                            <option value="programa de formacion">Programa de formación</option>
                             <option value="sede">Sede</option>
                             <option value="empresa">Empresa</option>
 
