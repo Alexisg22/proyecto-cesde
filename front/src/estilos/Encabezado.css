@@ -1,7 +1,7 @@
 .contenedorPrincipal{
     display: flex;
     justify-content: space-between;
-    height: 5em;
+    height: 6rem;
 }
 
 .contenedorLogoAndes{
