@@ -30,3 +30,20 @@
         
     }
 }
+
+.botonDescargarTabla{
+    width: 120px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 2em;
+    background-color: #13A438;
+    border-radius: 5px;
+    border: solid 1px black;
+
+    &:hover{
+        background-color: white;
+        color: #13A438;
+        cursor: pointer;
+        
+    }
+}
