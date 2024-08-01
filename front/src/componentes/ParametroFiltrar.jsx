@@ -48,8 +48,8 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
             <option value="matriculado">Matriculado</option>
             <option value="liquidado">Liquidado</option>
             <option value="desistio">Desistió</option>
-            <option value="en gestion">En gestion</option>
-            <option value="sin gestion">Sin gestion</option>
+            <option value="en gestion">En gestión</option>
+            <option value="sin gestion">Sin gestión</option>
             <option value="no gestionable">No gestionable</option>
           </select>
         );
