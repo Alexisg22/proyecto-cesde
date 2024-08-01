@@ -27,7 +27,6 @@ export const Principal = () => {
 
       });
 
-      
     
       const manejarCambioVisibilidadColumna = (nuevaVisibilidad) => {
         setVisibilidadColumna(nuevaVisibilidad);
@@ -36,8 +35,9 @@ export const Principal = () => {
   return (
     <div>
         <Encabezado 
-        mostrarBotonSubirBD
-        mostrarBotonDescargarBD
+        mostrarBotonSubirBD={true}
+        mostrarBotonDescargarBD={true}
+        mostrarBotonInicio={false}
         textoEncabezado={'Aspirantes'}
         ide={'aspirantes'}
         />
