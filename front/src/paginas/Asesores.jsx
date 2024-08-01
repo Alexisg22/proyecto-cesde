@@ -9,9 +9,8 @@ export const Asesores = () => {
     <div className="asesoresMain">
       <div className="asesoresEncabezado">
         <Encabezado
-          mostrarBotonSubirBD={false}
-          mostrarBotonDescargarBD={false}
           mostrarBotonInicio={true}
+          mostrarBotonDescargarTabla={true}
           textoEncabezado={'Asesores'}
           ide={'asesores'}
         />

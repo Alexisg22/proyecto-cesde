@@ -34,9 +34,8 @@ export const Principal = () => {
   return (
     <div>
         <Encabezado 
-        mostrarBotonSubirBD={true}
-        mostrarBotonDescargarBD={true}
-        mostrarBotonInicio={false}
+        mostrarBotonSubirBD
+        mostrarBotonDescargarBD
         textoEncabezado={'Aspirantes'}
         ide={'aspirantes'}
         />
