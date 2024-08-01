@@ -127,5 +127,6 @@
 
 .filtrarBD{
     display: flex;
-    margin-left: 26rem;
+    margin-left: 32vw;
+    margin-right: 32vw;
 }
