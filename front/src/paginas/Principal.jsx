@@ -18,7 +18,7 @@ export const Principal = () => {
         'cantGestiones': true,
         'mejorGestión': true,
         'estadoAspirante': true,
-        'diasHábilesUltGestión': false,
+        'diasUltGestión': false,
         'fechaUltGestión': true,
         'tipificaciónUltGestión': true,
         'celularAdicional': false,
