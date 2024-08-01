@@ -22,12 +22,20 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
     };
 
     const agregarFiltro = (event) => {
-        event.preventDefault()
+        event.preventDefault();
         if (seleccionOpcion && valorInput) {
-            setFiltrosSeleccionados([...filtrosSeleccionados, { filtro: seleccionOpcion, valor: valorInput }]);
+            const filtroExistente = filtrosSeleccionados.find((filtro) => filtro.filtro === seleccionOpcion);
+            if (filtroExistente) {
+                setFiltrosSeleccionados(filtrosSeleccionados.map((filtro) =>
+                    filtro.filtro === seleccionOpcion ? { ...filtro, valor: valorInput } : filtro
+                ));
+            } else {
+                setFiltrosSeleccionados([...filtrosSeleccionados, { filtro: seleccionOpcion, valor: valorInput }]);
+            }
             setSeleccionOpcion('');
             setValorInput('');
         }
+
     };
 
     const eliminarFiltro = (index) => {
@@ -67,7 +75,6 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
                         </select>                
 
                         <ParametroFiltrar seleccionOpcion={seleccionOpcion} cambioValorInput={cambioValorInput}/>
-                        {/* <input type="date" className="campoFiltro" value={valorInput} onChange={cambioValorInput} /> */}
 
                         <button className='btnAgregarFiltro' type='submit'>Agregar filtro</button>
 
@@ -85,7 +92,6 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
                             <button className='btnEliminarFiltro' onClick={() => eliminarFiltro(index)}> X </button>
                         </div>
                     ))}
-
                 </div>
 
                 <div className='filtrarBD'>

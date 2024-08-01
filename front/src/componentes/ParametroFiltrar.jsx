@@ -7,7 +7,7 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
       case "cantidad llamadas":
       case "cantidad SMS":
       case "cantidad whatsapp":
-        return <input className="campoFiltro" type="number" onChange={cambioValorInput} />;
+        return <input className="campoFiltro" type="number" onChange={cambioValorInput} max={999} min={0}/>;
       
       case "fecha de gestion":
       case "fecha ultima gestion":
