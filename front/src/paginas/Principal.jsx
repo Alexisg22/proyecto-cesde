@@ -26,6 +26,8 @@ export const Principal = () => {
         'programaFormación': false,
 
       });
+
+      
     
       const manejarCambioVisibilidadColumna = (nuevaVisibilidad) => {
         setVisibilidadColumna(nuevaVisibilidad);

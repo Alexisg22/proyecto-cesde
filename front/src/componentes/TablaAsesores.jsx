@@ -86,7 +86,7 @@ function TablaAsesores() {
       },
       {
         idWolkvox: '3162840984',
-        nombreCompleto: 'Sofía Gómez',
+        nombreCompleto: 'Jaime de jesus Gomez buenavista',
         cantLlamadas: '3',
         cantMensajesDeTexto: '3',
         cantWhatsapps: '1',
