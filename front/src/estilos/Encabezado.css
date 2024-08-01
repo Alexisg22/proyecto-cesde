@@ -52,7 +52,9 @@
     justify-content: center;
     margin-top: 2em;
     height: 2em;
-    width: 18em;    
+    width: 18em;  
+    border: 1px solid black;
+
 }
 
 #asesoresFiltro{
