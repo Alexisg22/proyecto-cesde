@@ -279,7 +279,7 @@ function Tabla({ visibilidadColumna}) {
     {
       celular: '3162840984',
       nit: '34567890',
-      nombreCompleto: 'Sofía Gómez',
+      nombreCompleto: 'Sofía Gadwadómez',
       cantLlamadas: '3',
       cantMensajesDeTexto: '2',
       cantWhatsapps: '1',
@@ -321,7 +321,7 @@ function Tabla({ visibilidadColumna}) {
         </div>
       </section>
       <section className="cuerpoTabla">
-        <table className='tabla'>
+        <table className='tabla' id="tablaAspirantes">
           <thead className='cabezaTabla'>
             <tr>
               {columnas.map(columna => 
@@ -357,8 +357,42 @@ function Tabla({ visibilidadColumna}) {
         setPaginaActual = {setPaginaActual}
         numeroPaginas = {numeroPaginas}
         />
-    </main>
+      
 
+    </main>
+    
+    <table className='tablaEscondida' id="tablaAspirantesEscondida">
+          <thead className='cabezaTablaEscondida'>
+            <tr>
+              {columnas.map(columna => 
+                visibilidadColumna[columna.id] && (
+                  <th key={columna.id} id={columna.id}>
+                    {columna.etiqueta}
+                  </th>
+                )
+              )}
+            </tr>
+          </thead>
+          <tbody className='cuerpoTablaEscondida'>
+            {datos.map((row, index) => (
+              <tr className='filaTablaAspirantesEscondida' onClick={() =>{setModalAbiertoHistorico(true)}} key={index}>
+                {columnas.map(columna => 
+                  visibilidadColumna[columna.id] && (
+                    <td key={columna.id}>
+                      {columna.id === 'estadoAspirante' ? (
+                        <p className={row[columna.id].toLowerCase()}>{row[columna.id]}</p>
+                      ) : (
+                        row[columna.id]
+                      )}
+                    </td>
+                  )
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+  
     <HistoricoGestiones modalAbiertoHistorico={modalAbiertoHistorico}  cerrarModal={() =>{setModalAbiertoHistorico(false)}} />
     
     <ModalFiltrar modalAbierto={modalAbierto} cerrarModal={() =>{setModalAbierto(false)}} />

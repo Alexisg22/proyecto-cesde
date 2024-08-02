@@ -99,9 +99,9 @@ function TablaAsesores() {
 
     return (
     <>
-      <main className="tablaAsesores" id="tablaAsesores">
+      <main className="tablaAsesores" id="tabla">
         <section className="cuerpoTablaAsesores">
-          <table className='tablaAsesores'>
+          <table className='tablaAsesores' id="tablaAsesores">
             <thead className='cabezaTablaAsesores'>
               <tr>
                 {columnas.map(columna => [columna.id] && (

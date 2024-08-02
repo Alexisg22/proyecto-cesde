@@ -58,3 +58,22 @@
 #asesoresFiltro{
     display: none;
 }
+
+.btn-descargar {
+    background-color: #13A438; 
+    color: rgb(0, 0, 0); 
+    border: none; 
+    padding: 6px 9px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 14px; 
+    border: 1px solid black;
+    margin-top: 3.3vh;
+    margin-left: 3vh;
+
+        &:hover{
+            background-color: rgb(255, 255, 255);
+            color: #13A438;
+        }
+    
+  }

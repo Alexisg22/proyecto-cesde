@@ -4,7 +4,6 @@ import { BarraLaterarl } from '../componentes/BarraLaterarl.jsx'
 import { Estadisticas } from '../componentes/Estadisticas.jsx'
 import Tabla from '../componentes/Tabla.jsx'
 import "../estilos/Asesores.css"
-import { Paginador } from '../componentes/Paginador.jsx'
 
 export const Principal = () => {
 
@@ -40,6 +39,8 @@ export const Principal = () => {
         textoEncabezado={'Aspirantes'}
         ide={'aspirantes'}
         vista={'aspirantesFiltro'}
+        tablaDescargar={'tablaAspirantesEscondida'}
+        nombreTablaDescargada={'Datos de Aspirantes'}
         />
     <main className="contenedorPrincipal">
       <BarraLaterarl onCambioVisibilidadColumna={manejarCambioVisibilidadColumna} visibilidadInicial={visibilidadColumna} />

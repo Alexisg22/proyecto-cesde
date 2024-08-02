@@ -10,10 +10,12 @@ export const Asesores = () => {
       <div className="asesoresEncabezado">
         <Encabezado
           mostrarBotonInicio={true}
-          mostrarBotonDescargarTabla={true}
+          mostrarBotonDescargarBD={true}
           textoEncabezado={'Asesores'}
           ide={'asesores'}
           vista={'asesoresFiltro'}
+          tablaDescargar={'tablaAsesores'}
+          nombreTablaDescargada={'Datos de Asesores'}
         />
       </div>
 
