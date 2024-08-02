@@ -10,7 +10,7 @@ export const Asesores = () => {
       <div className="asesoresEncabezado">
         <Encabezado
           mostrarBotonInicio={true}
-          mostrarBotonDescargarBD={true}
+          mostrarBotonDescargarTabla={true}
           textoEncabezado={'Asesores'}
           ide={'asesores'}
           vista={'asesoresFiltro'}

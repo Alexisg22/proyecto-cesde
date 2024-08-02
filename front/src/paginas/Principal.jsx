@@ -53,7 +53,7 @@ export const Principal = () => {
     <div>
         <Encabezado 
         mostrarBotonSubirBD={true}
-        mostrarBotonDescargarBD={true}
+        mostrarBotonDescargarTabla={true}
         mostrarBotonInicio={false}
         textoEncabezado={'Aspirantes'}
         ide={'aspirantes'}
