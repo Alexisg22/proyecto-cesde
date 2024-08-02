@@ -7,8 +7,7 @@ import "../estilos/Encabezado.css"
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 
-export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonDescargarBD, mostrarBotonInicio, textoEncabezado, vista, tablaDescargar, nombreTablaDescargada }) => {
-
+export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonDescargarTabla, mostrarBotonInicio, textoEncabezado, vista, tablaDescargar, nombreTablaDescargada, setProcesoSelect }) => {
   const [modalAbierto, setModalAbierto] = useState(false)
 
 
@@ -18,6 +17,9 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonDescargarBD, 
     navigate('/'); // Navega a la ruta /asesores
   };
 
+  const seleccionarProceso = (e) =>{
+    setProcesoSelect(e.target.value)
+  }
 
   return (
     <header>
@@ -28,8 +30,8 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonDescargarBD, 
 
         <div>
           <form id={vista}>
-            <select className='filtroAspirante'>
-              <option value="">General</option>
+            <select className='filtroAspirante' onChange={seleccionarProceso}>
+              <option value="general">General</option>
               <option value="empresas">Empresas</option>
               <option value="tecnicos">Técnicos</option>
               <option value="extensiones">Extensiones</option>             
@@ -60,7 +62,7 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonDescargarBD, 
           </div>
 
           <div className='btnDescarga'>
-            {mostrarBotonDescargarBD && (
+            {mostrarBotonDescargarTabla && (
               <ReactHTMLTableToExcel
               id="botonExportarExcel"
               className="btn btn-descargar"
