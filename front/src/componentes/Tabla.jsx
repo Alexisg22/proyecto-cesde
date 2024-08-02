@@ -11,7 +11,7 @@ export function Tabla({ visibilidadColumna}) {
     useEffect( () => {
         
         async function cargarEstudiantes () {
-            const respuesta = await obtenerTodosAspirantes()
+            const respuesta = await obtenerTodosAspirantes() 
             console.log(respuesta);
         }
         cargarEstudiantes()
