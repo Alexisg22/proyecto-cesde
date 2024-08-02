@@ -6,7 +6,7 @@ import Tabla from '../componentes/Tabla.jsx'
 import "../estilos/Asesores.css"
 
 export const Principal = () => {
-    const [procesoSelect, setProcesoSelect] = useState('')
+    const [procesoSelect, setProcesoSelect] = useState('general')
     const [barraLateralKey, setBarraLateralKey] = useState(0)
     const [tablaKey, setTablaKey] = useState(0)
     const [visibilidadColumna, setVisibilidadColumna] = useState({
@@ -32,16 +32,17 @@ export const Principal = () => {
     };
 
     useEffect(() => {
-      if(procesoSelect === 'empresas'){
-          setVisibilidadColumna(prevState => ({
-              ...prevState,
-              'nitEmpresa': false // Inicialmente no visible
-          }));
-      } else {
-          const { nitEmpresa, ...restVisibilidad } = visibilidadColumna;
-          setVisibilidadColumna(restVisibilidad);
-      }
-  }, [procesoSelect])
+        console.log(procesoSelect)
+        if(procesoSelect === 'empresas' || procesoSelect === 'general'){
+            setVisibilidadColumna(prevState => ({
+                ...prevState,
+                'nitEmpresa': false // Inicialmente no visible
+            }));
+        } else {
+            const { nitEmpresa, ...restVisibilidad } = visibilidadColumna;
+            setVisibilidadColumna(restVisibilidad);
+        }
+    }, [procesoSelect])
 
   useEffect(() => {
       setBarraLateralKey(prevKey => prevKey + 1)
