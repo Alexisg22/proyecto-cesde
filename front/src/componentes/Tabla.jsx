@@ -1,8 +1,4 @@
 import React,{ useEffect, useState } from 'react';
-<<<<<<< HEAD
-import '../estilos/Tabla.css';
-=======
->>>>>>> e6d70a36832800d6ec375786eaa43e75170593a2
 import { BotonVerde } from './BotonVerde.jsx';
 import { HistoricoGestiones } from './HistoricoGestiones.jsx';
 import { ModalFiltrar } from './ModalFiltrar.jsx';
@@ -11,11 +7,6 @@ import { obtenerTodosAspirantes } from '../assets/api/aspirantes.api.js';
 import { TarjetaAspirante } from './TarjetaAspirante.jsx';
 import '../estilos/Tabla.css';
 
-<<<<<<< HEAD
-function Tabla({ visibilidadColumna, procesoSelect} ) {
-
-  
-=======
 export function Tabla({ visibilidadColumna}) {
 
     const [aspirantes, setAspirantes] = useState([]);
@@ -28,7 +19,6 @@ export function Tabla({ visibilidadColumna}) {
         }
         cargarEstudiantes();
     }, [])
->>>>>>> e6d70a36832800d6ec375786eaa43e75170593a2
 
   const columnas = [
     { id: 'celular', etiqueta: 'Celular' },
@@ -70,238 +60,7 @@ export function Tabla({ visibilidadColumna}) {
       sede: 'Rionegro',
       programaFormación: 'Programador',
     },
-<<<<<<< HEAD
-    {
-      celular: '3162840984',
-      nit: '34567890',
-      nombreCompleto: 'Sofía Gómez',
-      cantLlamadas: '3',
-      cantMensajesDeTexto: '2',
-      cantWhatsapps: '1',
-      cantGestiones: '6',
-      mejorGestión: 'No interesado',
-      estadoAspirante: 'Liquidado',
-      diasUltGestión: '1',
-      fechaUltGestión: '23/07/2024',
-      tipificaciónUltGestión: 'No interesado',
-      celularAdicional: '3002106542',
-      empresa: 'Andes 2',
-      sede: 'Rionegro',
-      programaFormación: 'Programador',
-    },{
-      celular: '3162840984',
-      nit: '34567890',
-      nombreCompleto: 'Sofía Gómez',
-      cantLlamadas: '3',
-      cantMensajesDeTexto: '2',
-      cantWhatsapps: '1',
-      cantGestiones: '6',
-      mejorGestión: 'No interesado',
-      estadoAspirante: 'Matriculado',
-      diasUltGestión: '1',
-      fechaUltGestión: '23/07/2024',
-      tipificaciónUltGestión: 'No interesado',
-      celularAdicional: '3002106542',
-      empresa: 'Andes 3',
-      sede: 'Rionegro',
-      programaFormación: 'Programador',
-    },
-    {
-      celular: '3162840984',
-      nit: '34567890',
-      nombreCompleto: 'Sofía Gómez',
-      cantLlamadas: '3',
-      cantMensajesDeTexto: '2',
-      cantWhatsapps: '1',
-      cantGestiones: '6',
-      mejorGestión: 'No interesado',
-      estadoAspirante: 'En gestión',
-      diasUltGestión: '1',
-      fechaUltGestión: '23/07/2024',
-      tipificaciónUltGestión: 'No interesado',
-      celularAdicional: '3002106542',
-      empresa: 'Andes 2',
-      sede: 'Rionegro',
-      programaFormación: 'Programador',
-    },{
-      celular: '3162840984',
-      nit: '34567890',
-      nombreCompleto: 'Sofía Gómez',
-      cantLlamadas: '3',
-      cantMensajesDeTexto: '2',
-      cantWhatsapps: '1',
-      cantGestiones: '6',
-      mejorGestión: 'No interesado',
-      estadoAspirante: 'Sin gestión',
-      diasUltGestión: '1',
-      fechaUltGestión: '23/07/2024',
-      tipificaciónUltGestión: 'No interesado',
-      celularAdicional: '3002106542',
-      empresa: 'Andes 3',
-      sede: 'Rionegro',
-      programaFormación: 'Programador',
-    }
-  ])
-
-  useEffect(()=>{
-    if(procesoSelect == 'empresas'){
-      setDatos([
-        {
-          celular: '3162840984',
-          nit: '34567890',
-          nombreCompleto: 'Jaime de jesus Gomez buenavista',
-          cantLlamadas: '3',
-          cantMensajesDeTexto: '3',
-          cantWhatsapps: '1',
-          cantGestiones: '6',
-          mejorGestión: 'No interesado',
-          estadoAspirante: 'Cancelado',
-          diasUltGestión: '1',
-          fechaUltGestión: '23/07/2024',
-          tipificaciónUltGestión: 'No interesado',
-          celularAdicional: '3002106542',
-          empresa: 'Andes 1',
-          sede: 'Rionegro',
-          programaFormación: 'Programador',
-        },
-        {
-          celular: '3162840984',
-          nit: '34567890',
-          nombreCompleto: 'Sofía Gómez',
-          cantLlamadas: '3',
-          cantMensajesDeTexto: '2',
-          cantWhatsapps: '1',
-          cantGestiones: '6',
-          mejorGestión: 'No interesado',
-          estadoAspirante: 'Liquidado',
-          diasUltGestión: '1',
-          fechaUltGestión: '23/07/2024',
-          tipificaciónUltGestión: 'No interesado',
-          celularAdicional: '3002106542',
-          empresa: 'Andes 2',
-          sede: 'Rionegro',
-          programaFormación: 'Programador',
-      }])
-    }else if(procesoSelect == 'extensiones'){
-      setDatos([
-        {
-          celular: '3162840984',
-          nit: '34567890',
-          nombreCompleto: 'Jaime de jesus Gomez buenavista',
-          cantLlamadas: '3',
-          cantMensajesDeTexto: '3',
-          cantWhatsapps: '1',
-          cantGestiones: '6',
-          mejorGestión: 'No interesado',
-          estadoAspirante: 'Cancelado',
-          diasUltGestión: '1',
-          fechaUltGestión: '23/07/2024',
-          tipificaciónUltGestión: 'No interesado',
-          celularAdicional: '3002106542',
-          empresa: 'Andes 1',
-          sede: 'Rionegro',
-          programaFormación: 'Programador',
-        },
-        {
-          celular: '3162840984',
-          nit: '34567890',
-          nombreCompleto: 'Sofía Gómez',
-          cantLlamadas: '3',
-          cantMensajesDeTexto: '2',
-          cantWhatsapps: '1',
-          cantGestiones: '6',
-          mejorGestión: 'No interesado',
-          estadoAspirante: 'Liquidado',
-          diasUltGestión: '1',
-          fechaUltGestión: '23/07/2024',
-          tipificaciónUltGestión: 'No interesado',
-          celularAdicional: '3002106542',
-          empresa: 'Andes 2',
-          sede: 'Rionegro',
-          programaFormación: 'Programador',
-      },
-      {
-        celular: '3162840984',
-        nit: '34567890',
-        nombreCompleto: 'Sofía Gómez',
-        cantLlamadas: '3',
-        cantMensajesDeTexto: '2',
-        cantWhatsapps: '1',
-        cantGestiones: '6',
-        mejorGestión: 'No interesado',
-        estadoAspirante: 'Liquidado',
-        diasUltGestión: '1',
-        fechaUltGestión: '23/07/2024',
-        tipificaciónUltGestión: 'No interesado',
-        celularAdicional: '3002106542',
-        empresa: 'Andes 2',
-        sede: 'Rionegro',
-        programaFormación: 'Programador',
-    }])
-    }else if(procesoSelect == 'tecnicos'){
-      setDatos([
-        {
-          celular: '3162840984',
-          nit: '34567890',
-          nombreCompleto: 'Jaime de jesus Gomez buenavista',
-          cantLlamadas: '3',
-          cantMensajesDeTexto: '3',
-          cantWhatsapps: '1',
-          cantGestiones: '6',
-          mejorGestión: 'No interesado',
-          estadoAspirante: 'Cancelado',
-          diasUltGestión: '1',
-          fechaUltGestión: '23/07/2024',
-          tipificaciónUltGestión: 'No interesado',
-          celularAdicional: '3002106542',
-          empresa: 'Andes 1',
-          sede: 'Rionegro',
-          programaFormación: 'Programador',
-        }])
-    }
-  }, [])
-  // if(procesoSelect == 'empresas'){
-  //   setDatos([
-  //     {
-  //       celular: '3162840984',
-  //       nit: '34567890',
-  //       nombreCompleto: 'Jaime de jesus Gomez buenavista',
-  //       cantLlamadas: '3',
-  //       cantMensajesDeTexto: '3',
-  //       cantWhatsapps: '1',
-  //       cantGestiones: '6',
-  //       mejorGestión: 'No interesado',
-  //       estadoAspirante: 'Cancelado',
-  //       diasUltGestión: '1',
-  //       fechaUltGestión: '23/07/2024',
-  //       tipificaciónUltGestión: 'No interesado',
-  //       celularAdicional: '3002106542',
-  //       empresa: 'Andes 1',
-  //       sede: 'Rionegro',
-  //       programaFormación: 'Programador',
-  //     },
-  //     {
-  //       celular: '3162840984',
-  //       nit: '34567890',
-  //       nombreCompleto: 'Sofía Gómez',
-  //       cantLlamadas: '3',
-  //       cantMensajesDeTexto: '2',
-  //       cantWhatsapps: '1',
-  //       cantGestiones: '6',
-  //       mejorGestión: 'No interesado',
-  //       estadoAspirante: 'Liquidado',
-  //       diasUltGestión: '1',
-  //       fechaUltGestión: '23/07/2024',
-  //       tipificaciónUltGestión: 'No interesado',
-  //       celularAdicional: '3002106542',
-  //       empresa: 'Andes 2',
-  //       sede: 'Rionegro',
-  //       programaFormación: 'Programador',
-  //     }])
-  // }
-=======
   ];
->>>>>>> e6d70a36832800d6ec375786eaa43e75170593a2
   const [cantiadFilas, setCantidadFilas] = useState(10)
   const [paginaActual, setPaginaActual] = useState(1)
 
