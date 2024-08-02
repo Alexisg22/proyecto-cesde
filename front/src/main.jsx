@@ -5,21 +5,21 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
-  
+
   return (
-      <React.Fragment>
-        <Router>
-      <Routes>
-        <Route path="/" element={<Principal />} />
-        <Route path="/asesores" element={<Asesores />} />
-      </Routes>
-    </Router>
-      </React.Fragment>
+    <React.Fragment>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Principal />} />
+          <Route path="/asesores" element={<Asesores />} />
+        </Routes>
+      </Router>
+    </React.Fragment>
   );
 }
 ReactDOM.createRoot(document.getElementById('root')).render(
 
   <React.StrictMode>
-    <App/> 
+    <App />
   </React.StrictMode>,
 )

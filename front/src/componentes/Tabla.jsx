@@ -1,11 +1,21 @@
-import React,{ useState } from 'react';
-import '../estilos/Tabla.css';
+import React,{ useEffect, useState } from 'react';
 import { BotonVerde } from './BotonVerde.jsx';
 import { HistoricoGestiones } from './HistoricoGestiones.jsx';
 import { ModalFiltrar } from './ModalFiltrar.jsx';
 import { Paginador } from './Paginador.jsx';
+import { obtenerTodosAspirantes } from '../assets/api/aspirantes.api.js';
+import '../estilos/Tabla.css';
 
-function Tabla({ visibilidadColumna}) {
+export function Tabla({ visibilidadColumna}) {
+
+    useEffect( () => {
+        
+        async function cargarEstudiantes () {
+            const respuesta = await obtenerTodosAspirantes()
+            console.log(respuesta);
+        }
+        cargarEstudiantes()
+    }, [])
 
   const columnas = [
     { id: 'celular', etiqueta: 'Celular' },
