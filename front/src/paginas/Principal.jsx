@@ -7,7 +7,7 @@ import "../estilos/Asesores.css"
 import { Paginador } from '../componentes/Paginador.jsx'
 
 export const Principal = () => {
-    const [procesoSelect, setProcesoSelect] = useState('')
+    const [procesoSelect, setProcesoSelect] = useState('general')
     const [barraLateralKey, setBarraLateralKey] = useState(0)
     const [tablaKey, setTablaKey] = useState(0)
     const [visibilidadColumna, setVisibilidadColumna] = useState({
@@ -33,7 +33,8 @@ export const Principal = () => {
     };
 
     useEffect(() => {
-        if(procesoSelect === 'empresas'){
+        console.log(procesoSelect)
+        if(procesoSelect === 'empresas' || procesoSelect === 'general'){
             setVisibilidadColumna(prevState => ({
                 ...prevState,
                 'nitEmpresa': false // Inicialmente no visible
