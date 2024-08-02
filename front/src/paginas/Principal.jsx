@@ -72,6 +72,7 @@ export const Principal = () => {
                     <Tabla 
                         key={tablaKey}
                         visibilidadColumna={visibilidadColumna}  
+                        procesoSelect={procesoSelect}
                     />
                     <Estadisticas />
                 </div>
