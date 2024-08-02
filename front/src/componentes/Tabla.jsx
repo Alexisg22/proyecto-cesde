@@ -1,13 +1,34 @@
 import React,{ useEffect, useState } from 'react';
+<<<<<<< HEAD
 import '../estilos/Tabla.css';
+=======
+>>>>>>> e6d70a36832800d6ec375786eaa43e75170593a2
 import { BotonVerde } from './BotonVerde.jsx';
 import { HistoricoGestiones } from './HistoricoGestiones.jsx';
 import { ModalFiltrar } from './ModalFiltrar.jsx';
 import { Paginador } from './Paginador.jsx';
+import { obtenerTodosAspirantes } from '../assets/api/aspirantes.api.js';
+import { TarjetaAspirante } from './TarjetaAspirante.jsx';
+import '../estilos/Tabla.css';
 
+<<<<<<< HEAD
 function Tabla({ visibilidadColumna, procesoSelect} ) {
 
   
+=======
+export function Tabla({ visibilidadColumna}) {
+
+    const [aspirantes, setAspirantes] = useState([]);
+
+    useEffect( () => {
+        
+        async function cargarEstudiantes () {
+            const respuesta = await obtenerTodosAspirantes(); 
+            setAspirantes(respuesta.data);
+        }
+        cargarEstudiantes();
+    }, [])
+>>>>>>> e6d70a36832800d6ec375786eaa43e75170593a2
 
   const columnas = [
     { id: 'celular', etiqueta: 'Celular' },
@@ -29,7 +50,8 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
     { id: 'nitEmpresa', etiqueta: 'Nit empresa' },
   ];
 
-  const [datos, setDatos] = useState([
+
+  const datos = [
     {
       celular: '3162840984',
       nit: '34567890',
@@ -48,6 +70,7 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
       sede: 'Rionegro',
       programaFormación: 'Programador',
     },
+<<<<<<< HEAD
     {
       celular: '3162840984',
       nit: '34567890',
@@ -276,6 +299,9 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
   //       programaFormación: 'Programador',
   //     }])
   // }
+=======
+  ];
+>>>>>>> e6d70a36832800d6ec375786eaa43e75170593a2
   const [cantiadFilas, setCantidadFilas] = useState(10)
   const [paginaActual, setPaginaActual] = useState(1)
 
@@ -377,6 +403,12 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
     <HistoricoGestiones modalAbiertoHistorico={modalAbiertoHistorico}  cerrarModal={() =>{setModalAbiertoHistorico(false)}} />
     
     <ModalFiltrar modalAbierto={modalAbierto} cerrarModal={() =>{setModalAbierto(false)}} />
+
+    <div>
+      {aspirantes.map(aspirante => (
+          <TarjetaAspirante aspirante={aspirante} key={aspirante.id} />
+      ))}
+  </div>
   </>
   );
 }
