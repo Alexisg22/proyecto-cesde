@@ -13,24 +13,24 @@ export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
                 <div className='botonCerrar'>
                     <button className='cerrarModal' onClick={cerrarModal}>X</button>
                 </div>
-                <h1>Subir Base de Datos</h1>
+                <h1 className='tituloSubirBD'>Subir Base de Datos</h1>
                 <form className='contenedorBotonesBD' encType='multipart/form-data'>
 
-                    <input type="file" id='baseDatos1' className='inputSubirBD' />
+                    <input type="file" id='baseDatos1' name='predictivo' className='inputSubirBD' />
                     <label htmlFor="baseDatos1" className='labelSubirBD'>
-                        Subir BD 1
+                        BD Predictivo
                     </label>
-                    <input type="file" id='baseDatos2' className='inputSubirBD' />
+                    <input type="file" id='baseDatos2' name='matricula' className='inputSubirBD' />
                     <label htmlFor="baseDatos2" className='labelSubirBD'>
-                        Subir BD 2
+                        BD Matriculas 
                     </label>
-                    <input type="file" id='baseDatos3' className='inputSubirBD' />
+                    <input type="file" id='baseDatos3' name='whatsapp' className='inputSubirBD' />
                     <label htmlFor="baseDatos3" className='labelSubirBD'>
-                        Subir BD 3
+                        BD Whatsapp
                     </label>
-                    <input type="file" id='baseDatos4' className='inputSubirBD' />
+                    <input type="file" id='baseDatos4' name='SMS' className='inputSubirBD' />
                     <label htmlFor="baseDatos4" className='labelSubirBD'>
-                        Subir BD 4
+                        BD SMS
                     </label>
                     
                     <input type="submit" id='baseDatos4' className='inputEnviarFormulario' />

@@ -7,75 +7,76 @@ import "../estilos/Asesores.css"
 import { Paginador } from '../componentes/Paginador.jsx'
 
 export const Principal = () => {
-
-    const [visibilidadColumna, setVisibilidadColumna] = useState([{
-        // 'celular': true,
-        // 'nit': false,
-        // 'nombreCompleto': true,
-        // 'cantLlamadas': true,
-        // 'cantMensajesDeTexto': false,
-        // 'cantWhatsapps': false,
-        // 'cantGestiones': true,
-        // 'mejorGestión': true,
-        // 'estadoAspirante': true,
-        // 'diasHábilesUltGestión': false,
-        // 'fechaUltGestión': true,
-        // 'tipificaciónUltGestión': true,
-        // 'celularAdicional': false,
-        // 'sede': false,
-        // 'programaFormación': false,
-      }]);
+    const [procesoSelect, setProcesoSelect] = useState('')
+    const [barraLateralKey, setBarraLateralKey] = useState(0)
+    const [tablaKey, setTablaKey] = useState(0)
+    const [visibilidadColumna, setVisibilidadColumna] = useState({
+        'celular': true,
+        'nit': false,
+        'nombreCompleto': true,
+        'cantLlamadas': true,
+        'cantMensajesDeTexto': false,
+        'cantWhatsapps': false,
+        'cantGestiones': true,
+        'mejorGestión': true,
+        'estadoAspirante': true,
+        'diasUltGestión': false,
+        'fechaUltGestión': true,
+        'tipificaciónUltGestión': true,
+        'celularAdicional': false,
+        'sede': false,
+        'programaFormación': false,
+    });
     
-      const manejarCambioVisibilidadColumna = (nuevaVisibilidad) => {
+    const manejarCambioVisibilidadColumna = (nuevaVisibilidad) => {
         setVisibilidadColumna(nuevaVisibilidad);
-      };
-      
-      // *************************************
-      const [procesoSelect, setProcesoSelect] = useState('')
-      // if (procesoSelect == 'empresas') {
-      //   setVisibilidadColumna([...visibilidadColumna, {'empresa': true}])
-      // }
-      useEffect(() => {
-        if (procesoSelect === 'empresas') {
-          setVisibilidadColumna({  'celular': true,
-            'nit': false,
-            'nombreCompleto': true,
-            'cantLlamadas': true,
-            'cantMensajesDeTexto': false,
-            'cantWhatsapps': false,
-            'cantGestiones': true,
-            'mejorGestión': true,
-            'estadoAspirante': true,
-            'diasHábilesUltGestión': false,
-            'fechaUltGestión': true,
-            'tipificaciónUltGestión': true,
-            'celularAdicional': false,
-            'sede': false,
-            'programaFormación': false,});
-        }
-      }, [procesoSelect]);
+    };
 
-      // ****************************************
-  return (
-    <div>
-        <Encabezado 
-        setProcesoSelect={setProcesoSelect}
-        mostrarBotonSubirBD={true}
-        mostrarBotonDescargarBD={true}
-        mostrarBotonInicio={false}
-        textoEncabezado={'Aspirantes'}
-        ide={'aspirantes'}
-        vista={'aspirantesFiltro'}
-        />
-    <main className="contenedorPrincipal">
-      <BarraLaterarl  onCambioVisibilidadColumna={manejarCambioVisibilidadColumna} visibilidadInicial={visibilidadColumna} />
-      <div className="contenedorSecundario">
-        <Tabla visibilidadColumna={visibilidadColumna}  />
-        <Estadisticas />
-      </div>
-    </main>
-    </div>
-  )
+    useEffect(() => {
+        if(procesoSelect === 'empresas'){
+            setVisibilidadColumna(prevState => ({
+                ...prevState,
+                'nitEmpresa': false // Inicialmente no visible
+            }));
+        } else {
+            const { nitEmpresa, ...restVisibilidad } = visibilidadColumna;
+            setVisibilidadColumna(restVisibilidad);
+        }
+    }, [procesoSelect])
+
+    useEffect(() => {
+        setBarraLateralKey(prevKey => prevKey + 1)
+        setTablaKey(prevKey => prevKey + 1)
+    }, [visibilidadColumna])
+
+    return (
+        <div>
+            <Encabezado 
+                mostrarBotonSubirBD={true}
+                mostrarBotonDescargarBD={true}
+                mostrarBotonInicio={false}
+                textoEncabezado={'Aspirantes'}
+                ide={'aspirantes'}
+                vista={'aspirantesFiltro'}
+                setProcesoSelect={setProcesoSelect}
+            />
+            <main className="contenedorPrincipal">
+                <BarraLaterarl 
+                    key={barraLateralKey}
+                    onCambioVisibilidadColumna={manejarCambioVisibilidadColumna} 
+                    visibilidadInicial={visibilidadColumna} 
+                    procesoSelect={procesoSelect}
+                />
+                <div className="contenedorSecundario">
+                    <Tabla 
+                        key={tablaKey}
+                        visibilidadColumna={visibilidadColumna}  
+                    />
+                    <Estadisticas />
+                </div>
+            </main>
+        </div>
+    )
 }
 
 export default Principal

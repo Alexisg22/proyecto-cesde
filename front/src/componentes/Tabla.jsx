@@ -24,6 +24,7 @@ function Tabla({ visibilidadColumna}) {
     { id: 'empresa', etiqueta: 'Empresa' },
     { id: 'sede', etiqueta: 'Sede' },
     { id: 'programaFormación', etiqueta: 'Programa de Formación' },
+    { id: 'nitEmpresa', etiqueta: 'Nit empresa' },
   ];
 
   const datos = [
