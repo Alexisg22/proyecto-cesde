@@ -277,13 +277,13 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
   const [modalAbiertoHistorico, setModalAbiertoHistorico] = useState(false)
 
   const datosFiltrados = datos.map(row => {
-    const rowFiltrado = {};
+    const filaFiltrada = {};
     columnas.forEach(columna => {
       if (visibilidadColumna[columna.id]) {
-        rowFiltrado[columna.id] = row[columna.id];
+        filaFiltrada[columna.id] = row[columna.id];
       }
     });
-    return rowFiltrado;
+    return filaFiltrada;
   });
 
 
