@@ -68,6 +68,13 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, 
           texto={'Asesores'}
           ide={'botonAsesores'}
         />
+
+        {/* <BotonNavegar
+          // onClick={manejarClicBotonAgregarDatos}
+          texto={'Agregar datos'}
+          ide={'botonAsesores'}
+        /> */}
+
       </div>
     </aside>
   )
