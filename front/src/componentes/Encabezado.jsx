@@ -74,7 +74,6 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonDescargarTabl
              
             )}
           </div>
-
         </div>
 
       </div>

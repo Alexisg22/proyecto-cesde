@@ -71,7 +71,8 @@ export const Principal = () => {
       />
       <div className="contenedorSecundario">
         <Tabla key={tablaKey}
-        visibilidadColumna={visibilidadColumna}  
+        visibilidadColumna={visibilidadColumna}
+        procesoSelect={procesoSelect}  
         />
         <Estadisticas />
       </div>
