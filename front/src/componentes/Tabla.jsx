@@ -83,14 +83,14 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
     key: columna.id
   }));
   
-  const [cantiadFilas, setCantidadFilas] = useState(10)
+  const [cantidadFilas, setCantidadFilas] = useState(10)
   const [paginaActual, setPaginaActual] = useState(1)
 
   const  indexFinal = paginaActual * cantidadFilas
   const  indexInicial = indexFinal - cantidadFilas  
   
   const nAspirantesPorPagina = aspirantes.slice(indexInicial, indexFinal)
-  const numeroPaginas = Math.ceil(aspirantes.length / cantiadFilas)
+  const numeroPaginas = Math.ceil(aspirantes.length / cantidadFilas)
 
   const [modalAbierto, setModalAbierto] = useState(false)
   const [modalAbiertoHistorico, setModalAbiertoHistorico] = useState(false)
