@@ -355,4 +355,3 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
 
 export default Tabla;
 
-const newRes = [{... Res.data}]
