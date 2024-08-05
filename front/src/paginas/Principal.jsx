@@ -58,8 +58,6 @@ export const Principal = () => {
         textoEncabezado={'Aspirantes'}
         ide={'aspirantes'}
         vista={'aspirantesFiltro'}
-        tablaDescargar={'tablaAspirantesEscondida'}
-        nombreTablaDescargada={'Datos de Aspirantes'}
         setProcesoSelect={setProcesoSelect}
         />
     <main className="contenedorPrincipal">
