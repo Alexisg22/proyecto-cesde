@@ -22,7 +22,7 @@ export const Principal = () => {
         'estadoAspirante': true,
         'diasUltGestión': false,
         'fechaUltGestión': true,
-        'tipificaciónUltGestión': true,
+        'gestionFinal': true,
         'celularAdicional': false,
         'sede': false,
         'programaFormación': false,
