@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 export const CheckboxBarraLateral = ({id, value, label, chequeado, onChange}) => {
+  
   return (
     <div>
       <input 

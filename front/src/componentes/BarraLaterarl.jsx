@@ -49,7 +49,7 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, 
           onChange={manejarSeleccionarTodo}
         />
         {Object.entries(visibilidadColumna).map(([key, value]) => (
-          (key !== 'nitEmpresa' || procesoSelect === 'empresas') && (
+          (key !== 'nitEmpresa' || procesoSelect === 'empresas' ||  procesoSelect === 'general' ) && (
             <CheckboxBarraLateral
               key={key}
               id={key}
