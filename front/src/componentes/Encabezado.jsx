@@ -7,7 +7,7 @@ import "../estilos/Encabezado.css"
 import { CSVLink } from "react-csv";
 
 
-export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonDescargarTabla, mostrarBotonInicio, textoEncabezado, vista, tablaDescargar, nombreTablaDescargada, setProcesoSelect, }) => {
+export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, textoEncabezado, vista, setProcesoSelect, }) => {
   const [modalAbierto, setModalAbierto] = useState(false)
 
 
