@@ -24,7 +24,7 @@ const encabezados = columnas.map(columna => ({
 const datos = [
   {
     idWolkvox: '3162840984',
-    nombreCompleto: 'Sofía Gómez',
+    nombreCompleto: 'Sofíaaaa Gómez',
     cantLlamadas: '3',
     cantMensajesDeTexto: '3',
     cantWhatsapps: '1',
@@ -34,7 +34,7 @@ const datos = [
   },
   {
     idWolkvox: '3162840984',
-    nombreCompleto: 'Sofía Gómez',
+    nombreCompleto: 'Sofía Ggggómez',
     cantLlamadas: '3',
     cantMensajesDeTexto: '3',
     cantWhatsapps: '1',
@@ -44,7 +44,7 @@ const datos = [
   },{
     idWolkvox: '3162840984',
     nombreCompleto: 'Sofía Gómez',
-    cantLlamadas: '3',
+    cantLlamadas: '33',
     cantMensajesDeTexto: '3',
     cantWhatsapps: '1',
     cantGestiones: '7',
