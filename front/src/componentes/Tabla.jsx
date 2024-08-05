@@ -3,7 +3,7 @@ import { BotonVerde } from './BotonVerde.jsx';
 import { HistoricoGestiones } from './HistoricoGestiones.jsx';
 import { ModalFiltrar } from './ModalFiltrar.jsx';
 import { Paginador } from './Paginador.jsx';
-import { obtenerTodosAspirantes } from '../assets/api/aspirantes.api.js';
+import { obtenerTodosAspirantes } from '../api/aspirantes.api.js';
 import { TarjetaAspirante } from './TarjetaAspirante.jsx';
 import '../estilos/Tabla.css';
 
@@ -128,11 +128,14 @@ export function Tabla({ visibilidadColumna}) {
     <HistoricoGestiones modalAbiertoHistorico={modalAbiertoHistorico}  cerrarModal={() =>{setModalAbiertoHistorico(false)}} />
     
     <ModalFiltrar modalAbierto={modalAbierto} cerrarModal={() =>{setModalAbierto(false)}} />
-
+          
     <div>
-      {aspirantes.map(aspirante => (
-          <TarjetaAspirante aspirante={aspirante} key={aspirante.id} />
+      {aspirantes.map((aspirante, index) => (
+          <TarjetaAspirante key={index} aspirante={aspirante}  />  
+          // console.log(aspirante.nombre_completo)
+
       ))}
+      
   </div>
   </>
   );
