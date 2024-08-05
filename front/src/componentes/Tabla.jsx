@@ -3,7 +3,7 @@ import { BotonVerde } from './BotonVerde.jsx';
 import { HistoricoGestiones } from './HistoricoGestiones.jsx';
 import { ModalFiltrar } from './ModalFiltrar.jsx';
 import { Paginador } from './Paginador.jsx';
-import { obtenerTodosAspirantes } from '../assets/api/aspirantes.api.js';
+// import { obtenerTodosAspirantes } from '../assets/api/aspirantes.api.js';
 import { TarjetaAspirante } from './TarjetaAspirante.jsx';
 import '../estilos/Tabla.css'
 
@@ -11,14 +11,14 @@ export function Tabla({ visibilidadColumna}) {
 
     const [aspirantes, setAspirantes] = useState([]);
 
-    useEffect( () => {
+    // useEffect( () => {
         
-        async function cargarEstudiantes () {
-            const respuesta = await obtenerTodosAspirantes(); 
-            setAspirantes(respuesta.data);
-        }
-        cargarEstudiantes();
-    }, [])
+    //     async function cargarEstudiantes () {
+    //         const respuesta = await obtenerTodosAspirantes(); 
+    //         setAspirantes(respuesta.data);
+    //     }
+    //     cargarEstudiantes();
+    // }, [])
 
   const columnas = [
     { id: 'celular', etiqueta: 'Celular' },
