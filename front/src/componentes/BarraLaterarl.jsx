@@ -3,6 +3,7 @@ import '../estilos/BarraLateral.css'
 import { CheckboxBarraLateral } from './CheckboxBarraLateral'
 import { useNavigate } from 'react-router-dom';
 import { BotonNavegar } from './BotonNavegar.jsx'
+import { BotonVerde } from './BotonVerde.jsx';
 
 export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, procesoSelect }) => {
   const navigate = useNavigate();
@@ -69,11 +70,11 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, 
           ide={'botonAsesores'}
         />
 
-        {/* <BotonNavegar
+        <BotonVerde
           // onClick={manejarClicBotonAgregarDatos}
-          texto={'Agregar datos'}
+          texto={'Agregar nueva tipificación'}
           ide={'botonAsesores'}
-        /> */}
+        />
 
       </div>
     </aside>
