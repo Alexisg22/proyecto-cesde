@@ -5,7 +5,7 @@ import { ModalFiltrar } from './ModalFiltrar.jsx';
 import { Paginador } from './Paginador.jsx';
 import { obtenerTodosAspirantes } from '../assets/api/aspirantes.api.js';
 import { TarjetaAspirante } from './TarjetaAspirante.jsx';
-import '../estilos/Tabla.css';
+import '../estilos/Tabla.css'
 
 export function Tabla({ visibilidadColumna}) {
 
