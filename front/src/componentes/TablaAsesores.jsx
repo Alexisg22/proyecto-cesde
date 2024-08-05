@@ -5,7 +5,7 @@ function TablaAsesores() {
     const columnas = [
       { id: 'idWolkvox', etiqueta: 'Id Wolkvox' },
       { id: 'nombreCompleto', etiqueta: 'Nombre Completo' },
-      { id: 'cantLlamadas', etiqueta: 'Cant. Llamadas' },
+      { id: 'cantidadLlamadas', etiqueta: 'Cant. Llamadas' },
       { id: 'cantMensajesDeTexto', etiqueta: 'Cant. SMS' },
       { id: 'cantWhatsapps', etiqueta: 'Cant. WhatsApps' },
       { id: 'cantGestiones', etiqueta: 'Cant. Gestiones' },
@@ -18,7 +18,7 @@ function TablaAsesores() {
       {
         idWolkvox: '3162840984',
         nombreCompleto: 'Sofía Gómez',
-        cantLlamadas: '3',
+        cantidadLlamadas: '3',
         cantMensajesDeTexto: '3',
         cantWhatsapps: '1',
         cantGestiones: '7',
@@ -28,7 +28,7 @@ function TablaAsesores() {
       {
         idWolkvox: '3162840984',
         nombreCompleto: 'Sofía Gómez',
-        cantLlamadas: '3',
+        cantidadLlamadas: '3',
         cantMensajesDeTexto: '3',
         cantWhatsapps: '1',
         cantGestiones: '7',
@@ -37,7 +37,7 @@ function TablaAsesores() {
       },{
         idWolkvox: '3162840984',
         nombreCompleto: 'Sofía Gómez',
-        cantLlamadas: '3',
+        cantidadLlamadas: '3',
         cantMensajesDeTexto: '3',
         cantWhatsapps: '1',
         cantGestiones: '7',
@@ -47,7 +47,7 @@ function TablaAsesores() {
       {
         idWolkvox: '3162840984',
         nombreCompleto: 'Sofía Gómez',
-        cantLlamadas: '3',
+        cantidadLlamadas: '3',
         cantMensajesDeTexto: '3',
         cantWhatsapps: '1',
         cantGestiones: '7',
@@ -57,7 +57,7 @@ function TablaAsesores() {
       {
         idWolkvox: '3162840984',
         nombreCompleto: 'Sofía Gómez',
-        cantLlamadas: '3',
+        cantidadLlamadas: '3',
         cantMensajesDeTexto: '3',
         cantWhatsapps: '1',
         cantGestiones: '7',
@@ -67,7 +67,7 @@ function TablaAsesores() {
       {
         idWolkvox: '3162840984',
         nombreCompleto: 'Sofía Gómez',
-        cantLlamadas: '3',
+        cantidadLlamadas: '3',
         cantMensajesDeTexto: '3',
         cantWhatsapps: '1',
         cantGestiones: '7',
@@ -77,7 +77,7 @@ function TablaAsesores() {
       {
         idWolkvox: '3162840984',
         nombreCompleto: 'Sofía Gómez',
-        cantLlamadas: '3',
+        cantidadLlamadas: '3',
         cantMensajesDeTexto: '3',
         cantWhatsapps: '1',
         cantGestiones: '7',
@@ -87,7 +87,7 @@ function TablaAsesores() {
       {
         idWolkvox: '3162840984',
         nombreCompleto: 'Jaime de jesus Gomez buenavista',
-        cantLlamadas: '3',
+        cantidadLlamadas: '3',
         cantMensajesDeTexto: '3',
         cantWhatsapps: '1',
         cantGestiones: '7',

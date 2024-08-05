@@ -14,7 +14,7 @@ export const Principal = () => {
         'celular': true,
         'nit': false,
         'nombreCompleto': true,
-        'cantLlamadas': true,
+        'cantidadLlamadas': true,
         'cantMensajesDeTexto': false,
         'cantWhatsapps': false,
         'cantGestiones': true,

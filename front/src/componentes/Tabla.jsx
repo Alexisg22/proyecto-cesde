@@ -6,7 +6,6 @@ import { ModalFiltrar } from './ModalFiltrar.jsx';
 import { Paginador } from './Paginador.jsx';
 import { CSVLink } from "react-csv";
 import { obtenerTodosAspirantes } from '../api/aspirantes.api.js';
-import { TarjetaAspirante } from './TarjetaAspirante.jsx';
 import '../estilos/Tabla.css';
 
 function Tabla({ visibilidadColumna, procesoSelect} ) {
@@ -14,21 +13,55 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
     const [aspirantes, setAspirantes] = useState([]);
 
 
-
     useEffect( () => {
         
-        async function cargarEstudiantes () {
-            const respuesta = await obtenerTodosAspirantes(); 
-            setAspirantes(respuesta.data)
+        async function cargarAspirantes () {
+            const respuesta = await obtenerTodosAspirantes();
+            const aspirantes = respuesta.data;
+
+            const mapeado = aspirantes.map((aspirante) => ({
+          
+              celular: aspirante.celular,
+              nit : aspirante.nit,
+              nombreCompleto : aspirante.nombre_completo,
+              cantidadLlamadas: aspirante.cantidad_llamadas,
+              cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
+              cantWhatsapps: aspirante.cantidad_whatsapp,
+              cantGestiones: aspirante.cantidad_gestiones,
+              mejorGestión: 'No interesado',
+              estadoAspirante: aspirante.estado_aspirante,
+              diasUltGestión: '1',
+              fechaUltGestión: aspirante.fecha_ultima_gestion,
+              tipificaciónUltGestión: aspirante.estado_ultima_gestion,
+              celularAdicional: aspirante.celular_adicional,
+              empresa: 'Andes 1',
+              sede: 'Rionegro',
+              programaFormación: 'Programador',
+              
+              
+            }))
+            setAspirantes(mapeado)
         }
-        cargarEstudiantes();
+        cargarAspirantes();
     }, [])
+
+    useEffect(() => {
+      if (procesoSelect === 'general') {
+        setAspirantes(aspirantes);
+      } else if (procesoSelect === 'empresas') {
+        setAspirantes(aspirantes.filter(aspirante => aspirante.empresa)); // Adjust filter as needed
+      } else if (procesoSelect === 'extensiones') {
+        setAspirantes(aspirantes.filter(aspirante => aspirante.sede)); // Adjust filter as needed
+      } else if (procesoSelect === 'tecnicos') {
+        setAspirantes(aspirantes.filter(aspirante => aspirante.programaFormación)); // Adjust filter as needed
+      }
+    }, [procesoSelect, aspirantes]);
 
   const columnas = [
     { id: 'celular', etiqueta: 'Celular' },
     { id: 'nit', etiqueta: 'Nit' },
     { id: 'nombreCompleto', etiqueta: 'Nombre Completo' },
-    { id: 'cantLlamadas', etiqueta: 'Cant. Llamadas' },
+    { id: 'cantidadLlamadas', etiqueta: 'Cant. Llamadas' },
     { id: 'cantMensajesDeTexto', etiqueta: 'Cant. SMS' },
     { id: 'cantWhatsapps', etiqueta: 'Cant. WhatsApps' },
     { id: 'cantGestiones', etiqueta: 'Cant. Gestiones' },
@@ -49,229 +82,14 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
     key: columna.id
   }));
   
-
-  const [datos, setDatos] = useState([
-    
-  ])
-
-  useEffect(()=>{
-    
-    if(procesoSelect == 'general'){
-      setDatos([
-        {
-          celular: '3162840984',
-          nit: '34567890',
-          nombreCompleto: 'Jaime de jesus Gomez buenavista',
-          cantLlamadas: '3',
-          cantMensajesDeTexto: '3',
-          cantWhatsapps: '1',
-          cantGestiones: '6',
-          mejorGestión: 'No interesado',
-          estadoAspirante: 'Cancelado',
-          diasUltGestión: '1',
-          fechaUltGestión: '23/07/2024',
-          tipificaciónUltGestión: 'No interesado',
-          celularAdicional: '3002106542',
-          empresa: 'Andes 1',
-          sede: 'Rionegro',
-          programaFormación: 'Programador',
-        },
-        {
-          celular: '3162840984',
-          nit: '34567890',
-          nombreCompleto: 'Sofía Gómez',
-          cantLlamadas: '3',
-          cantMensajesDeTexto: '2',
-          cantWhatsapps: '1',
-          cantGestiones: '6',
-          mejorGestión: 'No interesado',
-          estadoAspirante: 'Liquidado',
-          diasUltGestión: '1',
-          fechaUltGestión: '23/07/2024',
-          tipificaciónUltGestión: 'No interesado',
-          celularAdicional: '3002106542',
-          empresa: 'Andes 2',
-          sede: 'Rionegro',
-          programaFormación: 'Programador',
-        },{
-          celular: '3162840984',
-          nit: '34567890',
-          nombreCompleto: 'Sofía Gómez',
-          cantLlamadas: '3',
-          cantMensajesDeTexto: '2',
-          cantWhatsapps: '1',
-          cantGestiones: '6',
-          mejorGestión: 'No interesado',
-          estadoAspirante: 'Matriculado',
-          diasUltGestión: '1',
-          fechaUltGestión: '23/07/2024',
-          tipificaciónUltGestión: 'No interesado',
-          celularAdicional: '3002106542',
-          empresa: 'Andes 3',
-          sede: 'Rionegro',
-          programaFormación: 'Programador',
-        },
-        {
-          celular: '3162840984',
-          nit: '34567890',
-          nombreCompleto: 'Sofía Gómez',
-          cantLlamadas: '3',
-          cantMensajesDeTexto: '2',
-          cantWhatsapps: '1',
-          cantGestiones: '6',
-          mejorGestión: 'No interesado',
-          estadoAspirante: 'En gestión',
-          diasUltGestión: '1',
-          fechaUltGestión: '23/07/2024',
-          tipificaciónUltGestión: 'No interesado',
-          celularAdicional: '3002106542',
-          empresa: 'Andes 2',
-          sede: 'Rionegro',
-          programaFormación: 'Programador',
-        },{
-          celular: '3162840984',
-          nit: '34567890',
-          nombreCompleto: 'Sofía Gómez',
-          cantLlamadas: '3',
-          cantMensajesDeTexto: '2',
-          cantWhatsapps: '1',
-          cantGestiones: '6',
-          mejorGestión: 'No interesado',
-          estadoAspirante: 'Sin gestión',
-          diasUltGestión: '1',
-          fechaUltGestión: '23/07/2024',
-          tipificaciónUltGestión: 'No interesado',
-          celularAdicional: '3002106542',
-          empresa: 'Andes 3',
-          sede: 'Rionegro',
-          programaFormación: 'Programador',
-        }
-      ])
-    }
-    if(procesoSelect == 'empresas'){
-      setDatos([
-        {
-          celular: '3162840984',
-          nit: '34567890',
-          nombreCompleto: 'Jaime de jesus Gomez buenavista',
-          cantLlamadas: '3',
-          cantMensajesDeTexto: '3',
-          cantWhatsapps: '1',
-          cantGestiones: '6',
-          mejorGestión: 'No interesado',
-          estadoAspirante: 'Cancelado',
-          diasUltGestión: '1',
-          fechaUltGestión: '23/07/2024',
-          tipificaciónUltGestión: 'No interesado',
-          celularAdicional: '3002106542',
-          empresa: 'Andes 1',
-          sede: 'Rionegro',
-          programaFormación: 'Programador',
-        },
-        {
-          celular: '3162840984',
-          nit: '34567890',
-          nombreCompleto: 'Sofía Gómez',
-          cantLlamadas: '3',
-          cantMensajesDeTexto: '2',
-          cantWhatsapps: '1',
-          cantGestiones: '6',
-          mejorGestión: 'No interesado',
-          estadoAspirante: 'Liquidado',
-          diasUltGestión: '1',
-          fechaUltGestión: '23/07/2024',
-          tipificaciónUltGestión: 'No interesado',
-          celularAdicional: '3002106542',
-          empresa: 'Andes 2',
-          sede: 'Rionegro',
-          programaFormación: 'Programador',
-      }])
-    }else if(procesoSelect == 'extensiones'){
-      setDatos([
-        {
-          celular: '3162840984',
-          nit: '34567890',
-          nombreCompleto: 'Jaime de jesus Gomez buenavista',
-          cantLlamadas: '3',
-          cantMensajesDeTexto: '3',
-          cantWhatsapps: '1',
-          cantGestiones: '6',
-          mejorGestión: 'No interesado',
-          estadoAspirante: 'Cancelado',
-          diasUltGestión: '1',
-          fechaUltGestión: '23/07/2024',
-          tipificaciónUltGestión: 'No interesado',
-          celularAdicional: '3002106542',
-          empresa: 'Andes 1',
-          sede: 'Rionegro',
-          programaFormación: 'Programador',
-        },
-        {
-          celular: '3162840984',
-          nit: '34567890',
-          nombreCompleto: 'Sofía Gómez',
-          cantLlamadas: '3',
-          cantMensajesDeTexto: '2',
-          cantWhatsapps: '1',
-          cantGestiones: '6',
-          mejorGestión: 'No interesado',
-          estadoAspirante: 'Liquidado',
-          diasUltGestión: '1',
-          fechaUltGestión: '23/07/2024',
-          tipificaciónUltGestión: 'No interesado',
-          celularAdicional: '3002106542',
-          empresa: 'Andes 2',
-          sede: 'Rionegro',
-          programaFormación: 'Programador',
-      },
-      {
-        celular: '3162840984',
-        nit: '34567890',
-        nombreCompleto: 'Sofía Gómez',
-        cantLlamadas: '3',
-        cantMensajesDeTexto: '2',
-        cantWhatsapps: '1',
-        cantGestiones: '6',
-        mejorGestión: 'No interesado',
-        estadoAspirante: 'Liquidado',
-        diasUltGestión: '1',
-        fechaUltGestión: '23/07/2024',
-        tipificaciónUltGestión: 'No interesado',
-        celularAdicional: '3002106542',
-        empresa: 'Andes 2',
-        sede: 'Rionegro',
-        programaFormación: 'Programador',
-    }])
-    }else if(procesoSelect == 'tecnicos'){
-      setDatos([
-        {
-          celular: '3162840984',
-          nit: '34567890',
-          nombreCompleto: 'Jaime de jesus Gomez buenavista',
-          cantLlamadas: '3',
-          cantMensajesDeTexto: '3',
-          cantWhatsapps: '1',
-          cantGestiones: '6',
-          mejorGestión: 'No interesado',
-          estadoAspirante: 'Cancelado',
-          diasUltGestión: '1',
-          fechaUltGestión: '23/07/2024',
-          tipificaciónUltGestión: 'No interesado',
-          celularAdicional: '3002106542',
-          empresa: 'Andes 1',
-          sede: 'Rionegro',
-          programaFormación: 'Programador',
-        }])
-    }
-  }, [])
   const [cantiadFilas, setCantidadFilas] = useState(10)
   const [paginaActual, setPaginaActual] = useState(1)
 
   const  indexFinal = paginaActual * cantiadFilas
   const  indexInicial = indexFinal - cantiadFilas  
   
-  const nAspirantesPorPagina = datos.slice(indexInicial, indexFinal)
-  const numeroPaginas = Math.ceil(datos.length / cantiadFilas)
+  const nAspirantesPorPagina = aspirantes.slice(indexInicial, indexFinal)
+  const numeroPaginas = Math.ceil(aspirantes.length / cantiadFilas)
 
   const [modalAbierto, setModalAbierto] = useState(false)
   const [modalAbiertoHistorico, setModalAbiertoHistorico] = useState(false)
@@ -288,7 +106,7 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
         <div className='filtrar'>
         <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true} texto={"Filtrar"} ide={'botonFiltrar'}/>
         </div>
-        <CSVLink className="descargar" data={datos} headers={encabezados} filename="datos.csv">Exportar a CSV</CSVLink>
+        <CSVLink className="descargar" data={aspirantes} headers={encabezados} filename="datos.csv">Exportar a CSV</CSVLink>
       </section>
       <section className="cuerpoTabla">
         <table className='tabla'>
@@ -312,7 +130,7 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
                       {columna.id === 'estadoAspirante' ? (
                         <p className={row[columna.id].toLowerCase()}>{row[columna.id]}</p>
                       ) : (
-                        row[columna.id]
+                        row[columna.id] 
                       )}
                     </td>
                   )
@@ -331,15 +149,6 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
     <HistoricoGestiones modalAbiertoHistorico={modalAbiertoHistorico}  cerrarModal={() =>{setModalAbiertoHistorico(false)}} />
     
     <ModalFiltrar modalAbierto={modalAbierto} cerrarModal={() =>{setModalAbierto(false)}} />
-          
-    <div>
-      {aspirantes.map((aspirante, index) => (
-          <TarjetaAspirante key={index} aspirante={aspirante}  />  
-          // console.log(aspirante.nombre_completo)
-
-      ))}
-      
-  </div>
   </>
   );
 }
