@@ -32,7 +32,6 @@ export const Principal = () => {
     };
 
     useEffect(() => {
-        console.log(procesoSelect)
         if(procesoSelect === 'empresas' || procesoSelect === 'general'){
             setVisibilidadColumna(prevState => ({
                 ...prevState,
