@@ -126,35 +126,36 @@ export const Principal = () => {
       setTablaKey(prevKey => prevKey + 1)
   }, [visibilidadColumna])
 
-    return (
-        <div>
-            <Encabezado 
-                mostrarBotonSubirBD={true}
-                mostrarBotonDescargarBD={true}
-                mostrarBotonInicio={false}
-                textoEncabezado={'Aspirantes'}
-                ide={'aspirantes'}
-                vista={'aspirantesFiltro'}
-                setProcesoSelect={setProcesoSelect}
-            />
-            <main className="contenedorPrincipal">
-                <BarraLaterarl 
-                    key={barraLateralKey}
-                    onCambioVisibilidadColumna={manejarCambioVisibilidadColumna} 
-                    visibilidadInicial={visibilidadColumna} 
-                    procesoSelect={procesoSelect}
-                />
-                <div className="contenedorSecundario">
-                    <Tabla 
-                        key={tablaKey}
-                        visibilidadColumna={visibilidadColumna}  
-                        procesoSelect={procesoSelect}
-                    />
-                    <Estadisticas  estadisticas={estadisticas} />
-                </div>
-            </main>
-        </div>
-    )
+
+  return (
+    <div>
+        <Encabezado 
+        mostrarBotonSubirBD={true}
+        mostrarBotonInicio={false}
+        textoEncabezado={'Aspirantes'}
+        ide={'aspirantes'}
+        vista={'aspirantesFiltro'}
+        setProcesoSelect={setProcesoSelect}
+        />
+    <main className="contenedorPrincipal">
+      <BarraLaterarl 
+      key={barraLateralKey}
+      onCambioVisibilidadColumna={manejarCambioVisibilidadColumna} 
+      visibilidadInicial={visibilidadColumna} 
+      procesoSelect={procesoSelect}
+      />
+      <div className="contenedorSecundario">
+        <Tabla key={tablaKey}
+        visibilidadColumna={visibilidadColumna}
+        procesoSelect={procesoSelect}  
+        />
+        <Estadisticas
+        estadisticas={estadisticas}
+         />
+      </div>
+    </main>
+    </div>
+  )
 }
 
 export default Principal

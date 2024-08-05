@@ -4,6 +4,7 @@ import { BotonVerde } from './BotonVerde.jsx';
 import { HistoricoGestiones } from './HistoricoGestiones.jsx';
 import { ModalFiltrar } from './ModalFiltrar.jsx';
 import { Paginador } from './Paginador.jsx';
+import { CSVLink } from "react-csv";
 import { obtenerTodosAspirantes } from '../api/aspirantes.api.js';
 import { TarjetaAspirante } from './TarjetaAspirante.jsx';
 import '../estilos/Tabla.css';
@@ -42,6 +43,12 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
     { id: 'programaFormación', etiqueta: 'Programa de Formación' },
     { id: 'nitEmpresa', etiqueta: 'Nit empresa' },
   ];
+
+  const encabezados = columnas.map(columna => ({
+    label: columna.etiqueta,
+    key: columna.id
+  }));
+  
 
   const [datos, setDatos] = useState([
     
@@ -257,45 +264,6 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
         }])
     }
   }, [])
-  // if(procesoSelect == 'empresas'){
-  //   setDatos([
-  //     {
-  //       celular: '3162840984',
-  //       nit: '34567890',
-  //       nombreCompleto: 'Jaime de jesus Gomez buenavista',
-  //       cantLlamadas: '3',
-  //       cantMensajesDeTexto: '3',
-  //       cantWhatsapps: '1',
-  //       cantGestiones: '6',
-  //       mejorGestión: 'No interesado',
-  //       estadoAspirante: 'Cancelado',
-  //       diasUltGestión: '1',
-  //       fechaUltGestión: '23/07/2024',
-  //       tipificaciónUltGestión: 'No interesado',
-  //       celularAdicional: '3002106542',
-  //       empresa: 'Andes 1',
-  //       sede: 'Rionegro',
-  //       programaFormación: 'Programador',
-  //     },
-  //     {
-  //       celular: '3162840984',
-  //       nit: '34567890',
-  //       nombreCompleto: 'Sofía Gómez',
-  //       cantLlamadas: '3',
-  //       cantMensajesDeTexto: '2',
-  //       cantWhatsapps: '1',
-  //       cantGestiones: '6',
-  //       mejorGestión: 'No interesado',
-  //       estadoAspirante: 'Liquidado',
-  //       diasUltGestión: '1',
-  //       fechaUltGestión: '23/07/2024',
-  //       tipificaciónUltGestión: 'No interesado',
-  //       celularAdicional: '3002106542',
-  //       empresa: 'Andes 2',
-  //       sede: 'Rionegro',
-  //       programaFormación: 'Programador',
-  //     }])
-  // }
   const [cantiadFilas, setCantidadFilas] = useState(10)
   const [paginaActual, setPaginaActual] = useState(1)
 
@@ -322,6 +290,7 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
         </div>
       </section>
       <section className="cuerpoTabla">
+      <CSVLink data={datos} headers={encabezados} filename="datos.csv">Exportar a CSV</CSVLink>
         <table className='tabla'>
           <thead className='cabezaTabla'>
             <tr>
@@ -359,7 +328,6 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
         numeroPaginas = {numeroPaginas}
         />
     </main>
-
     <HistoricoGestiones modalAbiertoHistorico={modalAbiertoHistorico}  cerrarModal={() =>{setModalAbiertoHistorico(false)}} />
     
     <ModalFiltrar modalAbierto={modalAbierto} cerrarModal={() =>{setModalAbierto(false)}} />
