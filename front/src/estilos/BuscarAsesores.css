@@ -19,12 +19,12 @@
 }
 
 .contenedorEntradaBusqueda input {
-    width: 100%;
+    width: 90%;
     padding: 0 .5rem 0 .3rem;
     background-color: transparent;
     border: none;
     outline: none;
-    height: 3em;
+    height: 2em;
 }
 
 .botonBuscar {
@@ -61,7 +61,7 @@
 }
 
 .contenedorEntradaBusqueda {
-    margin-left: 10vw;
+    margin-left: 7vw;
     margin-right: 5rem;
 }
 
@@ -102,3 +102,14 @@
     color: #000000;
 }
 
+.contenedorBuscarAsesores{
+    display: flex;
+    justify-content: center;
+}
+
+.descargar{
+    width: 10em;
+    height: 2.3em;
+    margin-right: 3.2em;
+    margin-bottom: 5px;
+}
