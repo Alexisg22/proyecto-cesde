@@ -11,11 +11,13 @@ export function Tabla({ visibilidadColumna}) {
 
     const [aspirantes, setAspirantes] = useState([]);
 
+
+
     useEffect( () => {
         
         async function cargarEstudiantes () {
             const respuesta = await obtenerTodosAspirantes(); 
-            setAspirantes(respuesta.data);
+            setAspirantes(respuesta.data)
         }
         cargarEstudiantes();
     }, [])
