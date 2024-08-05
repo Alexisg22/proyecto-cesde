@@ -4,10 +4,8 @@ import { CheckboxBarraLateral } from './CheckboxBarraLateral'
 import { useNavigate } from 'react-router-dom';
 import { BotonNavegar } from './BotonNavegar.jsx'
 
-
-export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial }) => {
-
-  const navigate = useNavigate(); // Hook para navegación
+export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, procesoSelect }) => {
+  const navigate = useNavigate();
   const [visibilidadColumna, setVisibilidadColumna] = useState(visibilidadInicial)
   const [todoSeleccionado, setTodoSeleccionado] = useState(false)
 
@@ -36,7 +34,7 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial }
   };
 
   const manejarClicBotonAsesores = () => {
-    navigate('/asesores'); // Navega a la ruta /asesores
+    navigate('/asesores');
   };
   
   return (
@@ -51,19 +49,20 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial }
           onChange={manejarSeleccionarTodo}
         />
         {Object.entries(visibilidadColumna).map(([key, value]) => (
-          <CheckboxBarraLateral
-            key={key}
-            id={key}
-            value={key}
-            label={key.replace(/([A-Z])/g, ' $1').replace(/^./g, str => str.toUpperCase())}
-            chequeado={value}
-            onChange={() => manejarCambioCasillaVerificacion(key)}
-          />
+          (key !== 'nitEmpresa' || procesoSelect === 'empresas' ||  procesoSelect === 'general' ) && (
+            <CheckboxBarraLateral
+              key={key}
+              id={key}
+              value={key}
+              label={key === 'nitEmpresa' ? 'Nit de empresa' : key.replace(/([A-Z])/g, ' $1').replace(/^./g, str => str.toUpperCase())}
+              chequeado={value}
+              onChange={() => manejarCambioCasillaVerificacion(key)}
+            />
+          )
         ))}
       </form>
       <hr className='hrBarraNavegaion'/>
       <div className='btnAsesores'>
-
         <BotonNavegar
           onClick={manejarClicBotonAsesores}
           texto={'Asesores'}

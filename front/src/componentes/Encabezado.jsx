@@ -6,8 +6,7 @@ import { BotonNavegar } from './BotonNavegar.jsx';
 import "../estilos/Encabezado.css"
 
 
-export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonDescargarBD, mostrarBotonInicio, textoEncabezado, mostrarBotonDescargarTabla, vista }) => {
-
+export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, textoEncabezado, vista, setProcesoSelect }) => {
   const [modalAbierto, setModalAbierto] = useState(false)
 
 
@@ -17,6 +16,9 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonDescargarBD, 
     navigate('/'); // Navega a la ruta /asesores
   };
 
+  const seleccionarProceso = (e) =>{
+    setProcesoSelect(e.target.value)
+  }
 
   return (
     <header>
@@ -27,8 +29,8 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonDescargarBD, 
 
         <div>
           <form id={vista}>
-            <select className='filtroAspirante'>
-              <option value="">General</option>
+            <select className='filtroAspirante' onChange={seleccionarProceso}>
+              <option value="general">General</option>
               <option value="empresas">Empresas</option>
               <option value="tecnicos">Técnicos</option>
               <option value="extensiones">Extensiones</option>             
@@ -48,14 +50,6 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonDescargarBD, 
             )}
           </div>
 
-          <div className='btnDescarga'>
-            {mostrarBotonDescargarBD && (
-              <BotonVerde
-                texto={"Descargar BD"}
-                ide={'botonBlanco'} />
-            )}
-          </div>
-
           <div className='contenedorInicio'>
             {mostrarBotonInicio && (
               <BotonNavegar
@@ -66,14 +60,6 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonDescargarBD, 
             )}
           </div>
 
-          <div className='contenedorDescargarTabla'>
-            {mostrarBotonDescargarTabla && (
-              <BotonNavegar
-                texto={'Descargar tabla'}
-                ide={'botonDescargarTabla'}
-              />
-            )}
-          </div>
         </div>
 
       </div>

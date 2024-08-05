@@ -15,6 +15,8 @@ export const Asesores = () => {
           textoEncabezado={'Asesores'}
           ide={'asesores'}
           vista={'asesoresFiltro'}
+          tablaDescargar={'tablaAsesores'}
+          nombreTablaDescargada={'Datos de Asesores'}
         />
       </div>
 

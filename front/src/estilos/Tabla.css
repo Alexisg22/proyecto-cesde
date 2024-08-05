@@ -255,14 +255,6 @@ main.tabla {
     border-radius: 10px;
 }
 
-/* tbody td:first-child{
-    left: 0; 
-    position: sticky;
-    background-color: white;
+.tablaEscondida{
+    display: none;
 }
-
-tbody td:nth-child(3) {
-    left: 6rem; 
-    position: sticky;
-    background-color: white;
-} */
