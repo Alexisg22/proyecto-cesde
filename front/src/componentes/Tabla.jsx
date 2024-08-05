@@ -13,8 +13,6 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
 
     const [aspirantes, setAspirantes] = useState([]);
 
-
-
     useEffect( () => {
         
         async function cargarEstudiantes () {
@@ -44,7 +42,9 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
     { id: 'nitEmpresa', etiqueta: 'Nit empresa' },
   ];
 
-  const encabezados = columnas.map(columna => ({
+  const encabezados = columnas
+  .filter(columna => visibilidadColumna[columna.id])
+  .map(columna => ({
     label: columna.etiqueta,
     key: columna.id
   }));
@@ -264,17 +264,28 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
         }])
     }
   }, [])
-  const [cantiadFilas, setCantidadFilas] = useState(10)
+  const [cantidadFilas, setCantidadFilas] = useState(10)
   const [paginaActual, setPaginaActual] = useState(1)
 
-  const  indexFinal = paginaActual * cantiadFilas
-  const  indexInicial = indexFinal - cantiadFilas  
+  const  indexFinal = paginaActual * cantidadFilas
+  const  indexInicial = indexFinal - cantidadFilas  
   
   const nAspirantesPorPagina = datos.slice(indexInicial, indexFinal)
-  const numeroPaginas = Math.ceil(datos.length / cantiadFilas)
+  const numeroPaginas = Math.ceil(datos.length / cantidadFilas)
 
   const [modalAbierto, setModalAbierto] = useState(false)
   const [modalAbiertoHistorico, setModalAbiertoHistorico] = useState(false)
+
+  const datosFiltrados = datos.map(row => {
+    const rowFiltrado = {};
+    columnas.forEach(columna => {
+      if (visibilidadColumna[columna.id]) {
+        rowFiltrado[columna.id] = row[columna.id];
+      }
+    });
+    return rowFiltrado;
+  });
+
 
   return (
   <>
@@ -288,7 +299,7 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
         <div className='filtrar'>
         <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true} texto={"Filtrar"} ide={'botonFiltrar'}/>
         </div>
-        <CSVLink className="descargar" data={datos} headers={encabezados} filename="Aspirantes.csv">Exportar a CSV</CSVLink>
+        <CSVLink className="descargar" data={datosFiltrados} headers={encabezados} filename="Aspirantes.csv">Exportar a CSV</CSVLink>
       </section>
       <section className="cuerpoTabla">
         <table className='tabla'>
@@ -331,14 +342,6 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
     <HistoricoGestiones modalAbiertoHistorico={modalAbiertoHistorico}  cerrarModal={() =>{setModalAbiertoHistorico(false)}} />
     
     <ModalFiltrar modalAbierto={modalAbierto} cerrarModal={() =>{setModalAbierto(false)}} />
-          
-    <div>
-      {aspirantes.map((aspirante, index) => (
-          <TarjetaAspirante key={index} aspirante={aspirante}  />  
-          
-          
-      ))}
-  </div>
   </>
   );
 }
