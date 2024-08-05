@@ -4,7 +4,6 @@ import { ModalSubirBD } from './ModalSubirBD.jsx'
 import { useNavigate } from 'react-router-dom';
 import { BotonNavegar } from './BotonNavegar.jsx';
 import "../estilos/Encabezado.css"
-import { CSVLink } from "react-csv";
 
 
 export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, textoEncabezado, vista, setProcesoSelect, }) => {
