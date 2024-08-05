@@ -4,10 +4,9 @@ import { ModalSubirBD } from './ModalSubirBD.jsx'
 import { useNavigate } from 'react-router-dom';
 import { BotonNavegar } from './BotonNavegar.jsx';
 import "../estilos/Encabezado.css"
-import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 
-export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonDescargarTabla, mostrarBotonInicio, textoEncabezado, vista, tablaDescargar, nombreTablaDescargada, setProcesoSelect }) => {
+export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, textoEncabezado, vista, setProcesoSelect, }) => {
   const [modalAbierto, setModalAbierto] = useState(false)
 
 
@@ -61,19 +60,6 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonDescargarTabl
             )}
           </div>
 
-          <div className='btnDescarga'>
-            {mostrarBotonDescargarTabla && (
-              <ReactHTMLTableToExcel
-              id="botonExportarExcel"
-              className="btn btn-descargar"
-              table={tablaDescargar}
-              filename={nombreTablaDescargada}
-              sheet="pagina 1"
-              buttonText="Exportar a Excel"
-              />
-             
-            )}
-          </div>
         </div>
 
       </div>
