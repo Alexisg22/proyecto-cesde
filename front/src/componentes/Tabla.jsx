@@ -335,10 +335,9 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
     <div>
       {aspirantes.map((aspirante, index) => (
           <TarjetaAspirante key={index} aspirante={aspirante}  />  
-          // console.log(aspirante.nombre_completo)
-
+          
+          
       ))}
-      
   </div>
   </>
   );
