@@ -4,6 +4,7 @@ import { CheckboxBarraLateral } from './CheckboxBarraLateral'
 import { useNavigate } from 'react-router-dom';
 import { BotonNavegar } from './BotonNavegar.jsx'
 import { BotonVerde } from './BotonVerde.jsx';
+import { ModalAgregarTipoficacion } from './ModalAgregarTipificacion.jsx';
 
 export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, procesoSelect }) => {
   const navigate = useNavigate();
@@ -37,8 +38,11 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, 
   const manejarClicBotonAsesores = () => {
     navigate('/asesores');
   };
+
+  const [modalAbierto, setModalAbierto] = useState(false)
   
   return (
+    <>
     <aside className='barraLateral'>
       <h1 className='tituloBarraNavegacion'>Datos aspirantes</h1>
       <form className='formularioCheckbox'>
@@ -74,9 +78,15 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, 
           // onClick={manejarClicBotonAgregarDatos}
           texto={'Agregar nueva tipificación'}
           ide={'botonAsesores'}
+          setModalAbierto={setModalAbierto}
+          modalAbierto={modalAbierto}
         />
 
       </div>
     </aside>
+    <ModalAgregarTipoficacion  modalAbierto={modalAbierto}
+        cerrarModal={() => { setModalAbierto(false) }}
+    />
+    </>
   )
 }
