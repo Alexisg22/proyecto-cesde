@@ -288,7 +288,7 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
         <div className='filtrar'>
         <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true} texto={"Filtrar"} ide={'botonFiltrar'}/>
         </div>
-        <CSVLink className="descargar" data={datos} headers={encabezados} filename="datos.csv">Exportar a CSV</CSVLink>
+        <CSVLink className="descargar" data={datos} headers={encabezados} filename="Aspirantes.csv">Exportar a CSV</CSVLink>
       </section>
       <section className="cuerpoTabla">
         <table className='tabla'>

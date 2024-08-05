@@ -50,7 +50,7 @@ const BuscarAsesores = ({ onBuscar, datos, encabezados }) => {
           </div>
         </div> 
       </div>
-      <CSVLink className="descargar" data={datos} headers={encabezados} filename="datos.csv">Exportar a CSV</CSVLink>
+      <CSVLink className="descargar" data={datos} headers={encabezados} filename="Asesores.csv">Exportar a CSV</CSVLink>
     </div>
   )
 }
