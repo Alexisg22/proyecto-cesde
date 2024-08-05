@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import "../estilos/BuscarAsesores.css"
+import { CSVLink } from "react-csv";
 
-const BuscarAsesores = ({ onBuscar }) => {
+const BuscarAsesores = ({ onBuscar, datos, encabezados }) => {
   const [terminoBusqueda, setTerminoBusqueda] = useState('')
   const [fechaInicio, setFechaInicio] = useState('')
   const [fechaFin, setFechaFin] = useState('')
@@ -47,8 +48,9 @@ const BuscarAsesores = ({ onBuscar }) => {
               className="fechaEntrada"
             />
           </div>
-        </div>
+        </div> 
       </div>
+      <CSVLink className="descargar" data={datos} headers={encabezados} filename="Asesores.csv">Exportar a CSV</CSVLink>
     </div>
   )
 }

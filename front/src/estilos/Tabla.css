@@ -258,3 +258,26 @@ main.tabla {
 .tablaEscondida{
     display: none;
 }
+
+.filtrar-exportar {
+    display: flex;
+    gap: 10px; /* Ajusta este valor según el espacio que quieras entre los botones */
+    align-items: center;
+  }
+  
+.descargar {
+    background-color: #13A438; 
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 0.5rem 0.7rem; 
+    border: solid 1px black;
+    margin-top: 0.5em;
+    text-decoration: none;
+    margin-right: 0.8em;
+  }
+  
+.descargar:hover {
+    background-color: white;
+        color: #13A438;
+        cursor: pointer;
+  }
