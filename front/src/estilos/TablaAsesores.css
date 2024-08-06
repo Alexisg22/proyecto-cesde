@@ -1,0 +1,86 @@
+    .cuerpoTablaAsesores {
+    width: 95%;
+    max-height: calc(89% - 1.6rem);
+    margin: .8rem auto;
+    border-radius: .6rem;
+    overflow: auto;
+    overflow: overlay;
+    
+}
+
+.cuerpoTablaAsesores::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+.cuerpoTablaAsesores::-webkit-scrollbar-thumb {
+    border-radius: .5rem;
+    background-color: #0004;
+    visibility: hidden;
+}
+
+.cuerpoTablaAsesores:hover::-webkit-scrollbar-thumb {
+    visibility: visible;
+}
+
+.cuerpoTablaAsesores tr:nth-child(even) {
+    background-color: #e3e3e3;
+}
+
+.tablaAsesores {
+    width: 100%;
+}
+
+.tablaAsesores, th, td {
+    border-collapse: collapse;
+    padding: 1rem;
+    text-align: left;
+}
+
+.cabezaTablaAsesores th {
+    position: sticky;
+    top: 0; 
+    background-color: #d5d1defe; 
+    cursor: pointer;
+    text-transform: capitalize;
+    z-index: 1; 
+    
+}
+
+.cuerpoTablaAsesores tr.hide td img {
+    width: 0;
+    height: 0;
+    transition: .2s ease-in-out .5s;
+}
+
+
+.cabezaTablaAasesores th span.icon-arrow {
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 50%;
+    border: 1.4px solid transparent;
+    text-align: center;
+    font-size: 1rem;
+    margin-left: .5rem;
+    transition: .2s ease-in-out;
+}
+
+.cabezaTablaAsesores th:hover span.icon-arrow {
+    border: 1.4px solid #6c00bd;
+}
+
+.cabezaTablaAsesores th:hover {
+    color: #13A438;
+}
+
+.cabezaTablaAsesores th.active span.icon-arrow {
+    background-color: #6c00bd;
+    color: #fff;
+}
+
+.filaTablaAsesores:hover{
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 10px;
+}

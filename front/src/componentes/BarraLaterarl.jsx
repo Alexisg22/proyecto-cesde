@@ -1,12 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../estilos/BarraLateral.css'
 import { CheckboxBarraLateral } from './CheckboxBarraLateral'
-import { BotonVerde } from './BotonVerde'
-import { ModalAsesores } from './ModalAsesores'
+import { useNavigate } from 'react-router-dom';
+import { BotonNavegar } from './BotonNavegar.jsx'
 
-export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial }) => {
+export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, procesoSelect }) => {
+  const navigate = useNavigate();
   const [visibilidadColumna, setVisibilidadColumna] = useState(visibilidadInicial)
-  const [modalAbierto, setModalAbierto] = useState(false)
+  const [todoSeleccionado, setTodoSeleccionado] = useState(false)
+
+  useEffect(() => {
+    const todasSeleccionadas = Object.values(visibilidadColumna).every(value => value)
+    setTodoSeleccionado(todasSeleccionadas)
+  }, [visibilidadColumna])
 
   const manejarCambioCasillaVerificacion = (id) => {
     setVisibilidadColumna(prev => {
@@ -16,35 +22,60 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial }
     });
   };
 
+  const manejarSeleccionarTodo = () => {
+    const nuevoEstado = !todoSeleccionado
+    const nuevaVisibilidad = Object.keys(visibilidadColumna).reduce((acc, key) => {
+      acc[key] = nuevoEstado;
+      return acc;
+    }, {});
+    setVisibilidadColumna(nuevaVisibilidad);
+    onCambioVisibilidadColumna(nuevaVisibilidad);
+    setTodoSeleccionado(nuevoEstado);
+  };
+
+  const manejarClicBotonAsesores = () => {
+    navigate('/asesores');
+  };
+  
   return (
     <aside className='barraLateral'>
       <h1 className='tituloBarraNavegacion'>Datos aspirantes</h1>
       <form className='formularioCheckbox'>
+        <CheckboxBarraLateral
+          id="seleccionarTodo"
+          value="seleccionarTodo"
+          label="Seleccionar todo"
+          chequeado={todoSeleccionado}
+          onChange={manejarSeleccionarTodo}
+        />
         {Object.entries(visibilidadColumna).map(([key, value]) => (
-          <CheckboxBarraLateral
-            key={key}
-            id={key}
-            value={key}
-            label={key.replace(/([A-Z])/g, ' $1').replace(/^./g, str => str.toUpperCase())}
-            chequeado={value}
-            onChange={() => manejarCambioCasillaVerificacion(key)}
-          />
+          (key !== 'nitEmpresa' || procesoSelect === 'empresas' ||  procesoSelect === 'general' ) && (
+            <CheckboxBarraLateral
+              key={key}
+              id={key}
+              value={key}
+              label={key === 'nitEmpresa' ? 'Nit de empresa' : key.replace(/([A-Z])/g, ' $1').replace(/^./g, str => str.toUpperCase())}
+              chequeado={value}
+              onChange={() => manejarCambioCasillaVerificacion(key)}
+            />
+          )
         ))}
       </form>
       <hr className='hrBarraNavegaion'/>
       <div className='btnAsesores'>
-        <BotonVerde
-          ide={'botonGrande'} 
-          setModalAbierto={setModalAbierto} 
-          modalAbierto={modalAbierto} 
-          modalAsesores={true} 
+        <BotonNavegar
+          onClick={manejarClicBotonAsesores}
           texto={'Asesores'}
+          ide={'botonAsesores'}
         />
+
+        {/* <BotonNavegar
+          // onClick={manejarClicBotonAgregarDatos}
+          texto={'Agregar datos'}
+          ide={'botonAsesores'}
+        /> */}
+
       </div>
-      <ModalAsesores 
-        modalAbierto={modalAbierto} 
-        cerrarModal={() => setModalAbierto(false)}
-      />
     </aside>
   )
 }

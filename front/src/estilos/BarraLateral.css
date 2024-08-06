@@ -1,6 +1,6 @@
 .barraLateral{
     width: 22vw;
-    height: 127.7vh;
+    height: 147.7vh;
     background-color: #DDD;
     gap:3em;  
     border-radius: 5px;
@@ -25,7 +25,7 @@
 }
 
 .hrBarraNavegaion{
-    margin-top: 1.5em;
+    margin-top: 1rem;
 }
 
 input[type="checkbox"]{

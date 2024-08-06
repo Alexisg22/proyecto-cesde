@@ -6,19 +6,15 @@
     top: 10%;
     left: 15%;
     z-index: 1;
-    text-align: center;
+    /* text-align: center; */
     border-radius: 5px;
 
-    & h2 {
-        margin-top: 2em;
+    & h1 {
+        text-align: center;
+        position: fixed;
+        top: 13%;
+        left: 45%;
     }
-}
-
-.contenedorBotones{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
 }
 
 .contenedorFiltrar{
@@ -27,14 +23,30 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 142%;
+    height: 163vh;
     background-color: rgba(0, 0, 0, 0.5); 
 } 
 
-.contenedorFiltros{
+.formularioFiltros{
     display: flex;
-    justify-content: space-around;
-    margin-top: 3em;
+    justify-content: center;
+    gap: 5em;
+    margin-top: 2em;
+}
+
+.btnAgregarFiltro{
+    width: 120px;
+    height: 30px;
+    background-color: #13A438;
+    border-radius: 5px;
+    border: solid 1px black;
+    color: black;
+
+    &:hover{
+        background-color: white;
+        color: #13A438;
+        cursor: pointer;
+    }
 }
 
 .botonCerrar{
@@ -46,40 +58,75 @@
 .cerrarModal{
     width: 2.5em;
     height: 2.5em;
+    border-radius: 5px;
+    border: 1px solid black;
 }
 
 .cerrarModal:hover{
     background-color: red;
     border: 1px solid black;
-    border-radius: 2px;
+  
     cursor: pointer;
 }
 
-.botonFiltrar{
-    display: flex;
-    justify-content: end;
-    margin-top: 0.5em;
-    margin-right: 2em;
-}
-
 .filtrosSeleccionados{
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
     margin: auto;
-    margin-top: 5em;
+    margin-top: 1em;
     width: 90%;
-    height: 35%;
+    height: 55%;
     background-color: white;
     border-radius: 5px;
     border: 1px solid black;
+    overflow-y: auto;
+    padding: 1em 2em 1em 2em;
 }
 
 .seleccionDeFiltro{
-    height: 2em;
+    height: 2.5em;
     width: 18em;
     border-radius: 5px;
+    padding: .3em .3em .3em 1em;
 }
 
 .campoFiltro{
-    height: 2em;
+    height: 2.5em;
     width: 18em;
     border-radius: 5px;
+    border: 1px solid black;
+    padding: .3em .3em .3em 1em;
+}
+
+.btnEliminarFiltro{
+    height: 1.5em;
+    width: 1.5em;
+    margin-left: 1.5em;
+    border-radius: 5px;
+    border: 1px solid black;
+
+    & hover{
+        background-color: red;
+    }
+}
+
+.btnEliminarFiltro:hover{
+    background-color: red;
+    cursor: pointer;
+}
+
+.eliminarTodosFiltros{
+    width: 10em;
+    height: 2em;
+    border-radius: 5px;
+    border: 1px solid black;
+    position: sticky;
+    left: 90%;
+}
+
+.filtrarBD{
+    display: flex;
+    margin-left: 32vw;
+    margin-right: 32vw;
 }

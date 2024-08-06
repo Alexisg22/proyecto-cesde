@@ -1,11 +1,12 @@
 .contenedorPrincipal{
     display: flex;
-    
+    justify-content: space-between;
+    height: 6rem;
 }
 
 .contenedorLogoAndes{
     width: 150px;
-    height: 80px;
+    height: 70px;
     text-align: center;
     display: flex;
     align-items: center;
@@ -20,25 +21,61 @@
     object-fit: contain;
 }
 
-.buscador{  
-    width: 600px;
-    height: 35px;
-    background-color: #DDDDDD;
-    margin-top: 20px;
-    margin-right: 50px;
-    border: 1px solid black;
-    border-radius: 5px;
+.contenedorBotones{
+    height: 100%;
+    margin-top: 5px;
     display: flex;
-    justify-content: end;
-    text-align: center;
 
-    .material-symbols-outlined {
-        font-size: 38px;
-      }
-
-      &:hover{
-        cursor: pointer;
-      }
 }
 
+.btnSubirBD{
+    align-items: center;
+    justify-content: center;
+}
 
+.textoInicio{
+    font-size: 2rem;
+    margin-top: 3vh;
+    margin-right: 10em;
+}
+
+#asesores{
+    margin-right: 9rem;
+}
+
+#aspirantes{
+    margin-left: 2em;
+}
+
+.filtroAspirante{
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+    height: 2em;
+    width: 18em;  
+    border: 1px solid black;
+
+}
+
+#asesoresFiltro{
+    display: none;
+}
+
+.btn-descargar {
+    background-color: #13A438; 
+    color: rgb(0, 0, 0); 
+    border: none; 
+    padding: 6px 9px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 14px; 
+    border: 1px solid black;
+    margin-top: 3.3vh;
+    margin-left: 3vh;
+
+        &:hover{
+            background-color: rgb(255, 255, 255);
+            color: #13A438;
+        }
+    
+  }
