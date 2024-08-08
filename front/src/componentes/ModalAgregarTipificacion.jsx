@@ -28,11 +28,11 @@ export const ModalAgregarTipoficacion = ({ cerrarModal, modalAbierto }) => {
                     </div>
                     <div className="contenedorInput">
                         <label htmlFor="valor">Valor de la tipificacion <strong>EMPRESAS</strong></label>
-                        <input className="inputAgregarTipificacion" type="number"  required/> 
+                        <input className="inputAgregarTipificacion" type="number" max="999" min="0" required/> 
                     </div>
                     <div className="contenedorInput">
                         <label htmlFor="valor">Valor de la tipificacion <strong>TECNICOS Y EXTENSIONES</strong></label>
-                        <input className="inputAgregarTipificacion" type="number" required/> 
+                        <input className="inputAgregarTipificacion" type="number" max="999" min="0" required/> 
                     </div>
                     <div className="contenedorInput">
                         <label htmlFor="tipoContacto">Gestión Final </label>

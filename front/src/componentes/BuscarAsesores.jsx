@@ -6,6 +6,7 @@ const BuscarAsesores = ({ onBuscar, datos, encabezados }) => {
   const [terminoBusqueda, setTerminoBusqueda] = useState('')
   const [fechaInicio, setFechaInicio] = useState('')
   const [fechaFin, setFechaFin] = useState('')
+  const hoy = new Date().toISOString().split('T')[0];
 
   const manejarCambioBusqueda = (e) => {
     setTerminoBusqueda(e.target.value)
@@ -35,6 +36,7 @@ const BuscarAsesores = ({ onBuscar, datos, encabezados }) => {
             <input
               type="date"
               value={fechaInicio}
+              max={hoy}
               onChange={manejarCambioFechaInicio}
               className="fechaEntrada"
             />
@@ -44,6 +46,7 @@ const BuscarAsesores = ({ onBuscar, datos, encabezados }) => {
             <input
               type="date"
               value={fechaFin}
+              max={hoy}
               onChange={manejarCambioFechaFin}
               className="fechaEntrada"
             />

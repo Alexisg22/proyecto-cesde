@@ -1,22 +1,25 @@
-import React, { } from 'react'
+import React from 'react';
 
 export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
+    // Obtener la fecha actual en formato YYYY-MM-DD
+    const hoy = new Date().toISOString().split('T')[0];
+
     switch (seleccionOpcion) {
       case "dias ultima gestion":
       case "cantidad gestiones":
       case "cantidad llamadas":
       case "cantidad SMS":
       case "cantidad whatsapp":
-        return <input className="campoFiltro" type="number" onChange={cambioValorInput} max={999} min={0}/>;
-      
+        return <input className="campoFiltro" type="number" onChange={cambioValorInput} max={999} min={0} required/>;
+        
       case "fecha de gestion":
       case "fecha ultima gestion":
-        return <input className="campoFiltro" type="date" onChange={cambioValorInput} />;
+        return <input className="campoFiltro" type="date" onChange={cambioValorInput} max={hoy} required/>;
       
       case "mejor gestion":
         return (
-          <select className="campoFiltro" onChange={cambioValorInput}>
-            <option value="">Seleccione mejor gestion</option>
+          <select className="campoFiltro" onChange={cambioValorInput} required>
+            <option value="">Seleccione mejor gestión</option>
             <option value="Sin interés">Sin interés</option>
             <option value="Información General">Información general</option>
             <option value="Interesado en seguimiento">Interesado en seguimiento</option>
@@ -34,7 +37,7 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
             <option value="Sin perfil">Sin perfil</option>
             <option value="Cuelga teléfono">Cuelga teléfono</option>
             <option value="Estudiando en otra universidad">Estudiando en otra universidad</option>
-            <option value="Proxima convocatoria">Proxima convocatoria</option>
+            <option value="Proxima convocatoria">Próxima convocatoria</option>
             <option value="Por ubicación">Por ubicación</option>
             <option value="Matriculado">Matriculado</option>
             <option value="Otra área de interés">Otra área de interés</option>
@@ -43,7 +46,7 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
   
       case "estado del aspirante":
         return (
-          <select className="campoFiltro" onChange={cambioValorInput}>
+          <select className="campoFiltro" onChange={cambioValorInput} required>
             <option value="">Seleccione el estado</option>
             <option value="matriculado">Matriculado</option>
             <option value="liquidado">Liquidado</option>
@@ -56,7 +59,7 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
   
       case "tipificación ultima gestion":
         return (
-          <select className="campoFiltro" onChange={cambioValorInput}>
+          <select className="campoFiltro" onChange={cambioValorInput} required>
             <option value="">Seleccione tipificación</option>
             <option value="Sin interés">Sin interés</option>
             <option value="Información General">Información general</option>
@@ -75,7 +78,7 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
             <option value="Sin perfil">Sin perfil</option>
             <option value="Cuelga teléfono">Cuelga teléfono</option>
             <option value="Estudiando en otra universidad">Estudiando en otra universidad</option>
-            <option value="Proxima convocatoria">Proxima convocatoria</option>
+            <option value="Proxima convocatoria">Próxima convocatoria</option>
             <option value="Por ubicación">Por ubicación</option>
             <option value="Matriculado">Matriculado</option>
             <option value="Otra área de interés">Otra área de interés</option>
@@ -84,27 +87,27 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
   
       case "programa de formacion":
         return (
-          <select className="campoFiltro" onChange={cambioValorInput}>
+          <select className="campoFiltro" onChange={cambioValorInput} required>
             <option value="">Seleccione programa formacion</option>
-            <option value="tecnico">Tecnico</option>
-            <option value="tecnologo profesional">Tecnologo profesional</option>
+            <option value="tecnico">Técnico</option>
+            <option value="tecnologo profesional">Tecnólogo profesional</option>
           </select>
         );
   
       case "sede":
         return (
-          <select className="campoFiltro" onChange={cambioValorInput}>
+          <select className="campoFiltro" onChange={cambioValorInput} required>
             <option value="">Seleccione la sede</option>
-            <option value="principal">principal</option>
-            <option value="bogota">Bogota</option>
-            <option value="medellin">Medellin</option>
+            <option value="principal">Sede principal</option>
+            <option value="bogota">Bogotá</option>
+            <option value="medellin">Medellín</option>
             <option value="rionegro">Rionegro</option>
           </select>
         );
   
       case "empresa":
         return (
-          <select className="campoFiltro" onChange={cambioValorInput}>
+          <select className="campoFiltro" onChange={cambioValorInput} required>
             <option value="">Seleccione la empresa</option>
             <option value="nit empresa 1">nit empresa 1</option>
             <option value="nit empresa 2">nit empresa 2</option>
@@ -116,6 +119,7 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
       default:
         return null;
     }
+    
   }
 
 export const ParametroFiltrar = ({seleccionOpcion, cambioValorInput}) => {
@@ -125,6 +129,5 @@ export const ParametroFiltrar = ({seleccionOpcion, cambioValorInput}) => {
        seleccionOpcion && validarTipoInput({seleccionOpcion, cambioValorInput})
     }
     </>
-    
   )
 }
