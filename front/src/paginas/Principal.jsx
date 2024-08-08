@@ -23,7 +23,7 @@ export const Principal = () => {
         'diasUltGestión': false,
         'fechaUltGestión': true,
         'gestionFinal': true,
-        'celularAdicional': false,
+        'tipificacionUltimaGestion': false,
         'sede': false,
         'programaFormación': false,
     });
