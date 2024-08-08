@@ -46,47 +46,6 @@ export const HistoricoGestiones = ({ cerrarModal, modalAbiertoHistorico }) => {
         { id: 'tipoGestion', etiqueta: 'Tipo Gestión' },
     ];
 
-    // Datos de ejemplo (reemplazar con tus datos reales)
-    const datos = [
-        {
-            fechaGestion: '3162840984',
-            asesor: '34567890',
-            descripcion: 'Sofía Gómez',
-            resultadoGestion: '3',
-            tipoGestion: 'Llamada',
-        },
-        {
-            fechaGestion: '3162840984',
-            asesor: '34567890',
-            descripcion: 'Sofía Gómez',
-            resultadoGestion: '3',
-            tipoGestion: 'Llamada',
-        }, {
-            fechaGestion: '3162840984',
-            asesor: '34567890',
-            descripcion: 'Sofía Gómez',
-            resultadoGestion: '3',
-            tipoGestion: 'SMS',
-        }, {
-            fechaGestion: '3162840984',
-            asesor: '34567890',
-            descripcion: 'Sofía Gómez',
-            resultadoGestion: '3',
-            tipoGestion: 'Whatsapp',
-        }, {
-            fechaGestion: '3162840984',
-            asesor: '34567890',
-            descripcion: 'Sofía Gómez',
-            resultadoGestion: '3',
-            tipoGestion: 'SMS',
-        }, {
-            fechaGestion: '3162840984',
-            asesor: 'Jaime de jesus Gomez buenavista',
-            descripcion: 'Jaime de jesus Gomez buenavistaJaime de jesus Gomez buenavistaJaime de jesus Gomez buenavistaJaime de jesus Gomez buenavistaJaime de jesus Gomez buenavistaJaime de jesus Gomez buenavistaJaime de jesus Gomez buenavistaJaime de jesus Gomez buenavista',
-            resultadoGestion: '3',
-            tipoGestion: 'Llamada',
-        },
-    ];
 
     return (
 
