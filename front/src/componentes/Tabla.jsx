@@ -128,9 +128,13 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
               <tr>
                 {columnas.map(columna =>
                   visibilidadColumna[columna.id] && (
-                    <th key={columna.id} id={columna.id}>
-                      {columna.etiqueta}
-                    </th>
+                    <td key={columna.id}>
+                      {columna.id === 'estadoAspirante' ? (
+                        <p className={row[columna.id]}>{row[columna.id]}</p>
+                      ) : (
+                        row[columna.id] 
+                      )}
+                    </td>
                   )
                 )}
               </tr>
