@@ -31,7 +31,8 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
               estadoAspirante: aspirante.estado_aspirante,
               diasUltGestión: '1',
               fechaUltGestión: aspirante.fecha_ultima_gestion,
-              tipificaciónUltGestión: aspirante.estado_ultima_gestion,
+              gestionFinal: aspirante.estado_ultima_gestion,
+              tipificaciónGestionFinal: 'Contacto',
               celularAdicional: aspirante.celular_adicional,
               empresa: 'Andes 1',
               sede: 'Rionegro',
@@ -69,6 +70,7 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
     { id: 'diasUltGestión', etiqueta: 'Dias Ult. Gestión' },
     { id: 'fechaUltGestión', etiqueta: 'Fecha Ult. Gestión' },
     { id: 'gestionFinal', etiqueta: 'Gestión final' },
+    { id: 'tipificaciónGestionFinal', etiqueta: 'Tipificación Gestión final' },
     { id: 'celularAdicional', etiqueta: 'Celular Adicional' },
     { id: 'empresa', etiqueta: 'Empresa' },
     { id: 'sede', etiqueta: 'Sede' },
@@ -140,7 +142,7 @@ function Tabla({ visibilidadColumna, procesoSelect} ) {
                   visibilidadColumna[columna.id] && (
                     <td key={columna.id}>
                       {columna.id === 'estadoAspirante' ? (
-                        <p className={row[columna.id]}>{row[columna.id]}</p>
+                        <p className={row[columna.id].toLowerCase()}>{row[columna.id]}</p>
                       ) : (
                         row[columna.id] 
                       )}

@@ -23,6 +23,7 @@ export const Principal = () => {
         'diasUltGestión': false,
         'fechaUltGestión': true,
         'gestionFinal': true,
+        'tipificaciónGestionFinal': true,
         'celularAdicional': false,
         'sede': false,
         'programaFormación': false,
