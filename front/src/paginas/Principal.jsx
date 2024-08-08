@@ -24,7 +24,6 @@ export const Principal = () => {
         'fechaUltGestión': true,
         'gestiónFinal': true,
         'tipificaciónGestiónFinal': true,
-        'celularAdicional': false,
         'sede': false,
         'programaFormación': false,
     });
