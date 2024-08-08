@@ -20,8 +20,9 @@ body{
     margin-bottom: 1em;
     
     & .titulo {
-        margin: 0.5em;
-        text-align: center;
+        margin: 0.5em 0em 2em 0.5em;
+        display: flex;
+        width: 100%;
     }
 
     & .contenido{
@@ -33,4 +34,14 @@ body{
         margin: 15px;   
         
     }
+}
+
+.tituloEstadisticas{
+    width: 65%;
+    margin-left: 35%;
+    font-size: 1.5rem;
+}
+
+.formularioFecha{
+    width: 35%;
 }
