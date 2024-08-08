@@ -7,7 +7,7 @@ export const BotonVerde = ({setModalAbierto, modalAbierto, texto, ide}) => {
   return (
     <div>
         {(ModalFiltrar) ? <button onClick={()=>{setModalAbierto(!modalAbierto)}} className={ide}>{texto}</button> 
-        : <button className='botonVerde'>{texto}</button>}
+        : <button onClick={()=>{setModalAbierto(!modalAbierto)}} className='botonVerde'>{texto}</button>}
     </div>
 
   )
