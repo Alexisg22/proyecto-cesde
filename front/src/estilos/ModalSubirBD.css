@@ -60,9 +60,13 @@
     border-radius: 2px;
     cursor: pointer;
 }
+ 
+.contenedorInpuSubirBD{
+    width: 15em;
+}
 
 .labelSubirBD{
-    width: 20%;
+    width: 100%;
     height: 60px;
     margin-top: 4em;
     background-color: #13A438;
@@ -85,10 +89,19 @@
     display: none;
 }
 
+.nombreArchivo{
+    margin-top: .8em;
+    font-size: 1rem;
+    background-color: #13a43777;
+    padding: .5em;
+    border-radius: 5px;
+  
+}
+
 .inputEnviarFormulario{
     width: 200px;
     height: 60px;
-    margin-top: 20px;
+    margin-top: 6em;
     background-color: #13A438;
     border-radius: 5px;
     border: solid 1px black; 
