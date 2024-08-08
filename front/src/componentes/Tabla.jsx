@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import '../estilos/Tabla.css';
 import { BotonVerde } from './BotonVerde.jsx';
 import { HistoricoGestiones } from './HistoricoGestiones.jsx';
 import { ModalFiltrar } from './ModalFiltrar.jsx';
@@ -125,19 +124,15 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
         <section className="cuerpoTabla">
           <table className='tabla'>
             <thead className='cabezaTabla'>
-              <tr>
-                {columnas.map(columna =>
-                  visibilidadColumna[columna.id] && (
-                    <td key={columna.id}>
-                      {columna.id === 'estadoAspirante' ? (
-                        <p className={row[columna.id]}>{row[columna.id]}</p>
-                      ) : (
-                        row[columna.id] 
-                      )}
-                    </td>
-                  )
-                )}
-              </tr>
+            <tr>
+              {columnas.map(columna => 
+                visibilidadColumna[columna.id] && (
+                  <th key={columna.id} id={columna.id}>
+                    {columna.etiqueta}
+                  </th>
+                )
+              )}
+            </tr>
             </thead>
             <tbody className='cuerpoTabla'>
               {nAspirantesPorPagina.map((row, index) => (

@@ -1,5 +1,4 @@
 
-import { useState } from "react"
 import "../estilos/ModalSubirBD.css"
 import "../estilos/BotonVerde.css"
 import { useState } from 'react'
