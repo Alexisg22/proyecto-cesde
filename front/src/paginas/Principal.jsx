@@ -22,8 +22,8 @@ export const Principal = () => {
         'estadoAspirante': true,
         'diasUltGestión': false,
         'fechaUltGestión': true,
-        'gestionFinal': true,
-        'tipificacionUltimaGestion': false,
+        'gestiónFinal': true,
+        'tipificaciónGestiónFinal': true,
         'sede': false,
         'programaFormación': false,
     });
