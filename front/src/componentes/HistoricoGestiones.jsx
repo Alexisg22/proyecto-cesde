@@ -57,7 +57,7 @@ export const HistoricoGestiones = ({ cerrarModal, modalAbiertoHistorico }) => {
                 </div>
 
                 <div className='datosAspiranteHistorico' >
-                    {(historicoGestiones) && <p><strong>Aspirante: </strong>{historicoGestiones[2].nombre}</p>}
+                    {(historicoGestiones) && <p><strong>Aspirante: </strong>{historicoGestiones[0].nombre}</p>}
                     {(historicoGestiones) && <p><strong>Celular: </strong>{historicoGestiones[0].celular}</p>}
                     {(historicoGestiones) && <p><strong>Programa: </strong>{historicoGestiones[0].programa}</p>}
                     {(historicoGestiones) && <p><strong>Sede: </strong>{historicoGestiones[0].sede}</p>}
