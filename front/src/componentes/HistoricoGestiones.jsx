@@ -98,47 +98,32 @@ export const HistoricoGestiones = ({ cerrarModal, modalAbiertoHistorico }) => {
                 </div>
 
                 <div className='datosAspiranteHistorico' >
-
-                    {historicoGestiones ? (
-                    <p>no se encontraron datos</p>
-                    ) : (
-                        <>
-                            <p><strong>Aspirante: </strong>{historicoGestiones[0].nombre}</p>
-                            <p><strong>Celular: </strong>{historicoGestiones[0].celular}</p>
-                            <p><strong>Programa: </strong>{historicoGestiones[0].programa}</p>
-                            <p><strong>Sede: </strong>{historicoGestiones[0].sede}</p>
-                        </>
-                    )}
-                    
+                    {(historicoGestiones) && <p><strong>Aspirante: </strong>{historicoGestiones[2].nombre}</p>}
+                    {(historicoGestiones) && <p><strong>Celular: </strong>{historicoGestiones[0].celular}</p>}
+                    {(historicoGestiones) && <p><strong>Programa: </strong>{historicoGestiones[0].programa}</p>}
+                    {(historicoGestiones) && <p><strong>Sede: </strong>{historicoGestiones[0].sede}</p>}
+                        
                 </div> 
 
                 <hr />
                 <main className="tablaHistorico" id="tablaClientesHistorico">
                     <section className="cuerpoTablaHistorico">
                         <table className='tablaHistorico'>
-                            <thead className='cabezaTablaHistorico'>
+                            <thead className='cabezaTablaHistorico'> 
                                 <tr>
-                                    {columnas.map(columna => [columna.id] && (
-                                        <th key={columna.id} id={columna.id}>
-                                            {columna.etiqueta}
-                                        </th>
-                                    )
-                                    )}
-                                </tr>
+                                    {columnas.map((columna, index) => (
+                                        <th key={index}>{columna.etiqueta}</th>
+                                    ))} 
+                                </tr>    
                             </thead>
                             <tbody className='cuerpoTablaHistorico'>
-                                {datos.map((row, index) => (
-                                    <tr className='filaTablaAspirantesHistorico'>
-                                        {columnas.map(columna => [columna.id] && (
-                                            <td key={columna.id}>
-                                                {columna.id === 'estadoAspirante' ? (
-                                                    <p className={row[columna.id].toLowerCase()}>{row[columna.id]}</p>
-                                                ) : (
-                                                    row[columna.id]
-                                                )}
-                                            </td>
-                                        )
-                                        )}
+                                {historicoGestiones && historicoGestiones.map((gestion, index) => (
+                                    <tr className='filaTablaAspirantesHistorico' key={index}>
+                                        <td > {gestion.fecha} </td>
+                                        <td > {gestion.asesor} </td>
+                                        <td > {gestion.descripcion} </td>
+                                        <td > {gestion.resultadoGestion} </td>
+                                        <td > {gestion.tipoGestion} </td>  
                                     </tr>
                                 ))}
                             </tbody>
