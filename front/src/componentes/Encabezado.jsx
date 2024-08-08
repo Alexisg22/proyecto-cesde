@@ -20,6 +20,8 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, texto
     setProcesoSelect(e.target.value)
   }
 
+  
+
   return (
     <header>
       <div className='contenedorPrincipal'>
@@ -66,7 +68,9 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, texto
 
       <ModalSubirBD
         modalAbierto={modalAbierto}
-        cerrarModal={() => { setModalAbierto(false) }} />
+        cerrarModal={() => { setModalAbierto(false) }} 
+        
+        />
 
     </header>
   )
