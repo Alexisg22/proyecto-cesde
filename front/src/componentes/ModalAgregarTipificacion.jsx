@@ -21,6 +21,7 @@ export const ModalAgregarTipoficacion = ({ cerrarModal, modalAbierto }) => {
                         <label htmlFor="tipoContacto">Tipo Contacto </label>
                         <select className="selectAgregarTipificacion" required>
                             {/* <option value=""> </option> */}
+                            <option value="no">Seleccione el tipo de contacto</option>
                             <option value="no">No contacto</option>
                             <option value="si"> Contacto</option>
                         </select>
@@ -31,7 +32,19 @@ export const ModalAgregarTipoficacion = ({ cerrarModal, modalAbierto }) => {
                     </div>
                     <div className="contenedorInput">
                         <label htmlFor="valor">Valor de la tipificacion <strong>TECNICOS Y EXTENSIONES</strong></label>
-                        <input className="inputAgregarTipificacion" type="nmber" required/> 
+                        <input className="inputAgregarTipificacion" type="number" required/> 
+                    </div>
+                    <div className="contenedorInput">
+                        <label htmlFor="tipoContacto">Gestión Final </label>
+                        <select className="selectAgregarTipificacion" required>
+                            {/* <option value=""> </option> */}
+                            <option value="si">Seleccione la gestión final</option>
+                            <option value="no">En seguimiento</option>
+                            <option value="si">No contacto</option>
+                            <option value="no">Descartado</option>
+                            <option value="si">Interesado</option>
+                            
+                        </select>
                     </div>
                     <div className="contenedorbtnEnviar">
                         <input className="btnEnviar" type="submit" value='Guardar' required/>

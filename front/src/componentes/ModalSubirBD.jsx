@@ -1,5 +1,4 @@
 
-import { BotonVerde } from '../componentes/BotonVerde.jsx'
 import "../estilos/ModalSubirBD.css"
 import "../estilos/BotonVerde.css"
 import { useState } from 'react'

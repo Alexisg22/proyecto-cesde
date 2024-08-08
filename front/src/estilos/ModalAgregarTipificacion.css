@@ -1,9 +1,9 @@
 .modalAgregarTipificacion{
     width: 60vw;
-    height: 80vh;
+    height: 95vh;
     background-color: #DDDDDD;
     position: fixed;
-    top: 10%;
+    top: 1%;
     left: 22%;
     z-index: 1;
     text-align: center;
@@ -30,7 +30,7 @@
 .botonCerrar{
     display: flex;
     justify-content: end;
-    /* margin: 1em; */
+    margin: 1em; 
 }
 
 .cerrarModal{
