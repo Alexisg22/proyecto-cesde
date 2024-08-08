@@ -72,7 +72,6 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
     { id: 'fechaUltGestión', etiqueta: 'Fecha Ult. Gestión' },
     { id: 'gestiónFinal', etiqueta: 'Gestión final' },
     { id: 'tipificaciónGestiónFinal', etiqueta: 'Tipificación Gestión final' },
-    { id: 'celularAdicional', etiqueta: 'Celular Adicional' },
     { id: 'empresa', etiqueta: 'Empresa' },
     { id: 'sede', etiqueta: 'Sede' },
     { id: 'programaFormación', etiqueta: 'Programa de Formación' },
