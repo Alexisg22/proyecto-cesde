@@ -32,7 +32,7 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGesti
     case "fecha de gestion":
     case "fecha ultima gestion":
       return <input className="campoFiltro" type="date" onChange={cambioValorInput} max={hoy} required />;
-      
+
     case "mejor gestion":
       return (
         <select className="campoFiltro" onChange={cambioValorInput} required>
@@ -114,3 +114,4 @@ export const ParametroFiltrar = ({ seleccionOpcion, cambioValorInput, valorGesti
     </>
   );
 }
+
