@@ -56,42 +56,9 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, 
 
   return (
     <>
-<<<<<<< HEAD
-    <aside className='barraLateral'>
-      <h1 className='tituloBarraNavegacion'>Datos Aspirantes</h1>
-      <form className='formularioCheckbox'>
-        <CheckboxBarraLateral
-          id="seleccionarTodo"
-          value="seleccionarTodo"
-          label="Seleccionar todo"
-          chequeado={todoSeleccionado}
-          onChange={manejarSeleccionarTodo}
-        />
-        {Object.entries(visibilidadColumna).map(([key, value]) => (
-          (key !== 'nitEmpresa' || procesoSelect === 'empresas' ||  procesoSelect === 'general' ) && (
-            <CheckboxBarraLateral
-              key={key}
-              id={key}
-              value={key}
-              label={key === 'nitEmpresa' ? 'Nit de empresa' : key.replace(/([A-Z])/g, ' $1').replace(/^./g, str => str.toUpperCase())}
-              chequeado={value}
-              onChange={() => manejarCambioCasillaVerificacion(key)}
-            />
-          )
-        ))}
-      </form>
-      <hr className='hrBarraNavegaion'/>
-      <div className='btnAsesores'>
-        <BotonNavegar
-          onClick={manejarClicBotonAsesores}
-          texto={'Asesores'}
-          ide={'botonAsesores'}
-        />
-=======
       {/* Contenedor principal de la barra lateral */}
       <aside className='barraLateral'>
         <h1 className='tituloBarraNavegacion'>Datos aspirantes</h1>
->>>>>>> 4527503308c8b049d68fb55242251857fd3bde75
 
         {/* Formulario que contiene los checkboxes */}
         <form className='formularioCheckbox'>
