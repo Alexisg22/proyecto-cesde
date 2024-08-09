@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { obtenerTipificaciones } from '../api/aspirantes.api';
 
 // Función que valida el tipo de input que debe renderizarse basado en la opción seleccionada
-export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
+export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGestionTotal }) {
   const hoy = new Date().toISOString().split('T')[0];
   
   // Estado para almacenar las tipificaciones desde la API
@@ -26,7 +26,9 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
     case "cantidad llamadas":
     case "cantidad SMS":
     case "cantidad whatsapp":
-      return <input className="campoFiltro" type="number" onChange={cambioValorInput} max={999} min={0} required />;
+
+    case "cantidad gestiones":
+      return <input className="campoFiltro" type="number" onChange={cambioValorInput} max={999} min={valorGestionTotal} required />;
 
     case "fecha de gestion":
     case "fecha ultima gestion":
@@ -105,11 +107,13 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
   }
 }
 
-// Componente que envuelve la lógica de validación y renderiza el input correspondiente
-export const ParametroFiltrar = ({ seleccionOpcion, cambioValorInput }) => {
+
+  // Componente que envuelve la lógica de validación y renderiza el input correspondiente
+export const ParametroFiltrar = ({ seleccionOpcion, cambioValorInput, valorGestionTotal }) => {
   return (
     <>
-      {seleccionOpcion && validarTipoInput({ seleccionOpcion, cambioValorInput })}
+      {seleccionOpcion && validarTipoInput({ seleccionOpcion, cambioValorInput, valorGestionTotal })}
     </>
   );
 }
+  

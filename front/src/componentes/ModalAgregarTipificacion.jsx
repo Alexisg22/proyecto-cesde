@@ -11,7 +11,7 @@ export const ModalAgregarTipoficacion = ({ cerrarModal, modalAbierto }) => {
                 <div className='botonCerrar'>
                     <button className='cerrarModal' onClick={cerrarModal}>X</button>
                 </div>
-                <h1 className='tituloAgregarTipificacion'>Agregar nueva tipificacion</h1>
+                <h1 className='tituloAgregarTipificacion'>Agregar nueva tipificación</h1>
                 <form className='formularioAgregarTipificacion' encType='multipart/form-data'>
                     <div className="contenedorInput">
                         <label htmlFor="nuevaTipoficacion">Nueva tipificación</label>
@@ -27,11 +27,11 @@ export const ModalAgregarTipoficacion = ({ cerrarModal, modalAbierto }) => {
                         </select>
                     </div>
                     <div className="contenedorInput">
-                        <label htmlFor="valor">Valor de la tipificacion <strong>EMPRESAS</strong></label>
+                        <label htmlFor="valor">Valor de la tipificación <strong>EMPRESAS</strong></label>
                         <input className="inputAgregarTipificacion" type="number" max="999" min="0" required/> 
                     </div>
                     <div className="contenedorInput">
-                        <label htmlFor="valor">Valor de la tipificacion <strong>TECNICOS Y EXTENSIONES</strong></label>
+                        <label htmlFor="valor">Valor de la tipificación <strong>TÉCNICOS Y EXTENSIONES</strong></label>
                         <input className="inputAgregarTipificacion" type="number" max="999" min="0" required/> 
                     </div>
                     <div className="contenedorInput">
