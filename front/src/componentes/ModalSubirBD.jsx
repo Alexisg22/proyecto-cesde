@@ -76,7 +76,7 @@ export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
                             {...register('matricula')}
                         />
                         <label htmlFor="BD2" className='labelSubirBD'>
-                            BD Matriculas
+                            BD Matrículas
                         </label>
                         {nombreArchivo2 && <p className='nombreArchivo'>{nombreArchivo2}</p>}
                     </div>
@@ -96,7 +96,7 @@ export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
                             {...register('SMS')}
                         />
                         <label htmlFor="BD4" className='labelSubirBD'>
-                            BD SMS
+                            BD Llamadas
                         </label>
                         {nombreArchivo4 && <p className='nombreArchivo'>{nombreArchivo4}</p>}
                     </div>

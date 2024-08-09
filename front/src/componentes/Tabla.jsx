@@ -23,7 +23,6 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
         nit: aspirante.nit,
         nombreCompleto: aspirante.nombre_completo,
         cantidadLlamadas: aspirante.cantidad_llamadas,
-        cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
         cantWhatsapps: aspirante.cantidad_whatsapp,
         cantGestiones: aspirante.cantidad_gestiones,
         mejorGestión: 'No interesado',
@@ -50,11 +49,11 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
     if (procesoSelect === 'general') {
       setAspirantes(aspirantes);
     } else if (procesoSelect === 'empresas') {
-      setAspirantes(aspirantes.filter(aspirante => aspirante.empresa)); // Adjust filter as needed
+      setAspirantes(aspirantes.filter(aspirante => aspirante.empresa)); 
     } else if (procesoSelect === 'extensiones') {
-      setAspirantes(aspirantes.filter(aspirante => aspirante.sede)); // Adjust filter as needed
+      setAspirantes(aspirantes.filter(aspirante => aspirante.sede)); 
     } else if (procesoSelect === 'tecnicos') {
-      setAspirantes(aspirantes.filter(aspirante => aspirante.programaFormación)); // Adjust filter as needed
+      setAspirantes(aspirantes.filter(aspirante => aspirante.programaFormación)); 
     }
   }, [procesoSelect, aspirantes]);
 
@@ -63,7 +62,6 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
     { id: 'nit', etiqueta: 'Nit' },
     { id: 'nombreCompleto', etiqueta: 'Nombre Completo' },
     { id: 'cantidadLlamadas', etiqueta: 'Cant. Llamadas' },
-    { id: 'cantMensajesDeTexto', etiqueta: 'Cant. SMS' },
     { id: 'cantWhatsapps', etiqueta: 'Cant. WhatsApps' },
     { id: 'cantGestiones', etiqueta: 'Cant. Gestiones' },
     { id: 'mejorGestión', etiqueta: 'Mejor Gestión' },

@@ -44,7 +44,7 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, 
   return (
     <>
     <aside className='barraLateral'>
-      <h1 className='tituloBarraNavegacion'>Datos aspirantes</h1>
+      <h1 className='tituloBarraNavegacion'>Datos Aspirantes</h1>
       <form className='formularioCheckbox'>
         <CheckboxBarraLateral
           id="seleccionarTodo"
