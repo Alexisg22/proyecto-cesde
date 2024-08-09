@@ -5,6 +5,6 @@ export const obtenerTodosAspirantes = () => {
   
 }
 
-export const obtenerHistoricoAspirante = (celular) => {
-  return  axios.get(`http://127.0.0.1:8000/cesde/aspirantes-historico/?celular=${celular}`)
+export const obtenerHistoricoAspirante = () => {
+  return  axios.get('http://127.0.0.1:8000/cesde/aspirantes-historico/')
 }
