@@ -31,8 +31,9 @@ export const Principal = () => {
     const [estadisticas, setEstadisticas] = useState()
 
     useEffect(() =>{
-            if(procesoSelect == 'general'){
-                setEstadisticas({
+        if(procesoSelect == 'general'){
+
+            setEstadisticas({
                     contactabilidad: 5,
                     noContactabilidad: 10,
                     porcentajeConvercion: 15,
@@ -45,8 +46,8 @@ export const Principal = () => {
                     cancelados: 50,
                     noGestionable: 55
                 
-                })
-            }
+            })
+        }
         
         if(procesoSelect == 'empresas'){
           setEstadisticas(

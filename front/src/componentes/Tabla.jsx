@@ -4,59 +4,163 @@ import { HistoricoGestiones } from './HistoricoGestiones.jsx';
 import { ModalFiltrar } from './ModalFiltrar.jsx';
 import { Paginador } from './Paginador.jsx';
 import { CSVLink } from "react-csv";
-import { obtenerTodosAspirantes } from '../api/aspirantes.api.js';
+import { obtenerAspirantesProceso, obtenerTodosAspirantes } from '../api/aspirantes.api.js';
 import '../estilos/Tabla.css';
 
 function Tabla({ visibilidadColumna, procesoSelect }) {
 
   const [aspirantes, setAspirantes] = useState([]);
+  const [celularAspiranteSeleccionado, setCelularAspiranteSeleccionado] = useState('')
 
-  useEffect(() => {
-
-    async function cargarAspirantes() {
-      const respuesta = await obtenerTodosAspirantes();
-      const aspirantes = respuesta.data.aspirantes;
-
-      const mapeado = aspirantes.map((aspirante) => ({
-
-        celular: aspirante.celular,
-        nit: aspirante.nit,
-        nombreCompleto: aspirante.nombre_completo,
-        cantidadLlamadas: aspirante.cantidad_llamadas,
-        cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
-        cantWhatsapps: aspirante.cantidad_whatsapp,
-        cantGestiones: aspirante.cantidad_gestiones,
-        mejorGestión: 'No interesado',
-        estadoAspirante: aspirante.estado_aspirante,
-        diasUltGestión: aspirante.dias_ultima_gestion,
-        fechaUltGestión: aspirante.fecha_ultima_gestion,
-        gestiónFinal: aspirante.estado_ultima_gestion,
-        tipificaciónGestiónFinal: aspirante.estado_ultima_gestion,
-        celularAdicional: aspirante.celular_adicional,
-        nitEmpresa: aspirante.patrocinio_empresa,
-        sede: aspirante.sede,
-        programaFormación: aspirante.programa_formacion,
-        
-
-      }))
-      
-      
-      setAspirantes(mapeado)
-    }
-    cargarAspirantes();
-  }, [])
+ 
 
   useEffect(() => {
     if (procesoSelect === 'general') {
-      setAspirantes(aspirantes);
+      async function cargarAspirantes() {
+        const respuesta = await obtenerTodosAspirantes();
+        const aspirantes = respuesta.data.aspirantes;
+  
+        const mapeado = aspirantes.map((aspirante) => ({
+  
+          celular: aspirante.celular,
+          nit: aspirante.nit,
+          nombreCompleto: aspirante.nombre_completo,
+          cantidadLlamadas: aspirante.cantidad_llamadas,
+          cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
+          cantWhatsapps: aspirante.cantidad_whatsapp,
+          cantGestiones: aspirante.cantidad_gestiones,
+          mejorGestión: 'No interesado',
+          estadoAspirante: aspirante.estado_aspirante,
+          diasUltGestión: aspirante.dias_ultima_gestion,
+          fechaUltGestión: aspirante.fecha_ultima_gestion,
+          gestiónFinal: aspirante.estado_ultima_gestion,
+          tipificaciónGestiónFinal: aspirante.estado_ultima_gestion,
+          celularAdicional: aspirante.celular_adicional,
+          nitEmpresa: aspirante.patrocinio_empresa,
+          sede: aspirante.sede,
+          programaFormación: aspirante.programa_formacion,
+          
+  
+        }))
+        
+        
+        setAspirantes(mapeado)
+      }
+      cargarAspirantes();
     } else if (procesoSelect === 'empresas') {
-      setAspirantes(aspirantes.filter(aspirante => aspirante.empresa)); // Adjust filter as needed
+      let empresas = '1' 
+      async function cargarAspirantes() {
+        
+        const respuesta = await obtenerAspirantesProceso(empresas);
+        const aspirantes = respuesta.data.aspirantes;
+  
+        const mapeado = aspirantes.map((aspirante) => ({
+  
+          celular: aspirante.celular,
+          nit: aspirante.nit,
+          nombreCompleto: aspirante.nombre_completo,
+          cantidadLlamadas: aspirante.cantidad_llamadas,
+          cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
+          cantWhatsapps: aspirante.cantidad_whatsapp,
+          cantGestiones: aspirante.cantidad_gestiones,
+          mejorGestión: 'No interesado',
+          estadoAspirante: aspirante.estado_aspirante,
+          diasUltGestión: aspirante.dias_ultima_gestion,
+          fechaUltGestión: aspirante.fecha_ultima_gestion,
+          gestiónFinal: aspirante.estado_ultima_gestion,
+          tipificaciónGestiónFinal: aspirante.estado_ultima_gestion,
+          celularAdicional: aspirante.celular_adicional,
+          nitEmpresa: aspirante.patrocinio_empresa,
+          sede: aspirante.sede,
+          programaFormación: aspirante.programa_formacion,
+          
+  
+        }))
+        
+        
+        setAspirantes(mapeado)
+      }
+      cargarAspirantes();
+      // setAspirantes(aspirantes.filter(aspirante => aspirante.empresa)); // Adjust filter as needed
     } else if (procesoSelect === 'extensiones') {
-      setAspirantes(aspirantes.filter(aspirante => aspirante.sede)); // Adjust filter as needed
+      const extensiones = '2' 
+      async function cargarAspirantes() {
+        
+        const respuesta = await obtenerAspirantesProceso(extensiones);
+        const aspirantes = respuesta.data.aspirantes;
+  
+        const mapeado = aspirantes.map((aspirante) => ({
+  
+          celular: aspirante.celular,
+          nit: aspirante.nit,
+          nombreCompleto: aspirante.nombre_completo,
+          cantidadLlamadas: aspirante.cantidad_llamadas,
+          cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
+          cantWhatsapps: aspirante.cantidad_whatsapp,
+          cantGestiones: aspirante.cantidad_gestiones,
+          mejorGestión: 'No interesado',
+          estadoAspirante: aspirante.estado_aspirante,
+          diasUltGestión: aspirante.dias_ultima_gestion,
+          fechaUltGestión: aspirante.fecha_ultima_gestion,
+          gestiónFinal: aspirante.estado_ultima_gestion,
+          tipificaciónGestiónFinal: aspirante.estado_ultima_gestion,
+          celularAdicional: aspirante.celular_adicional,
+          nitEmpresa: aspirante.patrocinio_empresa,
+          sede: aspirante.sede,
+          programaFormación: aspirante.programa_formacion,
+          
+  
+        }))
+        
+        
+        setAspirantes(mapeado)
+      }
+      cargarAspirantes();
+      // setAspirantes(aspirantes.filter(aspirante => aspirante.sede)); // Adjust filter as needed
     } else if (procesoSelect === 'tecnicos') {
-      setAspirantes(aspirantes.filter(aspirante => aspirante.programaFormación)); // Adjust filter as needed
+      let tecnicos = '3' 
+      async function cargarAspirantes() {
+        
+        const respuesta = await obtenerAspirantesProceso(tecnicos);
+        const aspirantes = respuesta.data.aspirantes;
+  
+        const mapeado = aspirantes.map((aspirante) => ({
+  
+          celular: aspirante.celular,
+          nit: aspirante.nit,
+          nombreCompleto: aspirante.nombre_completo,
+          cantidadLlamadas: aspirante.cantidad_llamadas,
+          cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
+          cantWhatsapps: aspirante.cantidad_whatsapp,
+          cantGestiones: aspirante.cantidad_gestiones,
+          mejorGestión: 'No interesado',
+          estadoAspirante: aspirante.estado_aspirante,
+          diasUltGestión: aspirante.dias_ultima_gestion,
+          fechaUltGestión: aspirante.fecha_ultima_gestion,
+          gestiónFinal: aspirante.estado_ultima_gestion,
+          tipificaciónGestiónFinal: aspirante.estado_ultima_gestion,
+          celularAdicional: aspirante.celular_adicional,
+          nitEmpresa: aspirante.patrocinio_empresa,
+          sede: aspirante.sede,
+          programaFormación: aspirante.programa_formacion,
+          
+  
+        }))
+        
+        
+        setAspirantes(mapeado)
+      }
+      cargarAspirantes();
+      // setAspirantes(aspirantes.filter(aspirante => aspirante.programaFormación)); // Adjust filter as needed
     }
   }, [procesoSelect, aspirantes]);
+
+  const obtenerCelularAspirante = (celular) => {
+    setCelularAspiranteSeleccionado('')
+    setCelularAspiranteSeleccionado(celular);
+    console.log(celularAspiranteSeleccionado)
+  }
+ 
 
   const columnas = [
     { id: 'celular', etiqueta: 'Celular' },
@@ -72,7 +176,6 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
     { id: 'fechaUltGestión', etiqueta: 'Fecha Ult. Gestión' },
     { id: 'gestiónFinal', etiqueta: 'Gestión final' },
     { id: 'tipificaciónGestiónFinal', etiqueta: 'Tipificación Gestión final' },
-    { id: 'empresa', etiqueta: 'Empresa' },
     { id: 'sede', etiqueta: 'Sede' },
     { id: 'programaFormación', etiqueta: 'Programa de Formación' },
     { id: 'nitEmpresa', etiqueta: 'Nit empresa' },
@@ -107,7 +210,6 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
     return filaFiltrada;
   });
 
-
   return (
     <>
       <main className="tabla" id="tablaClientes">
@@ -137,7 +239,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
             </thead>
             <tbody className='cuerpoTabla'>
               {nAspirantesPorPagina.map((row, index) => (
-                <tr className='filaTablaAspirantes' onClick={() => { setModalAbiertoHistorico(true) }} key={index}>
+                <tr className='filaTablaAspirantes' onClick={() => { setModalAbiertoHistorico(true); obtenerCelularAspirante(row.celular) }} key={index}>
                   {columnas.map(columna =>
                     visibilidadColumna[columna.id] && (
                       <td key={columna.id}>
@@ -160,7 +262,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           numeroPaginas={numeroPaginas}
         />
       </main>
-      <HistoricoGestiones modalAbiertoHistorico={modalAbiertoHistorico} cerrarModal={() => { setModalAbiertoHistorico(false) }} />
+      <HistoricoGestiones celularAspiranteSeleccionado={celularAspiranteSeleccionado} modalAbiertoHistorico={modalAbiertoHistorico} cerrarModal={() => { setModalAbiertoHistorico(false) }} />
 
       <ModalFiltrar modalAbierto={modalAbierto} cerrarModal={() => { setModalAbierto(false) }} />
     </>
