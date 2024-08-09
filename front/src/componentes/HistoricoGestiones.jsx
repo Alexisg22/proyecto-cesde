@@ -34,10 +34,7 @@ export const HistoricoGestiones = ({ cerrarModal, modalAbiertoHistorico }) => {
         }
         cargarHistoricoGestiones();
     }, []);
-
-    console.log(historicoGestiones)
     
-
     const columnas = [
         { id: 'fechaGestion', etiqueta: 'Fecha Gestión' },
         { id: 'asesor', etiqueta: 'Asesor' },

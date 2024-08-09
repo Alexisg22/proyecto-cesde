@@ -18,13 +18,13 @@ export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
     const capturarNombreInput = (e) => {
         const archivo = e.target.files[0];
         const idInput = e.target.id;
-
+        console.log("se ejecuto funcion")
         if (!archivo) return;
-
         if (idInput === 'BD1') setNombreArchivo1(archivo.name);
         if (idInput === 'BD2') setNombreArchivo2(archivo.name);
         if (idInput === 'BD3') setNombreArchivo3(archivo.name);
         if (idInput === 'BD4') setNombreArchivo4(archivo.name);
+        
     }
     
     const enviarBD = handleSubmit(async (data) => {
