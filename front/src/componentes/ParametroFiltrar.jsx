@@ -37,7 +37,7 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGesti
         <select className="campoFiltro" onChange={cambioValorInput} required>
           <option value="">Seleccione mejor gestión</option>
           {tipificaciones.map((tipificacion, index) => (
-            <option key={tipificacion.id || index} value={tipificacion.nombre}>
+            <option key={index} value={tipificacion.nombre}>
               {tipificacion.nombre}
             </option>
           ))}
@@ -62,7 +62,7 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGesti
         <select className="campoFiltro" onChange={cambioValorInput} required>
           <option value="">Seleccione tipificación</option>
           {tipificaciones.map((tipificacion, index) => (
-            <option key={tipificacion.id || index} value={tipificacion.nombre}>
+            <option key={index} value={tipificacion.nombre}>
               {tipificacion.nombre}
             </option>
           ))}

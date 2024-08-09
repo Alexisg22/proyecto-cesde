@@ -2,33 +2,33 @@ import '../estilos/HistoricoGestiones.css';
 import { obtenerHistoricoAspirante } from '../api/aspirantes.api';
 import { useState, useEffect } from 'react';
 
-export const HistoricoGestiones = ({ cerrarModal, modalAbiertoHistorico }) => {
+export const HistoricoGestiones = ({ celularAspiranteSeleccionado, cerrarModal, modalAbiertoHistorico }) => {
+    
+   
     
     if (!modalAbiertoHistorico) return
-
-    const [historicoGestiones, setHistoricoGestiones] = useState()
+     const [historicoGestiones, setHistoricoGestiones] = useState('')
 
 
     useEffect(() => {
         async function cargarHistoricoGestiones() {
-            const numeroCelular = "3044174055";
-            const respuesta = await obtenerHistoricoAspirante(numeroCelular);
+            const respuesta = await obtenerHistoricoAspirante(celularAspiranteSeleccionado);
             const historicoGestiones = respuesta.data;
     
             // Combinar todos los arrays internos en uno solo
-            const mapeado = historicoGestiones.flatMap(historico => 
-                historico.fechas_gestiones_por_aspirante.map((gestion) => ({
-                    nombre: gestion.nombre_completo,
-                    celular: gestion.celular,
-                    fecha: gestion.fecha,
-                    asesor: gestion.asesor,
-                    descripcion: gestion.descripcion,
-                    tipoGestion: gestion.tipo_gestion,
-                    resultadoGestion: gestion.resultado_gestion, // Asegúrate de que el nombre sea correcto
-                    programa: gestion.programa,
-                    sede: gestion.sede,
-                }))
-            );
+            
+            const mapeado = historicoGestiones.map((gestion) => ({
+                nombre: gestion.nombre_completo_aspirante,
+                celular: gestion.cel_aspirante,
+                fecha: gestion.fecha,
+                asesor: gestion.asesor,
+                descripcion: gestion.observaciones,
+                tipoGestion: gestion.tipo_gestion_nombre,
+                resultadoGestion: gestion.tipificacion_nombre, // Asegúrate de que el nombre sea correcto
+                programa: gestion.programa_nombre,
+                sede: gestion.sede_nombre,
+            }))
+            
     
             setHistoricoGestiones(mapeado);
         }
@@ -45,7 +45,7 @@ export const HistoricoGestiones = ({ cerrarModal, modalAbiertoHistorico }) => {
 
 
     return (
-
+        <>
         <div className='cotenedorModal'>
             <div className='modalHistoricoGestiones'>
                 <div className="tituloModalHistorico">
@@ -90,5 +90,6 @@ export const HistoricoGestiones = ({ cerrarModal, modalAbiertoHistorico }) => {
 
             </div>
         </div>
+        </>
     )
 }
