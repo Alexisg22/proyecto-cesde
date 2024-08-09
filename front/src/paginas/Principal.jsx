@@ -15,7 +15,6 @@ export const Principal = () => {
         'nit': false,
         'nombreCompleto': true,
         'cantidadLlamadas': true,
-        'cantMensajesDeTexto': false,
         'cantWhatsapps': false,
         'cantGestiones': true,
         'mejorGestión': true,
