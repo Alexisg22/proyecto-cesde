@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { obtenerTipificaciones } from '../api/aspirantes.api';
 
-// Función que valida el tipo de input que debe renderizarse basado en la opción seleccionada
 export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGestionTotal }) {
   const hoy = new Date().toISOString().split('T')[0];
   
@@ -32,7 +31,7 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGesti
     case "fecha de gestion":
     case "fecha ultima gestion":
       return <input className="campoFiltro" type="date" onChange={cambioValorInput} max={hoy} required />;
-
+    
     case "mejor gestion":
       return (
         <select className="campoFiltro" onChange={cambioValorInput} required>
@@ -106,7 +105,6 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGesti
   }
 }
 
-// Componente que envuelve la lógica de validación y renderiza el input correspondiente
 export const ParametroFiltrar = ({ seleccionOpcion, cambioValorInput, valorGestionTotal }) => {
   return (
     <>
@@ -114,4 +112,3 @@ export const ParametroFiltrar = ({ seleccionOpcion, cambioValorInput, valorGesti
     </>
   );
 }
-
