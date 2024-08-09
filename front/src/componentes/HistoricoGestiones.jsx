@@ -4,9 +4,10 @@ import { useState, useEffect } from 'react';
 
 export const HistoricoGestiones = ({ cerrarModal, modalAbiertoHistorico }) => {
     
+   
+    
     if (!modalAbiertoHistorico) return
-
-    const [historicoGestiones, setHistoricoGestiones] = useState()
+     const [historicoGestiones, setHistoricoGestiones] = useState()
 
 
     useEffect(() => {
@@ -45,7 +46,7 @@ export const HistoricoGestiones = ({ cerrarModal, modalAbiertoHistorico }) => {
 
 
     return (
-
+        <>
         <div className='cotenedorModal'>
             <div className='modalHistoricoGestiones'>
                 <div className="tituloModalHistorico">
@@ -90,5 +91,6 @@ export const HistoricoGestiones = ({ cerrarModal, modalAbiertoHistorico }) => {
 
             </div>
         </div>
+        </>
     )
 }

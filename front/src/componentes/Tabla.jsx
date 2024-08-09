@@ -15,7 +15,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
 
     async function cargarAspirantes() {
       const respuesta = await obtenerTodosAspirantes();
-      const aspirantes = respuesta.data;
+      const aspirantes = respuesta.data.aspirantes;
 
       const mapeado = aspirantes.map((aspirante) => ({
 
