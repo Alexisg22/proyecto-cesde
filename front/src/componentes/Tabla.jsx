@@ -15,7 +15,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
 
     async function cargarAspirantes() {
       const respuesta = await obtenerTodosAspirantes();
-      const aspirantes = respuesta.data;
+      const aspirantes = respuesta.data
 
       const mapeado = aspirantes.map((aspirante) => ({
 
@@ -72,7 +72,6 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
     { id: 'fechaUltGestión', etiqueta: 'Fecha Ult. Gestión' },
     { id: 'gestiónFinal', etiqueta: 'Gestión final' },
     { id: 'tipificaciónGestiónFinal', etiqueta: 'Tipificación Gestión final' },
-    { id: 'empresa', etiqueta: 'Empresa' },
     { id: 'sede', etiqueta: 'Sede' },
     { id: 'programaFormación', etiqueta: 'Programa de Formación' },
     { id: 'nitEmpresa', etiqueta: 'Nit empresa' },

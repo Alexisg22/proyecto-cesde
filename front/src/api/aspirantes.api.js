@@ -8,3 +8,7 @@ export const obtenerTodosAspirantes = () => {
 export const obtenerHistoricoAspirante = () => {
   return  axios.get('http://127.0.0.1:8000/cesde/aspirantes-historico/')
 }
+
+export const obtenerTipificaciones = () =>{
+  return axios.get('http://127.0.0.1:8000/cesde/tipificaciones/')
+}

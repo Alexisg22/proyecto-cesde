@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import '../estilos/BarraLateral.css'
 import { CheckboxBarraLateral } from './CheckboxBarraLateral'
 import { useNavigate } from 'react-router-dom';
 import { BotonNavegar } from './BotonNavegar.jsx'
 import { BotonVerde } from './BotonVerde.jsx';
 import { ModalAgregarTipoficacion } from './ModalAgregarTipificacion.jsx';
+import '../estilos/BarraLateral.css'
 
 // Componente principal BarraLateral
 export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, procesoSelect }) => {
