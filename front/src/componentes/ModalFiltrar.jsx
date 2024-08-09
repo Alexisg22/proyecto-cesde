@@ -55,7 +55,7 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
                 <h1>Filtrar datos</h1>
                 <div >
                     <form className='formularioFiltros' onSubmit={agregarFiltro}>
-                        <select name="filtro" id="filtro" className='seleccionDeFiltro' value={seleccionOpcion} onChange={cambioSeleccion} required>
+                        <select name="filtro" id="filtro" className='seleccionDeFiltro' value={seleccionOpcion} onChange={cambioSeleccion}>
 
                             <option value="">Selecione los filtros</option>
                             <option value="cantidad llamadas">Cantidad de llamadas</option>
