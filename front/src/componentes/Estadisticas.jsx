@@ -3,6 +3,8 @@ import '../estilos/Estadistica.css'
 import { Estadistica } from './Estadistica.jsx'
 import React, { useState } from 'react'
 
+const hoy = new Date().toISOString().split('T')[0];
+
 export const Estadisticas = ({ estadisticas}) => {
   if(!estadisticas){
     return
@@ -34,6 +36,7 @@ export const Estadisticas = ({ estadisticas}) => {
                         value={fechaInicio}
                         onChange={manejarCambioFechaInicio}
                         className="fechaEntrada"
+                        max={hoy}
                       />
                     </div>
                     <span className="separadorFechas">a</span>
@@ -43,6 +46,7 @@ export const Estadisticas = ({ estadisticas}) => {
                       value={fechaFin}
                       onChange={manejarCambioFechaFin}
                       className="fechaEntrada"
+                      max={hoy}
                     />
                     </div>
                   </div> 
