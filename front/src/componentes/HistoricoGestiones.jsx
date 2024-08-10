@@ -7,7 +7,8 @@ export const HistoricoGestiones = ({ celularAspiranteSeleccionado, cerrarModal, 
    
     
     if (!modalAbiertoHistorico) return
-     const [historicoGestiones, setHistoricoGestiones] = useState('')
+    
+    const [historicoGestiones, setHistoricoGestiones] = useState('')
 
 
     useEffect(() => {
@@ -43,7 +44,6 @@ export const HistoricoGestiones = ({ celularAspiranteSeleccionado, cerrarModal, 
         { id: 'tipoGestion', etiqueta: 'Tipo Gestión' },
     ];
 
-
     return (
         <>
         <div className='cotenedorModal'>
@@ -52,15 +52,12 @@ export const HistoricoGestiones = ({ celularAspiranteSeleccionado, cerrarModal, 
                     <h2>Historial de gestiones del aspirante</h2>
                     <button onClick={cerrarModal}>X</button>
                 </div>
-
                 <div className='datosAspiranteHistorico' >
                     {(historicoGestiones) && <p><strong>Aspirante: </strong>{historicoGestiones[0].nombre}</p>}
                     {(historicoGestiones) && <p><strong>Celular: </strong>{historicoGestiones[0].celular}</p>}
                     {(historicoGestiones) && <p><strong>Programa: </strong>{historicoGestiones[0].programa}</p>}
-                    {(historicoGestiones) && <p><strong>Sede: </strong>{historicoGestiones[0].sede}</p>}
-                        
+                    {(historicoGestiones) && <p><strong>Sede: </strong>{historicoGestiones[0].sede}</p>}          
                 </div> 
-
                 <hr />
                 <main className="tablaHistorico" id="tablaClientesHistorico">
                     <section className="cuerpoTablaHistorico">
@@ -75,19 +72,17 @@ export const HistoricoGestiones = ({ celularAspiranteSeleccionado, cerrarModal, 
                             <tbody className='cuerpoTablaHistorico'>
                                 {historicoGestiones && historicoGestiones.map((gestion, index) => (
                                     <tr className='filaTablaAspirantesHistorico' key={index}>
-                                        <td > {gestion.fecha} </td>
-                                        <td > {gestion.asesor} </td>
-                                        <td > {gestion.descripcion} </td>
-                                        <td > {gestion.resultadoGestion} </td>
-                                        <td > {gestion.tipoGestion} </td>  
+                                        <td >{gestion.fecha}</td>
+                                        <td >{gestion.asesor}</td>
+                                        <td >{gestion.descripcion}</td>
+                                        <td >{gestion.resultadoGestion}</td>
+                                        <td >{gestion.tipoGestion}</td>  
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
                     </section>
-
                 </main>
-
             </div>
         </div>
         </>

@@ -11,6 +11,16 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
 
   const [aspirantes, setAspirantes] = useState([]);
   const [celularAspiranteSeleccionado, setCelularAspiranteSeleccionado] = useState('')
+  const [cantidadFilas, setCantidadFilas] = useState(10)
+  const [paginaActual, setPaginaActual] = useState(1)
+  const [modalAbierto, setModalAbierto] = useState(false)
+  const [modalAbiertoHistorico, setModalAbiertoHistorico] = useState(false)
+  const indexFinal = paginaActual * cantidadFilas
+  const indexInicial = indexFinal - cantidadFilas
+  const nAspirantesPorPagina = aspirantes.slice(indexInicial, indexFinal)
+  const numeroPaginas = Math.ceil(aspirantes.length / cantidadFilas)
+
+    
 
  
 
@@ -55,7 +65,6 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
         const aspirantes = respuesta.data.aspirantes;
   
         const mapeado = aspirantes.map((aspirante) => ({
-  
           celular: aspirante.celular,
           nit: aspirante.nit,
           nombreCompleto: aspirante.nombre_completo,
@@ -73,8 +82,6 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           nitEmpresa: aspirante.patrocinio_empresa,
           sede: aspirante.sede,
           programaFormación: aspirante.programa_formacion,
-          
-  
         }))
         
         
@@ -111,8 +118,6 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           
   
         }))
-        
-        
         setAspirantes(mapeado)
       }
       cargarAspirantes();
@@ -155,10 +160,18 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
     }
   }, [procesoSelect, aspirantes]);
 
-  const obtenerCelularAspirante = (celular) => {
-    setCelularAspiranteSeleccionado('')
-    setCelularAspiranteSeleccionado(celular);
-    console.log(celularAspiranteSeleccionado)
+
+  const manejrClickFilaAspirantes = (celular, cantGestionesAspirante) => {
+    if(cantGestionesAspirante === 0){
+      alert('Al aspirante no se le ah realizado ninguna gestión')
+      return
+    }else{
+      setCelularAspiranteSeleccionado(celular);
+      setModalAbiertoHistorico(true);
+    }
+    // setCelularAspiranteSeleccionado('')
+    
+    // console.log(celularAspiranteSeleccionado)
   }
  
 
@@ -182,23 +195,11 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
   ];
 
   const encabezados = columnas
-    .filter(columna => visibilidadColumna[columna.id])
-    .map(columna => ({
+  .filter(columna => visibilidadColumna[columna.id])
+  .map(columna => ({
       label: columna.etiqueta,
       key: columna.id
-    }));
-
-  const [cantidadFilas, setCantidadFilas] = useState(10)
-  const [paginaActual, setPaginaActual] = useState(1)
-
-  const indexFinal = paginaActual * cantidadFilas
-  const indexInicial = indexFinal - cantidadFilas
-
-  const nAspirantesPorPagina = aspirantes.slice(indexInicial, indexFinal)
-  const numeroPaginas = Math.ceil(aspirantes.length / cantidadFilas)
-
-  const [modalAbierto, setModalAbierto] = useState(false)
-  const [modalAbiertoHistorico, setModalAbiertoHistorico] = useState(false)
+  }));
 
   const datosFiltrados = aspirantes.map(row => {
     const filaFiltrada = {};
@@ -239,7 +240,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
             </thead>
             <tbody className='cuerpoTabla'>
               {nAspirantesPorPagina.map((row, index) => (
-                <tr className='filaTablaAspirantes' onClick={() => { setModalAbiertoHistorico(true); obtenerCelularAspirante(row.celular) }} key={index}>
+                <tr className='filaTablaAspirantes' onClick={() => { manejrClickFilaAspirantes(row.celular, row.cantGestiones) }} key={index}>
                   {columnas.map(columna =>
                     visibilidadColumna[columna.id] && (
                       <td key={columna.id}>
@@ -263,7 +264,6 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
         />
       </main>
       <HistoricoGestiones celularAspiranteSeleccionado={celularAspiranteSeleccionado} modalAbiertoHistorico={modalAbiertoHistorico} cerrarModal={() => { setModalAbiertoHistorico(false) }} />
-
       <ModalFiltrar modalAbierto={modalAbierto} cerrarModal={() => { setModalAbierto(false) }} />
     </>
   );
