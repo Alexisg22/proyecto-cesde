@@ -6,6 +6,7 @@ import { Paginador } from './Paginador.jsx';
 import { CSVLink } from "react-csv";
 import { obtenerAspirantesProceso, obtenerTodosAspirantes } from '../api/aspirantes.api.js';
 import '../estilos/Tabla.css';
+import { ModalAspiranteSinGestiones } from './ModalAspiranteSinGestiones.jsx';
 
 function Tabla({ visibilidadColumna, procesoSelect }) {
 
@@ -15,6 +16,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
   const [paginaActual, setPaginaActual] = useState(1)
   const [modalAbierto, setModalAbierto] = useState(false)
   const [modalAbiertoHistorico, setModalAbiertoHistorico] = useState(false)
+  const [abrirModalAspiranteSinGesiones, setAbrirModalAspiranteSinGesiones] = useState(false)
   const indexFinal = paginaActual * cantidadFilas
   const indexInicial = indexFinal - cantidadFilas
   const nAspirantesPorPagina = aspirantes.slice(indexInicial, indexFinal)
@@ -163,7 +165,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
 
   const manejrClickFilaAspirantes = (celular, cantGestionesAspirante) => {
     if(cantGestionesAspirante === 0){
-      alert('Al aspirante no se le ah realizado ninguna gestión')
+      setAbrirModalAspiranteSinGesiones(true)
       return
     }else{
       setCelularAspiranteSeleccionado(celular);
@@ -263,6 +265,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           numeroPaginas={numeroPaginas}
         />
       </main>
+      <ModalAspiranteSinGestiones abrirModalAspiranteSinGesiones={abrirModalAspiranteSinGesiones} cerrarModal={() => { setAbrirModalAspiranteSinGesiones(false) }}/>
       <HistoricoGestiones celularAspiranteSeleccionado={celularAspiranteSeleccionado} modalAbiertoHistorico={modalAbiertoHistorico} cerrarModal={() => { setModalAbiertoHistorico(false) }} />
       <ModalFiltrar modalAbierto={modalAbierto} cerrarModal={() => { setModalAbierto(false) }} />
     </>
