@@ -28,7 +28,7 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
             <option value="Volver a llamar">Volver a llamar</option>
             <option value="En proceso de selección">En proceso de selección</option>
             <option value="Motivos económicos">Motivos económicos</option>
-            <option value="Primer intento de contacto">Primer intento de contacto</option>
+            <option value="primer contacto">Primer intento de contacto</option>
             <option value="Segundo intento de contacto">Segundo intento de contacto</option>
             <option value="Tercer intento de contacto">Tercer intento de contacto</option>
             <option value="Cliente en seguimiento">Cliente en seguimiento</option>
@@ -51,25 +51,25 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
             <option value="matriculado">Matriculado</option>
             <option value="liquidado">Liquidado</option>
             <option value="desistio">Desistió</option>
-            <option value="en gestion">En gestión</option>
-            <option value="sin gestion">Sin gestión</option>
+            <option value="En gestion">En gestión</option>
+            <option value="Sin gestion">Sin gestión</option>
             <option value="no gestionable">No gestionable</option>
           </select>
         );
   
-      case "tipificación ultima gestion":
+      case "tipificación última gestión":
         return (
           <select className="campoFiltro" onChange={cambioValorInput} required>
             <option value="">Seleccione tipificación</option>
-            <option value="Sin interés">Sin interés</option>
-            <option value="Información General">Información general</option>
+            <option value="3">Sin interés</option>
+            <option value="1">Información general</option>
             <option value="Interesado en seguimiento">Interesado en seguimiento</option>
             <option value="Sin tipificar">Sin tipificar</option>
             <option value="Sin tiempo">Sin tiempo</option>
             <option value="Volver a llamar">Volver a llamar</option>
             <option value="En proceso de selección">En proceso de selección</option>
             <option value="Motivos económicos">Motivos económicos</option>
-            <option value="Primer intento de contacto">Primer intento de contacto</option>
+            <option value="primer contacto">Primer intento de contacto</option>
             <option value="Segundo intento de contacto">Segundo intento de contacto</option>
             <option value="Tercer intento de contacto">Tercer intento de contacto</option>
             <option value="Cliente en seguimiento">Cliente en seguimiento</option>
@@ -85,12 +85,12 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
           </select>
         );
   
-      case "programa de formacion":
+      case "programa de formación":
         return (
           <select className="campoFiltro" onChange={cambioValorInput} required>
             <option value="">Seleccione programa formacion</option>
-            <option value="tecnico">Técnico</option>
-            <option value="tecnologo profesional">Tecnólogo profesional</option>
+            <option value="1">Técnico</option>
+            <option value="3">Tecnólogo profesional</option>
           </select>
         );
   
@@ -98,8 +98,8 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
         return (
           <select className="campoFiltro" onChange={cambioValorInput} required>
             <option value="">Seleccione la sede</option>
-            <option value="principal">Sede principal</option>
-            <option value="bogota">Bogotá</option>
+            <option value="1">Sede principal</option>
+            <option value="2">Bogotá</option>
             <option value="medellin">Medellín</option>
             <option value="rionegro">Rionegro</option>
           </select>
@@ -109,7 +109,7 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput }) {
         return (
           <select className="campoFiltro" onChange={cambioValorInput} required>
             <option value="">Seleccione la empresa</option>
-            <option value="nit empresa 1">nit empresa 1</option>
+            <option value="No">nit empresa 1</option>
             <option value="nit empresa 2">nit empresa 2</option>
             <option value="nit empresa 3">nit empresa 3</option>
             <option value="nit empresa 4">nit empresa 4</option>

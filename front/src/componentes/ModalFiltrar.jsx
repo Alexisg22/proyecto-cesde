@@ -4,12 +4,12 @@ import '../estilos/ModalFiltrar.css'
 import { ParametroFiltrar } from './ParametroFiltrar.jsx';
 
 
-export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
+export const ModalFiltrar = ({buscarAspirantesConFiltros, filtrosSeleccionados, setFiltrosSeleccionados, cerrarModal, modalAbierto}) => {
 
     
     const [seleccionOpcion, setSeleccionOpcion] = useState('');
     const [valorInput, setValorInput] = useState('');
-    const [filtrosSeleccionados, setFiltrosSeleccionados] = useState([]);
+    // const [filtrosSeleccionados, setFiltrosSeleccionados] = useState([]);
     
 
     const cambioSeleccion = (e) => {
@@ -42,8 +42,9 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
         setFiltrosSeleccionados(filtrosSeleccionados.filter((_, i) => i !== index));
     };
 
-    if(!modalAbierto) return
-
+    if(!modalAbierto) return 
+    
+    console.log(filtrosSeleccionados)
   return (
     <>
     <div className='contenedorFiltrar'> 
@@ -66,8 +67,8 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
                             <option value="estado del aspirante">Estado del aspirante</option>
                             <option value="dias ultima gestion">Dias de la ultima gestión</option>
                             <option value="fecha ultima gestion">Fecha de ultima gestión</option>
-                            <option value="tipificación ultima gestion">Tipificación ultima gestión</option>
-                            <option value="programa de formacion">Programa de formación</option>
+                            <option value="tipificación última gestión">Tipificación ultima gestión</option>
+                            <option value="programa de formación">Programa de formación</option>
                             <option value="sede">Sede</option>
                             <option value="empresa">Empresa</option>
 
@@ -95,7 +96,7 @@ export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
                 </div>
 
                 <div className='filtrarBD'>
-                    <BotonVerde ide={'botonFiltrar'} texto={'Filtrar'}/>
+                    <button  onClick={buscarAspirantesConFiltros} className='botonVerde'>Filtrar</button>
                 </div>
                 
         </div>
