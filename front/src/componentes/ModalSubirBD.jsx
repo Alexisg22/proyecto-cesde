@@ -30,6 +30,7 @@ export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
         if (idInput === 'BD2') setNombreArchivo2(archivo.name);
         if (idInput === 'BD3') setNombreArchivo3(archivo.name);
         if (idInput === 'BD4') setNombreArchivo4(archivo.name);
+        
     }
 
     // Función para manejar el envío del formulario
