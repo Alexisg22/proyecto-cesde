@@ -1,11 +1,24 @@
 import '../estilos/Estadisticas.css'
 import '../estilos/Estadistica.css'
 import { Estadistica } from './Estadistica.jsx'
-import React from 'react'
+import React, { useState } from 'react'
+
+const hoy = new Date().toISOString().split('T')[0];
 
 export const Estadisticas = ({ estadisticas}) => {
   if(!estadisticas){
     return
+  }
+
+  const [fechaInicio, setFechaInicio] = useState('')
+  const [fechaFin, setFechaFin] = useState('')
+
+  const manejarCambioFechaInicio = (e) => {
+    setFechaInicio(e.target.value)
+  }
+
+  const manejarCambioFechaFin = (e) => {
+    setFechaFin(e.target.value)
   }
   return (
     <>
@@ -13,8 +26,34 @@ export const Estadisticas = ({ estadisticas}) => {
         <section className='contenidoEstadistica'>
 
             <div className='titulo'>
-                <h1>Estadísticas Generales</h1>
-            </div>
+                <h1 className='tituloEstadisticas'>Estadísticas Generales</h1>
+                <div className="formularioFecha">
+          
+                  <div className="contenedorFechas">
+                    <div className="contenedorFechaIndividual">
+                      <input
+                        type="date"
+                        value={fechaInicio}
+                        onChange={manejarCambioFechaInicio}
+                        className="fechaEntrada"
+                        max={hoy}
+                      />
+                    </div>
+                    <span className="separadorFechas">a</span>
+                    <div className="contenedorFechaIndividual">
+                      <input
+                      type="date"
+                      value={fechaFin}
+                      onChange={manejarCambioFechaFin}
+                      className="fechaEntrada"
+                      max={hoy}
+                    />
+                    </div>
+                  </div> 
+                </div>
+                </div>
+            
+
             <div className='contenido'>
             
                 <Estadistica id='contactabilidad' label='Contactabilidad' dato={estadisticas.contactabilidad} />

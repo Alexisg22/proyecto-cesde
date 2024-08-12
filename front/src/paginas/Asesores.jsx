@@ -9,7 +9,6 @@ const columnas = [
   { id: 'idWolkvox', etiqueta: 'Id Wolkvox' },
   { id: 'nombreCompleto', etiqueta: 'Nombre Completo' },
   { id: 'cantLlamadas', etiqueta: 'Cant. Llamadas' },
-  { id: 'cantMensajesDeTexto', etiqueta: 'Cant. SMS' },
   { id: 'cantWhatsapps', etiqueta: 'Cant. WhatsApps' },
   { id: 'cantGestiones', etiqueta: 'Cant. Gestiones' },
   { id: 'cantMatriculas', etiqueta: 'Cant. Matrículas' },
@@ -20,7 +19,6 @@ const encabezados = columnas.map(columna => ({
   label: columna.etiqueta,
   key: columna.id
 }));
-
 
 export const Asesores = () => {
 

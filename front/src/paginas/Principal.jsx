@@ -15,7 +15,6 @@ export const Principal = () => {
         'nit': false,
         'nombreCompleto': true,
         'cantidadLlamadas': true,
-        'cantMensajesDeTexto': false,
         'cantWhatsapps': false,
         'cantGestiones': true,
         'mejorGestión': true,
@@ -24,7 +23,6 @@ export const Principal = () => {
         'fechaUltGestión': true,
         'gestiónFinal': true,
         'tipificaciónGestiónFinal': true,
-        'celularAdicional': false,
         'sede': false,
         'programaFormación': false,
     });
@@ -32,8 +30,9 @@ export const Principal = () => {
     const [estadisticas, setEstadisticas] = useState()
 
     useEffect(() =>{
-            if(procesoSelect == 'general'){
-                setEstadisticas({
+        if(procesoSelect == 'general'){
+
+            setEstadisticas({
                     contactabilidad: 5,
                     noContactabilidad: 10,
                     porcentajeConvercion: 15,
@@ -46,8 +45,8 @@ export const Principal = () => {
                     cancelados: 50,
                     noGestionable: 55
                 
-                })
-            }
+            })
+        }
         
         if(procesoSelect == 'empresas'){
           setEstadisticas(

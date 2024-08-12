@@ -1,10 +1,41 @@
-import React from 'react'
-import '../estilos/HistoricoGestiones.css'
+import '../estilos/HistoricoGestiones.css';
+import { obtenerHistoricoAspirante } from '../api/aspirantes.api';
+import { useState, useEffect } from 'react';
 
-export const HistoricoGestiones = ({ cerrarModal, modalAbiertoHistorico }) => {
-
+export const HistoricoGestiones = ({ celularAspiranteSeleccionado, cerrarModal, modalAbiertoHistorico }) => {
+    
+   
+    
     if (!modalAbiertoHistorico) return
+    
+    const [historicoGestiones, setHistoricoGestiones] = useState('')
 
+
+    useEffect(() => {
+        async function cargarHistoricoGestiones() {
+            const respuesta = await obtenerHistoricoAspirante(celularAspiranteSeleccionado);
+            const historicoGestiones = respuesta.data;
+    
+            // Combinar todos los arrays internos en uno solo
+            
+            const mapeado = historicoGestiones.map((gestion) => ({
+                nombre: gestion.nombre_completo_aspirante,
+                celular: gestion.cel_aspirante,
+                fecha: gestion.fecha,
+                asesor: gestion.asesor,
+                descripcion: gestion.observaciones,
+                tipoGestion: gestion.tipo_gestion_nombre,
+                resultadoGestion: gestion.tipificacion_nombre, // Asegúrate de que el nombre sea correcto
+                programa: gestion.programa_nombre,
+                sede: gestion.sede_nombre,
+            }))
+            
+    
+            setHistoricoGestiones(mapeado);
+        }
+        cargarHistoricoGestiones();
+    }, []);
+    
     const columnas = [
         { id: 'fechaGestion', etiqueta: 'Fecha Gestión' },
         { id: 'asesor', etiqueta: 'Asesor' },
@@ -13,100 +44,47 @@ export const HistoricoGestiones = ({ cerrarModal, modalAbiertoHistorico }) => {
         { id: 'tipoGestion', etiqueta: 'Tipo Gestión' },
     ];
 
-    // Datos de ejemplo (reemplazar con tus datos reales)
-    const datos = [
-        {
-            fechaGestion: '3162840984',
-            asesor: '34567890',
-            descripcion: 'Sofía Gómez',
-            resultadoGestion: '3',
-            tipoGestion: 'Llamada',
-        },
-        {
-            fechaGestion: '3162840984',
-            asesor: '34567890',
-            descripcion: 'Sofía Gómez',
-            resultadoGestion: '3',
-            tipoGestion: 'Llamada',
-        }, {
-            fechaGestion: '3162840984',
-            asesor: '34567890',
-            descripcion: 'Sofía Gómez',
-            resultadoGestion: '3',
-            tipoGestion: 'SMS',
-        }, {
-            fechaGestion: '3162840984',
-            asesor: '34567890',
-            descripcion: 'Sofía Gómez',
-            resultadoGestion: '3',
-            tipoGestion: 'Whatsapp',
-        }, {
-            fechaGestion: '3162840984',
-            asesor: '34567890',
-            descripcion: 'Sofía Gómez',
-            resultadoGestion: '3',
-            tipoGestion: 'SMS',
-        }, {
-            fechaGestion: '3162840984',
-            asesor: 'Jaime de jesus Gomez buenavista',
-            descripcion: 'Jaime de jesus Gomez buenavistaJaime de jesus Gomez buenavistaJaime de jesus Gomez buenavistaJaime de jesus Gomez buenavistaJaime de jesus Gomez buenavistaJaime de jesus Gomez buenavistaJaime de jesus Gomez buenavistaJaime de jesus Gomez buenavista',
-            resultadoGestion: '3',
-            tipoGestion: 'Llamada',
-        },
-    ];
-
     return (
-
+        <>
         <div className='cotenedorModal'>
             <div className='modalHistoricoGestiones'>
                 <div className="tituloModalHistorico">
                     <h2>Historial de gestiones del aspirante</h2>
                     <button onClick={cerrarModal}>X</button>
                 </div>
-
                 <div className='datosAspiranteHistorico' >
-                    <p><strong>Aspirante: </strong>Alexander Santa Ortega</p>
-                    <p><strong>Celular: </strong>3044233452</p>
-                    <p><strong>Programa: </strong>Tecnico en desarrollo de software</p>
-                    <p><strong>Sede: </strong>Rionegro</p>
-                </div>
-
+                    {(historicoGestiones) && <p><strong>Aspirante: </strong>{historicoGestiones[0].nombre}</p>}
+                    {(historicoGestiones) && <p><strong>Celular: </strong>{historicoGestiones[0].celular}</p>}
+                    {(historicoGestiones) && <p><strong>Programa: </strong>{historicoGestiones[0].programa}</p>}
+                    {(historicoGestiones) && <p><strong>Sede: </strong>{historicoGestiones[0].sede}</p>}          
+                </div> 
                 <hr />
                 <main className="tablaHistorico" id="tablaClientesHistorico">
                     <section className="cuerpoTablaHistorico">
                         <table className='tablaHistorico'>
-                            <thead className='cabezaTablaHistorico'>
+                            <thead className='cabezaTablaHistorico'> 
                                 <tr>
-                                    {columnas.map(columna => [columna.id] && (
-                                        <th key={columna.id} id={columna.id}>
-                                            {columna.etiqueta}
-                                        </th>
-                                    )
-                                    )}
-                                </tr>
+                                    {columnas.map((columna, index) => (
+                                        <th key={index}>{columna.etiqueta}</th>
+                                    ))} 
+                                </tr>    
                             </thead>
                             <tbody className='cuerpoTablaHistorico'>
-                                {datos.map((row, index) => (
-                                    <tr className='filaTablaAspirantesHistorico'>
-                                        {columnas.map(columna => [columna.id] && (
-                                            <td key={columna.id}>
-                                                {columna.id === 'estadoAspirante' ? (
-                                                    <p className={row[columna.id].toLowerCase()}>{row[columna.id]}</p>
-                                                ) : (
-                                                    row[columna.id]
-                                                )}
-                                            </td>
-                                        )
-                                        )}
+                                {historicoGestiones && historicoGestiones.map((gestion, index) => (
+                                    <tr className='filaTablaAspirantesHistorico' key={index}>
+                                        <td >{gestion.fecha}</td>
+                                        <td >{gestion.asesor}</td>
+                                        <td >{gestion.descripcion}</td>
+                                        <td >{gestion.resultadoGestion}</td>
+                                        <td >{gestion.tipoGestion}</td>  
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
                     </section>
-
                 </main>
-
             </div>
         </div>
+        </>
     )
 }
