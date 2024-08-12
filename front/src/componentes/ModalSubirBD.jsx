@@ -69,10 +69,6 @@ export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
 
 
                 </form>
-                
-                
-                
-
             </div>
         </div>
     )

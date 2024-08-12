@@ -32,7 +32,6 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
         fechaUltGestión: aspirante.fecha_ultima_gestion,
         gestiónFinal: aspirante.estado_ultima_gestion,
         tipificaciónGestiónFinal: aspirante.estado_ultima_gestion,
-        celularAdicional: aspirante.celular_adicional,
         nitEmpresa: aspirante.patrocinio_empresa,
         sede: aspirante.sede,
         programaFormación: aspirante.programa_formacion,
