@@ -97,9 +97,9 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
               return (objetoFiltros.diasUltimaGestion = filtro.valor);
             case('fecha ultima gestion'):
               return (objetoFiltros.fechaUltimaGestion = filtro.valor);
-            case('tipificación última gestión'):
+            case('tipificación última gestion'):
               return (objetoFiltros.tipificacionUltimaGestion = filtro.valor);
-            case('programa de formación'):
+            case('programa de formacion'):
               return (objetoFiltros.programaFormacion = filtro.valor);
             case('sede'):
               return (objetoFiltros.sede = filtro.valor);
@@ -176,10 +176,9 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
       
       
     } else if (procesoSelect === 'empresas') {
-      let empresas = '1' 
       async function cargarAspirantes() {
-        
-        const respuesta = await obtenerAspirantesProceso(empresas);
+        const empresa = "empresa"
+        const respuesta = await obtenerAspirantesProceso(empresa);
         const aspirantes = respuesta.data.aspirantes;
   
         const mapeado = aspirantes.map((aspirante) => ({
@@ -208,10 +207,9 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
       cargarAspirantes();
       // setAspirantes(aspirantes.filter(aspirante => aspirante.empresa)); // Adjust filter as needed
     } else if (procesoSelect === 'extensiones') {
-      const extensiones = '2' 
       async function cargarAspirantes() {
         
-        const respuesta = await obtenerAspirantesProceso(extensiones);
+        const respuesta = await obtenerAspirantesProceso("extenciones");
         const aspirantes = respuesta.data.aspirantes;
   
         const mapeado = aspirantes.map((aspirante) => ({
@@ -241,10 +239,9 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
       cargarAspirantes();
       // setAspirantes(aspirantes.filter(aspirante => aspirante.sede)); // Adjust filter as needed
     } else if (procesoSelect === 'tecnicos') {
-      let tecnicos = '3' 
       async function cargarAspirantes() {
         
-        const respuesta = await obtenerAspirantesProceso(tecnicos);
+        const respuesta = await obtenerAspirantesProceso("técnicos");
         const aspirantes = respuesta.data.aspirantes;
   
         const mapeado = aspirantes.map((aspirante) => ({
