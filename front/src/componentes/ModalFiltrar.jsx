@@ -6,6 +6,7 @@ import { ParametroFiltrar } from './ParametroFiltrar.jsx';
 // Definición del componente ModalFiltrar
 export const ModalFiltrar = ({ cerrarModal, modalAbierto }) => {
 
+<<<<<<< HEAD
     // Estados locales del componente
     const [seleccionOpcion, setSeleccionOpcion] = useState(''); // Opción seleccionada en el dropdown
     const [valorInput, setValorInput] = useState(''); // Valor ingresado en el input
@@ -13,6 +14,15 @@ export const ModalFiltrar = ({ cerrarModal, modalAbierto }) => {
     const [valorGestionTotal, setValorGestionTotal] = useState(0); // Valor total de gestiones
     const valorLlamadasRef = useRef(); // Referencia para el valor total de gestiones
     const valorWhatsappRef = useRef(); // Referencia para el valor total de gestiones
+=======
+export const ModalFiltrar = ({buscarAspirantesConFiltros, filtrosSeleccionados, setFiltrosSeleccionados, cerrarModal, modalAbierto}) => {
+
+    
+    const [seleccionOpcion, setSeleccionOpcion] = useState('');
+    const [valorInput, setValorInput] = useState('');
+    // const [filtrosSeleccionados, setFiltrosSeleccionados] = useState([]);
+    
+>>>>>>> dc925b457052de79adebd17462a5b78069f3fcb2
 
     // Maneja el cambio en la selección del dropdown
     const cambioSeleccion = (e) => {
@@ -68,13 +78,13 @@ export const ModalFiltrar = ({ cerrarModal, modalAbierto }) => {
         setFiltrosSeleccionados(filtrosSeleccionados.filter((_, i) => i !== index));
     };
 
-    // Si el modal no está abierto, no renderiza nada
-    if (!modalAbierto) return null;
-
-    return (
-        <>
-            <div className='contenedorFiltrar'>
-                <div className='modalFiltrar'>
+    if(!modalAbierto) return 
+    
+    console.log(filtrosSeleccionados)
+  return (
+    <>
+    <div className='contenedorFiltrar'> 
+            <div className='modalFiltrar'>
 
                     <div className='botonCerrar'>
                         {/* Botón para cerrar el modal */}
@@ -101,6 +111,19 @@ export const ModalFiltrar = ({ cerrarModal, modalAbierto }) => {
 
                             {/* Componente ParametroFiltrar para manejar la entrada del valor */}
                             <ParametroFiltrar seleccionOpcion={seleccionOpcion} cambioValorInput={cambioValorInput}  valorGestionTotal={valorGestionTotal} />
+                            <option value="">Selecione los filtros</option>
+                            <option value="cantidad llamadas">Cantidad de llamadas</option>
+                            <option value="cantidad SMS">Cantidad de SMS</option>
+                            <option value="cantidad whatsapp">Cantidad de Whatsapp</option>
+                            <option value="cantidad gestiones">Cantidad de gestiones</option>
+                            <option value="mejor gestion">Mejor gestion</option>
+                            <option value="estado del aspirante">Estado del aspirante</option>
+                            <option value="dias ultima gestion">Dias de la ultima gestión</option>
+                            <option value="fecha ultima gestion">Fecha de ultima gestión</option>
+                            <option value="tipificación última gestión">Tipificación ultima gestión</option>
+                            <option value="programa de formación">Programa de formación</option>
+                            <option value="sede">Sede</option>
+                            <option value="empresa">Empresa</option>
 
                             <button className='btnAgregarFiltro' type='submit'>Agregar filtro</button>
                         </form>
@@ -126,3 +149,5 @@ export const ModalFiltrar = ({ cerrarModal, modalAbierto }) => {
         </>
     );
 };
+
+

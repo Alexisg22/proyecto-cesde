@@ -4,13 +4,25 @@ import { HistoricoGestiones } from './HistoricoGestiones.jsx';
 import { ModalFiltrar } from './ModalFiltrar.jsx';
 import { Paginador } from './Paginador.jsx';
 import { CSVLink } from "react-csv";
-import { obtenerAspirantesProceso, obtenerTodosAspirantes } from '../api/aspirantes.api.js';
+import { obtenerAspirantesProceso, obtenerTodosAspirantes, obtenerTodosAspirantesConFiltros } from '../api/aspirantes.api.js';
 import '../estilos/Tabla.css';
+import { ModalAspiranteSinGestiones } from './ModalAspiranteSinGestiones.jsx';
 
 function Tabla({ visibilidadColumna, procesoSelect }) {
 
   const [aspirantes, setAspirantes] = useState([]);
   const [celularAspiranteSeleccionado, setCelularAspiranteSeleccionado] = useState('')
+  const [cantidadFilas, setCantidadFilas] = useState(10)
+  const [paginaActual, setPaginaActual] = useState(1)
+  const [modalAbierto, setModalAbierto] = useState(false)
+  const [modalAbiertoHistorico, setModalAbiertoHistorico] = useState(false)
+  const [abrirModalAspiranteSinGesiones, setAbrirModalAspiranteSinGesiones] = useState(false)
+  const indexFinal = paginaActual * cantidadFilas
+  const indexInicial = indexFinal - cantidadFilas
+  const nAspirantesPorPagina = aspirantes.slice(indexInicial, indexFinal)
+  const numeroPaginas = Math.ceil(aspirantes.length / cantidadFilas)
+  const [filtrosSeleccionados, setFiltrosSeleccionados] = useState([]);
+  const [aplicarFiltrosAspirantes, setAplicarFiltrosAspirantes] = useState([]) 
 
   useEffect(() => {
 
@@ -46,12 +58,65 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
     cargarAspirantes();
   }, [])
 
+  const buscarAspirantesConFiltros = ( ) =>{
+    setAplicarFiltrosAspirantes(filtrosSeleccionados)
+    setModalAbierto(false)
+  }
+    
   useEffect(() => {
     if (procesoSelect === 'general') {
-      async function cargarAspirantes() {
-        const respuesta = await obtenerTodosAspirantes();
-        const aspirantes = respuesta.data.aspirantes;
-  
+// validar si hay filtros para aplicar a la busqueda de aspirantes
+      if(aplicarFiltrosAspirantes != 0){
+
+        let objetoFiltros ={
+          cantidadLlamadas: '',
+          cantidadWhatsapps: '',
+          cantidadGestiones: '',
+          mejorGestion: '',
+          estadoAspirante: '',
+          diasUltimaGestion: '',
+          fechaUltimaGestion: '',
+          tipificacionUltimaGestion: '',
+          programaFormacion: '',
+          sede: '',
+          nitEmpresa: ''
+        }
+       
+        aplicarFiltrosAspirantes.map((filtro) => { 
+          switch(filtro.filtro){
+            case('cantidad llamadas') :
+              return (objetoFiltros.cantidadLlamadas = filtro.valor);
+            case('cantidad whatsapp'):
+              return (objetoFiltros.cantidadWhatsapps = filtro.valor);
+            case('cantidad gestiones'):
+              return (objetoFiltros.cantidadGestiones = filtro.valor);
+            case('mejor gestion'):
+              return (objetoFiltros.mejorGestion = filtro.valor);
+            case('estado del aspirante'):
+              return (objetoFiltros.estadoAspirante = filtro.valor);
+            case('dias ultima gestion'):
+              return (objetoFiltros.diasUltimaGestion = filtro.valor);
+            case('fecha ultima gestion'):
+              return (objetoFiltros.fechaUltimaGestion = filtro.valor);
+            case('tipificación última gestión'):
+              return (objetoFiltros.tipificacionUltimaGestion = filtro.valor);
+            case('programa de formación'):
+              return (objetoFiltros.programaFormacion = filtro.valor);
+            case('sede'):
+              return (objetoFiltros.sede = filtro.valor);
+            case('empresa'):
+              return (objetoFiltros.nitEmpresa = filtro.valor);
+            default:
+              return null;
+          }  
+        })
+        console.log(objetoFiltros)
+        async function cargarAspirantes() {
+        const respuesta = await obtenerTodosAspirantesConFiltros(objetoFiltros);
+        const aspirantes = respuesta.data;
+        // console.log('se buscan filtros')
+        // console.log(aspirantes)
+    
         const mapeado = aspirantes.map((aspirante) => ({
   
           celular: aspirante.celular,
@@ -61,24 +126,56 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
           cantWhatsapps: aspirante.cantidad_whatsapp,
           cantGestiones: aspirante.cantidad_gestiones,
-          mejorGestión: 'No interesado',
-          estadoAspirante: aspirante.estado_aspirante,
+          // mejorGestión: 'No interesado',
+          estadoAspirante: aspirante.estado,
           diasUltGestión: aspirante.dias_ultima_gestion,
           fechaUltGestión: aspirante.fecha_ultima_gestion,
-          gestiónFinal: aspirante.estado_ultima_gestion,
-          tipificaciónGestiónFinal: aspirante.estado_ultima_gestion,
-          celularAdicional: aspirante.celular_adicional,
-          nitEmpresa: aspirante.patrocinio_empresa,
+          // gestiónFinal: aspirante.estado_ultima_gestion,
+          tipificaciónGestiónFinal: aspirante.tipificacion,
+          // celularAdicional: aspirante.celular_adicional,
+          nitEmpresa: aspirante.nit_empresa,
           sede: aspirante.sede,
-          programaFormación: aspirante.programa_formacion,
-          
-  
+          programaFormación: aspirante.programa,
         }))
-        
-        
         setAspirantes(mapeado)
       }
       cargarAspirantes();
+// Si no hay filtros que aplicar se trae la consulta normal 
+      }else{
+        async function cargarAspirantes() {
+          const respuesta = await obtenerTodosAspirantes();
+          const aspirantes = respuesta.data.aspirantes;
+    
+          const mapeado = aspirantes.map((aspirante) => ({
+    
+            celular: aspirante.celular,
+            nit: aspirante.nit,
+            nombreCompleto: aspirante.nombre_completo,
+            cantidadLlamadas: aspirante.cantidad_llamadas,
+            cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
+            cantWhatsapps: aspirante.cantidad_whatsapp,
+            cantGestiones: aspirante.cantidad_gestiones,
+            mejorGestión: 'No interesado',
+            estadoAspirante: aspirante.estado_aspirante,
+            diasUltGestión: aspirante.dias_ultima_gestion,
+            fechaUltGestión: aspirante.fecha_ultima_gestion,
+            gestiónFinal: aspirante.estado_ultima_gestion,
+            tipificaciónGestiónFinal: aspirante.estado_ultima_gestion,
+            celularAdicional: aspirante.celular_adicional,
+            nitEmpresa: aspirante.patrocinio_empresa,
+            sede: aspirante.sede,
+            programaFormación: aspirante.programa_formacion,
+            
+    
+          }))
+          
+          
+          setAspirantes(mapeado)
+        }
+        cargarAspirantes();
+      }
+      
+      
     } else if (procesoSelect === 'empresas') {
       let empresas = '1' 
       async function cargarAspirantes() {
@@ -87,7 +184,6 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
         const aspirantes = respuesta.data.aspirantes;
   
         const mapeado = aspirantes.map((aspirante) => ({
-  
           celular: aspirante.celular,
           nit: aspirante.nit,
           nombreCompleto: aspirante.nombre_completo,
@@ -105,8 +201,6 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           nitEmpresa: aspirante.patrocinio_empresa,
           sede: aspirante.sede,
           programaFormación: aspirante.programa_formacion,
-          
-  
         }))
         
         
@@ -143,8 +237,6 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           
   
         }))
-        
-        
         setAspirantes(mapeado)
       }
       cargarAspirantes();
@@ -185,12 +277,17 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
       cargarAspirantes();
       // setAspirantes(aspirantes.filter(aspirante => aspirante.programaFormación)); // Adjust filter as needed
     }
-  }, [procesoSelect, aspirantes]);
+  }, [procesoSelect, aplicarFiltrosAspirantes]);
 
-  const obtenerCelularAspirante = (celular) => {
-    setCelularAspiranteSeleccionado('')
-    setCelularAspiranteSeleccionado(celular);
-    console.log(celularAspiranteSeleccionado)
+// esta funcion abre el modal de historico aspirantes al dar click en la fila del aspirante y valida si el aspirante tiene gestiones
+  const manejrClickFilaAspirantes = (celular, cantGestionesAspirante) => {
+    if(cantGestionesAspirante === 0){
+      setAbrirModalAspiranteSinGesiones(true)
+      return
+    }else{
+      setCelularAspiranteSeleccionado(celular);
+      setModalAbiertoHistorico(true);
+    }
   }
  
 
@@ -213,23 +310,11 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
   ];
 
   const encabezados = columnas
-    .filter(columna => visibilidadColumna[columna.id])
-    .map(columna => ({
+  .filter(columna => visibilidadColumna[columna.id])
+  .map(columna => ({
       label: columna.etiqueta,
       key: columna.id
-    }));
-
-  const [cantidadFilas, setCantidadFilas] = useState(10)
-  const [paginaActual, setPaginaActual] = useState(1)
-
-  const indexFinal = paginaActual * cantidadFilas
-  const indexInicial = indexFinal - cantidadFilas
-
-  const nAspirantesPorPagina = aspirantes.slice(indexInicial, indexFinal)
-  const numeroPaginas = Math.ceil(aspirantes.length / cantidadFilas)
-
-  const [modalAbierto, setModalAbierto] = useState(false)
-  const [modalAbiertoHistorico, setModalAbiertoHistorico] = useState(false)
+  }));
 
   const datosFiltrados = aspirantes.map(row => {
     const filaFiltrada = {};
@@ -270,7 +355,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
             </thead>
             <tbody className='cuerpoTabla'>
               {nAspirantesPorPagina.map((row, index) => (
-                <tr className='filaTablaAspirantes' onClick={() => { setModalAbiertoHistorico(true); obtenerCelularAspirante(row.celular) }} key={index}>
+                <tr className='filaTablaAspirantes' onClick={() => { manejrClickFilaAspirantes(row.celular, row.cantGestiones) }} key={index}>
                   {columnas.map(columna =>
                     visibilidadColumna[columna.id] && (
                       <td key={columna.id}>
@@ -293,9 +378,9 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           numeroPaginas={numeroPaginas}
         />
       </main>
+      <ModalAspiranteSinGestiones abrirModalAspiranteSinGesiones={abrirModalAspiranteSinGesiones} cerrarModal={() => { setAbrirModalAspiranteSinGesiones(false) }}/>
       <HistoricoGestiones celularAspiranteSeleccionado={celularAspiranteSeleccionado} modalAbiertoHistorico={modalAbiertoHistorico} cerrarModal={() => { setModalAbiertoHistorico(false) }} />
-
-      <ModalFiltrar modalAbierto={modalAbierto} cerrarModal={() => { setModalAbierto(false) }} />
+      <ModalFiltrar buscarAspirantesConFiltros={buscarAspirantesConFiltros} filtrosSeleccionados={filtrosSeleccionados} setFiltrosSeleccionados={setFiltrosSeleccionados} modalAbierto={modalAbierto} cerrarModal={() => { setModalAbierto(false) }} />
     </>
   );
 }
