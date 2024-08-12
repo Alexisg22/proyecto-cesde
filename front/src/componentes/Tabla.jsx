@@ -233,7 +233,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           nitEmpresa: aspirante.patrocinio_empresa,
           sede: aspirante.sede,
           programaFormación: aspirante.programa_formacion,
-          
+
   
         }))
         setAspirantes(mapeado)
@@ -253,7 +253,6 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           nit: aspirante.nit,
           nombreCompleto: aspirante.nombre_completo,
           cantidadLlamadas: aspirante.cantidad_llamadas,
-          cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
           cantWhatsapps: aspirante.cantidad_whatsapp,
           cantGestiones: aspirante.cantidad_gestiones,
           mejorGestión: 'No interesado',
@@ -266,7 +265,6 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           nitEmpresa: aspirante.patrocinio_empresa,
           sede: aspirante.sede,
           programaFormación: aspirante.programa_formacion,
-          
   
         }))
         

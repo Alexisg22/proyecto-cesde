@@ -35,8 +35,7 @@ const [asesores, setAsesores] = useState([]);
 
         idWolkvox: asesor.id,
         nombreCompleto: asesor.nombre_completo,
-        cantLlamadas: '0',
-        cantMensajesDeTexto: '2',
+        cantLlamadas: 'asesor',
         cantWhatsapps: '3',
         cantGestiones: '5',
         cantMatriculas: '123',
