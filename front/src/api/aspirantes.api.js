@@ -13,7 +13,7 @@ export const obtenerUnAspirante = (celular) => {
 }
 
 export const obtenerAspirantesProceso = (proceso) => {
-  return  axios.get(`http://localhost:8000/cesde/aspirantes/proceso=${proceso}/`)
+  return  axios.get(`http://localhost:8000/cesde/aspirantes/proceso-${proceso}/`)
 }
 
 export const obtenerHistoricoAspirante = (celular) => {
