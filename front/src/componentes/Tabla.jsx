@@ -4,7 +4,7 @@ import { HistoricoGestiones } from './HistoricoGestiones.jsx';
 import { ModalFiltrar } from './ModalFiltrar.jsx';
 import { Paginador } from './Paginador.jsx';
 import { CSVLink } from "react-csv";
-import { obtenerAspirantesProceso, obtenerTodosAspirantes, obtenerTodosAspirantesConFiltros, obtenerUnAspirante } from '../api/aspirantes.api.js';
+import { obtenerAspirantesProceso, obtenerTodosAspirantesConFiltros, obtenerUnAspirante } from '../api/aspirantes.api.js';
 import '../estilos/Tabla.css';
 import { ModalAspiranteSinGestiones } from './ModalAspiranteSinGestiones.jsx';
 
@@ -27,51 +27,20 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
   const [buscarUnAspirante, setBuscarUnAspirante] = useState('') 
   const [textoModal, setTextoModal] = useState('')
 
-  useEffect(() => {
-
-    async function cargarAspirantes() {
-      const respuesta = await obtenerTodosAspirantes();
-      const aspirantes = respuesta.data
-
-      const mapeado = aspirantes.map((aspirante) => ({
-
-        celular: aspirante.celular,
-        nit: aspirante.nit,
-        nombreCompleto: aspirante.nombre_completo,
-        cantidadLlamadas: aspirante.cantidad_llamadas,
-        cantWhatsapps: aspirante.cantidad_whatsapp,
-        cantGestiones: aspirante.cantidad_gestiones,
-        mejorGestión: 'No interesado',
-        estadoAspirante: aspirante.estado_aspirante,
-        diasUltGestión: aspirante.dias_ultima_gestion,
-        fechaUltGestión: aspirante.fecha_ultima_gestion,
-        gestiónFinal: aspirante.estado_ultima_gestion,
-        tipificaciónGestiónFinal: aspirante.estado_ultima_gestion,
-        nitEmpresa: aspirante.patrocinio_empresa,
-        sede: aspirante.sede,
-        programaFormación: aspirante.programa_formacion,
-        
-
-      }))
-      
-      
-      setAspirantes(mapeado)
-    }
-    cargarAspirantes();
-  }, [])
 
   const buscarAspirantesConFiltros = ( ) =>{
     setAplicarFiltrosAspirantes(filtrosSeleccionados)
     setModalAbierto(false)
   }
     
+
   // este useEfect es e que me valida si buscar con filtros, o si bscar un soloaspirante
   useEffect(() => {
     if(buscarUnAspirante != 0 ){
       async function cargarAspirantes() {
         try {
         const respuesta = await obtenerUnAspirante(buscarUnAspirante);
-        const aspirante = respuesta.data;
+        const aspirante = respuesta.data.aspirantes;
         console.log(aspirante)
   
         const mapeado = {
@@ -103,12 +72,26 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           
       }
       cargarAspirantes();
-
     }else{
-      if (procesoSelect === 'general') {
-// validar si hay filtros para aplicar a la busqueda de aspirantes
+
+      let nuevoProceso = ''
+      let procesoBusqueda = ''
+      if(procesoSelect == 'tecnicos'){
+          nuevoProceso = 'proceso-tecnico/'
+          procesoBusqueda = 'técnicos'
+      }else if(procesoSelect == 'empresas'){
+          nuevoProceso = 'proceso-empresa/'
+          procesoBusqueda = 'empresa'
+      }else if(procesoSelect == 'extensiones'){
+          nuevoProceso = 'proceso-extensiones/'
+          procesoBusqueda = 'extenciones'
+      }else{
+        nuevoProceso = ''
+      }
+
       if(aplicarFiltrosAspirantes != 0){
         let objetoFiltros ={
+          procesoNombre: procesoBusqueda,
           cantidadLlamadas: '',
           cantidadWhatsapps: '',
           cantidadGestiones: '',
@@ -119,7 +102,8 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           tipificacionUltimaGestion: '',
           programaFormacion: '',
           sede: '',
-          nitEmpresa: ''
+          nitEmpresa: '',
+          
         }
        
         aplicarFiltrosAspirantes.map((filtro) => { 
@@ -154,7 +138,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           const respuesta = await obtenerTodosAspirantesConFiltros(objetoFiltros);
           const aspirantes = respuesta.data;
           // console.log('se buscan filtros')
-          // console.log(aspirantes)
+          
     
           const mapeado = aspirantes.map((aspirante) => ({
   
@@ -180,9 +164,9 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
         }
         cargarAspirantes();
 // Si no hay filtros que aplicar se trae la consulta normal 
-      }else{
+      }else{  
         async function cargarAspirantes() {
-          const respuesta = await obtenerTodosAspirantes();
+          const respuesta = await obtenerAspirantesProceso(nuevoProceso);
           const aspirantes = respuesta.data.aspirantes;
     
           const mapeado = aspirantes.map((aspirante) => ({
@@ -213,184 +197,13 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
         }
         cargarAspirantes();
       } 
-      } else if (procesoSelect === 'empresa') {
-      if(aplicarFiltrosAspirantes != 0){
-        let objetoFiltros ={
-          cantidadLlamadas: '',
-          cantidadWhatsapps: '',
-          cantidadGestiones: '',
-          mejorGestion: '',
-          estadoAspirante: '',
-          diasUltimaGestion: '',
-          fechaUltimaGestion: '',
-          tipificacionUltimaGestion: '',
-          programaFormacion: '',
-          sede: '',
-          nitEmpresa: ''
-        }
-       
-        aplicarFiltrosAspirantes.map((filtro) => { 
-          switch(filtro.filtro){
-            case('cantidad llamadas') :
-              return (objetoFiltros.cantidadLlamadas = filtro.valor);
-            case('cantidad whatsapp'):
-              return (objetoFiltros.cantidadWhatsapps = filtro.valor);
-            case('cantidad gestiones'):
-              return (objetoFiltros.cantidadGestiones = filtro.valor);
-            case('mejor gestion'):
-              return (objetoFiltros.mejorGestion = filtro.valor);
-            case('estado del aspirante'):
-              return (objetoFiltros.estadoAspirante = filtro.valor);
-            case('dias ultima gestion'):
-              return (objetoFiltros.diasUltimaGestion = filtro.valor);
-            case('fecha ultima gestion'):
-              return (objetoFiltros.fechaUltimaGestion = filtro.valor);
-            case('tipificación última gestión'):
-              return (objetoFiltros.tipificacionUltimaGestion = filtro.valor);
-            case('programa de formación'):
-              return (objetoFiltros.programaFormacion = filtro.valor);
-            case('sede'):
-              return (objetoFiltros.sede = filtro.valor);
-            case('empresa'):
-              return (objetoFiltros.nitEmpresa = filtro.valor);
-            default:
-              return null;
-          }  
-        })
-        async function cargarAspirantes() {
-          const respuesta = await obtenerTodosAspirantesConFiltros(objetoFiltros);
-          const aspirantes = respuesta.data;
-          // console.log('se buscan filtros')
-          // console.log(aspirantes)
-    
-          const mapeado = aspirantes.map((aspirante) => ({
-  
-          celular: aspirante.celular,
-          nit: aspirante.nit,
-          nombreCompleto: aspirante.nombre_completo,
-          cantidadLlamadas: aspirante.cantidad_llamadas,
-          cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
-          cantWhatsapps: aspirante.cantidad_whatsapp,
-          cantGestiones: aspirante.cantidad_gestiones,
-          // mejorGestión: 'No interesado',
-          estadoAspirante: aspirante.estado,
-          diasUltGestión: aspirante.dias_ultima_gestion,
-          fechaUltGestión: aspirante.fecha_ultima_gestion,
-          // gestiónFinal: aspirante.estado_ultima_gestion,
-          tipificaciónGestiónFinal: aspirante.tipificacion,
-          // celularAdicional: aspirante.celular_adicional,
-          nitEmpresa: aspirante.nit_empresa,
-          sede: aspirante.sede,
-          programaFormación: aspirante.programa,
-          }))
-          setAspirantes(mapeado)
-        }
-        cargarAspirantes();
-// Si no hay filtros que aplicar se trae la consulta normal 
-      }else{
-        const empresa = '1' 
-        async function cargarAspirantes() {
-        
-          const respuesta = await obtenerAspirantesProceso(empresa);
-          const aspirantes = respuesta.data.aspirantes;
-    
-          const mapeado = aspirantes.map((aspirante) => ({
-            celular: aspirante.celular,
-            nit: aspirante.nit,
-            nombreCompleto: aspirante.nombre_completo,
-            cantidadLlamadas: aspirante.cantidad_llamadas,
-            cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
-            cantWhatsapps: aspirante.cantidad_whatsapp,
-            cantGestiones: aspirante.cantidad_gestiones,
-            mejorGestión: 'No interesado',
-            estadoAspirante: aspirante.estado_aspirante,
-            diasUltGestión: aspirante.dias_ultima_gestion,
-            fechaUltGestión: aspirante.fecha_ultima_gestion,
-            gestiónFinal: aspirante.estado_ultima_gestion,
-            tipificaciónGestiónFinal: aspirante.estado_ultima_gestion,
-            celularAdicional: aspirante.celular_adicional,
-            nitEmpresa: aspirante.patrocinio_empresa,
-            sede: aspirante.sede,
-            programaFormación: aspirante.programa_formacion,
-          }))
-          
-          
-          setAspirantes(mapeado)
-        }
-        cargarAspirantes();
-      }
-      
-      // setAspirantes(aspirantes.filter(aspirante => aspirante.empresa)); // Adjust filter as needed
-    } else if (procesoSelect === 'extensiones') {
-      async function cargarAspirantes() {
-        
-        const respuesta = await obtenerAspirantesProceso("extenciones");
-        const aspirantes = respuesta.data.aspirantes;
-  
-        const mapeado = aspirantes.map((aspirante) => ({
-  
-          celular: aspirante.celular,
-          nit: aspirante.nit,
-          nombreCompleto: aspirante.nombre_completo,
-          cantidadLlamadas: aspirante.cantidad_llamadas,
-          cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
-          cantWhatsapps: aspirante.cantidad_whatsapp,
-          cantGestiones: aspirante.cantidad_gestiones,
-          mejorGestión: 'No interesado',
-          estadoAspirante: aspirante.estado_aspirante,
-          diasUltGestión: aspirante.dias_ultima_gestion,
-          fechaUltGestión: aspirante.fecha_ultima_gestion,
-          gestiónFinal: aspirante.estado_ultima_gestion,
-          tipificaciónGestiónFinal: aspirante.estado_ultima_gestion,
-          celularAdicional: aspirante.celular_adicional,
-          nitEmpresa: aspirante.patrocinio_empresa,
-          sede: aspirante.sede,
-          programaFormación: aspirante.programa_formacion,
-
-  
-        }))
-        setAspirantes(mapeado)
-      }
-      cargarAspirantes();
-      // setAspirantes(aspirantes.filter(aspirante => aspirante.sede)); // Adjust filter as needed
-    } else if (procesoSelect === 'tecnicos') {
-      async function cargarAspirantes() {
-        
-        const respuesta = await obtenerAspirantesProceso("técnicos");
-        const aspirantes = respuesta.data.aspirantes;
-  
-        const mapeado = aspirantes.map((aspirante) => ({
-  
-          celular: aspirante.celular,
-          nit: aspirante.nit,
-          nombreCompleto: aspirante.nombre_completo,
-          cantidadLlamadas: aspirante.cantidad_llamadas,
-          cantWhatsapps: aspirante.cantidad_whatsapp,
-          cantGestiones: aspirante.cantidad_gestiones,
-          mejorGestión: 'No interesado',
-          estadoAspirante: aspirante.estado_aspirante,
-          diasUltGestión: aspirante.dias_ultima_gestion,
-          fechaUltGestión: aspirante.fecha_ultima_gestion,
-          gestiónFinal: aspirante.estado_ultima_gestion,
-          tipificaciónGestiónFinal: aspirante.estado_ultima_gestion,
-          celularAdicional: aspirante.celular_adicional,
-          nitEmpresa: aspirante.patrocinio_empresa,
-          sede: aspirante.sede,
-          programaFormación: aspirante.programa_formacion,
-  
-        }))
-        
-        
-        setAspirantes(mapeado)
-      }
-      cargarAspirantes();
-      // setAspirantes(aspirantes.filter(aspirante => aspirante.programaFormación)); // Adjust filter as needed
-      }
-    }
-  }, [procesoSelect, aplicarFiltrosAspirantes, buscarUnAspirante]);
+    } 
+ 
+  }
+  , [procesoSelect, aplicarFiltrosAspirantes, buscarUnAspirante]);
 
 // esta funcion abre el modal de historico aspirantes al dar click en la fila del aspirante y valida si el aspirante tiene gestiones
-  const manejrClickFilaAspirantes = (celular, cantGestionesAspirante) => {
+  const manejarClickFilaAspirantes = (celular, cantGestionesAspirante) => {
     if(cantGestionesAspirante === 0){
       setTextoModal("Al aspirante seleccionado no se le ha realizado ninguna gestión.")
       setAbrirModalAspiranteSinGesiones(true)
@@ -472,12 +285,12 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
             </thead>
             <tbody className='cuerpoTabla'>
               {nAspirantesPorPagina.map((row, index) => (
-                <tr className='filaTablaAspirantes' onClick={() => { manejrClickFilaAspirantes(row.celular, row.cantGestiones) }} key={index}>
+                <tr className='filaTablaAspirantes' onClick={() => { manejarClickFilaAspirantes(row.celular, row.cantGestiones) }} key={index}>
                   {columnas.map(columna =>
                     visibilidadColumna[columna.id] && (
                       <td key={columna.id}>
                         {columna.id === 'estadoAspirante' ? (
-                          <p className={row[columna.id].toLowerCase()}>{row[columna.id]}</p>
+                          <p className={row[columna.id]}>{row[columna.id]}</p>
                         ) : (
                           row[columna.id]
                         )}
