@@ -1,6 +1,6 @@
 import { Estadistica } from './Estadistica.jsx';
 import React, { useEffect, useState } from 'react';
-import { obtenerEstadisticasGenerales } from '../api/aspirantes.api.js';
+import { obtenerEstadisticasGenerales } from '../api/estadisticas.api.js';
 import '../estilos/Estadistica.css';
 import '../estilos/Estadisticas.css';
 
