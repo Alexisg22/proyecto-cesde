@@ -97,8 +97,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
         setAspirantes([mapeado])
       }catch (error) {
         setTextoModal('Error, no se ha encontrado al aspirante. compruebe el numero')
-        setAbrirModalAspiranteSinGesiones(true)
-        
+        setAbrirModalAspiranteSinGesiones(true)  
       }
           
       }
