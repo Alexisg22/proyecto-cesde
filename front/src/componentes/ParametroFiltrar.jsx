@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { obtenerTipificaciones } from '../api/aspirantes.api';
-
+import { obtenerEmpresas } from '../api/empresa.api';
+import { obtenerProgramasFormacion } from '../api/programa.api';
+import { obtenerSedes } from '../api/sede.api';
 export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGestionTotal }) {
   const hoy = new Date().toISOString().split('T')[0];
   
   // Estado para almacenar las tipificaciones desde la API
   const [tipificaciones, setTipificaciones] = useState([]);
+  const [empresas, setEmpresas] = useState([]);
+  const [programas, setProgramas] = useState([]);
+  const [sedes, setSedes] = useState([]);
 
   useEffect(() => {
     async function cargarTipificaciones() {
@@ -17,6 +22,42 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGesti
       }
     }
     cargarTipificaciones();
+  }, []);
+
+  useEffect(() => {
+    async function cargarEmpresas() {
+      try {
+        const respuesta = await obtenerEmpresas();
+        setEmpresas(respuesta.data); // Actualiza el estado con los datos de la API
+      } catch (error) {
+        console.error("Error al cargar las Empresas:", error);
+      }
+    }
+    cargarEmpresas();
+  }, []);
+
+  useEffect(() => {
+    async function cargarProgramas() {
+      try {
+        const respuesta = await obtenerProgramasFormacion();
+        setProgramas(respuesta.data); // Actualiza el estado con los datos de la API
+      } catch (error) {
+        console.error("Error al cargar los programas:", error);
+      }
+    }
+    cargarProgramas();
+  }, []);
+
+  useEffect(() => {
+    async function cargarSedes() {
+      try {
+        const respuesta = await obtenerSedes();
+        setSedes(respuesta.data); // Actualiza el estado con los datos de la API
+      } catch (error) {
+        console.error("Error al cargar las Sedes:", error);
+      }
+    }
+    cargarSedes();
   }, []);
 
   switch (seleccionOpcion) {
@@ -37,7 +78,7 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGesti
         <select className="campoFiltro" onChange={cambioValorInput} required>
           <option value="">Seleccione mejor gestión</option>
           {tipificaciones.map((tipificacion, index) => (
-            <option key={tipificacion.id || index} value={tipificacion.nombre}>
+            <option key={index} value={tipificacion.nombre}>
               {tipificacion.nombre}
             </option>
           ))}
@@ -50,10 +91,9 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGesti
           <option value="">Seleccione el estado</option>
           <option value="matriculado">Matriculado</option>
           <option value="liquidado">Liquidado</option>
-          <option value="desistio">Desistió</option>
-          <option value="en gestion">En gestión</option>
-          <option value="sin gestion">Sin gestión</option>
-          <option value="no gestionable">No gestionable</option>
+          <option value="Descartado">Descartado</option>
+          <option value="En Gestión">En Gestión</option>
+          <option value="Sin gestión">Sin gestión</option>
         </select>
       );
 
@@ -62,7 +102,7 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGesti
         <select className="campoFiltro" onChange={cambioValorInput} required>
           <option value="">Seleccione tipificación</option>
           {tipificaciones.map((tipificacion, index) => (
-            <option key={tipificacion.id || index} value={tipificacion.nombre}>
+            <option key={index} value={tipificacion.nombre}>
               {tipificacion.nombre}
             </option>
           ))}
@@ -72,31 +112,36 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGesti
     case "programa de formacion":
       return (
         <select className="campoFiltro" onChange={cambioValorInput} required>
-          <option value="">Seleccione programa formación</option>
-          <option value="tecnico">Técnico</option>
-          <option value="tecnologo profesional">Tecnólogo profesional</option>
+          <option value="">Seleccione Programas</option>
+          {programas.map((programa, index) => (
+            <option key={index} value={programa.nombre}>
+              {programa.nombre}
+            </option>
+          ))}
         </select>
       );
 
     case "sede":
       return (
         <select className="campoFiltro" onChange={cambioValorInput} required>
-          <option value="">Seleccione la sede</option>
-          <option value="principal">Sede principal</option>
-          <option value="bogota">Bogotá</option>
-          <option value="medellin">Medellín</option>
-          <option value="rionegro">Rionegro</option>
+          <option value="">Seleccione Sede</option>
+          {sedes.map((sede, index) => (
+            <option key={index} value={sede.nombre}>
+              {sede.nombre}
+            </option>
+          ))}
         </select>
       );
 
     case "empresa":
       return (
         <select className="campoFiltro" onChange={cambioValorInput} required>
-          <option value="">Seleccione la empresa</option>
-          <option value="nit empresa 1">nit empresa 1</option>
-          <option value="nit empresa 2">nit empresa 2</option>
-          <option value="nit empresa 3">nit empresa 3</option>
-          <option value="nit empresa 4">nit empresa 4</option>
+          <option value="">Seleccione Empresa</option>
+          {empresas.map((empresa, index) => (
+            <option key={index} value={empresa.nit}>
+              {empresa.nit}
+            </option>
+          ))}
         </select>
       );
 

@@ -8,10 +8,9 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
     const [seleccionOpcion, setSeleccionOpcion] = useState(''); // Opción seleccionada en el dropdown
     const [valorInput, setValorInput] = useState(''); // Valor ingresado en el input
     const [valorGestionTotal, setValorGestionTotal] = useState(0); // Valor total de gestiones
-    const valorLlamadasRef = useRef(); // Referencia para el valor total de gestiones
-    const valorWhatsappRef = useRef(); // Referencia para el valor total de gestiones
+    const valorLlamadasRef = useRef(0); // Inicializa con 0
+    const valorWhatsappRef = useRef(0); // Inicializa con 0
 
-    // Maneja el cambio en la selección del dropdown
     const cambioSeleccion = (e) => {
         setSeleccionOpcion(e.target.value);
     };
@@ -43,12 +42,10 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
 
             // Si el filtro existe, actualiza su valor; si no, lo agrega a la lista
             if (filtroExistente) {
-                // Si el filtro ya existe, actualiza su valor
                 setFiltrosSeleccionados(filtrosSeleccionados.map((filtro) =>
                     filtro.filtro === seleccionOpcion ? { ...filtro, valor: valorInput } : filtro
                 ));
             } else {
-                // Si el filtro no existe, lo agrega a la lista de filtros seleccionados
                 setFiltrosSeleccionados([...filtrosSeleccionados, { filtro: seleccionOpcion, valor: valorInput }]);
             }
             // Limpia los valores de selección y input después de agregar el filtro
@@ -58,10 +55,12 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
     };
 
     // Elimina un filtro de la lista de filtros seleccionados
-    // Maneja la eliminación de un filtro de la lista
     const eliminarFiltro = (index) => {
         setFiltrosSeleccionados(filtrosSeleccionados.filter((_, i) => i !== index));
     };
+
+    // Verifica si hay filtros seleccionados
+    const hayFiltros = filtrosSeleccionados.length > 0;
 
     if (!modalAbierto) return null;
     
@@ -102,16 +101,26 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
                     </div>
 
                     <div className='filtrosSeleccionados'>
-                        {filtrosSeleccionados.map((filtro, index) => (
-                            <div key={index}>
-                                <span> Filtro seleccionado: {filtro.filtro}: {filtro.valor}</span> 
-                                <button className='btnEliminarFiltro' onClick={() => eliminarFiltro(index)}> X </button>
-                            </div>
-                        ))}
+                        {filtrosSeleccionados.length > 0 ? (
+                            filtrosSeleccionados.map((filtro, index) => (
+                                <div key={index}>
+                                    <span> Filtro seleccionado: {filtro.filtro}: {filtro.valor}</span> 
+                                    <button className='btnEliminarFiltro' onClick={() => eliminarFiltro(index)}> X </button>
+                                </div>
+                            ))
+                        ) : (
+                            <p></p>
+                        )}
                     </div>
 
                     <div className='filtrarBD'>
-                        <button onClick={buscarAspirantesConFiltros} className='botonVerde'>Filtrar</button>
+                        <button 
+                            onClick={buscarAspirantesConFiltros} 
+                            className='botonVerde' 
+                            disabled={!hayFiltros}
+                        >
+                            Filtrar
+                        </button>
                     </div>
                 </div>
             </div>

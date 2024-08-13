@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import { Encabezado } from "../componentes/Encabezado.jsx";
 import BuscarAsesores from "../componentes/BuscarAsesores.jsx";
 import TablaAsesores from "../componentes/TablaAsesores.jsx";
 import "../estilos/Asesores.css";
+import { obtenerTodosAsesores } from '../api/aspirantes.api.js';
 
 const columnas = [
   { id: 'idWolkvox', etiqueta: 'Id Wolkvox' },
@@ -19,84 +20,33 @@ const encabezados = columnas.map(columna => ({
   key: columna.id
 }));
 
-// Datos de ejemplo (reemplazar con tus datos reales)
-const datos = [
-  {
-    idWolkvox: '3162840984',
-    nombreCompleto: 'Sofíaaaa Gómez',
-    cantLlamadas: '3',
-    cantWhatsapps: '1',
-    cantGestiones: '7',
-    cantMatriculas: '1',
-    cantLiquidaciones: '6',
-  },
-  {
-    idWolkvox: '3162840984',
-    nombreCompleto: 'Sofía Ggggómez',
-    cantLlamadas: '3',
-    cantWhatsapps: '1',
-    cantGestiones: '7',
-    cantMatriculas: '2',
-    cantLiquidaciones: '5',
-  },{
-    idWolkvox: '3162840984',
-    nombreCompleto: 'Sofía Gómez',
-    cantLlamadas: '33',
-    cantWhatsapps: '1',
-    cantGestiones: '7',
-    cantMatriculas: '3',
-    cantLiquidaciones: '4',
-  },
-  {
-    idWolkvox: '3162840984',
-    nombreCompleto: 'Sofía Gómez',
-    cantLlamadas: '3',
-    cantWhatsapps: '1',
-    cantGestiones: '7',
-    cantMatriculas: '3',
-    cantLiquidaciones: '4',
-  },
-  {
-    idWolkvox: '3162840984',
-    nombreCompleto: 'Sofía Gómez',
-    cantLlamadas: '3',
-    cantWhatsapps: '1',
-    cantGestiones: '7',
-    cantMatriculas: '3',
-    cantLiquidaciones: '4',
-  },
-  {
-    idWolkvox: '3162840984',
-    nombreCompleto: 'Sofía Gómez',
-    cantLlamadas: '3',
-    cantWhatsapps: '1',
-    cantGestiones: '7',
-    cantMatriculas: '3',
-    cantLiquidaciones: '4',
-  },
-  {
-    idWolkvox: '3162840984',
-    nombreCompleto: 'Sofía Gómez',
-    cantLlamadas: '3',
-    cantWhatsapps: '1',
-    cantGestiones: '7',
-    cantMatriculas: '3',
-    cantLiquidaciones: '4',
-  },
-  {
-    idWolkvox: '3162840984',
-    nombreCompleto: 'Jaime de jesus Gomez buenavista',
-    cantLlamadas: '3',
-    cantWhatsapps: '1',
-    cantGestiones: '7',
-    cantMatriculas: '3',
-    cantLiquidaciones: '4',
-  },
-  
-];
-
-
 export const Asesores = () => {
+
+  // State para guardar los asesores obtenidos de la API
+const [asesores, setAsesores] = useState([]);
+
+  useEffect(() => {
+
+    async function cargarAsesores() {
+      const respuesta = await obtenerTodosAsesores();
+      const asesores = respuesta.data;
+
+      const mapeado = asesores.map((asesor) => ({
+
+        idWolkvox: asesor.id,
+        nombreCompleto: asesor.nombre_completo,
+        cantLlamadas: 'asesor',
+        cantWhatsapps: '3',
+        cantGestiones: '5',
+        cantMatriculas: '123',
+        cantLiquidaciones: '2',
+      }))
+      
+      
+      setAsesores(mapeado)
+    }
+    cargarAsesores();
+  }, [])
   return (
     <div className="asesoresMain">
       <div className="asesoresEncabezado">
@@ -113,7 +63,7 @@ export const Asesores = () => {
         <div>
           <div className="asesoresBuscador">
             <BuscarAsesores 
-              datos={datos}
+              datos={asesores}
               encabezados={encabezados}
             />
           </div>
@@ -122,7 +72,7 @@ export const Asesores = () => {
         <div className="asesoresTabla">
           <TablaAsesores 
           columnasTabla={columnas}
-          datosTabla={datos}
+          datosTabla={asesores}
           />
         </div>
 
