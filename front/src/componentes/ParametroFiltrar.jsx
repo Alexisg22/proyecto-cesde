@@ -3,11 +3,13 @@ import { obtenerTipificaciones } from '../api/aspirantes.api';
 import { obtenerEmpresas } from '../api/empresa.api';
 import { obtenerProgramasFormacion } from '../api/programa.api';
 import { obtenerSedes } from '../api/sede.api';
+import { obtenerEstados } from '../api/estados.api';
 export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGestionTotal }) {
   const hoy = new Date().toISOString().split('T')[0];
   
   // Estado para almacenar las tipificaciones desde la API
   const [tipificaciones, setTipificaciones] = useState([]);
+  const [estados, setEstados] = useState([]);
   const [empresas, setEmpresas] = useState([]);
   const [programas, setProgramas] = useState([]);
   const [sedes, setSedes] = useState([]);
@@ -22,6 +24,18 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGesti
       }
     }
     cargarTipificaciones();
+  }, []);
+
+  useEffect(() => {
+    async function cargarEstados() {
+      try {
+        const respuesta = await obtenerEstados();
+        setEstados(respuesta.data); // Actualiza el estado con los datos de la API
+      } catch (error) {
+        console.error("Error al cargar los estados:", error);
+      }
+    }
+    cargarEstados();
   }, []);
 
   useEffect(() => {
@@ -89,11 +103,11 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGesti
       return (
         <select className="campoFiltro" onChange={cambioValorInput} required>
           <option value="">Seleccione el estado</option>
-          <option value="matriculado">Matriculado</option>
-          <option value="liquidado">Liquidado</option>
-          <option value="Descartado">Descartado</option>
-          <option value="En Gestión">En Gestión</option>
-          <option value="Sin gestión">Sin gestión</option>
+          {estados.map((estado, index) => (
+            <option key={index} value={estado.nombre}>
+              {estado.nombre}
+            </option>
+          ))}
         </select>
       );
 
