@@ -3,7 +3,7 @@ import { Encabezado } from "../componentes/Encabezado.jsx";
 import BuscarAsesores from "../componentes/BuscarAsesores.jsx";
 import TablaAsesores from "../componentes/TablaAsesores.jsx";
 import "../estilos/Asesores.css";
-import { consultarAsesores } from '../api/asesores.api.js';
+import { consultarAsesores, consultarAsesoresFecha } from '../api/asesores.api.js';
 
 const columnas = [
   { id: 'idWolkvox', etiqueta: 'Id Wolkvox' },
@@ -29,32 +29,54 @@ const [asesores, setAsesores] = useState([]);
   const [fechaInicio, setFechaInicio] = useState('')
   const [fechaFin, setFechaFin] = useState('')
 
-  if(fechaFin != '' && fechaInicio != ''){
-    console.log(fechaFin + fechaInicio)
-  }
+  
 
   useEffect(() => {
+    if(fechaFin != '' && fechaInicio != ''){
+      async function cargarAsesores() {
+        const respuesta = await consultarAsesoresFecha(fechaInicio, fechaFin);
+        const asesores = respuesta.data;
+  
+        const mapeado = asesores.map((asesor) => ({
+  
+          idWolkvox: asesor.id,
+          nombreCompleto: asesor.nombre_completo,
+          cantLlamadas: asesor.cantidad_llamadas,
+          cantWhatsapps: asesor.cantidad_whatsapp,
+          cantGestiones: asesor.cantidad_gestiones,
+          cantMatriculas: asesor.cantidad_matriculas,
+          cantLiquidaciones: asesor.cantidad_liquidaciones,
+        }))
+        
+        setAsesores(mapeado)
+      }
+      cargarAsesores();
+    
+    }else{
+      async function cargarAsesores() {
 
-    async function cargarAsesores() {
-      const respuesta = await consultarAsesores();
-      const asesores = respuesta.data;
+        const respuesta = await consultarAsesores();
+        const asesores = respuesta.data;
+  
+        const mapeado = asesores.map((asesor) => ({
+  
+          idWolkvox: asesor.id,
+          nombreCompleto: asesor.nombre_completo,
+          cantLlamadas: asesor.cantidad_llamadas,
+          cantWhatsapps: asesor.cantidad_whatsapp,
+          cantGestiones: asesor.cantidad_gestiones,
+          cantMatriculas: asesor.cantidad_matriculas,
+          cantLiquidaciones: asesor.cantidad_liquidaciones,
+        }))
+        
+        setAsesores(mapeado)
+      }
+      cargarAsesores();
 
-      const mapeado = asesores.map((asesor) => ({
-
-        idWolkvox: asesor.id,
-        nombreCompleto: asesor.nombre_completo,
-        cantLlamadas: asesor.cantidad_llamadas,
-        cantWhatsapps: asesor.cantidad_whatsapp,
-        cantGestiones: asesor.cantidad_gestiones,
-        cantMatriculas: asesor.cantidad_matriculas,
-        cantLiquidaciones: asesor.cantidad_liquidaciones,
-      }))
-      
-      
-      setAsesores(mapeado)
     }
-    cargarAsesores();
-  }, [])
+    
+    (console.log("render"))
+  }, [fechaFin])
 
   return (
     <div className="asesoresMain">
