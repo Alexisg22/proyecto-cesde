@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import "../estilos/BuscarAsesores.css"
 import { CSVLink } from "react-csv";
 
-const BuscarAsesores = ({ onBuscar, datos, encabezados }) => {
+const BuscarAsesores = ({ onBuscar, datos, encabezados, fechaInicio, fechaFin, setFechaInicio, setFechaFin }) => {
   const [terminoBusqueda, setTerminoBusqueda] = useState('')
-  const [fechaInicio, setFechaInicio] = useState('')
-  const [fechaFin, setFechaFin] = useState('')
+  
   const hoy = new Date().toISOString().split('T')[0];
 
   const manejarCambioBusqueda = (e) => {

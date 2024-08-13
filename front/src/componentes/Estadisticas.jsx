@@ -1,32 +1,31 @@
-import '../estilos/Estadisticas.css'
-import '../estilos/Estadistica.css'
-import { Estadistica } from './Estadistica.jsx'
-import React, { useState } from 'react'
+import { Estadistica } from './Estadistica.jsx';
+import React, { useEffect, useState } from 'react';
+import '../estilos/Estadistica.css';
+import '../estilos/Estadisticas.css';
 
-const hoy = new Date().toISOString().split('T')[0];
 
-export const Estadisticas = ({ estadisticas}) => {
-  if(!estadisticas){
-    return
-  }
+export const Estadisticas = ({estadisticas, fechaInicio, fechaFin, setFechaInicio, setFechaFin, tituloEstadisticas}) => {
 
-  const [fechaInicio, setFechaInicio] = useState('')
-  const [fechaFin, setFechaFin] = useState('')
-
+  const hoy = new Date().toISOString().split('T')[0];
+      
+    if(!estadisticas){
+      return
+    }
+      
   const manejarCambioFechaInicio = (e) => {
     setFechaInicio(e.target.value)
   }
 
   const manejarCambioFechaFin = (e) => {
     setFechaFin(e.target.value)
-  }
+  } 
   return (
     <>
     <div className='contenedorEstadistica'>
         <section className='contenidoEstadistica'>
 
             <div className='titulo'>
-                <h1 className='tituloEstadisticas'>Estadísticas Generales</h1>
+                <h1 className='tituloEstadisticas'>Estadísticas {tituloEstadisticas}</h1>
                 <div className="formularioFecha">
           
                   <div className="contenedorFechasEstadisticas">
@@ -55,6 +54,7 @@ export const Estadisticas = ({ estadisticas}) => {
             
 
             <div className='contenido'>
+
             
                 <Estadistica id='contactabilidad' label='Contactabilidad' dato={estadisticas.contactabilidad} />
                 <Estadistica id='noContactabilidad' label='No contactabilidad' dato={estadisticas.noContactabilidad} />
