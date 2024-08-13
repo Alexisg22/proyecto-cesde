@@ -63,6 +63,8 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
     const hayFiltros = filtrosSeleccionados.length > 0;
 
     if (!modalAbierto) return null;
+    
+    console.log(filtrosSeleccionados);
 
     return (
         <>

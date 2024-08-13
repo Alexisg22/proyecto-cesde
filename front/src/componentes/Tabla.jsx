@@ -319,6 +319,37 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
         cargarAspirantes();
       }
       
+      
+    } else if (procesoSelect === 'empresas') {
+      async function cargarAspirantes() {
+        const empresa = "empresa"
+        const respuesta = await obtenerAspirantesProceso(empresa);
+        const aspirantes = respuesta.data.aspirantes;
+  
+        const mapeado = aspirantes.map((aspirante) => ({
+          celular: aspirante.celular,
+          nit: aspirante.nit,
+          nombreCompleto: aspirante.nombre_completo,
+          cantidadLlamadas: aspirante.cantidad_llamadas,
+          cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
+          cantWhatsapps: aspirante.cantidad_whatsapp,
+          cantGestiones: aspirante.cantidad_gestiones,
+          mejorGestión: 'No interesado',
+          estadoAspirante: aspirante.estado_aspirante,
+          diasUltGestión: aspirante.dias_ultima_gestion,
+          fechaUltGestión: aspirante.fecha_ultima_gestion,
+          gestiónFinal: aspirante.estado_ultima_gestion,
+          tipificaciónGestiónFinal: aspirante.estado_ultima_gestion,
+          celularAdicional: aspirante.celular_adicional,
+          nitEmpresa: aspirante.patrocinio_empresa,
+          sede: aspirante.sede,
+          programaFormación: aspirante.programa_formacion,
+        }))
+        
+        
+        setAspirantes(mapeado)
+      }
+      cargarAspirantes();
       // setAspirantes(aspirantes.filter(aspirante => aspirante.empresa)); // Adjust filter as needed
     } else if (procesoSelect === 'extensiones') {
       async function cargarAspirantes() {
@@ -501,4 +532,4 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
   );
 }
 
-export default Tabla
+export default Tabla  

@@ -1,17 +1,34 @@
-import '../estilos/Estadisticas.css'
-import '../estilos/Estadistica.css'
-import { Estadistica } from './Estadistica.jsx'
-import React, { useState } from 'react'
+import { Estadistica } from './Estadistica.jsx';
+import React, { useEffect, useState } from 'react';
+import { obtenerEstadisticasGenerales } from '../api/aspirantes.api.js';
+import '../estilos/Estadistica.css';
+import '../estilos/Estadisticas.css';
 
-const hoy = new Date().toISOString().split('T')[0];
 
-export const Estadisticas = ({ estadisticas}) => {
-  if(!estadisticas){
-    return
-  }
+export const Estadisticas = () => {
 
-  const [fechaInicio, setFechaInicio] = useState('')
-  const [fechaFin, setFechaFin] = useState('')
+  const hoy = new Date().toISOString().split('T')[0];
+
+  const [estadisticas, setEstadisticas] = useState([]);
+  
+  
+  useEffect(()=>{
+      async function cargarEstadisticas() {
+          const respuesta = await obtenerEstadisticasGenerales();
+          setEstadisticas (respuesta.data)
+      
+          console.log(respuesta.data);
+      
+        }
+        cargarEstadisticas();
+      },[])
+      
+      if(!estadisticas){
+        return
+      }
+      const [fechaInicio, setFechaInicio] = useState('')
+      const [fechaFin, setFechaFin] = useState('')
+
 
   const manejarCambioFechaInicio = (e) => {
     setFechaInicio(e.target.value)
@@ -19,7 +36,7 @@ export const Estadisticas = ({ estadisticas}) => {
 
   const manejarCambioFechaFin = (e) => {
     setFechaFin(e.target.value)
-  }
+  } 
   return (
     <>
     <div className='contenedorEstadistica'>
@@ -55,6 +72,7 @@ export const Estadisticas = ({ estadisticas}) => {
             
 
             <div className='contenido'>
+
             
                 <Estadistica id='contactabilidad' label='Contactabilidad' dato={estadisticas.contactabilidad} />
                 <Estadistica id='noContactabilidad' label='No contactabilidad' dato={estadisticas.noContactabilidad} />
