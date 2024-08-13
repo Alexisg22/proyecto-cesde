@@ -3,6 +3,11 @@
 export const obtenerTodosAspirantes = () => {
   return  axios.get('http://localhost:8000/cesde/aspirantes/')
 }
+
+export const obtenerUnAspirante = (celular) => {
+  return  axios.get(`http://localhost:8000/cesde/aspirantes/${celular}/`)
+}
+
 export const obtenerAspirantesProceso = (proceso) => {
   return  axios.get(`http://localhost:8000/cesde/aspirantes/proceso-${proceso}/`)
 }

@@ -4,7 +4,7 @@ import { HistoricoGestiones } from './HistoricoGestiones.jsx';
 import { ModalFiltrar } from './ModalFiltrar.jsx';
 import { Paginador } from './Paginador.jsx';
 import { CSVLink } from "react-csv";
-import { obtenerAspirantesProceso, obtenerTodosAspirantes, obtenerTodosAspirantesConFiltros } from '../api/aspirantes.api.js';
+import { obtenerAspirantesProceso, obtenerTodosAspirantes, obtenerTodosAspirantesConFiltros, obtenerUnAspirante } from '../api/aspirantes.api.js';
 import '../estilos/Tabla.css';
 import { ModalAspiranteSinGestiones } from './ModalAspiranteSinGestiones.jsx';
 
@@ -22,7 +22,10 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
   const nAspirantesPorPagina = aspirantes.slice(indexInicial, indexFinal)
   const numeroPaginas = Math.ceil(aspirantes.length / cantidadFilas)
   const [filtrosSeleccionados, setFiltrosSeleccionados] = useState([]);
-  const [aplicarFiltrosAspirantes, setAplicarFiltrosAspirantes] = useState([]) 
+  const [aplicarFiltrosAspirantes, setAplicarFiltrosAspirantes] = useState([])
+  const [inputBuscadorAspirante, setInputBuscadorAspirante] = useState('')
+  const [buscarUnAspirante, setBuscarUnAspirante] = useState('') 
+  const [textoModal, setTextoModal] = useState('')
 
   useEffect(() => {
 
@@ -63,11 +66,49 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
     setModalAbierto(false)
   }
     
+  // este useEfect es e que me valida si buscar con filtros, o si bscar un soloaspirante
   useEffect(() => {
-    if (procesoSelect === 'general') {
+    if(buscarUnAspirante != 0 ){
+      async function cargarAspirantes() {
+        try {
+        const respuesta = await obtenerUnAspirante(buscarUnAspirante);
+        const aspirante = respuesta.data;
+        console.log(aspirante)
+  
+        const mapeado = {
+          celular: aspirante.celular,
+          nit: aspirante.nit,
+          nombreCompleto: aspirante.nombre_completo,
+          cantidadLlamadas: aspirante.cantidad_llamadas,
+          cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
+          cantWhatsapps: aspirante.cantidad_whatsapp,
+          cantGestiones: aspirante.cantidad_gestiones,
+          mejorGestión: 'No interesado',
+          estadoAspirante: aspirante.estado_aspirante,
+          diasUltGestión: aspirante.dias_ultima_gestion,
+          fechaUltGestión: aspirante.fecha_ultima_gestion,
+          gestiónFinal: aspirante.estado_ultima_gestion,
+          tipificaciónGestiónFinal: aspirante.estado_ultima_gestion,
+          celularAdicional: aspirante.celular_adicional,
+          nitEmpresa: aspirante.patrocinio_empresa,
+          sede: aspirante.sede,
+          programaFormación: aspirante.programa_formacion,
+        };
+       
+        setAspirantes([mapeado])
+      }catch (error) {
+        setTextoModal('Error, no se ha encontrado al aspirante. compruebe el numero')
+        setAbrirModalAspiranteSinGesiones(true)
+        
+      }
+          
+      }
+      cargarAspirantes();
+
+    }else{
+      if (procesoSelect === 'general') {
 // validar si hay filtros para aplicar a la busqueda de aspirantes
       if(aplicarFiltrosAspirantes != 0){
-
         let objetoFiltros ={
           cantidadLlamadas: '',
           cantidadWhatsapps: '',
@@ -110,14 +151,13 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
               return null;
           }  
         })
-        console.log(objetoFiltros)
         async function cargarAspirantes() {
-        const respuesta = await obtenerTodosAspirantesConFiltros(objetoFiltros);
-        const aspirantes = respuesta.data;
-        // console.log('se buscan filtros')
-        // console.log(aspirantes)
+          const respuesta = await obtenerTodosAspirantesConFiltros(objetoFiltros);
+          const aspirantes = respuesta.data;
+          // console.log('se buscan filtros')
+          // console.log(aspirantes)
     
-        const mapeado = aspirantes.map((aspirante) => ({
+          const mapeado = aspirantes.map((aspirante) => ({
   
           celular: aspirante.celular,
           nit: aspirante.nit,
@@ -136,10 +176,10 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           nitEmpresa: aspirante.nit_empresa,
           sede: aspirante.sede,
           programaFormación: aspirante.programa,
-        }))
-        setAspirantes(mapeado)
-      }
-      cargarAspirantes();
+          }))
+          setAspirantes(mapeado)
+        }
+        cargarAspirantes();
 // Si no hay filtros que aplicar se trae la consulta normal 
       }else{
         async function cargarAspirantes() {
@@ -173,17 +213,59 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           setAspirantes(mapeado)
         }
         cargarAspirantes();
-      }
-      
-      
-    } else if (procesoSelect === 'empresas') {
-      let empresas = '1' 
-      async function cargarAspirantes() {
-        
-        const respuesta = await obtenerAspirantesProceso(empresas);
-        const aspirantes = respuesta.data.aspirantes;
+      } 
+      } else if (procesoSelect === 'empresa') {
+      if(aplicarFiltrosAspirantes != 0){
+        let objetoFiltros ={
+          cantidadLlamadas: '',
+          cantidadWhatsapps: '',
+          cantidadGestiones: '',
+          mejorGestion: '',
+          estadoAspirante: '',
+          diasUltimaGestion: '',
+          fechaUltimaGestion: '',
+          tipificacionUltimaGestion: '',
+          programaFormacion: '',
+          sede: '',
+          nitEmpresa: ''
+        }
+       
+        aplicarFiltrosAspirantes.map((filtro) => { 
+          switch(filtro.filtro){
+            case('cantidad llamadas') :
+              return (objetoFiltros.cantidadLlamadas = filtro.valor);
+            case('cantidad whatsapp'):
+              return (objetoFiltros.cantidadWhatsapps = filtro.valor);
+            case('cantidad gestiones'):
+              return (objetoFiltros.cantidadGestiones = filtro.valor);
+            case('mejor gestion'):
+              return (objetoFiltros.mejorGestion = filtro.valor);
+            case('estado del aspirante'):
+              return (objetoFiltros.estadoAspirante = filtro.valor);
+            case('dias ultima gestion'):
+              return (objetoFiltros.diasUltimaGestion = filtro.valor);
+            case('fecha ultima gestion'):
+              return (objetoFiltros.fechaUltimaGestion = filtro.valor);
+            case('tipificación última gestión'):
+              return (objetoFiltros.tipificacionUltimaGestion = filtro.valor);
+            case('programa de formación'):
+              return (objetoFiltros.programaFormacion = filtro.valor);
+            case('sede'):
+              return (objetoFiltros.sede = filtro.valor);
+            case('empresa'):
+              return (objetoFiltros.nitEmpresa = filtro.valor);
+            default:
+              return null;
+          }  
+        })
+        async function cargarAspirantes() {
+          const respuesta = await obtenerTodosAspirantesConFiltros(objetoFiltros);
+          const aspirantes = respuesta.data;
+          // console.log('se buscan filtros')
+          // console.log(aspirantes)
+    
+          const mapeado = aspirantes.map((aspirante) => ({
   
-        const mapeado = aspirantes.map((aspirante) => ({
           celular: aspirante.celular,
           nit: aspirante.nit,
           nombreCompleto: aspirante.nombre_completo,
@@ -191,24 +273,56 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
           cantWhatsapps: aspirante.cantidad_whatsapp,
           cantGestiones: aspirante.cantidad_gestiones,
-          mejorGestión: 'No interesado',
-          estadoAspirante: aspirante.estado_aspirante,
+          // mejorGestión: 'No interesado',
+          estadoAspirante: aspirante.estado,
           diasUltGestión: aspirante.dias_ultima_gestion,
           fechaUltGestión: aspirante.fecha_ultima_gestion,
-          gestiónFinal: aspirante.estado_ultima_gestion,
-          tipificaciónGestiónFinal: aspirante.estado_ultima_gestion,
-          celularAdicional: aspirante.celular_adicional,
-          nitEmpresa: aspirante.patrocinio_empresa,
+          // gestiónFinal: aspirante.estado_ultima_gestion,
+          tipificaciónGestiónFinal: aspirante.tipificacion,
+          // celularAdicional: aspirante.celular_adicional,
+          nitEmpresa: aspirante.nit_empresa,
           sede: aspirante.sede,
-          programaFormación: aspirante.programa_formacion,
-        }))
+          programaFormación: aspirante.programa,
+          }))
+          setAspirantes(mapeado)
+        }
+        cargarAspirantes();
+// Si no hay filtros que aplicar se trae la consulta normal 
+      }else{
+        const empresa = '1' 
+        async function cargarAspirantes() {
         
-        
-        setAspirantes(mapeado)
+          const respuesta = await obtenerAspirantesProceso(empresa);
+          const aspirantes = respuesta.data.aspirantes;
+    
+          const mapeado = aspirantes.map((aspirante) => ({
+            celular: aspirante.celular,
+            nit: aspirante.nit,
+            nombreCompleto: aspirante.nombre_completo,
+            cantidadLlamadas: aspirante.cantidad_llamadas,
+            cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
+            cantWhatsapps: aspirante.cantidad_whatsapp,
+            cantGestiones: aspirante.cantidad_gestiones,
+            mejorGestión: 'No interesado',
+            estadoAspirante: aspirante.estado_aspirante,
+            diasUltGestión: aspirante.dias_ultima_gestion,
+            fechaUltGestión: aspirante.fecha_ultima_gestion,
+            gestiónFinal: aspirante.estado_ultima_gestion,
+            tipificaciónGestiónFinal: aspirante.estado_ultima_gestion,
+            celularAdicional: aspirante.celular_adicional,
+            nitEmpresa: aspirante.patrocinio_empresa,
+            sede: aspirante.sede,
+            programaFormación: aspirante.programa_formacion,
+          }))
+          
+          
+          setAspirantes(mapeado)
+        }
+        cargarAspirantes();
       }
-      cargarAspirantes();
+      
       // setAspirantes(aspirantes.filter(aspirante => aspirante.empresa)); // Adjust filter as needed
-    } else if (procesoSelect === 'extensiones') {
+      } else if (procesoSelect === 'extensiones') {
       const extensiones = '2' 
       async function cargarAspirantes() {
         
@@ -241,7 +355,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
       }
       cargarAspirantes();
       // setAspirantes(aspirantes.filter(aspirante => aspirante.sede)); // Adjust filter as needed
-    } else if (procesoSelect === 'tecnicos') {
+      } else if (procesoSelect === 'tecnicos') {
       let tecnicos = '3' 
       async function cargarAspirantes() {
         
@@ -276,13 +390,16 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
       }
       cargarAspirantes();
       // setAspirantes(aspirantes.filter(aspirante => aspirante.programaFormación)); // Adjust filter as needed
+      }
     }
-  }, [procesoSelect, aplicarFiltrosAspirantes]);
+  }, [procesoSelect, aplicarFiltrosAspirantes, buscarUnAspirante]);
 
 // esta funcion abre el modal de historico aspirantes al dar click en la fila del aspirante y valida si el aspirante tiene gestiones
   const manejrClickFilaAspirantes = (celular, cantGestionesAspirante) => {
     if(cantGestionesAspirante === 0){
+      setTextoModal("Al aspirante seleccionado no se le ha realizado ninguna gestión.")
       setAbrirModalAspiranteSinGesiones(true)
+
       return
     }else{
       setCelularAspiranteSeleccionado(celular);
@@ -326,15 +443,20 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
     return filaFiltrada;
   });
 
+  const obtenerCelularInput = (e) => {
+    e.preventDefault()
+    setBuscarUnAspirante(inputBuscadorAspirante)
+  }
+
   return (
     <>
       <main className="tabla" id="tablaClientes">
         <section className="encabezadoTabla">
           <h1>Información clientes</h1>
-          <div className="espacioBuscador">
-            <input type="search" placeholder="Buscar un aspirante..." />
-            <button className="botonBuscar">Buscar</button>
-          </div>
+          <form className="espacioBuscador" onSubmit={obtenerCelularInput}>
+            <input type="search" placeholder="Buscar un aspirante..." onChange={(e) => setInputBuscadorAspirante(e.target.value)}/>
+            <button type='submit' className="botonBuscar">Buscar</button>
+          </form>
           <div className='filtrar'>
             <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true} texto={"Filtrar"} ide={'botonFiltrar'} />
           </div>
@@ -378,7 +500,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           numeroPaginas={numeroPaginas}
         />
       </main>
-      <ModalAspiranteSinGestiones abrirModalAspiranteSinGesiones={abrirModalAspiranteSinGesiones} cerrarModal={() => { setAbrirModalAspiranteSinGesiones(false) }}/>
+      <ModalAspiranteSinGestiones abrirModalAspiranteSinGesiones={abrirModalAspiranteSinGesiones} texto={textoModal} cerrarModal={() => { setAbrirModalAspiranteSinGesiones(false) }}/>
       <HistoricoGestiones celularAspiranteSeleccionado={celularAspiranteSeleccionado} modalAbiertoHistorico={modalAbiertoHistorico} cerrarModal={() => { setModalAbiertoHistorico(false) }} />
       <ModalFiltrar buscarAspirantesConFiltros={buscarAspirantesConFiltros} filtrosSeleccionados={filtrosSeleccionados} setFiltrosSeleccionados={setFiltrosSeleccionados} modalAbierto={modalAbierto} cerrarModal={() => { setModalAbierto(false) }} />
     </>

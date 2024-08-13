@@ -13,7 +13,7 @@ body{
     flex-direction: column;
     padding: 5px;
     height: 65vh;
-    width: 74vw;
+    max-width: 74vw;
     background-color: #DDDDDD;
     border-radius: 5px;
     bottom: 10px;
@@ -36,12 +36,26 @@ body{
     }
 }
 
+.contenedorFechasEstadisticas{
+    display: flex;
+    align-items: center;
+    gap:.5em;
+}
+
 .tituloEstadisticas{
+    padding-left: 7em;
     width: 65%;
-    margin-left: 35%;
+    text-align: center;
     font-size: 1.5rem;
 }
 
 .formularioFecha{
     width: 35%;
 }
+
+@media (max-width: 940px) {
+    .contenedorFechasEstadisticas {
+      display: block;
+      margin-left: 5em;
+    }
+  }

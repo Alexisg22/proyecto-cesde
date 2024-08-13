@@ -29,7 +29,7 @@ export const Estadisticas = ({ estadisticas}) => {
                 <h1 className='tituloEstadisticas'>Estadísticas Generales</h1>
                 <div className="formularioFecha">
           
-                  <div className="contenedorFechas">
+                  <div className="contenedorFechasEstadisticas">
                     <div className="contenedorFechaIndividual">
                       <input
                         type="date"

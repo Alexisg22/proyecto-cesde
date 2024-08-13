@@ -53,6 +53,8 @@
 }
 
 .textoAspiranteSinGestion{
+    padding-left: 1em;
+    padding-right: 1em;
     font-size: 2rem;
     font-weight: 600;
     margin-top: 1.8em;
