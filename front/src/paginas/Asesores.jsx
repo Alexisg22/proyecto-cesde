@@ -3,7 +3,7 @@ import { Encabezado } from "../componentes/Encabezado.jsx";
 import BuscarAsesores from "../componentes/BuscarAsesores.jsx";
 import TablaAsesores from "../componentes/TablaAsesores.jsx";
 import "../estilos/Asesores.css";
-import { obtenerTodosAsesores } from '../api/aspirantes.api.js';
+import { consultarAsesores } from '../api/asesores.api.js';
 
 const columnas = [
   { id: 'idWolkvox', etiqueta: 'Id Wolkvox' },
@@ -28,18 +28,18 @@ const [asesores, setAsesores] = useState([]);
   useEffect(() => {
 
     async function cargarAsesores() {
-      const respuesta = await obtenerTodosAsesores();
+      const respuesta = await consultarAsesores();
       const asesores = respuesta.data;
 
       const mapeado = asesores.map((asesor) => ({
 
         idWolkvox: asesor.id,
         nombreCompleto: asesor.nombre_completo,
-        cantLlamadas: 'asesor',
-        cantWhatsapps: '3',
-        cantGestiones: '5',
-        cantMatriculas: '123',
-        cantLiquidaciones: '2',
+        cantLlamadas: asesor.cantidad_llamadas,
+        cantWhatsapps: asesor.cantidad_whatsapp,
+        cantGestiones: asesor.cantidad_gestiones,
+        cantMatriculas: asesor.cantidad_matriculas,
+        cantLiquidaciones: asesor.cantidad_liquidaciones,
       }))
       
       

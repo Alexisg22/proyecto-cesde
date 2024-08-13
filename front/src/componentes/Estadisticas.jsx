@@ -5,23 +5,23 @@ import '../estilos/Estadistica.css';
 import '../estilos/Estadisticas.css';
 
 
-export const Estadisticas = ({estadisticas}) => {
+export const Estadisticas = () => {
 
   const hoy = new Date().toISOString().split('T')[0];
 
-  // const [estadisticas, setEstadisticas] = useState([]);
+  const [estadisticas, setEstadisticas] = useState([]);
   
   
-  // useEffect(()=>{
-  //     async function cargarEstadisticas() {
-  //         const respuesta = await obtenerEstadisticasGenerales();
-  //         setEstadisticas (respuesta.data)
+  useEffect(()=>{
+      async function cargarEstadisticas() {
+          const respuesta = await obtenerEstadisticasGenerales();
+          setEstadisticas (respuesta.data)
       
-  //         console.log(respuesta.data);
+          console.log(respuesta.data);
       
-  //       }
-  //       cargarEstadisticas();
-  //     },[])
+        }
+        cargarEstadisticas();
+      },[])
       
       if(!estadisticas){
         return
@@ -36,7 +36,7 @@ export const Estadisticas = ({estadisticas}) => {
 
   const manejarCambioFechaFin = (e) => {
     setFechaFin(e.target.value)
-  }
+  } 
   return (
     <>
     <div className='contenedorEstadistica'>
