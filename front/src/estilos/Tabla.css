@@ -6,14 +6,8 @@
     font-size: small;
 }
 
-body {
-    min-height: 100vh;
-    background: rgb(255, 255, 255);
-    display: flex;
-}
-
 main.tabla {
-    width: 74vw;
+    max-width: 74vw;
     height: 80vh;
     background-color: #fff5;
     backdrop-filter: blur(7px);

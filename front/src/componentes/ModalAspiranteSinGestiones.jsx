@@ -1,6 +1,6 @@
 import '../estilos/ModalAspiranteSinGestiones.css';
 
-export const ModalAspiranteSinGestiones = ({abrirModalAspiranteSinGesiones, cerrarModal}) => {
+export const ModalAspiranteSinGestiones = ({abrirModalAspiranteSinGesiones, cerrarModal, texto}) => {
     
    
     if (!abrirModalAspiranteSinGesiones) return
@@ -14,7 +14,7 @@ export const ModalAspiranteSinGestiones = ({abrirModalAspiranteSinGesiones, cerr
                 </div>
                 <div className='contenedorTexto'>
                     <p className='icono'>!</p>
-                    <p className='textoAspiranteSinGestion'>Al aspirante seleccionado no se le ha realizado ninguna gestión.</p>
+                    <p className='textoAspiranteSinGestion'>{texto}</p>
                 </div>
             </div>
         </div>
