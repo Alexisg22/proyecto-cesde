@@ -40,7 +40,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
       async function cargarAspirantes() {
         try {
         const respuesta = await obtenerUnAspirante(buscarUnAspirante);
-        const aspirante = respuesta.data.aspirantes;
+        const aspirante = respuesta.data;
         console.log(aspirante)
   
         const mapeado = {
