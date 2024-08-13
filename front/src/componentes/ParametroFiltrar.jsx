@@ -99,7 +99,7 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGesti
         </select>
       );
 
-    case "estado del aspirante":
+    case "estado ultima gestion":
       return (
         <select className="campoFiltro" onChange={cambioValorInput} required>
           <option value="">Seleccione el estado</option>
@@ -111,7 +111,7 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGesti
         </select>
       );
 
-    case "tipificación ultima gestion":
+    case "tipificacion gestion final":
       return (
         <select className="campoFiltro" onChange={cambioValorInput} required>
           <option value="">Seleccione tipificación</option>

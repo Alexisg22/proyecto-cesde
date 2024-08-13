@@ -64,7 +64,7 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
 
     if (!modalAbierto) return null;
     
-    console.log(filtrosSeleccionados);
+    // console.log(filtrosSeleccionados);
 
     return (
         <>
@@ -84,10 +84,10 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
                                 <option value="cantidad whatsapp">Cantidad de Whatsapp</option>
                                 <option value="cantidad gestiones">Cantidad de gestiones</option>
                                 <option value="mejor gestion">Mejor gestión</option>
-                                <option value="estado del aspirante">Estado del aspirante</option>
+                                <option value="estado ultima gestion">Estado ultima gestion</option>
                                 <option value="dias ultima gestion">Días de la última gestión</option>
                                 <option value="fecha ultima gestion">Fecha de última gestión</option>
-                                <option value="tipificación ultima gestion">Tipificación última gestión</option>
+                                <option value="tipificacion gestion final">tipificacion gestion final</option>
                                 <option value="programa de formacion">Programa de formación</option>
                                 <option value="sede">Sede</option>
                                 <option value="empresa">Empresa</option>
