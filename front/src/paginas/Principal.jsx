@@ -128,7 +128,7 @@ export const Principal = () => {
 
 
   return (
-    <div>
+    <>
         <Encabezado 
         mostrarBotonSubirBD={true}
         mostrarBotonInicio={false}
@@ -154,7 +154,7 @@ export const Principal = () => {
          />
       </div>
     </main>
-    </div>
+    </>
   )
 }
 
