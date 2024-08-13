@@ -18,7 +18,7 @@ export const Principal = () => {
         'cantWhatsapps': false,
         'cantGestiones': true,
         'mejorGestión': true,
-        'estadoAspirante': true,
+        'estadoUltimaGestion': true,
         'diasUltGestión': false,
         'fechaUltGestión': true,
         'gestiónFinal': true,
@@ -71,7 +71,6 @@ export const Principal = () => {
           cargarEstadisticas();      
          
     }, [procesoSelect])
-
     
     const manejarCambioVisibilidadColumna = (nuevaVisibilidad) => {
         setVisibilidadColumna(nuevaVisibilidad);

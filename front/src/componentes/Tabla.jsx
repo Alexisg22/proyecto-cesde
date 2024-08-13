@@ -40,7 +40,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
       async function cargarAspirantes() {
         try {
         const respuesta = await obtenerUnAspirante(buscarUnAspirante);
-        const aspirante = respuesta.data.aspirantes;
+        const aspirante = respuesta.data;
         console.log(aspirante)
   
         const mapeado = {
@@ -51,12 +51,12 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
           cantWhatsapps: aspirante.cantidad_whatsapp,
           cantGestiones: aspirante.cantidad_gestiones,
-          mejorGestión: 'No interesado',
-          estadoAspirante: aspirante.estado_aspirante,
+          mejorGestión: 'Aún no, falta',
+          estadoUltimaGestion: aspirante.estado_ultima_gestion,
           diasUltGestión: aspirante.dias_ultima_gestion,
           fechaUltGestión: aspirante.fecha_ultima_gestion,
-          gestiónFinal: aspirante.estado_ultima_gestion,
-          tipificaciónGestiónFinal: aspirante.estado_ultima_gestion,
+          gestiónFinal: 'Aún no, falta',
+          tipificaciónGestiónFinal: aspirante.tipificacion,
           celularAdicional: aspirante.celular_adicional,
           nitEmpresa: aspirante.patrocinio_empresa,
           sede: aspirante.sede,
@@ -95,10 +95,10 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           cantidadWhatsapps: '',
           cantidadGestiones: '',
           mejorGestion: '',
-          estadoAspirante: '',
+          estadoUltimaGestion: '',
           diasUltimaGestion: '',
           fechaUltimaGestion: '',
-          tipificacionUltimaGestion: '',
+          tipificacionGestionFinal: '',
           programaFormacion: '',
           sede: '',
           nitEmpresa: '',
@@ -115,14 +115,14 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
               return (objetoFiltros.cantidadGestiones = filtro.valor);
             case('mejor gestion'):
               return (objetoFiltros.mejorGestion = filtro.valor);
-            case('estado del aspirante'):
-              return (objetoFiltros.estadoAspirante = filtro.valor);
+            case('estado ultima gestion'):
+              return (objetoFiltros.estadoUltimaGestion = filtro.valor);
             case('dias ultima gestion'):
               return (objetoFiltros.diasUltimaGestion = filtro.valor);
             case('fecha ultima gestion'):
               return (objetoFiltros.fechaUltimaGestion = filtro.valor);
-            case('tipificación última gestion'):
-              return (objetoFiltros.tipificacionUltimaGestion = filtro.valor);
+            case('tipificacion gestion final'):
+              return (objetoFiltros.tipificacionGestionFinal = filtro.valor);
             case('programa de formacion'):
               return (objetoFiltros.programaFormacion = filtro.valor);
             case('sede'):
@@ -148,19 +148,20 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
           cantWhatsapps: aspirante.cantidad_whatsapp,
           cantGestiones: aspirante.cantidad_gestiones,
-          // mejorGestión: 'No interesado',
-          estadoAspirante: aspirante.estado,
+          mejorGestión: 'Aún no, falta',
+          estadoUltimaGestion: aspirante.estado_ultima_gestion,
           diasUltGestión: aspirante.dias_ultima_gestion,
           fechaUltGestión: aspirante.fecha_ultima_gestion,
-          // gestiónFinal: aspirante.estado_ultima_gestion,
+          gestiónFinal: 'Aún no, falta',
           tipificaciónGestiónFinal: aspirante.tipificacion,
-          // celularAdicional: aspirante.celular_adicional,
           nitEmpresa: aspirante.nit_empresa,
           sede: aspirante.sede,
           programaFormación: aspirante.programa,
           }))
           setAspirantes(mapeado)
         }
+        console.log(objetoFiltros);
+        
         cargarAspirantes();
 // Si no hay filtros que aplicar se trae la consulta normal 
       }else{  
@@ -177,18 +178,16 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
             cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
             cantWhatsapps: aspirante.cantidad_whatsapp,
             cantGestiones: aspirante.cantidad_gestiones,
-            mejorGestión: 'No interesado',
-            estadoAspirante: aspirante.estado_aspirante,
+            mejorGestión: 'Aún no, falta',
+            estadoUltimaGestion: aspirante.estado_ultima_gestion,
             diasUltGestión: aspirante.dias_ultima_gestion,
             fechaUltGestión: aspirante.fecha_ultima_gestion,
-            gestiónFinal: aspirante.estado_ultima_gestion,
-            tipificaciónGestiónFinal: aspirante.estado_ultima_gestion,
+            gestiónFinal: 'Aún no, falta',
+            tipificaciónGestiónFinal: aspirante.tipificacion,
             celularAdicional: aspirante.celular_adicional,
             nitEmpresa: aspirante.patrocinio_empresa,
             sede: aspirante.sede,
             programaFormación: aspirante.programa_formacion,
-            
-    
           }))
           
           
@@ -223,7 +222,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
     { id: 'cantWhatsapps', etiqueta: 'Cant. WhatsApps' },
     { id: 'cantGestiones', etiqueta: 'Cant. Gestiones' },
     { id: 'mejorGestión', etiqueta: 'Mejor Gestión' },
-    { id: 'estadoAspirante', etiqueta: 'Estado Aspirante' },
+    { id: 'estadoUltimaGestion', etiqueta: 'Estado Ult. Gestion' },
     { id: 'diasUltGestión', etiqueta: 'Dias Ult. Gestión' },
     { id: 'fechaUltGestión', etiqueta: 'Fecha Ult. Gestión' },
     { id: 'gestiónFinal', etiqueta: 'Gestión final' },
@@ -288,7 +287,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
                   {columnas.map(columna =>
                     visibilidadColumna[columna.id] && (
                       <td key={columna.id}>
-                        {columna.id === 'estadoAspirante' ? (
+                        {columna.id === 'estadoUltimaGestion' ? (
                           <p className={row[columna.id]}>{row[columna.id]}</p>
                         ) : (
                           row[columna.id]
