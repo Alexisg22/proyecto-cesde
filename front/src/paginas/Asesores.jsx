@@ -25,6 +25,14 @@ export const Asesores = () => {
   // State para guardar los asesores obtenidos de la API
 const [asesores, setAsesores] = useState([]);
 
+//estado para almacenar las fechas de inicio y de fin de los asesores
+  const [fechaInicio, setFechaInicio] = useState('')
+  const [fechaFin, setFechaFin] = useState('')
+
+  if(fechaFin != '' && fechaInicio != ''){
+    console.log(fechaFin + fechaInicio)
+  }
+
   useEffect(() => {
 
     async function cargarAsesores() {
@@ -47,6 +55,7 @@ const [asesores, setAsesores] = useState([]);
     }
     cargarAsesores();
   }, [])
+
   return (
     <div className="asesoresMain">
       <div className="asesoresEncabezado">
@@ -65,6 +74,8 @@ const [asesores, setAsesores] = useState([]);
             <BuscarAsesores 
               datos={asesores}
               encabezados={encabezados}
+              setFechaInicio={setFechaInicio}
+              setFechaFin={setFechaFin}
             />
           </div>
         </div>

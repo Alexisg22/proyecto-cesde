@@ -1,35 +1,17 @@
 import { Estadistica } from './Estadistica.jsx';
 import React, { useEffect, useState } from 'react';
-import { obtenerEstadisticasGenerales } from '../api/estadisticas.api.js';
 import '../estilos/Estadistica.css';
 import '../estilos/Estadisticas.css';
 
 
-export const Estadisticas = () => {
+export const Estadisticas = ({estadisticas, fechaInicio, fechaFin, setFechaInicio, setFechaFin, tituloEstadisticas}) => {
 
   const hoy = new Date().toISOString().split('T')[0];
-
-  const [estadisticas, setEstadisticas] = useState([]);
-  
-  
-  useEffect(()=>{
-      async function cargarEstadisticas() {
-          const respuesta = await obtenerEstadisticasGenerales();
-          setEstadisticas (respuesta.data)
       
-          console.log(respuesta.data);
+    if(!estadisticas){
+      return
+    }
       
-        }
-        cargarEstadisticas();
-      },[])
-      
-      if(!estadisticas){
-        return
-      }
-      const [fechaInicio, setFechaInicio] = useState('')
-      const [fechaFin, setFechaFin] = useState('')
-
-
   const manejarCambioFechaInicio = (e) => {
     setFechaInicio(e.target.value)
   }
@@ -43,7 +25,7 @@ export const Estadisticas = () => {
         <section className='contenidoEstadistica'>
 
             <div className='titulo'>
-                <h1 className='tituloEstadisticas'>Estadísticas Generales</h1>
+                <h1 className='tituloEstadisticas'>Estadísticas {tituloEstadisticas}</h1>
                 <div className="formularioFecha">
           
                   <div className="contenedorFechasEstadisticas">
