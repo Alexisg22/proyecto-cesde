@@ -43,12 +43,12 @@ export const Principal = () => {
               contactabilidad: estadisticasGenerales.contactabilidad.percentage.toFixed(2) + " %",
               noContactabilidad: estadisticasGenerales.no_contactabilidad.percentage.toFixed(2) + " %",
               // porcentajeConvercion: estadisticasGenerales.contactabilidad.percentage,
-              cantidadMatriculas: estadisticasGenerales.estadisticas_basicas.find(e => e.estado__nombre.toLowerCase() === 'matriculado')?.count || 0,
-              cantidadLiquidaciones: estadisticasGenerales.estadisticas_basicas.find(e => e.estado__nombre.toLowerCase() === 'liquidado')?.count || 0,
-              enGestion: estadisticasGenerales.estadisticas_basicas.find(e => e.estado__nombre.toLowerCase() === 'en gestión')?.count || 0,
-              sinGestion: estadisticasGenerales.estadisticas_basicas.find(e => e.estado__nombre.toLowerCase() === 'sin gestión')?.count || 0,
-              matriculado: estadisticasGenerales.estadisticas_basicas.find(e => e.estado__nombre.toLowerCase() === 'matriculado')?.count || 0,
-              liquidacion: estadisticasGenerales.estadisticas_basicas.find(e => e.estado__nombre.toLowerCase() === 'liquidado')?.count || 0,
+              cantidadMatriculas: estadisticasGenerales.estadisticas_basicas.find(e => e?.estado__nombre?.toLowerCase() === 'matriculado')?.count || 0,
+              cantidadLiquidaciones: estadisticasGenerales.estadisticas_basicas.find(e => e?.estado__nombre?.toLowerCase() === 'liquidado')?.count || 0,
+              enGestion: estadisticasGenerales.estadisticas_basicas.find(e => e?.estado__nombre?.toLowerCase() === 'en gestión')?.count || 0,
+              sinGestion: estadisticasGenerales.estadisticas_basicas.find(e => e?.estado__nombre?.toLowerCase() === 'sin gestión')?.count || 0,
+              matriculado: estadisticasGenerales.estadisticas_basicas.find(e => e?.estado__nombre?.toLowerCase() === 'matriculado')?.count || 0,
+              liquidacion: estadisticasGenerales.estadisticas_basicas.find(e => e?.estado__nombre?.toLowerCase() === 'liquidado')?.count || 0,
               cancelados: 0,  // Puedes agregar lógica adicional para calcular cancelados si es necesario
               noGestionable: 0  // Puedes agregar lógica adicional para calcular noGestionable si es necesario
             };
