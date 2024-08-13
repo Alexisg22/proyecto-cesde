@@ -71,7 +71,7 @@ export const Principal = () => {
           cargarEstadisticas();      
          
     }, [procesoSelect])
-    console.log(estadisticas)
+
     
     const manejarCambioVisibilidadColumna = (nuevaVisibilidad) => {
         setVisibilidadColumna(nuevaVisibilidad);

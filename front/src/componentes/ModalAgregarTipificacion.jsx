@@ -26,7 +26,7 @@ export const ModalAgregarTipoficacion = ({ cerrarModal, modalAbierto }) => {
             })
             
             console.log(respuesta);
-            // window.location.reload();
+            window.location.reload();
         }  catch (error) {
             // Captura y muestra errores en caso de que falle la petición
             console.error('Error al enviar los datos:', error);
