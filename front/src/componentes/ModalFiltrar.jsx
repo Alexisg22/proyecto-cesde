@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import '../estilos/ModalFiltrar.css';
 import { ParametroFiltrar } from './ParametroFiltrar.jsx';
 
@@ -10,6 +10,21 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
     const [valorGestionTotal, setValorGestionTotal] = useState(0); // Valor total de gestiones
     const valorLlamadasRef = useRef(0); // Inicializa con 0
     const valorWhatsappRef = useRef(0); // Inicializa con 0
+
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape') {
+                cerrarModal(); // Llama a la función cerrarModal si se presiona Escape
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [cerrarModal]);
+
 
     const cambioSeleccion = (e) => {
         setSeleccionOpcion(e.target.value);
@@ -59,12 +74,15 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
         setFiltrosSeleccionados(filtrosSeleccionados.filter((_, i) => i !== index));
     };
 
-    // Verifica si hay filtros seleccionados
-    const hayFiltros = filtrosSeleccionados.length > 0;
+
 
     if (!modalAbierto) return null;
     
     // console.log(filtrosSeleccionados);
+
+    // Actualiza el texto basado en la cantidad de filtros seleccionados
+    const cantidadFiltros = filtrosSeleccionados.length;
+    const texto = cantidadFiltros === 0 ? 'Sin filtros' : 'Filtrar';
 
     return (
         <>
@@ -117,9 +135,8 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
                         <button 
                             onClick={buscarAspirantesConFiltros} 
                             className='botonVerde' 
-                            disabled={!hayFiltros}
                         >
-                            Filtrar
+                            {texto}
                         </button>
                     </div>
                 </div>

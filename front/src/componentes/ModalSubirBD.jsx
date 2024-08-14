@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import "../estilos/ModalSubirBD.css";
 import "../estilos/BotonVerde.css";
@@ -62,6 +62,22 @@ export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
             console.error('Error al enviar los datos:', error);
         }
     });
+
+    // Manejo del cierre del modal con la tecla Escape
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape') {
+                cerrarModal();  // Llamamos a la función cerrarModal cuando se presiona Escape
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
+
+        // Limpiamos el event listener al desmontar el componente
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [cerrarModal]);
 
     // Si el modal no está abierto, no se muestra nada
     if (!modalAbierto) return null;

@@ -1,10 +1,10 @@
 .modalAgregarTipificacion{
-    width: 60vw;
-    height: 98.4vh;
+    width: 50vw;
+    height: 80vh;
     background-color: #DDDDDD;
     position: fixed;
-    top: 1%;
-    left: 22%;
+    top: 10%;
+    left: 28%;
     z-index: 1;
     text-align: center;
     border-radius: 5px;

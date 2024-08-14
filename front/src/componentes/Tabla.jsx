@@ -32,6 +32,11 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
     setAplicarFiltrosAspirantes(filtrosSeleccionados)
     setModalAbierto(false)
   }
+  
+
+  useEffect(() =>{
+    setPaginaActual(1)
+  },[filtrosSeleccionados])
     
 
   // este useEfect es e que me valida si buscar con filtros, o si bscar un soloaspirante
@@ -288,7 +293,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
             </thead>
             <tbody className='cuerpoTabla'>
               {nAspirantesPorPagina.map((row, index) => (
-                <tr className='filaTablaAspirantes' onClick={() => { manejarClickFilaAspirantes(row.celular, row.cantGestiones) }} key={index}>
+                <tr className='filaTablaAspirantes' onDoubleClick={() => { manejarClickFilaAspirantes(row.celular, row.cantGestiones) }} key={index}>
                   {columnas.map(columna =>
                     visibilidadColumna[columna.id] && (
                       <td key={columna.id}>

@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense, lazy } from "react";
 import { Encabezado } from "../componentes/Encabezado.jsx";
 import { BarraLaterarl } from "../componentes/BarraLaterarl.jsx";
 import { Estadisticas } from "../componentes/Estadisticas.jsx";
-import Tabla from "../componentes/Tabla.jsx";
+// import Tabla from "../componentes/Tabla.jsx";
 import "../estilos/Asesores.css";
 import { obtenerEstadisticas } from "../api/estadisticas.api.js";
+const Tabla = lazy (() => import("../componentes/Tabla.jsx"));
 
 export const Principal = () => {
+
   const [procesoSelect, setProcesoSelect] = useState("general");
   const [barraLateralKey, setBarraLateralKey] = useState(0);
   const [tablaKey, setTablaKey] = useState(0);
@@ -183,11 +185,13 @@ export const Principal = () => {
           procesoSelect={procesoSelect}
         />
         <div className="contenedorSecundario">
-          <Tabla
-            key={tablaKey}
-            visibilidadColumna={visibilidadColumna}
-            procesoSelect={procesoSelect}
-          />
+          <Suspense fallback={<h1>Cargando ...</h1>}>
+            <Tabla
+              key={tablaKey}
+              visibilidadColumna={visibilidadColumna}
+              procesoSelect={procesoSelect}
+              />
+          </Suspense>
           <Estadisticas
             estadisticas={estadisticas}
             fechaInicio={fechaInicio}
