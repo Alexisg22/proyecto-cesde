@@ -59,12 +59,15 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
         setFiltrosSeleccionados(filtrosSeleccionados.filter((_, i) => i !== index));
     };
 
-    // Verifica si hay filtros seleccionados
-    const hayFiltros = filtrosSeleccionados.length > 0;
+
 
     if (!modalAbierto) return null;
     
     // console.log(filtrosSeleccionados);
+
+    // Actualiza el texto basado en la cantidad de filtros seleccionados
+    const cantidadFiltros = filtrosSeleccionados.length;
+    const texto = cantidadFiltros === 0 ? 'Sin filtros' : 'Filtrar';
 
     return (
         <>
@@ -117,9 +120,8 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
                         <button 
                             onClick={buscarAspirantesConFiltros} 
                             className='botonVerde' 
-                            disabled={!hayFiltros}
                         >
-                            Filtrar
+                            {texto}
                         </button>
                     </div>
                 </div>
