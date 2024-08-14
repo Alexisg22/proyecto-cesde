@@ -3,13 +3,15 @@ import { useState } from 'react';
 import axios from 'axios';
 import "../estilos/ModalSubirBD.css";
 import "../estilos/BotonVerde.css";
+import  ModalDeCarga  from "./ModalDeCarga.jsx"
+import { BotonVerde } from './BotonVerde.jsx';
 
 // Componente ModalSubirBD
 export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
 
     // useForm para manejar el formulario y la validación
     const { register, handleSubmit, formState: { errors } } = useForm();
-
+    const [modalAbiertoCarga, setModalAbiertoCarga] = useState(false)
  
 
     // useState para manejar el estado de los nombres de los archivos subidos
@@ -52,7 +54,8 @@ export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
                 },
             });
             console.log('Enviado', response.data); // Muestra la respuesta del servidor en la consola
-           
+            
+            
             window.location.reload(); // Recarga la página después de que se haya enviado con éxito
         } catch (error) {
             // Captura y muestra errores en caso de que falle la petición
@@ -146,9 +149,16 @@ export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
                     </div>
 
                     {/* Botón para enviar el formulario */}
-                    <button id='baseDatos4' className='inputEnviarFormulario' type='submit'>Enviar</button>
+                    <BotonVerde type="submit"
+                        setModalAbierto={setModalAbiertoCarga} 
+                        modalAbierto={modalAbiertoCarga}
+                        texto={"Enviar"} 
+                        ide={'inputEnviarFormulario'}
+                    />
                 </form>
             </div>
+
+            <ModalDeCarga modalAbierto={modalAbiertoCarga}/>
         </div>
     );
 }

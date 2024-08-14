@@ -264,7 +264,12 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
             <button type='submit' className="botonBuscar">Buscar</button>
           </form>
           <div className='filtrar'>
-            <BotonVerde setModalAbierto={setModalAbierto} modalAbierto={modalAbierto} modalSubirBDs={true} texto={"Filtrar"} ide={'botonFiltrar'} />
+            <BotonVerde 
+            setModalAbierto={setModalAbierto} 
+            modalAbierto={modalAbierto} 
+            modalSubirBDs={true} 
+            texto={"Filtrar"} 
+            ide={'botonFiltrar'} />
           </div>
           <CSVLink className="descargar" data={datosFiltrados} headers={encabezados} filename="Aspirantes.csv">Exportar a CSV</CSVLink>
         </section>
