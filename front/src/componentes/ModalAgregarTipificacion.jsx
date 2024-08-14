@@ -86,18 +86,18 @@ export const ModalAgregarTipoficacion = ({ cerrarModal, modalAbierto }) => {
                         /> 
                         {errors.valorTipificacion && <samp>{errors.valorTipificacion.message}</samp>}
                     </div>
-                    {/* <div className="contenedorInput"> */}
-                        {/* <label htmlFor="tipoContacto">Gestión Final </label> */}
-                        {/* <select className="selectAgregarTipificacion" required> */}
-                            {/* <option value=""> </option> */}
-                            {/* <option value="si">Seleccione la gestión final</option> */}
-                            {/* <option value="no">En seguimiento</option> */}
-                            {/* <option value="si">No contacto</option> */}
-                            {/* <option value="no">Descartado</option> */}
-                            {/* <option value="si">Interesado</option> */}
+                    {/* <div className="contenedorInput">
+                        <label htmlFor="tipoContacto">Gestión Final </label>
+                        <select className="selectAgregarTipificacion" required>
+                            <option value=""> </option>
+                            <option value="si">Seleccione la gestión final</option>
+                            <option value="no">En seguimiento</option>
+                            <option value="si">No contacto</option>
+                            <option value="no">Descartado</option>
+                            <option value="si">Interesado</option>
                             
-                        {/* </select> */}
-                    {/* </div> */}
+                        </select>
+                    </div> */}
                     <div className="contenedorbtnEnviar">
                         <input className="btnEnviar" type="submit" value='Guardar' required/>
                     </div>

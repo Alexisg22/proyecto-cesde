@@ -34,7 +34,21 @@ export const HistoricoGestiones = ({ celularAspiranteSeleccionado, cerrarModal, 
             setHistoricoGestiones(mapeado);
         }
         cargarHistoricoGestiones();
-    }, []);
+
+
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape') {
+                cerrarModal();  // Llamamos a la función cerrarModal cuando se presiona Escape
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
+
+        // Limpiamos el event listener al desmontar el componente
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [celularAspiranteSeleccionado, cerrarModal]);
     
     const columnas = [
         { id: 'fechaGestion', etiqueta: 'Fecha Gestión' },
