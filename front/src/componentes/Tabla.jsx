@@ -288,7 +288,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
                     visibilidadColumna[columna.id] && (
                       <td key={columna.id}>
                         {columna.id === 'estadoUltimaGestion' ? (
-                          <p className={row[columna.id]}>{row[columna.id]}</p>
+                          <p className={row[columna.id]?.toLowerCase()}>{row[columna.id]}</p>
                         ) : (
                           row[columna.id]
                         )}
