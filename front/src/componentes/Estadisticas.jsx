@@ -19,6 +19,7 @@ export const Estadisticas = ({estadisticas, fechaInicio, fechaFin, setFechaInici
   const manejarCambioFechaFin = (e) => {
     setFechaFin(e.target.value)
   } 
+  
   return (
     <>
     <div className='contenedorEstadistica'>
@@ -58,13 +59,10 @@ export const Estadisticas = ({estadisticas, fechaInicio, fechaFin, setFechaInici
             
                 <Estadistica id='contactabilidad' label='Contactabilidad' dato={estadisticas.contactabilidad} />
                 <Estadistica id='noContactabilidad' label='No contactabilidad' dato={estadisticas.noContactabilidad} />
-                <Estadistica id='porcentajeConversion' label='Porcentaje de conversión' dato={estadisticas.porcentajeConvercion} />
                 <Estadistica id='cantidadMatriculas' label='Cantidad de matrículas' dato={estadisticas.cantidadMatriculas} />
                 <Estadistica id='cantidadLiquidaciones' label='Cantidad de liquidaciones' dato={estadisticas.cantidadLiquidaciones} />
                 <Estadistica id='enGestion' label='En gestión' dato={estadisticas.enGestion} />
-                <Estadistica id='sinGestion' label='Sin gestión' dato={estadisticas.sinGestion} />
-                <Estadistica id='matriculado' label='Matriculado' dato={estadisticas.matriculado} />
-                <Estadistica id='liquidacion' label='Liquidación' dato={estadisticas.liquidacion} />
+                <Estadistica id='sinGestion' label='Sin gestión' dato={estadisticas.sinGestion} />  
                 <Estadistica id='cancelado' label='Cancelados' dato={estadisticas.cancelados} />
                 <Estadistica id='noGestionable' label='No gestionable' dato={estadisticas.noGestionable} />
                
