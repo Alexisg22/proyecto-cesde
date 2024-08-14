@@ -32,8 +32,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
     setAplicarFiltrosAspirantes(filtrosSeleccionados)
     setModalAbierto(false)
   }
-    
-
+ 
   // este useEfect es e que me valida si buscar con filtros, o si bscar un soloaspirante
   useEffect(() => {
     if(buscarUnAspirante != 0 ){
