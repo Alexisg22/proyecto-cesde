@@ -1,4 +1,4 @@
-
+import React, { useEffect } from "react";
 import "../estilos/ModalAgregarTipificacion.css"
 import { useForm } from "react-hook-form";
 import { agregarTipificacion } from '../api/agregarTipificacion.api.js'
@@ -7,7 +7,23 @@ export const ModalAgregarTipoficacion = ({ cerrarModal, modalAbierto }) => {
 
     const {register, handleSubmit, formState: { errors } } = useForm();
 
-     
+     // Hook para manejar el cierre del modal al presionar la tecla Escape
+    useEffect(() => {
+        const manejarTeclaEscape = (event) => {
+            if (event.key === 'Escape') {
+                cerrarModal();
+            }
+        };
+
+        if (modalAbierto) {
+            window.addEventListener('keydown', manejarTeclaEscape);
+        }
+
+        // Limpieza del event listener al desmontar el componente o cuando el modal se cierra
+        return () => {
+            window.removeEventListener('keydown', manejarTeclaEscape);
+        };
+    }, [modalAbierto, cerrarModal]);
 
     const enviarTipificacion = handleSubmit(async(data)=>{
         const formData = new FormData();

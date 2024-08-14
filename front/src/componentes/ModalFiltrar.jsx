@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import '../estilos/ModalFiltrar.css';
 import { ParametroFiltrar } from './ParametroFiltrar.jsx';
 
@@ -10,6 +10,21 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
     const [valorGestionTotal, setValorGestionTotal] = useState(0); // Valor total de gestiones
     const valorLlamadasRef = useRef(0); // Inicializa con 0
     const valorWhatsappRef = useRef(0); // Inicializa con 0
+
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape') {
+                cerrarModal(); // Llama a la función cerrarModal si se presiona Escape
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [cerrarModal]);
+
 
     const cambioSeleccion = (e) => {
         setSeleccionOpcion(e.target.value);
