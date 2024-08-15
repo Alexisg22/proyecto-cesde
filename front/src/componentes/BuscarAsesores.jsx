@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
 import "../estilos/BuscarAsesores.css"
 import { CSVLink } from "react-csv";
+import TablaAsesores from './TablaAsesores';
 
-const BuscarAsesores = ({ onBuscar, datos, encabezados, fechaInicio, fechaFin, setFechaInicio, setFechaFin }) => {
+const BuscarAsesores = ({ onBuscar, datos, encabezados, fechaInicio, fechaFin, setFechaInicio, setFechaFin, setBuscarUnAsesor }) => {
   const [terminoBusqueda, setTerminoBusqueda] = useState('')
-  
+  const [inputBuscarAsesor, setInputBuscarAsesor] = useState('')
+
   const hoy = new Date().toISOString().split('T')[0];
 
-  const manejarCambioBusqueda = (e) => {
-    setTerminoBusqueda(e.target.value)
-  }
-
+    const handleInputChange = (e) => {
+      const valor = e.target.value;
+      setBuscarUnAsesor(valor); // Actualiza el estado en el componente padre
+      console.log(valor);
+    }
+  
   const manejarCambioFechaInicio = (e) => {
     setFechaInicio(e.target.value)
   }
@@ -25,9 +29,9 @@ const BuscarAsesores = ({ onBuscar, datos, encabezados, fechaInicio, fechaFin, s
 
   return (
     <div className="contenedorBuscarAsesores">
-      <div className="formularioBuscarAsesores">
+      <form className="formularioBuscarAsesores" >
         <div className="contenedorEntradaBusqueda">
-          <input type="search" placeholder="Id - Nombre" />
+          <input type="search" placeholder="Id - Nombre" onChange={handleInputChange} id='valor' />
           <button className="botonBuscar">Buscar</button>
         </div>
         <div className="contenedorFechas">
@@ -51,8 +55,9 @@ const BuscarAsesores = ({ onBuscar, datos, encabezados, fechaInicio, fechaFin, s
             />
           </div>
         </div> 
-      </div>
+      </form>
       <CSVLink className="descargar" data={datos} headers={encabezados} filename="Asesores.csv">Exportar a CSV</CSVLink>
+
     </div>
   )
 }
