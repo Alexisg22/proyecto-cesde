@@ -57,11 +57,11 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
           cantWhatsapps: aspirante.cantidad_whatsapp,
           cantGestiones: aspirante.cantidad_gestiones,
-          mejorGestión: 'Aún no, falta',
+          mejorGestión: aspirante.mejor_gestion,
           estadoUltimaGestion: aspirante.estado_ultima_gestion,
           diasUltGestión: aspirante.dias_ultima_gestion,
           fechaUltGestión: aspirante.fecha_ultima_gestion,
-          gestiónFinal: 'Aún no, falta',
+          gestiónFinal: aspirante.gestion_final,
           tipificaciónGestiónFinal: aspirante.tipificacion,
           celularAdicional: aspirante.celular_adicional,
           nitEmpresa: aspirante.patrocinio_empresa,
@@ -156,11 +156,11 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
           cantWhatsapps: aspirante.cantidad_whatsapp,
           cantGestiones: aspirante.cantidad_gestiones,
-          mejorGestión: 'Aún no, falta',
+          mejorGestión: aspirante.mejor_gestion,
           estadoUltimaGestion: aspirante.estado_ultima_gestion,
           diasUltGestión: aspirante.dias_ultima_gestion,
           fechaUltGestión: aspirante.fecha_ultima_gestion,
-          gestiónFinal: 'Aún no, falta',
+          gestiónFinal: aspirante.gestion_final ,
           tipificaciónGestiónFinal: aspirante.tipificacion,
           nitEmpresa: aspirante.nit_empresa,
           sede: aspirante.sede,
@@ -171,7 +171,6 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
       
         }
         
-        
         cargarAspirantes();
 // Si no hay filtros que aplicar se trae la consulta normal 
       }else{  
@@ -179,6 +178,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           try{
           const respuesta = await obtenerAspirantesProceso(nuevoProceso);
           const aspirantes = respuesta.data.aspirantes;
+          
     
           const mapeado = aspirantes.map((aspirante) => ({
     
@@ -189,11 +189,11 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
             cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
             cantWhatsapps: aspirante.cantidad_whatsapp,
             cantGestiones: aspirante.cantidad_gestiones,
-            mejorGestión: 'Aún no, falta',
+            mejorGestión: aspirante.mejor_gestion,
             estadoUltimaGestion: aspirante.estado_ultima_gestion,
             diasUltGestión: aspirante.dias_ultima_gestion,
             fechaUltGestión: aspirante.fecha_ultima_gestion,
-            gestiónFinal: 'Aún no, falta',
+            gestiónFinal: aspirante.gestion_final,
             tipificaciónGestiónFinal: aspirante.tipificacion,
             celularAdicional: aspirante.celular_adicional,
             nitEmpresa: aspirante.patrocinio_empresa,

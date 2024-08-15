@@ -60,6 +60,7 @@ export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
         } catch (error) {
             // Captura y muestra errores en caso de que falle la petición
             console.error('Error al enviar los datos:', error);
+            window.location.reload();
         }
     });
 

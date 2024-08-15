@@ -2,7 +2,6 @@ import React,{ useState } from 'react';
 import '../estilos/TablaAsesores.css';
 
 function TablaAsesores({columnasTabla, datosTabla}) {
-    
     return (
     <>
       <main className="tablaAsesores" id="tabla">
