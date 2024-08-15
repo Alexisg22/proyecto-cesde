@@ -57,7 +57,7 @@ export const Principal = () => {
         } else if (procesoSelect == "extensiones") {
           nuevoProceso = `fechas/?fecha_inicio=${fechaInicio}&fecha_fin=${fechaFin}&proceso_nombre=extenciones`;
         } else {
-          nuevoProceso = `fechas/?fecha_inicio=${fechaInicio}&fecha_fin=${fechaFin}`;
+          nuevoProceso = ``;
         }
 
         const respuesta = await obtenerEstadisticas(nuevoProceso);
@@ -101,11 +101,11 @@ export const Principal = () => {
         setEstadisticas(mapeado);
       } else {
         if (procesoSelect == "tecnicos") {
-          nuevoProceso = "proceso-tecnicos/";
+          nuevoProceso = "proceso-técnicos/";
         } else if (procesoSelect == "empresas") {
           nuevoProceso = "proceso-empresa/";
         } else if (procesoSelect == "extensiones") {
-          nuevoProceso = "proceso-extensiones/";
+          nuevoProceso = "proceso-extenciones/";
         } else {
           nuevoProceso = "";
         }
