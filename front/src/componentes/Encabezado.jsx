@@ -20,6 +20,8 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, texto
     setProcesoSelect(e.target.value)
   }
 
+  
+
   return (
     <header>
       <div className='contenedorPrincipal'>
@@ -27,11 +29,11 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, texto
           <img id='logoAndes' src="../../public/imagenes/AndesBPO.png" />
         </div>
 
-        <div>
+        <div className='contenedorSelectProceso'>
           <form id={vista}>
             <select className='filtroAspirante' onChange={seleccionarProceso}>
               <option value="general">General</option>
-              <option value="empresas">Empresas</option>
+              <option value="empresas">Empresa</option>
               <option value="tecnicos">Técnicos</option>
               <option value="extensiones">Extensiones</option>             
             </select>
@@ -66,7 +68,9 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, texto
 
       <ModalSubirBD
         modalAbierto={modalAbierto}
-        cerrarModal={() => { setModalAbierto(false) }} />
+        cerrarModal={() => { setModalAbierto(false) }} 
+        
+        />
 
     </header>
   )

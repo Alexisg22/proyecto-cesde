@@ -82,3 +82,20 @@
         cursor: pointer;
     }
 }
+
+.inputEnviarFormulario{
+    width: 200px;
+    height: 60px;
+    margin-top: 6em;
+    background-color: #13A438;
+    border-radius: 5px;
+    border: solid 1px black; 
+    color: black;
+    font-size: 1.1em;
+
+    &:hover{
+        background-color: white;
+        color: #13A438;
+        cursor: pointer;
+    }
+}

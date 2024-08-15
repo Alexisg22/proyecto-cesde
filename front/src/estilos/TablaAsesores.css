@@ -41,7 +41,6 @@
     position: sticky;
     top: 0; 
     background-color: #d5d1defe; 
-    cursor: pointer;
     text-transform: capitalize;
     z-index: 1; 
     
@@ -80,7 +79,6 @@
 }
 
 .filaTablaAsesores:hover{
-    cursor: pointer;
     border: 1px solid black;
     border-radius: 10px;
 }

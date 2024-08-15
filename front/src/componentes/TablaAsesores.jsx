@@ -2,7 +2,6 @@ import React,{ useState } from 'react';
 import '../estilos/TablaAsesores.css';
 
 function TablaAsesores({columnasTabla, datosTabla}) {
-    
     return (
     <>
       <main className="tablaAsesores" id="tabla">
@@ -23,7 +22,7 @@ function TablaAsesores({columnasTabla, datosTabla}) {
                 <tr className='filaTablaAsesores' key={index}>
                   {columnasTabla.map(columna => [columna.id] && (
                       <td key={columna.id} id={columna.id}>
-                        {columna.etiqueta}
+                        {row[columna.id]}
                       </td>
                     )
                   )}

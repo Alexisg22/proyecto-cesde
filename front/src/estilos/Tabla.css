@@ -6,14 +6,8 @@
     font-size: small;
 }
 
-body {
-    min-height: 100vh;
-    background: rgb(255, 255, 255);
-    display: flex;
-}
-
 main.tabla {
-    width: 74vw;
+    max-width: 74vw;
     height: 80vh;
     background-color: #fff5;
     backdrop-filter: blur(7px);
@@ -150,7 +144,7 @@ main.tabla {
     text-align: center;
 }
 
-.cancelado {
+.descartado {
     background-color: #FF571D;
     padding: .4rem 0;
     border-radius: 2rem;
@@ -281,4 +275,22 @@ main.tabla {
     background-color: white;
         color: #13A438;
         cursor: pointer;
+  }
+
+/* modal cargando */
+.modal-cargando {
+    position: absolute;
+    top: 25em;
+    left: 52em;
+    display: inline-block; /* Permite que el contenido de alrededor siga fluyendo */
+    background-color: rgba(255, 255, 255, 0.9); /* Color de fondo ligeramente translúcido */
+    padding: 30px;
+    /* border: 1px solid #ccc; */
+    border-radius: 5px;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  }
+  
+  .textoCargando{
+    font-size: 2rem;
+    color: #333;
   }

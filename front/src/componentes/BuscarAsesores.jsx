@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
 import "../estilos/BuscarAsesores.css"
 import { CSVLink } from "react-csv";
+import TablaAsesores from './TablaAsesores';
 
-const BuscarAsesores = ({ onBuscar, datos, encabezados }) => {
+const BuscarAsesores = ({ onBuscar, datos, encabezados, fechaInicio, fechaFin, setFechaInicio, setFechaFin, setBuscarUnAsesor }) => {
   const [terminoBusqueda, setTerminoBusqueda] = useState('')
-  const [fechaInicio, setFechaInicio] = useState('')
-  const [fechaFin, setFechaFin] = useState('')
+  const [inputBuscarAsesor, setInputBuscarAsesor] = useState('')
 
-  const manejarCambioBusqueda = (e) => {
-    setTerminoBusqueda(e.target.value)
-  }
+  const hoy = new Date().toISOString().split('T')[0];
 
+    const handleInputChange = (e) => {
+      const valor = e.target.value;
+      setBuscarUnAsesor(valor); // Actualiza el estado en el componente padre
+      console.log(valor);
+    }
+  
   const manejarCambioFechaInicio = (e) => {
     setFechaInicio(e.target.value)
   }
@@ -25,9 +29,9 @@ const BuscarAsesores = ({ onBuscar, datos, encabezados }) => {
 
   return (
     <div className="contenedorBuscarAsesores">
-      <div className="formularioBuscarAsesores">
+      <form className="formularioBuscarAsesores" >
         <div className="contenedorEntradaBusqueda">
-          <input type="search" placeholder="Id - Nombre" />
+          <input type="search" placeholder="Id - Nombre" onChange={handleInputChange} id='valor' />
           <button className="botonBuscar">Buscar</button>
         </div>
         <div className="contenedorFechas">
@@ -35,6 +39,7 @@ const BuscarAsesores = ({ onBuscar, datos, encabezados }) => {
             <input
               type="date"
               value={fechaInicio}
+              max={hoy}
               onChange={manejarCambioFechaInicio}
               className="fechaEntrada"
             />
@@ -44,13 +49,15 @@ const BuscarAsesores = ({ onBuscar, datos, encabezados }) => {
             <input
               type="date"
               value={fechaFin}
+              max={hoy}
               onChange={manejarCambioFechaFin}
               className="fechaEntrada"
             />
           </div>
         </div> 
-      </div>
+      </form>
       <CSVLink className="descargar" data={datos} headers={encabezados} filename="Asesores.csv">Exportar a CSV</CSVLink>
+
     </div>
   )
 }
