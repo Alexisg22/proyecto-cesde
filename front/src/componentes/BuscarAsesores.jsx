@@ -31,7 +31,7 @@ const BuscarAsesores = ({ onBuscar, datos, encabezados, fechaInicio, fechaFin, s
     <div className="contenedorBuscarAsesores">
       <form className="formularioBuscarAsesores" >
         <div className="contenedorEntradaBusqueda">
-          <input type="search" placeholder="Id - Nombre" onChange={handleInputChange} id='valor' />
+          <input type="text" placeholder="Ingrese ID asesor" onChange={handleInputChange} id='valor' />
         </div>
         <div className="contenedorFechas">
           <div className="contenedorFechaIndividual">
