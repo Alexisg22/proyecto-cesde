@@ -8,7 +8,7 @@ import { obtenerAspirantesProceso, obtenerTodosAspirantesConFiltros, obtenerUnAs
 import '../estilos/Tabla.css';
 import { ModalAspiranteSinGestiones } from './ModalAspiranteSinGestiones.jsx';
 
-function Tabla({ visibilidadColumna, procesoSelect }) {
+function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto, ocultarModalCargando}) {
 
   const [aspirantes, setAspirantes] = useState([]);
   const [celularAspiranteSeleccionado, setCelularAspiranteSeleccionado] = useState('')
@@ -27,7 +27,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
   const [buscarUnAspirante, setBuscarUnAspirante] = useState('') 
   const [textoModal, setTextoModal] = useState('')
   const [cargando, setCargando] = useState(true)
-  const [modalOculto, setModalOculto] = useState(false);
+  
 
 
   const buscarAspirantesConFiltros = ( ) =>{
@@ -278,9 +278,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
     setBuscarUnAspirante(inputBuscadorAspirante)
   }
 
-  const ocultarModalCargando = () => {
-    setModalOculto(true);
-  };
+ 
   
   return (
     <>
@@ -352,7 +350,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
       </main>
       <ModalAspiranteSinGestiones abrirModalAspiranteSinGesiones={abrirModalAspiranteSinGesiones} texto={textoModal} cerrarModal={() => { setAbrirModalAspiranteSinGesiones(false) }}/>
       <HistoricoGestiones celularAspiranteSeleccionado={celularAspiranteSeleccionado} modalAbiertoHistorico={modalAbiertoHistorico} cerrarModal={() => { setModalAbiertoHistorico(false) }} />
-      <ModalFiltrar buscarAspirantesConFiltros={buscarAspirantesConFiltros} filtrosSeleccionados={filtrosSeleccionados} setFiltrosSeleccionados={setFiltrosSeleccionados} modalAbierto={modalAbierto} cerrarModal={() => { setModalAbierto(false), setModalOculto(false) }} />
+      <ModalFiltrar buscarAspirantesConFiltros={buscarAspirantesConFiltros} filtrosSeleccionados={filtrosSeleccionados} setFiltrosSeleccionados={setFiltrosSeleccionados} modalAbierto={modalAbierto} cerrarModal={() => { setModalAbierto(false), setModalOculto(false) }}/>
     </>
   );
 }

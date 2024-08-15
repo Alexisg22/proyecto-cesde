@@ -11,20 +11,6 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
     const valorLlamadasRef = useRef(0); // Inicializa con 0
     const valorWhatsappRef = useRef(0); // Inicializa con 0
 
-    useEffect(() => {
-        const handleKeyDown = (event) => {
-            if (event.key === 'Escape') {
-                cerrarModal(); // Llama a la función cerrarModal si se presiona Escape
-            }
-        };
-
-        document.addEventListener('keydown', handleKeyDown);
-
-        return () => {
-            document.removeEventListener('keydown', handleKeyDown);
-        };
-    }, [cerrarModal]);
-
 
     const cambioSeleccion = (e) => {
         setSeleccionOpcion(e.target.value);
