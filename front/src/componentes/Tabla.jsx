@@ -278,6 +278,13 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
     setBuscarUnAspirante(inputBuscadorAspirante)
   }
 
+  useEffect(() => {
+    
+    if(inputBuscadorAspirante == ''){
+      setBuscarUnAspirante('')
+    }
+
+  },[inputBuscadorAspirante])
  
   
   return (
