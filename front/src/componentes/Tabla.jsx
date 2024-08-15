@@ -166,7 +166,6 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           sede: aspirante.sede,
           programaFormación: aspirante.programa,
           }))
-          setAspirantes('')
           setAspirantes(mapeado)
           }catch(e){
             setTextoModal('No se encontraron aspirantes con los filtros seleccionados')
