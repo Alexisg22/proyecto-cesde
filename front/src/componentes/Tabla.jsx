@@ -8,7 +8,7 @@ import { obtenerAspirantesProceso, obtenerTodosAspirantesConFiltros, obtenerUnAs
 import '../estilos/Tabla.css';
 import { ModalAspiranteSinGestiones } from './ModalAspiranteSinGestiones.jsx';
 
-function Tabla({ visibilidadColumna, procesoSelect }) {
+function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto, ocultarModalCargando}) {
 
   const [aspirantes, setAspirantes] = useState([]);
   const [celularAspiranteSeleccionado, setCelularAspiranteSeleccionado] = useState('')
@@ -27,7 +27,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
   const [buscarUnAspirante, setBuscarUnAspirante] = useState('') 
   const [textoModal, setTextoModal] = useState('')
   const [cargando, setCargando] = useState(true)
-  const [modalOculto, setModalOculto] = useState(false);
+  
 
 
   const buscarAspirantesConFiltros = ( ) =>{
@@ -142,34 +142,40 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
         })
 
         async function cargarAspirantes() {
-          try{
-          const respuesta = await obtenerTodosAspirantesConFiltros(objetoFiltros);
-          const aspirantes = respuesta.data;
-          console.log(aspirantes)
-          
-          const mapeado = aspirantes.map((aspirante) => ({
-  
-          celular: aspirante.celular,
-          nit: aspirante.nit,
-          nombreCompleto: aspirante.nombre_completo,
-          cantidadLlamadas: aspirante.cantidad_llamadas,
-          cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
-          cantWhatsapps: aspirante.cantidad_whatsapp,
-          cantGestiones: aspirante.cantidad_gestiones,
-          mejorGestión: aspirante.mejor_gestion,
-          estadoUltimaGestion: aspirante.estado_ultima_gestion,
-          diasUltGestión: aspirante.dias_ultima_gestion,
-          fechaUltGestión: aspirante.fecha_ultima_gestion,
-          gestiónFinal: aspirante.gestion_final ,
-          tipificaciónGestiónFinal: aspirante.tipificacion,
-          nitEmpresa: aspirante.nit_empresa,
-          sede: aspirante.sede,
-          programaFormación: aspirante.programa,
-          }))
-          setAspirantes(mapeado)
-          }catch(e){
-            setTextoModal('No se encontraron aspirantes con los filtros seleccionados')
-            setAbrirModalAspiranteSinGesiones(true)
+          try {
+            const respuesta = await obtenerTodosAspirantesConFiltros(objetoFiltros);
+            const aspirantes = respuesta.data;
+            console.log(aspirantes);
+        
+            const mapeado = aspirantes.map((aspirante) => ({
+              celular: aspirante.celular,
+              nit: aspirante.nit,
+              nombreCompleto: aspirante.nombre_completo,
+              cantidadLlamadas: aspirante.cantidad_llamadas,
+              cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
+              cantWhatsapps: aspirante.cantidad_whatsapp,
+              cantGestiones: aspirante.cantidad_gestiones,
+              mejorGestión: aspirante.mejor_gestion,
+              estadoUltimaGestion: aspirante.estado_ultima_gestion,
+              diasUltGestión: aspirante.dias_ultima_gestion,
+              fechaUltGestión: aspirante.fecha_ultima_gestion,
+              gestiónFinal: aspirante.gestion_final,
+              tipificaciónGestiónFinal: aspirante.tipificacion,
+              nitEmpresa: aspirante.nit_empresa,
+              sede: aspirante.sede,
+              programaFormación: aspirante.programa,
+            }));
+        
+            if (mapeado.length === 0) {
+              // Si no se encontraron aspirantes
+              setTextoModal('No se encontraron aspirantes con los filtros seleccionados');
+              setAbrirModalAspiranteSinGesiones(true);
+            } else {
+              // Si se encontraron aspirantes
+              setAspirantes(mapeado);
+            }
+          } catch (e) {
+            console.error("Error al obtener los aspirantes:", e);
           }
         }
         
@@ -272,9 +278,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
     setBuscarUnAspirante(inputBuscadorAspirante)
   }
 
-  const ocultarModalCargando = () => {
-    setModalOculto(true);
-  };
+ 
   
   return (
     <>
@@ -346,7 +350,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
       </main>
       <ModalAspiranteSinGestiones abrirModalAspiranteSinGesiones={abrirModalAspiranteSinGesiones} texto={textoModal} cerrarModal={() => { setAbrirModalAspiranteSinGesiones(false) }}/>
       <HistoricoGestiones celularAspiranteSeleccionado={celularAspiranteSeleccionado} modalAbiertoHistorico={modalAbiertoHistorico} cerrarModal={() => { setModalAbiertoHistorico(false) }} />
-      <ModalFiltrar buscarAspirantesConFiltros={buscarAspirantesConFiltros} filtrosSeleccionados={filtrosSeleccionados} setFiltrosSeleccionados={setFiltrosSeleccionados} modalAbierto={modalAbierto} cerrarModal={() => { setModalAbierto(false), setModalOculto(false) }} />
+      <ModalFiltrar buscarAspirantesConFiltros={buscarAspirantesConFiltros} filtrosSeleccionados={filtrosSeleccionados} setFiltrosSeleccionados={setFiltrosSeleccionados} modalAbierto={modalAbierto} cerrarModal={() => { setModalAbierto(false), setModalOculto(false) }}/>
     </>
   );
 }

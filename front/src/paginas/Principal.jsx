@@ -34,6 +34,9 @@ export const Principal = () => {
   // estos estados son los que controlan las fechas de las estadisticas
   const [fechaInicio, setFechaInicio] = useState("");
   const [fechaFin, setFechaFin] = useState("");
+  const [modalOculto, setModalOculto] = useState(false);
+  const [modalOcultoSubirBD, setModalOcultoSubirBD] = useState(false)
+
 
   useEffect(() =>{
     setFechaInicio('')
@@ -167,6 +170,11 @@ export const Principal = () => {
     setTablaKey((prevKey) => prevKey + 1);
   }, [visibilidadColumna]);
 
+  const ocultarModalCargando = () => {
+    setModalOculto(true);
+    setModalOcultoSubirBD(true)
+  };
+
   return (
     <>
       <Encabezado
@@ -176,6 +184,8 @@ export const Principal = () => {
         ide={"aspirantes"}
         vista={"aspirantesFiltro"}
         setProcesoSelect={setProcesoSelect}
+        ocultarModalCargando={ocultarModalCargando}
+        setModalOculto={setModalOculto}
       />
       <main className="contenedorPrincipal">
         <BarraLaterarl
@@ -183,6 +193,8 @@ export const Principal = () => {
           onCambioVisibilidadColumna={manejarCambioVisibilidadColumna}
           visibilidadInicial={visibilidadColumna}
           procesoSelect={procesoSelect}
+          ocultarModalCargando={ocultarModalCargando}
+          setModalOculto={setModalOculto}
         />
         <div className="contenedorSecundario">
           <Suspense fallback={<h1>Cargando ...</h1>}>
@@ -190,6 +202,9 @@ export const Principal = () => {
               key={tablaKey}
               visibilidadColumna={visibilidadColumna}
               procesoSelect={procesoSelect}
+              modalOculto={modalOculto}
+              setModalOculto={setModalOculto}
+              ocultarModalCargando={ocultarModalCargando}
               />
           </Suspense>
           <Estadisticas
