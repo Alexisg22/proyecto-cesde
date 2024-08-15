@@ -24,7 +24,7 @@ export const Principal = () => {
     diasUltGestión: false,
     fechaUltGestión: true,
     gestiónFinal: true,
-    tipificaciónGestiónFinal: true,
+    tipificacionUltimaGestion: true,
     sede: false,
     programaFormación: false,
   });
@@ -101,11 +101,11 @@ export const Principal = () => {
         setEstadisticas(mapeado);
       } else {
         if (procesoSelect == "tecnicos") {
-          nuevoProceso = "proceso-tecnicos/";
+          nuevoProceso = "proceso-técnicos/";
         } else if (procesoSelect == "empresas") {
           nuevoProceso = "proceso-empresa/";
         } else if (procesoSelect == "extensiones") {
-          nuevoProceso = "proceso-extensiones/";
+          nuevoProceso = "proceso-extenciones/";
         } else {
           nuevoProceso = "";
         }
