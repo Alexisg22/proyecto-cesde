@@ -5,7 +5,7 @@ import TablaAsesores from './TablaAsesores';
 
 const BuscarAsesores = ({ onBuscar, datos, encabezados, fechaInicio, fechaFin, setFechaInicio, setFechaFin, setBuscarUnAsesor }) => {
   const [terminoBusqueda, setTerminoBusqueda] = useState('')
-  const [inputBuscarAsesor, setInputBuscarAsesor] = useState('')
+
 
   const hoy = new Date().toISOString().split('T')[0];
 
@@ -32,7 +32,6 @@ const BuscarAsesores = ({ onBuscar, datos, encabezados, fechaInicio, fechaFin, s
       <form className="formularioBuscarAsesores" >
         <div className="contenedorEntradaBusqueda">
           <input type="search" placeholder="Id - Nombre" onChange={handleInputChange} id='valor' />
-          <button className="botonBuscar">Buscar</button>
         </div>
         <div className="contenedorFechas">
           <div className="contenedorFechaIndividual">
