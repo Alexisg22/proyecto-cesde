@@ -26,6 +26,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
   const [inputBuscadorAspirante, setInputBuscadorAspirante] = useState('')
   const [buscarUnAspirante, setBuscarUnAspirante] = useState('') 
   const [textoModal, setTextoModal] = useState('')
+  const [cargando, setCargando] = useState(true)
 
 
   const buscarAspirantesConFiltros = ( ) =>{
@@ -138,7 +139,9 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
               return null;
           }  
         })
+
         async function cargarAspirantes() {
+            
           const respuesta = await obtenerTodosAspirantesConFiltros(objetoFiltros);
           const aspirantes = respuesta.data;
           // console.log('se buscan filtros')
@@ -163,14 +166,17 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           sede: aspirante.sede,
           programaFormación: aspirante.programa,
           }))
+          setAspirantes('')
           setAspirantes(mapeado)
+      
         }
-        console.log(objetoFiltros);
+        
         
         cargarAspirantes();
 // Si no hay filtros que aplicar se trae la consulta normal 
       }else{  
         async function cargarAspirantes() {
+          try{
           const respuesta = await obtenerAspirantesProceso(nuevoProceso);
           const aspirantes = respuesta.data.aspirantes;
     
@@ -197,6 +203,11 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           
           
           setAspirantes(mapeado)
+        }catch (error) {
+          console.error("Error al obtener los aspirantes:", error);
+        } finally {
+          setCargando(false); // Una vez que tienes la respuesta, ocultas el modal de carga
+        }
         }
         cargarAspirantes();
       } 
@@ -261,6 +272,14 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
 
   return (
     <>
+    {/* Modal de carga */}
+    {cargando && (
+        <div className="modal-cargando">
+          <div className="modal-contenido">
+            <p className='textoCargando'>Cargando...</p>
+          </div>
+        </div>
+      )}
       <main className="tabla" id="tablaClientes">
         <section className="encabezadoTabla">
           <h1>Información clientes</h1>

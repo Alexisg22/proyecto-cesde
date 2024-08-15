@@ -1,3 +1,4 @@
+import '../estilos/Tabla.css'
 import React, { useEffect, useState } from 'react';
 import { Encabezado } from "../componentes/Encabezado.jsx";
 import BuscarAsesores from "../componentes/BuscarAsesores.jsx";

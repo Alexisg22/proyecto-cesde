@@ -276,3 +276,21 @@ main.tabla {
         color: #13A438;
         cursor: pointer;
   }
+
+/* modal cargando */
+.modal-cargando {
+    position: absolute;
+    top: 25em;
+    left: 50em;
+    display: inline-block; /* Permite que el contenido de alrededor siga fluyendo */
+    background-color: rgba(255, 255, 255, 0.9); /* Color de fondo ligeramente translúcido */
+    padding: 30px;
+    /* border: 1px solid #ccc; */
+    border-radius: 5px;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  }
+  
+  .textoCargando{
+    font-size: 2rem;
+    color: #333;
+  }
