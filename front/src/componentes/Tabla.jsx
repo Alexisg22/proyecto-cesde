@@ -27,6 +27,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
   const [buscarUnAspirante, setBuscarUnAspirante] = useState('') 
   const [textoModal, setTextoModal] = useState('')
   const [cargando, setCargando] = useState(true)
+  const [modalOculto, setModalOculto] = useState(false);
 
 
   const buscarAspirantesConFiltros = ( ) =>{
@@ -272,11 +273,15 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
     setBuscarUnAspirante(inputBuscadorAspirante)
   }
 
+  const ocultarModalCargando = () => {
+    setModalOculto(true);
+  };
+  
   return (
     <>
     {/* Modal de carga */}
     {cargando && (
-        <div className="modal-cargando">
+        <div className={`modal-cargando ${modalOculto ? 'ocultarCargando' : ''}`}>
           <div className="modal-contenido">
             <p className='textoCargando'>Cargando...</p>
           </div>
@@ -295,7 +300,10 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
             modalAbierto={modalAbierto} 
             modalSubirBDs={true} 
             texto={"Filtrar"} 
-            ide={'botonFiltrar'} />
+            ide={'botonFiltrar'} 
+            ocultarModalCargando={ocultarModalCargando}
+            />
+            
           </div>
           <CSVLink className="descargar" data={datosFiltrados} headers={encabezados} filename="Aspirantes.csv">Exportar a CSV</CSVLink>
         </section>
@@ -339,7 +347,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
       </main>
       <ModalAspiranteSinGestiones abrirModalAspiranteSinGesiones={abrirModalAspiranteSinGesiones} texto={textoModal} cerrarModal={() => { setAbrirModalAspiranteSinGesiones(false) }}/>
       <HistoricoGestiones celularAspiranteSeleccionado={celularAspiranteSeleccionado} modalAbiertoHistorico={modalAbiertoHistorico} cerrarModal={() => { setModalAbiertoHistorico(false) }} />
-      <ModalFiltrar buscarAspirantesConFiltros={buscarAspirantesConFiltros} filtrosSeleccionados={filtrosSeleccionados} setFiltrosSeleccionados={setFiltrosSeleccionados} modalAbierto={modalAbierto} cerrarModal={() => { setModalAbierto(false) }} />
+      <ModalFiltrar buscarAspirantesConFiltros={buscarAspirantesConFiltros} filtrosSeleccionados={filtrosSeleccionados} setFiltrosSeleccionados={setFiltrosSeleccionados} modalAbierto={modalAbierto} cerrarModal={() => { setModalAbierto(false), setModalOculto(false) }} />
     </>
   );
 }

@@ -294,3 +294,7 @@ main.tabla {
     font-size: 2rem;
     color: #333;
   }
+
+  .ocultarCargando{
+    opacity: 0;
+  }
