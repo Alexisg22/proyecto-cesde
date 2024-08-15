@@ -142,35 +142,40 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
         })
 
         async function cargarAspirantes() {
-          try{
-          const respuesta = await obtenerTodosAspirantesConFiltros(objetoFiltros);
-          const aspirantes = respuesta.data;
-          console.log(aspirantes)
-          
-          const mapeado = aspirantes.map((aspirante) => ({
-  
-          celular: aspirante.celular,
-          nit: aspirante.nit,
-          nombreCompleto: aspirante.nombre_completo,
-          cantidadLlamadas: aspirante.cantidad_llamadas,
-          cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
-          cantWhatsapps: aspirante.cantidad_whatsapp,
-          cantGestiones: aspirante.cantidad_gestiones,
-          mejorGestión: aspirante.mejor_gestion,
-          estadoUltimaGestion: aspirante.estado_ultima_gestion,
-          diasUltGestión: aspirante.dias_ultima_gestion,
-          fechaUltGestión: aspirante.fecha_ultima_gestion,
-          gestiónFinal: aspirante.gestion_final ,
-          tipificaciónGestiónFinal: aspirante.tipificacion,
-          nitEmpresa: aspirante.nit_empresa,
-          sede: aspirante.sede,
-          programaFormación: aspirante.programa,
-          }))
-          setAspirantes('')
-          setAspirantes(mapeado)
-          }catch(e){
-            setTextoModal('No se encontraron aspirantes con los filtros seleccionados')
-            setAbrirModalAspiranteSinGesiones(true)
+          try {
+            const respuesta = await obtenerTodosAspirantesConFiltros(objetoFiltros);
+            const aspirantes = respuesta.data;
+            console.log(aspirantes);
+        
+            const mapeado = aspirantes.map((aspirante) => ({
+              celular: aspirante.celular,
+              nit: aspirante.nit,
+              nombreCompleto: aspirante.nombre_completo,
+              cantidadLlamadas: aspirante.cantidad_llamadas,
+              cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
+              cantWhatsapps: aspirante.cantidad_whatsapp,
+              cantGestiones: aspirante.cantidad_gestiones,
+              mejorGestión: aspirante.mejor_gestion,
+              estadoUltimaGestion: aspirante.estado_ultima_gestion,
+              diasUltGestión: aspirante.dias_ultima_gestion,
+              fechaUltGestión: aspirante.fecha_ultima_gestion,
+              gestiónFinal: aspirante.gestion_final,
+              tipificaciónGestiónFinal: aspirante.tipificacion,
+              nitEmpresa: aspirante.nit_empresa,
+              sede: aspirante.sede,
+              programaFormación: aspirante.programa,
+            }));
+        
+            if (mapeado.length === 0) {
+              // Si no se encontraron aspirantes
+              setTextoModal('No se encontraron aspirantes con los filtros seleccionados');
+              setAbrirModalAspiranteSinGesiones(true);
+            } else {
+              // Si se encontraron aspirantes
+              setAspirantes(mapeado);
+            }
+          } catch (e) {
+            console.error("Error al obtener los aspirantes:", e);
           }
         }
         
