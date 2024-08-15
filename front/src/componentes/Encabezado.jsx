@@ -6,7 +6,7 @@ import { BotonNavegar } from './BotonNavegar.jsx';
 import "../estilos/Encabezado.css"
 
 
-export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, textoEncabezado, vista, setProcesoSelect, }) => {
+export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, textoEncabezado, vista, setProcesoSelect, ocultarModalCargando, setModalOculto }) => {
   const [modalAbierto, setModalAbierto] = useState(false)
 
 
@@ -48,11 +48,13 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, texto
                 setModalAbierto={setModalAbierto}
                 modalSubirBDs={true}
                 texto={"Subir BD"}
-                ide={'botonVerde'} />
+                ide={'botonVerde'} 
+                ocultarModalCargando={ocultarModalCargando}
+              />
             )}
           </div>
 
-          <div className='contenedorInicio'>
+          <div className='ontenedorInicio'>
             {mostrarBotonInicio && (
               <BotonNavegar
                 onClick={manejarClicBotonInicio}
@@ -68,7 +70,7 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, texto
 
       <ModalSubirBD
         modalAbierto={modalAbierto}
-        cerrarModal={() => { setModalAbierto(false) }} 
+        cerrarModal={() => { setModalAbierto(false), setModalOculto(false)}} 
         
         />
 

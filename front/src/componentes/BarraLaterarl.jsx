@@ -7,7 +7,7 @@ import { ModalAgregarTipoficacion } from './ModalAgregarTipificacion.jsx';
 import '../estilos/BarraLateral.css'
 
 // Componente principal BarraLateral
-export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, procesoSelect }) => {
+export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, procesoSelect,  ocultarModalCargando, setModalOculto }) => {
 
   // useNavigate se utiliza para la navegación entre páginas
   const navigate = useNavigate();
@@ -102,7 +102,8 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, 
             texto={'Agregar nueva tipificación'} // Texto del botón
             ide={'botonAsesores'} // ID del botón
             setModalAbierto={setModalAbierto} // Función para abrir el modal
-            modalAbierto={modalAbierto} // Estado del modal
+            modalAbierto={modalAbierto}
+            ocultarModalCargando={ocultarModalCargando} // Estado del modal
           />
         </div>
       </aside>
@@ -110,7 +111,7 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, 
       {/* Modal para agregar una nueva tipificación, se abre o cierra según el estado modalAbierto */}
       <ModalAgregarTipoficacion
         modalAbierto={modalAbierto} // Estado de apertura del modal
-        cerrarModal={() => { setModalAbierto(false) }} // Función para cerrar el modal
+        cerrarModal={() => { setModalAbierto(false), setModalOculto(false) }} // Función para cerrar el modal
       />
     </>
   )
