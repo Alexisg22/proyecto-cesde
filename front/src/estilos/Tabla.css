@@ -281,7 +281,7 @@ main.tabla {
 .modal-cargando {
     position: absolute;
     top: 25em;
-    left: 50em;
+    left: 52em;
     display: inline-block; /* Permite que el contenido de alrededor siga fluyendo */
     background-color: rgba(255, 255, 255, 0.9); /* Color de fondo ligeramente translúcido */
     padding: 30px;
@@ -293,4 +293,8 @@ main.tabla {
   .textoCargando{
     font-size: 2rem;
     color: #333;
+  }
+
+  .ocultarCargando{
+    opacity: 0;
   }
