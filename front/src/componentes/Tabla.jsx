@@ -168,7 +168,7 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           setAspirantes('')
           setAspirantes(mapeado)
           }catch(e){
-            setTextoModal('No se encontraron aspirantes para los filtros seleccionados')
+            setTextoModal('No se encontraron aspirantes con los filtros seleccionados')
             setAbrirModalAspiranteSinGesiones(true)
           }
         }
