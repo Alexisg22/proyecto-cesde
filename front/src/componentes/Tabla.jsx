@@ -141,12 +141,11 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
         })
 
         async function cargarAspirantes() {
-            
+          try{
           const respuesta = await obtenerTodosAspirantesConFiltros(objetoFiltros);
           const aspirantes = respuesta.data;
-          // console.log('se buscan filtros')
+          console.log(aspirantes)
           
-    
           const mapeado = aspirantes.map((aspirante) => ({
   
           celular: aspirante.celular,
@@ -168,7 +167,10 @@ function Tabla({ visibilidadColumna, procesoSelect }) {
           }))
           setAspirantes('')
           setAspirantes(mapeado)
-      
+          }catch(e){
+            setTextoModal('No se encontraron aspirantes para los filtros seleccionados')
+            setAbrirModalAspiranteSinGesiones(true)
+          }
         }
         
         cargarAspirantes();
