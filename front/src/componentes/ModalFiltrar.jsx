@@ -94,7 +94,6 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
                                 <option value="tipificacion gestion final">tipificacion gestion final</option>
                                 <option value="programa de formacion">Programa de formación</option>
                                 <option value="sede">Sede</option>
-                                <option value="empresa">Empresa</option>
                             </select>                
 
                             {/* Componente ParametroFiltrar para manejar la entrada del valor */}

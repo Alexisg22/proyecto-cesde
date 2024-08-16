@@ -161,7 +161,6 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
               fechaUltGestión: aspirante.fecha_ultima_gestion,
               gestiónFinal: aspirante.gestion_final,
               tipificacionUltimaGestion: aspirante.ultima_tipificacion,
-              nitEmpresa: aspirante.nit_empresa,
               sede: aspirante.sede,
               programaFormación: aspirante.programa,
             }));
