@@ -1,6 +1,6 @@
 .modalSubirBD{
     width: 74vw;
-    height: 80vh;
+    height: 82vh;
     background-color: #DDDDDD;
     position: fixed;
     top: 10%;
@@ -39,7 +39,7 @@
     height: 30vh;
     display: flex;
     justify-content: space-around;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
 }
 
 .botonCerrar{
