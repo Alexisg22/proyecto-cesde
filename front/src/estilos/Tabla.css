@@ -118,42 +118,42 @@ main.tabla {
 
 .matriculado {
     background-color: #13A438;
-    padding: .4rem 0;
+    padding: .4rem 1rem;
     border-radius: 2rem;
     text-align: center;
 }
 
 .en {
     background-color: #e5ff23;
-    padding: .4rem 0;
+    padding: .4rem 3rem;
     border-radius: 2rem;
     text-align: center;
 }
 
 .sin{
     background-color: rgb(254, 178, 46);
-    padding: .4rem ;
+    padding: .4rem 3rem ;
     border-radius: 2rem;
     text-align: center;
 }
 
 .no{
     background-color: gray;
-    padding: .4rem .1rem;
+    padding: .4rem .8rem;
     border-radius: 2rem;
     text-align: center;
 }
 
 .descartado {
     background-color: #FF571D;
-    padding: .4rem 0;
+    padding: .4rem .8rem;
     border-radius: 2rem;
     text-align: center;
 }
 
 .liquidado {
     background-color: #14CDE0;
-    padding: .4rem 0;
+    padding: .4rem .8rem;
     border-radius: 2rem;
     text-align: center;
 }
