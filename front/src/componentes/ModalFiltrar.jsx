@@ -91,8 +91,9 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
                                 <option value="estado ultima gestion">Estado ultima gestion</option>
                                 <option value="dias ultima gestion">Días de la última gestión</option>
                                 <option value="fecha ultima gestion">Fecha de última gestión</option>
-                                <option value="tipificacion gestion final">tipificacion gestion final</option>
+                                <option value="tipificacion ultima gestion">Tipificacion ultima gestion</option>
                                 <option value="programa de formacion">Programa de formación</option>
+                                <option value="empresa">Empresa</option>
                                 <option value="sede">Sede</option>
                             </select>                
 
