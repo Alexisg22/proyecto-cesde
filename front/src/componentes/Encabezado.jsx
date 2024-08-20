@@ -26,7 +26,7 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, texto
     <header>
       <div className='contenedorPrincipal'>
         <div className='contenedorLogoAndes'>
-          <img id='logoAndes' src="../../public/imagenes/AndesBPO.png" />
+        <img id='logoAndes' src="/imagenes/AndesBPO.png" alt="Logo Andes BPO" />
         </div>
 
         <div className='contenedorSelectProceso'>

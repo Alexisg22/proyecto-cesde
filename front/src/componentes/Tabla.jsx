@@ -84,10 +84,10 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
       let procesoBusqueda = ''
       if(procesoSelect == 'tecnicos'){
           nuevoProceso = 'proceso-tecnico/'
-          procesoBusqueda = 'técnicos'
+          procesoBusqueda = 'Técnicos'
       }else if(procesoSelect == 'empresas'){
           nuevoProceso = 'proceso-empresa/'
-          procesoBusqueda = 'empresa'
+          procesoBusqueda = 'Empresas'
       }else if(procesoSelect == 'extensiones'){
           nuevoProceso = 'proceso-extensiones/'
           procesoBusqueda = 'extenciones'
