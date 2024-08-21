@@ -259,6 +259,10 @@ main.tabla {
     align-items: center;
   }
   
+.noDescargar{
+    display: none;
+}
+  
 .descargar {
     background-color: #13A438; 
     color: rgb(0, 0, 0);

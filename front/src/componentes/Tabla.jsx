@@ -22,12 +22,14 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
   const indexInicial = indexFinal - cantidadFilas;
   const nAspirantesPorPagina = aspirantes.slice(indexInicial, indexFinal);
   const [numeroPaginas, setNumeroPaginas] = useState();
+  const [numeroPaginasTotales, setNumeroPaginasTotales] = useState();
   const [filtrosSeleccionados, setFiltrosSeleccionados] = useState([]);
   const [aplicarFiltrosAspirantes, setAplicarFiltrosAspirantes] = useState([]);
   const [inputBuscadorAspirante, setInputBuscadorAspirante] = useState('');
   const [buscarUnAspirante, setBuscarUnAspirante] = useState('');
   const [textoModal, setTextoModal] = useState('');
   const [cargando, setCargando] = useState(true);
+  const [nombre, setNombre] = useState("noDescargar");
 
   const buscarAspirantesConFiltros = () => {
     setAplicarFiltrosAspirantes(filtrosSeleccionados);
@@ -38,7 +40,18 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
     setPaginaActual(1);
   }, [filtrosSeleccionados]);
 
-  async function cargarAspirantes(paginaActual) {
+  async function traerPaginas(){
+    
+    let respuesta = await obtenerTodosAspirantesConFiltros("", 1);
+    const totalPaginas = respuesta.data.total_pages;
+    setNumeroPaginasTotales(totalPaginas)
+  }
+
+  useEffect(() => {
+    traerPaginas();
+  }, [procesoSelect, aplicarFiltrosAspirantes, buscarUnAspirante, paginaActualizada]);
+
+  async function cargarAspirantes() {
     let nuevoProceso = '';
     let procesoBusqueda = '';
     if (procesoSelect === 'tecnicos') {
@@ -152,10 +165,127 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
     }
   }
 
+  async function descargarAspirantes(paginas){
+
+    let paginaa = 1
+    let resultados = []
+    
+    let procesoBusqueda = '';
+    if (procesoSelect === 'tecnicos') {
+      procesoBusqueda = 'Técnicos';
+    } else if (procesoSelect === 'empresas') {
+      procesoBusqueda = 'Empresas';
+    } else if (procesoSelect === 'extensiones') {
+      procesoBusqueda = 'extenciones';
+    }
+
+    if (aplicarFiltrosAspirantes.length > 0) {
+      let objetoFiltros = {
+        procesoNombre: procesoBusqueda,
+        cantidadLlamadas: '',
+        cantidadWhatsapps: '',
+        cantidadGestiones: '',
+        mejorGestion: '',
+        estadoUltimaGestion: '',
+        diasUltimaGestion: '',
+        fechaUltimaGestion: '',
+        tipificacionGestionFinal: '',
+        programaFormacion: '',
+        sede: '',
+        nitEmpresa: '',
+      };
+
+      aplicarFiltrosAspirantes.map((filtro) => {
+        switch (filtro.filtro) {
+          case 'cantidad llamadas':
+            objetoFiltros.cantidadLlamadas = filtro.valor;
+            break;
+          case 'cantidad whatsapp':
+            objetoFiltros.cantidadWhatsapps = filtro.valor;
+            break;
+          case 'cantidad gestiones':
+            objetoFiltros.cantidadGestiones = filtro.valor;
+            break;
+          case 'mejor gestion':
+            objetoFiltros.mejorGestion = filtro.valor;
+            break;
+          case 'estado ultima gestion':
+            objetoFiltros.estadoUltimaGestion = filtro.valor;
+            break;
+          case 'dias ultima gestion':
+            objetoFiltros.diasUltimaGestion = filtro.valor;
+            break;
+          case 'fecha ultima gestion':
+            objetoFiltros.fechaUltimaGestion = filtro.valor;
+            break;
+          case 'tipificacion ultima gestion':
+            objetoFiltros.tipificacionGestionFinal = filtro.valor;
+            break;
+          case 'programa de formacion':
+            objetoFiltros.programaFormacion = filtro.valor;
+            break;
+          case 'sede':
+            objetoFiltros.sede = filtro.valor;
+            break;
+          case 'empresa':
+            objetoFiltros.nitEmpresa = filtro.valor;
+            break;
+          default:
+            break;
+        }
+      });
+      while (paginaa < paginas) {
+        try{
+          const datos = await obtenerTodosAspirantesConFiltros(objetoFiltros, paginaa)
+          
+          const datosTraidos = datos.data.results
+
+          resultados = [...resultados,...datosTraidos];
+          
+          paginaa++
+  
+        }catch(e){
+          break;
+        }
+      }
+  
+      const mapeado = resultados.map((aspirante) => ({
+        celular: aspirante.celular,
+        nit: aspirante.nit,
+        nombreCompleto: aspirante.nombre_completo,
+        cantidadLlamadas: aspirante.cantidad_llamadas,
+        cantMensajesDeTexto: aspirante.cantidad_mensajes_texto,
+        cantWhatsapps: aspirante.cantidad_whatsapp,
+        cantGestiones: aspirante.cantidad_gestiones,
+        mejorGestión: aspirante.mejor_gestion,
+        estadoUltimaGestion: aspirante.estado_ultima_gestion,
+        diasUltGestión: aspirante.dias_ultima_gestion,
+        fechaUltGestión: aspirante.fecha_ultima_gestion,
+        gestiónFinal: aspirante.gestion_final,
+        tipificacionUltimaGestion: aspirante.ultima_tipificacion,
+        sede: aspirante.sede,
+        programaFormación: aspirante.programa_formacion,
+        nitEmpresa: aspirante.nit_empresa,
+      }));
+  
+      setNombre("descargar")
+      setAspirantesDescargar(mapeado)
+    }
+  }
+
   useEffect(() => {
     cargarAspirantes(paginaActual);
+
+    if (numeroPaginas > 0) {
+      descargarAspirantes(numeroPaginasTotales);
+    }
   }, [procesoSelect, aplicarFiltrosAspirantes, buscarUnAspirante, paginaActualizada]);
 
+
+  useEffect(() => {
+    setNombre("noDescargar")
+    }, [procesoSelect, aplicarFiltrosAspirantes,paginaActualizada]);
+    
   const manejarClickFilaAspirantes = (celular, cantGestionesAspirante) => {
     if (cantGestionesAspirante === 0) {
       setTextoModal("Al aspirante seleccionado no se le ha realizado ninguna gestión.");
@@ -240,7 +370,7 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
               ocultarModalCargando={ocultarModalCargando}
             />
           </div>
-          <CSVLink className="descargar" data={datosFiltrados} headers={encabezados} filename="Aspirantes.csv">Exportar a CSV</CSVLink>
+          <CSVLink className={nombre} data={datosFiltrados} headers={encabezados} filename="Aspirantes.csv">Exportar a CSV</CSVLink>
         </section>
         <section className="cuerpoTabla">
           <table className='tabla'>
