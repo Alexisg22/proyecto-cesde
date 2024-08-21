@@ -4,12 +4,13 @@ import { HistoricoGestiones } from './HistoricoGestiones.jsx';
 import { ModalFiltrar } from './ModalFiltrar.jsx';
 import { Paginador } from './Paginador.jsx';
 import { CSVLink } from "react-csv";
-import { obtenerAspirantesProceso, obtenerTodosAspirantesConFiltros, obtenerUnAspirante } from '../api/aspirantes.api.js';
+import { obtenerAspirantesProceso, obtenerTodosAspirantesConFiltros, obtenerTodosAspirantesConFiltros2, obtenerUnAspirante } from '../api/aspirantes.api.js';
 import '../estilos/Tabla.css';
 import { ModalAspiranteSinGestiones } from './ModalAspiranteSinGestiones.jsx';
 
 function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto, ocultarModalCargando }) {
   const [aspirantes, setAspirantes] = useState([]);
+  const [aspirantesDescargar, setAspirantesDescargar] = useState([]);
   const [celularAspiranteSeleccionado, setCelularAspiranteSeleccionado] = useState('');
   const [cantidadFilas, setCantidadFilas] = useState(10);
   const [paginaActual, setPaginaActual] = useState(1);
@@ -110,7 +111,6 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
               break;
           }
         });
-
         respuesta = await obtenerTodosAspirantesConFiltros(objetoFiltros, paginaActualizada);
       } else {
         respuesta = await obtenerAspirantesProceso(nuevoProceso, paginaActualizada);
@@ -145,8 +145,8 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
       } else {
         setAspirantes(mapeado);
       }
+
     } catch (e) {
-      console.error("Error al obtener los aspirantes:", e);
     } finally {
       setCargando(false);
     }
@@ -192,7 +192,7 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
       key: columna.id
     }));
 
-  const datosFiltrados = aspirantes.map(row => {
+  const datosFiltrados = aspirantesDescargar.map(row => {
     const filaFiltrada = {};
     columnas.forEach(columna => {
       if (visibilidadColumna[columna.id]) {
