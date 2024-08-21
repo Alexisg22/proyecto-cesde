@@ -38,6 +38,7 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
 
   useEffect(() => {
     setPaginaActual(1);
+    setPaginaActualizada(1);
   }, [filtrosSeleccionados]);
 
   async function traerPaginas(){
