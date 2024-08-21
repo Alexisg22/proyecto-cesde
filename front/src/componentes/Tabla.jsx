@@ -4,7 +4,7 @@ import { HistoricoGestiones } from './HistoricoGestiones.jsx';
 import { ModalFiltrar } from './ModalFiltrar.jsx';
 import { Paginador } from './Paginador.jsx';
 import { CSVLink } from "react-csv";
-import { obtenerAspirantesProceso, obtenerTodosAspirantesConFiltros, obtenerTodosAspirantesConFiltros2, obtenerUnAspirante } from '../api/aspirantes.api.js';
+import { obtenerAspirantesProceso, obtenerTodosAspirantesConFiltros, obtenerUnAspirante } from '../api/aspirantes.api.js';
 import '../estilos/Tabla.css';
 import { ModalAspiranteSinGestiones } from './ModalAspiranteSinGestiones.jsx';
 
