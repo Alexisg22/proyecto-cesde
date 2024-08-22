@@ -4,10 +4,12 @@ import { Encabezado } from "../componentes/Encabezado.jsx";
 import BuscarAsesores from "../componentes/BuscarAsesores.jsx";
 import TablaAsesores from "../componentes/TablaAsesores.jsx";
 import "../estilos/Asesores.css";
-import { consultarAsesores, consultarAsesoresFecha, consultarUnAsesor } from '../api/asesores.api.js';
+import { consultarAsesores, consultarAsesoresFecha, consultarUnAsesor, consultarUnAsesorPorFecha } from '../api/asesores.api.js';
 
 
 export const Asesores = () => {
+
+  const [numeroPaginasTotales, setNumeroPaginasTotales] = useState()
 
   const columnas = [
     { id: 'idWolkvox', etiqueta: 'Id Wolkvox' },
@@ -32,11 +34,47 @@ export const Asesores = () => {
   const [fechaFin, setFechaFin] = useState('')
   const [buscarUnAsesor, setBuscarUnAsesor] = useState('') 
 
-  
+  async function traerPaginas(){
+    
+    let respuesta = await consultarAsesores(1);
+    const totalPaginas = respuesta.data.total_pages;
+    setNumeroPaginasTotales(totalPaginas)
+  }
+
+  useEffect(() => {
+    traerPaginas();
+  }, [buscarUnAsesor]);
 
   useEffect(() => {
 
-    if(buscarUnAsesor != 0 ){
+    if(buscarUnAsesor != 0 && fechaFin != '' && fechaInicio != ''){
+      
+      async function cargarAsesoress() {
+        try {
+        const respuesta = await consultarUnAsesorPorFecha(fechaInicio,fechaFin,buscarUnAsesor);
+        const asesores = respuesta.data;
+        
+        const mapeado = asesores.map((asesor) => ( {
+          idWolkvox: asesor.id,
+          nombreCompleto: asesor.nombre_completo,
+          cantLlamadas: asesor.cantidad_llamadas,
+          cantWhatsapps: asesor.cantidad_whatsapp,
+          cantGestiones: asesor.cantidad_gestiones,
+          cantMatriculas: asesor.cantidad_matriculas,
+          cantLiquidaciones: asesor.cantidad_liquidaciones,
+        }));
+       
+        setAsesores(mapeado)
+      }catch (error) {
+        {<h1>{'Error no se encuentra el asesor'}</h1>}
+      }
+        /*console.log([asesores]);*/
+      }
+      cargarAsesoress();
+
+    }
+
+    else if(buscarUnAsesor != 0 ){
       
       async function cargarAsesoress() {
         try {
@@ -65,8 +103,7 @@ export const Asesores = () => {
       cargarAsesoress();
 
     }
-    
-
+      
     else if(fechaFin != '' && fechaInicio != ''){
       async function cargarAsesores() {
         const respuesta = await consultarAsesoresFecha(fechaInicio, fechaFin);
@@ -90,7 +127,8 @@ export const Asesores = () => {
     }else if(asesores.length < 1){
       async function cargarAsesores() {
 
-        const respuesta = await consultarAsesores();
+        const paginaActual = 1
+        const respuesta = await consultarAsesores(paginaActual);
         const asesores = respuesta.data;
   
         const mapeado = asesores.map((asesor) => ({
