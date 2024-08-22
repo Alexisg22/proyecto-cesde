@@ -58,7 +58,7 @@ export const Principal = () => {
         } else if (procesoSelect == "extensiones") {
           nuevoProceso = `fechas/?fecha_inicio=${fechaInicio}&fecha_fin=${fechaFin}&proceso_nombre=extenciones`;
         } else {
-          nuevoProceso = ``;
+          nuevoProceso = `fechas/?fecha_inicio=${fechaInicio}&fecha_fin=${fechaFin}&proceso_nombre`;
         }
 
         const respuesta = await obtenerEstadisticas(nuevoProceso);

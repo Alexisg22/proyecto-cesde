@@ -53,6 +53,46 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
   }, [procesoSelect, aplicarFiltrosAspirantes, buscarUnAspirante, paginaActualizada]);
 
   async function cargarAspirantes() {
+    
+    if(inputBuscadorAspirante.length > 0){
+      let datosAspirantes
+      let datos
+      try{
+
+        datosAspirantes = await obtenerUnAspirante(buscarUnAspirante)
+        datos = datosAspirantes.data
+      }
+      catch(error){
+        setTextoModal('No se encontro el aspirante buscado');
+        setAbrirModalAspiranteSinGesiones(true);
+      }
+      
+      if (datos != undefined) {
+        
+      const mapeado = [{
+        celular: datos.celular,
+        nit: datos.nit,
+        nombreCompleto: datos.nombre_completo,
+        cantidadLlamadas: datos.cantidad_llamadas,
+        cantWhatsapps: datos.cantidad_whatsapp,
+        cantGestiones: datos.cantidad_gestiones,
+        mejorGestión: datos.mejor_gestion,
+        estadoUltimaGestion: datos.estado_ultima_gestion,
+        diasUltGestión: datos.dias_ultima_gestion,
+        fechaUltGestión: datos.fecha_ultima_gestion,
+        gestiónFinal: datos.gestion_final,
+        tipificacionUltimaGestion: datos.ultima_tipificacion,
+        sede: datos.sede,
+        programaFormación: datos.programa_formacion,
+        nitEmpresa: datos.nit_empresa,
+      }]
+      setNumeroPaginas(1);
+      setAspirantes(mapeado);
+      
+      }
+      else{
+      }
+    }else{
     let nuevoProceso = '';
     let procesoBusqueda = '';
     if (procesoSelect === 'tecnicos') {
@@ -164,6 +204,7 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
     } finally {
       setCargando(false);
     }
+  }
   }
 
   async function descargarAspirantes(paginas){
@@ -300,8 +341,8 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
 
   const columnas = [
     { id: 'celular', etiqueta: 'Celular' },
-    { id: 'nit', etiqueta: 'Nit' },
     { id: 'nombreCompleto', etiqueta: 'Nombre Completo' },
+    { id: 'nit', etiqueta: 'Nit' },
     { id: 'cantidadLlamadas', etiqueta: 'Cant. Llamadas' },
     { id: 'cantWhatsapps', etiqueta: 'Cant. WhatsApps' },
     { id: 'cantGestiones', etiqueta: 'Cant. Gestiones' },

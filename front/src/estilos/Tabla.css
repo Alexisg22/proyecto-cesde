@@ -215,7 +215,7 @@ main.tabla {
     z-index: 2; 
 }
 
-.cabezaTabla th:nth-child(3) {
+.cabezaTabla th:nth-child(2) {
     left: 7rem;     
     z-index: 2;
 }
@@ -227,7 +227,7 @@ main.tabla {
     position: sticky;
 }
 
-.cuerpoTabla tr:nth-child(odd) td:nth-child(3){
+.cuerpoTabla tr:nth-child(odd) td:nth-child(2){
     left: 7rem;
     background-color: #ffffff;
     position: sticky;
@@ -238,7 +238,7 @@ main.tabla {
     background-color: #e3e3e3;
     position: sticky;
 }
-.cuerpoTabla tr:nth-child(even) td:nth-child(3) {
+.cuerpoTabla tr:nth-child(even) td:nth-child(2) {
     left: 7rem;
     background-color: #e3e3e3;
     position: sticky;

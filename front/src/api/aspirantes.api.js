@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export const obtenerUnAspirante = (celular) => {
-  return  axios.get(`http://localhost:8000/cesde/aspirantes-filter/?celular=${celular}/`)
+  return  axios.get(`http://localhost:8000/cesde/aspirantes-filter/buscar-por-celular/?celular=${celular}`)
 }
 
 export const obtenerAspirantesProceso = (nuevoProceso, paginaActual) => {
