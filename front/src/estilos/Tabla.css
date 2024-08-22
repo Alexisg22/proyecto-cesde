@@ -118,36 +118,29 @@ main.tabla {
 
 .matriculado {
     background-color: #13A438;
-    padding: 1rem 4rem;
+    padding: 1rem 2rem;
     border-radius: 2rem;
     text-align: center;
     height: 3rem;
 }
 
-.en {
+.en{
     background-color: #e5ff23;
-    padding: .4rem 4rem;
+    padding: 1rem 2rem;
     border-radius: 2rem;
     text-align: center;
 }
 
 .sin{
     background-color: rgb(254, 178, 46);
-    padding: .4rem 4rem ;
-    border-radius: 2rem;
-    text-align: center;
-}
-
-.no{
-    background-color: gray;
-    padding: .4rem .8rem;
+    padding: 1rem 2rem ;
     border-radius: 2rem;
     text-align: center;
 }
 
 .descartado {
     background-color: #FF571D;
-    padding: 1rem .8rem;
+    padding: 1rem 2rem;
     border-radius: 2rem;
     text-align: center;
 }
