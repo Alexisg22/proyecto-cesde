@@ -194,6 +194,7 @@ main.tabla {
 .filtrar{
     margin-bottom: 1rem;
     margin-right: 10px;
+    color: white;
 }
 
 .botonBuscar:hover {
@@ -267,6 +268,7 @@ main.tabla {
     text-decoration: none;
     margin-right: 0.8em;
     text-align: center;
+    color: white;
   }
   
 .descargar:hover {
