@@ -162,10 +162,10 @@ export const Principal = () => {
     if (procesoSelect === "empresas" || procesoSelect === "general") {
       setVisibilidadColumna((prevState) => ({
         ...prevState,
-        nitEmpresa: false, // Inicialmente no visible
+        nombreEmpresa: false, // Inicialmente no visible
       }));
     } else {
-      const { nitEmpresa, ...restVisibilidad } = visibilidadColumna;
+      const { nombreEmpresa, ...restVisibilidad } = visibilidadColumna;
       setVisibilidadColumna(restVisibilidad);
     }
   }, [procesoSelect]);

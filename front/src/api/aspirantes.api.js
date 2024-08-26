@@ -16,6 +16,6 @@ export const obtenerTipificaciones = () =>{
 }
 
 export const obtenerTodosAspirantesConFiltros = (objetoFiltros,paginaActual) => {
-  return  axios.get(`http://127.0.0.1:8000/cesde/aspirantes-filter/?proceso_nombre=${objetoFiltros.procesoNombre}&cantidad_llamadas=${objetoFiltros.cantidadLlamadas}&cantidad_whatsapp=${objetoFiltros.cantidadWhatsapps}&cantidad_gestiones=${objetoFiltros.cantidadGestiones}&dias_ultima_gestion=${objetoFiltros.diasUltimaGestion}&fecha_ultima_gestion=${objetoFiltros.fechaUltimaGestion}&tipificacion_ultima_gestion=${objetoFiltros.tipificacionGestionFinal}&estado_ultima_gestion=${objetoFiltros.estadoUltimaGestion}&programa=${objetoFiltros.programaFormacion}&sede=${objetoFiltros.sede}&mejor_gestion=${objetoFiltros.mejorGestion}&page=${paginaActual}`)
+  return  axios.get(`http://127.0.0.1:8000/cesde/aspirantes-filter/?proceso_nombre=${objetoFiltros.procesoNombre}&cantidad_llamadas=${objetoFiltros.cantidadLlamadas}&cantidad_whatsapp=${objetoFiltros.cantidadWhatsapps}&cantidad_gestiones=${objetoFiltros.cantidadGestiones}&dias_ultima_gestion=${objetoFiltros.diasUltimaGestion}&fecha_ultima_gestion=${objetoFiltros.fechaUltimaGestion}&tipificacion_ultima_gestion=${objetoFiltros.tipificacionGestionFinal}&estado_ultima_gestion=${objetoFiltros.estadoUltimaGestion}&programa=${objetoFiltros.programaFormacion}&sede=${objetoFiltros.sede}&mejor_gestion=${objetoFiltros.mejorGestion}&page=${paginaActual}&nombre_empresa=${objetoFiltros.nombreEmpresa}`)
 }
 

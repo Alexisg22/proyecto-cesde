@@ -84,7 +84,7 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
         tipificacionUltimaGestion: datos.ultima_tipificacion,
         sede: datos.sede,
         programaFormación: datos.programa_formacion,
-        nitEmpresa: datos.nit_empresa,
+        nombreEmpresa: datos.nit_empresa,
       }]
       setNumeroPaginas(1);
       setAspirantes(mapeado);
@@ -123,7 +123,7 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
           tipificacionGestionFinal: '',
           programaFormacion: '',
           sede: '',
-          nitEmpresa: '',
+          nombreEmpresa: '',
         };
 
         aplicarFiltrosAspirantes.map((filtro) => {
@@ -159,7 +159,7 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
               objetoFiltros.sede = filtro.valor;
               break;
             case 'empresa':
-              objetoFiltros.nitEmpresa = filtro.valor;
+              objetoFiltros.nombreEmpresa = filtro.valor;
               break;
             default:
               break;
@@ -190,7 +190,7 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
         tipificacionUltimaGestion: aspirante.ultima_tipificacion,
         sede: aspirante.sede,
         programaFormación: aspirante.programa_formacion,
-        nitEmpresa: aspirante.nit_empresa,
+        nombreEmpresa: aspirante.nit_empresa,
       }));
 
       if (mapeado.length === 0) {
@@ -234,7 +234,7 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
         tipificacionGestionFinal: '',
         programaFormacion: '',
         sede: '',
-        nitEmpresa: '',
+        nombreEmpresa: '',
       };
 
       aplicarFiltrosAspirantes.map((filtro) => {
@@ -270,7 +270,7 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
             objetoFiltros.sede = filtro.valor;
             break;
           case 'empresa':
-            objetoFiltros.nitEmpresa = filtro.valor;
+            objetoFiltros.nombreEmpresa = filtro.valor;
             break;
           default:
             break;
@@ -307,7 +307,7 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
         tipificacionUltimaGestion: aspirante.ultima_tipificacion,
         sede: aspirante.sede,
         programaFormación: aspirante.programa_formacion,
-        nitEmpresa: aspirante.nit_empresa,
+        nombreEmpresa: aspirante.nit_empresa,
       }));
   
       setNombre("descargar")
@@ -354,7 +354,7 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
     { id: 'tipificacionUltimaGestion', etiqueta: 'Tipificación Ultima Gestión' },
     { id: 'sede', etiqueta: 'Sede' },
     { id: 'programaFormación', etiqueta: 'Programa de Formación' },
-    { id: 'nitEmpresa', etiqueta: 'Nit empresa' },
+    { id: 'nombreEmpresa', etiqueta: 'Nombre empresa' },
   ];
 
   const encabezados = columnas
