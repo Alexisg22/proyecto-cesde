@@ -84,7 +84,7 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
         tipificacionUltimaGestion: datos.ultima_tipificacion,
         sede: datos.sede,
         programaFormación: datos.programa_formacion,
-        nombreEmpresa: datos.nit_empresa,
+        nombreEmpresa: datos.nombre_empresa,
       }]
       setNumeroPaginas(1);
       setAspirantes(mapeado);
@@ -190,7 +190,7 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
         tipificacionUltimaGestion: aspirante.ultima_tipificacion,
         sede: aspirante.sede,
         programaFormación: aspirante.programa_formacion,
-        nombreEmpresa: aspirante.nit_empresa,
+        nombreEmpresa: aspirante.nombre_empresa,
       }));
 
       if (mapeado.length === 0) {
@@ -307,7 +307,7 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
         tipificacionUltimaGestion: aspirante.ultima_tipificacion,
         sede: aspirante.sede,
         programaFormación: aspirante.programa_formacion,
-        nombreEmpresa: aspirante.nit_empresa,
+        nombreEmpresa: aspirante.nombre_empresa,
       }));
   
       setNombre("descargar")
