@@ -6,8 +6,21 @@ import { Estadisticas } from "../componentes/Estadisticas.jsx";
 import "../estilos/Asesores.css";
 import { obtenerEstadisticas } from "../api/estadisticas.api.js";
 const Tabla = lazy (() => import("../componentes/Tabla.jsx"));
+import { useNavigate } from 'react-router-dom'; // Importa el hook useNavigate
 
 export const Principal = () => {
+
+  const token = localStorage.getItem('token'); // Obtén el token del localStorage
+  const navigate = useNavigate(); // Inicializa el hook useNavigate
+  const [isLoading, setIsLoading] = useState(true); // Estado para manejar la carga
+
+  useEffect(() => {
+    if (!token) {
+      navigate('/'); // Redirige al inicio o a la página de login si no hay token
+    } else {
+      setIsLoading(false); // Establece isLoading en false cuando el token esté presente
+    }
+  }, [token, navigate]);
 
   const [procesoSelect, setProcesoSelect] = useState("general");
   const [barraLateralKey, setBarraLateralKey] = useState(0);
@@ -36,7 +49,6 @@ export const Principal = () => {
   const [fechaFin, setFechaFin] = useState("");
   const [modalOculto, setModalOculto] = useState(false);
   const [modalOcultoSubirBD, setModalOcultoSubirBD] = useState(false)
-
 
   useEffect(() =>{
     setFechaInicio('')

@@ -5,10 +5,12 @@ import BuscarAsesores from "../componentes/BuscarAsesores.jsx";
 import TablaAsesores from "../componentes/TablaAsesores.jsx";
 import "../estilos/Asesores.css";
 import { consultarAsesores, consultarAsesoresFecha, consultarUnAsesor, consultarUnAsesorPorFecha } from '../api/asesores.api.js';
-
+import { useNavigate } from 'react-router-dom'; // Importa el hook useNavigate
 
 export const Asesores = () => {
-
+  const token = localStorage.getItem('token'); // Obtén el token del localStorage
+  const navigate = useNavigate(); // Inicializa el hook useNavigate
+  const [isLoading, setIsLoading] = useState(true); // Estado para manejar la carga
   const [numeroPaginasTotales, setNumeroPaginasTotales] = useState()
 
   const columnas = [
@@ -19,6 +21,9 @@ export const Asesores = () => {
     { id: 'cantGestiones', etiqueta: 'Cant. Gestiones' },
     { id: 'cantMatriculas', etiqueta: 'Cant. Matrículas' },
     { id: 'cantLiquidaciones', etiqueta: 'Cant. Liquidaciones' },
+    { id: 'cantGestionesEmpresa', etiqueta: 'Cant. Gestiones Empresas' },
+    { id: 'cantGestionesTecnicos', etiqueta: 'Cant. Gestiones Técnicos' },
+    { id: 'cantGestionesExtensiones', etiqueta: 'Cant. Gestiones Extensiones' },
   ];
   
   const encabezados = columnas.map(columna => ({
@@ -33,6 +38,16 @@ export const Asesores = () => {
   const [fechaInicio, setFechaInicio] = useState('')
   const [fechaFin, setFechaFin] = useState('')
   const [buscarUnAsesor, setBuscarUnAsesor] = useState('') 
+
+
+   // Redirección temprana si no hay token
+   useEffect(() => {
+    if (!token) {
+      navigate('/'); // Redirige al inicio o a la página de login si no hay token
+    } else {
+      setIsLoading(false); // Establece isLoading en false cuando el token esté presente
+    }
+  }, [token, navigate]);
 
   async function traerPaginas(){
     
@@ -62,6 +77,9 @@ export const Asesores = () => {
           cantGestiones: asesor.cantidad_gestiones,
           cantMatriculas: asesor.cantidad_matriculas,
           cantLiquidaciones: asesor.cantidad_liquidaciones,
+          cantGestionesEmpresa: asesor.cantidad_gestiones_empresa,
+          cantGestionesTecnicos: asesor.cantidad_gestiones_tecnicos,
+          cantGestionesExtensiones: asesor.cantidad_gestiones_extensiones,
         }));
        
         setAsesores(mapeado)
@@ -90,6 +108,9 @@ export const Asesores = () => {
           cantGestiones: asesor.cantidad_gestiones,
           cantMatriculas: asesor.cantidad_matriculas,
           cantLiquidaciones: asesor.cantidad_liquidaciones,
+          cantGestionesEmpresa: asesor.cantidad_gestiones_empresa,
+          cantGestionesTecnicos: asesor.cantidad_gestiones_tecnicos,
+          cantGestionesExtensiones: asesor.cantidad_gestiones_extensiones,
         }));
        
         setAsesores(mapeado)
@@ -118,6 +139,9 @@ export const Asesores = () => {
           cantGestiones: asesor.cantidad_gestiones,
           cantMatriculas: asesor.cantidad_matriculas,
           cantLiquidaciones: asesor.cantidad_liquidaciones,
+          cantGestionesEmpresa: asesor.cantidad_gestiones_empresa,
+          cantGestionesTecnicos: asesor.cantidad_gestiones_tecnicos,
+          cantGestionesExtensiones: asesor.cantidad_gestiones_extensiones,
         }))
         
         setAsesores(mapeado)
@@ -140,6 +164,9 @@ export const Asesores = () => {
           cantGestiones: asesor.cantidad_gestiones,
           cantMatriculas: asesor.cantidad_matriculas,
           cantLiquidaciones: asesor.cantidad_liquidaciones,
+          cantGestionesEmpresa: asesor.cantidad_gestiones_empresa,
+          cantGestionesTecnicos: asesor.cantidad_gestiones_tecnicos,
+          cantGestionesExtensiones: asesor.cantidad_gestiones_extensiones,
         }))
         
         setAsesores(mapeado)
