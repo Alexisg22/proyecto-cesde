@@ -24,16 +24,28 @@ const Registro = () => {
       const response = await axios.post(url, body);
       const token = response.data.token;
       localStorage.setItem('token', token);
-      return token; 
+      return { token }; // Devuelve el token si la solicitud es exitosa
     } catch (e) {
-      console.log(e);
-      return '';
+      if (e.response) {
+        // Accede a la data dentro de la respuesta de error
+        const error = e.response.data.error || e.response.data.detail;
+        console.log(e);
+        
+        return { error };
+      } else if (e.request) {
+        // Errores que ocurren cuando no hay respuesta del servidor
+        return { error: 'No se pudo establecer una conexión con el servidor.' };
+      } else {
+        // Errores que ocurren antes de enviar la solicitud
+        return { error: 'Ocurrió un error al intentar enviar la solicitud.' };
+      }
     }
   };
 
   async function manejarClicBotonInicio() {
-    const token = await datosIngreso();
-    if (token.length > 0) {
+    const { token, error } = await datosIngreso();
+
+    if (token) {
       navigate('/inicio'); // Navega a /inicio si el token es válido
     } else if (inputUsuario.length === 0 && inputContraseña.length === 0) {
       setAbrirModalAspiranteSinGesiones(true);
@@ -44,9 +56,10 @@ const Registro = () => {
     } else if (inputContraseña.length === 0) {
       setAbrirModalAspiranteSinGesiones(true);
       setTextoModal('Llena el campo Contraseña');
-    }else{
+    } else if (error) {
+      console.log(error); // Muestra el error en la consola para depuración
       setAbrirModalAspiranteSinGesiones(true);
-      setTextoModal('Datos incorrectos');
+      setTextoModal(error); // Muestra el error específico en el modal
     }
   }
 
