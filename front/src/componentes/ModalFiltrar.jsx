@@ -64,6 +64,8 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
         // Si no hay filtros seleccionados, reinicia el valor total de gestiones a 0
         if (filtrosSeleccionados.length <= 1) {
             setValorGestionTotal(0);
+            valorLlamadasRef.current = 0
+            valorWhatsappRef.current = 0
         }
         // Luego llama a la función pasada como prop para realizar la búsqueda
         buscarAspirantesConFiltros();
