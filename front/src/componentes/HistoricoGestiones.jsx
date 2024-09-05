@@ -25,9 +25,11 @@ export const HistoricoGestiones = ({ celularAspiranteSeleccionado, cerrarModal, 
                 asesor: gestion.asesor,
                 descripcion: gestion.observaciones,
                 tipoGestion: gestion.tipo_gestion_nombre,
+                tiempoGestion: gestion.tiempo_gestion,
                 resultadoGestion: gestion.tipificacion_nombre, // Asegúrate de que el nombre sea correcto
                 programa: gestion.programa_nombre,
                 sede: gestion.sede_nombre,
+                empresa: gestion.empresa_aspirante
             }))
 
 
@@ -56,6 +58,8 @@ export const HistoricoGestiones = ({ celularAspiranteSeleccionado, cerrarModal, 
         { id: 'descripcion', etiqueta: 'Descripcion' },
         { id: 'resultadoGestion', etiqueta: 'Resultado Gestión' },
         { id: 'tipoGestion', etiqueta: 'Tipo Gestión' },
+        { id: 'tiempoGestion', etiqueta: 'Tiempo Gestión' },
+        { id: 'empresa', etiqueta: 'Empresa' },
     ];
 
     return (
@@ -91,6 +95,8 @@ export const HistoricoGestiones = ({ celularAspiranteSeleccionado, cerrarModal, 
                                             <td >{gestion.descripcion}</td>
                                             <td >{gestion.resultadoGestion}</td>
                                             <td >{gestion.tipoGestion}</td>
+                                            <td >{gestion.tiempoGestion} seg</td>
+                                            <td >{gestion.empresa}</td>
                                         </tr>
                                     ))}
                                 </tbody>

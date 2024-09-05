@@ -111,7 +111,7 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGesti
         </select>
       );
 
-    case "tipificacion gestion final":
+    case "tipificacion ultima gestion":
       return (
         <select className="campoFiltro" onChange={cambioValorInput} required>
           <option value="">Seleccione tipificación</option>

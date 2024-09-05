@@ -1,11 +1,8 @@
-    .cuerpoTablaAsesores {
+.cuerpoTablaAsesores {
     width: 95%;
     max-height: calc(89% - 1.6rem);
     margin: .8rem auto;
     border-radius: .6rem;
-    overflow: auto;
-    overflow: overlay;
-    
 }
 
 .cuerpoTablaAsesores::-webkit-scrollbar {
@@ -29,11 +26,11 @@
 
 .tablaAsesores {
     width: 100%;
+    overflow-y: auto;
 }
 
 .tablaAsesores, th, td {
     border-collapse: collapse;
-    padding: 1rem;
     text-align: left;
 }
 

@@ -118,42 +118,36 @@ main.tabla {
 
 .matriculado {
     background-color: #13A438;
-    padding: .4rem 0;
+    padding: 1rem 2rem;
     border-radius: 2rem;
     text-align: center;
+    height: 3rem;
 }
 
-.en {
+.en{
     background-color: #e5ff23;
-    padding: .4rem 0;
+    padding: 1rem 2rem;
     border-radius: 2rem;
     text-align: center;
 }
 
 .sin{
     background-color: rgb(254, 178, 46);
-    padding: .4rem ;
-    border-radius: 2rem;
-    text-align: center;
-}
-
-.no{
-    background-color: gray;
-    padding: .4rem .1rem;
+    padding: 1rem 2rem ;
     border-radius: 2rem;
     text-align: center;
 }
 
 .descartado {
     background-color: #FF571D;
-    padding: .4rem 0;
+    padding: 1rem 2rem;
     border-radius: 2rem;
     text-align: center;
 }
 
 .liquidado {
-    background-color: #14CDE0;
-    padding: .4rem 0;
+    background-color: #30eafa;
+    padding: 1rem .8rem;
     border-radius: 2rem;
     text-align: center;
 }
@@ -200,6 +194,7 @@ main.tabla {
 .filtrar{
     margin-bottom: 1rem;
     margin-right: 10px;
+    color: white;
 }
 
 .botonBuscar:hover {
@@ -215,7 +210,7 @@ main.tabla {
     z-index: 2; 
 }
 
-.cabezaTabla th:nth-child(3) {
+.cabezaTabla th:nth-child(2) {
     left: 7rem;     
     z-index: 2;
 }
@@ -227,7 +222,7 @@ main.tabla {
     position: sticky;
 }
 
-.cuerpoTabla tr:nth-child(odd) td:nth-child(3){
+.cuerpoTabla tr:nth-child(odd) td:nth-child(2){
     left: 7rem;
     background-color: #ffffff;
     position: sticky;
@@ -238,7 +233,7 @@ main.tabla {
     background-color: #e3e3e3;
     position: sticky;
 }
-.cuerpoTabla tr:nth-child(even) td:nth-child(3) {
+.cuerpoTabla tr:nth-child(even) td:nth-child(2) {
     left: 7rem;
     background-color: #e3e3e3;
     position: sticky;
@@ -259,6 +254,10 @@ main.tabla {
     align-items: center;
   }
   
+.noDescargar{
+    display: none;
+}
+  
 .descargar {
     background-color: #13A438; 
     color: rgb(0, 0, 0);
@@ -269,6 +268,7 @@ main.tabla {
     text-decoration: none;
     margin-right: 0.8em;
     text-align: center;
+    color: white;
   }
   
 .descargar:hover {
@@ -287,10 +287,16 @@ main.tabla {
     padding: 30px;
     /* border: 1px solid #ccc; */
     border-radius: 5px;
-    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    ; /* Asegura que esté por encima de otros elementos */
+    z-index: 10
   }
   
   .textoCargando{
     font-size: 2rem;
     color: #333;
+    z-index: 10
+  }
+
+  .ocultarCargando{
+    opacity: 0;
   }

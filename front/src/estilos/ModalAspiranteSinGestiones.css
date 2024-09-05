@@ -10,6 +10,7 @@
     left: 23%;
     z-index: 1;
     border-radius: 5px;
+    box-shadow: 0 .4rem .8rem #0005;
 
     & h2{
         margin-top: 1em;

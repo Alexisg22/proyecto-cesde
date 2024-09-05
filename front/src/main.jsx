@@ -3,6 +3,7 @@ import { Principal } from './paginas/Principal.jsx'
 import { Asesores } from './paginas/Asesores.jsx'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Registro from './paginas/Registro.jsx';
 
 function App() {
 
@@ -10,7 +11,8 @@ function App() {
     <React.Fragment>
       <Router>
         <Routes>
-          <Route path="/" element={<Principal />} />
+          <Route path="/" element={<Registro />} />
+          <Route path="/inicio" element={<Principal />}/>
           <Route path="/asesores" element={<Asesores />} />
         </Routes>
       </Router>
@@ -20,6 +22,6 @@ function App() {
 ReactDOM.createRoot(document.getElementById('root')).render(
 
   <React.StrictMode>
-    <App />
+      <App />
   </React.StrictMode>,
 )

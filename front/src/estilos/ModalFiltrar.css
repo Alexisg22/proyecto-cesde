@@ -13,7 +13,8 @@
         text-align: center;
         position: fixed;
         top: 13%;
-        left: 45%;
+        left: 48%;
+        font-size: 1.5rem;
     }
 }
 
@@ -40,7 +41,7 @@
     background-color: #13A438;
     border-radius: 5px;
     border: solid 1px black;
-    color: black;
+    color: white;
 
     &:hover{
         background-color: white;

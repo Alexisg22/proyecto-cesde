@@ -1,11 +1,10 @@
 .modalSubirBD{
     width: 74vw;
-    height: 80vh;
+    height: 82vh;
     background-color: #DDDDDD;
     position: fixed;
     top: 10%;
     left: 15%;
-    z-index: 1;
     text-align: center;
     border-radius: 5px;
 
@@ -40,7 +39,7 @@
     height: 30vh;
     display: flex;
     justify-content: space-around;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
 }
 
 .botonCerrar{
@@ -105,7 +104,7 @@
     background-color: #13A438;
     border-radius: 5px;
     border: solid 1px black; 
-    color: black;
+    color: white;
     font-size: 1.1em;
 
     &:hover{

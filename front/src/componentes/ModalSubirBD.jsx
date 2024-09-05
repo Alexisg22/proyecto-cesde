@@ -64,21 +64,7 @@ export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
         }
     });
 
-    // Manejo del cierre del modal con la tecla Escape
-    useEffect(() => {
-        const handleKeyDown = (event) => {
-            if (event.key === 'Escape') {
-                cerrarModal();  // Llamamos a la función cerrarModal cuando se presiona Escape
-            }
-        };
 
-        document.addEventListener('keydown', handleKeyDown);
-
-        // Limpiamos el event listener al desmontar el componente
-        return () => {
-            document.removeEventListener('keydown', handleKeyDown);
-        };
-    }, [cerrarModal]);
 
     // Si el modal no está abierto, no se muestra nada
     if (!modalAbierto) return null;
@@ -99,10 +85,6 @@ export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
                     <div className='contenedorInpuSubirBD'>
                         <input  type="file" id='BD1' name='predictivo' className='inputSubirBD'
                             {...register('predictivo', {onChange: capturarNombreInput}, {
-                                required: {
-                                    value: true,
-                                    message: 'esta BD es requerida'
-                                }
                             })}
                         />
                         {/* Muestra el mensaje de error si no se cumple la validación */}
@@ -118,10 +100,6 @@ export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
                     <div className='contenedorInpuSubirBD'>
                         <input  type="file" id='BD2' name='matricula' className='inputSubirBD'
                             {...register('matricula',{onChange: capturarNombreInput}, {
-                                required: {
-                                    value: true,
-                                    message: 'esta BD es requerida'
-                                }
                             })}
                         />
                         {errors.matricula && <samp>{errors.matricula.message}</samp>}
@@ -135,10 +113,6 @@ export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
                     <div className='contenedorInpuSubirBD'>
                         <input  type="file" id='BD3' name='whatsapp' className='inputSubirBD'
                             {...register('whatsapp',{onChange: capturarNombreInput}, {
-                                required: {
-                                    value: true,
-                                    message: 'esta BD es requerida'
-                                }
                             })}
                         />
                         {errors.whatsapp && <samp>{errors.whatsapp.message}</samp>}
@@ -152,10 +126,6 @@ export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
                     <div className='contenedorInpuSubirBD'>
                         <input  type="file" id='BD4' name='SMS' className='inputSubirBD'
                             {...register('SMS',{onChange: capturarNombreInput}, {
-                                required: {
-                                    value: true,
-                                    message: 'esta BD es requerida'
-                                }
                             })}
                         />
                         {errors.SMS && <samp>{errors.SMS.message}</samp>}

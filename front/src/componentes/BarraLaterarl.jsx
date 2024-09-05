@@ -7,7 +7,7 @@ import { ModalAgregarTipoficacion } from './ModalAgregarTipificacion.jsx';
 import '../estilos/BarraLateral.css'
 
 // Componente principal BarraLateral
-export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, procesoSelect }) => {
+export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, procesoSelect,  ocultarModalCargando, setModalOculto }) => {
 
   // useNavigate se utiliza para la navegación entre páginas
   const navigate = useNavigate();
@@ -73,13 +73,13 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, 
 
           {/* Genera un checkbox para cada columna, excepto "Nit de empresa" si no es aplicable */}
           {Object.entries(visibilidadColumna).map(([key, value]) => (
-            (key !== 'nitEmpresa' || procesoSelect === 'empresas' || procesoSelect === 'general') && (
+            (key !== 'nombreEmpresa' || procesoSelect === 'empresas' || procesoSelect === 'general') && (
               <CheckboxBarraLateral
                 key={key}
                 id={key}
                 value={key}
                 // Muestra el nombre de la columna con formato adecuado
-                label={key === 'nitEmpresa' ? 'Nit de empresa' : key.replace(/([A-Z])/g, ' $1').replace(/^./g, str => str.toUpperCase())}
+                label={key === 'nombreEmpresa' ? 'Nombre de empresa' : key.replace(/([A-Z])/g, ' $1').replace(/^./g, str => str.toUpperCase())}
                 chequeado={value} // Estado de visibilidad de la columna
                 onChange={() => manejarCambioCasillaVerificacion(key)} // Función que maneja el cambio de estado de la columna
               />
@@ -102,7 +102,8 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, 
             texto={'Agregar nueva tipificación'} // Texto del botón
             ide={'botonAsesores'} // ID del botón
             setModalAbierto={setModalAbierto} // Función para abrir el modal
-            modalAbierto={modalAbierto} // Estado del modal
+            modalAbierto={modalAbierto}
+            ocultarModalCargando={ocultarModalCargando} // Estado del modal
           />
         </div>
       </aside>
@@ -110,7 +111,7 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, 
       {/* Modal para agregar una nueva tipificación, se abre o cierra según el estado modalAbierto */}
       <ModalAgregarTipoficacion
         modalAbierto={modalAbierto} // Estado de apertura del modal
-        cerrarModal={() => { setModalAbierto(false) }} // Función para cerrar el modal
+        cerrarModal={() => { setModalAbierto(false), setModalOculto(false) }} // Función para cerrar el modal
       />
     </>
   )

@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* Fondo verde claro */
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-box {
+    display: flex;
+    width: 900px;
+    height: 450px;
+    background: linear-gradient(135deg, #13A438, #b9f6ca); /* Degradado verde */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.welcome-section {
+    flex: 1.5;  /* Aumenta el tamaño de esta sección */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #13A438; /* Fondo verde */
+}
+
+.welcome-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Acomoda la imagen al tamaño del contenedor */
+    border-radius: 0; /* Remueve bordes redondeados de la imagen */
+}
+
+.login-section {
+    flex: 1;  /* Disminuye el tamaño de esta sección */
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 70px; /* Ajusta el padding para mayor espacio */
+}
+
+.login-section h2 {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 24px;
+    color: #000000; 
+}
+
+.login-section h1 {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: #13A438; /* Texto verde */
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%; /* Asegura que el input ocupe todo el espacio disponible */
+    transform: translateX(-15px);
+}
+
+.input-container i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #13A438;
+
+
+}
+
+.input-container input {
+    width: calc(100% - 20px); /* Descuenta el padding para que no se pegue al borde */
+    padding: 10px 15px 10px 40px; /* Aumenta el padding derecho para mayor espacio */
+    margin-bottom: 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.input-container input::placeholder {
+    color: #999;
+}
+
+.login-section label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.login-section a {
+    text-decoration: none;
+    color: #13A438;
+    font-size: 14px;
+    text-align: right;
+    display: block;
+    margin-bottom: 20px;
+}
