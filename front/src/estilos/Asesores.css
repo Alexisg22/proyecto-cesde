@@ -26,5 +26,36 @@
     background-color: #fff;
     box-shadow: 0 .4rem .8rem #0005;
     margin-bottom: 3em;
-    overflow-y: auto;
+    /* Asegúrate de que el contenedor esté centrado */
+    display: flex;
+    flex-direction: column;
+    padding: 1em; 
+
 }
+
+.tablaAsesores {
+    display: block;
+    max-height: 60vh; /* Ajusta esta altura según sea necesario */
+    overflow-y: auto; /* Scroll solo vertical */
+    border-collapse: collapse;
+}
+
+.cabezaTablaAsesores {
+    position: sticky;
+    top: 0;
+    background: #fff; /* Color de fondo para el encabezado */
+    z-index: 1; /* Asegúrate de que el encabezado esté encima de las filas */
+}
+
+.cuerpoTablaAsesores tr:nth-child(even) {
+    background-color: #f2f2f2; /* Alterna el color de fondo para las filas */
+}
+
+.tablaAsesoresContenedor {
+    width: 100%;
+    max-height: 60vh; /* Ajusta esta altura según sea necesario */
+    border: 1px solid #ddd; /* Añade un borde al contenedor para visibilidad */
+}
+
+
+
