@@ -1,6 +1,6 @@
 .asesoresMain{
-    width: 100vw;
-    height: 100vh;  
+    width: 98vw;
+    height: 96vh;  
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +16,7 @@
 }
 
 .asesoresContenedor{
-    width: 90vw;
+    width: 85vw;
     background-color: #fff;
     box-shadow: 0 .4rem .8rem #0005;
     overflow-y: auto;

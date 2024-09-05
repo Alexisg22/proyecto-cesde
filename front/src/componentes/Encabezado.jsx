@@ -13,20 +13,25 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, texto
   const navigate = useNavigate()
 
   const manejarClicBotonInicio = () => {
-    navigate('/'); // Navega a la ruta /asesores
+    navigate('/inicio'); // Navega a la ruta /asesores
   };
 
   const seleccionarProceso = (e) =>{
     setProcesoSelect(e.target.value)
   }
 
+  const manejarCerrarSesion = () => {
+    localStorage.removeItem('token'); // Elimina el token del localStorage
+    navigate('/'); // Redirige al usuario a la página de inicio o de login
+    window.location.reload();
+  };
   
 
   return (
     <header>
       <div className='contenedorPrincipal'>
         <div className='contenedorLogoAndes'>
-          <img id='logoAndes' src="../../public/imagenes/AndesBPO.png" />
+        <img id='logoAndes' src="/imagenes/AndesBPO.png" alt="Logo Andes BPO" />
         </div>
 
         <div className='contenedorSelectProceso'>
@@ -42,6 +47,7 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, texto
 
         <h1 id={ide} className='textoInicio'>{textoEncabezado}</h1>
         <div className='contenedorBotones'>
+          <button className='cerrarSesion' onClick={manejarCerrarSesion}>Cerrar Sesión</button>
           <div className='btnSubirBD'>
             {mostrarBotonSubirBD && (
               <BotonVerde
@@ -54,7 +60,7 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, texto
             )}
           </div>
 
-          <div className='ontenedorInicio'>
+          <div className='contenedorInicio'>
             {mostrarBotonInicio && (
               <BotonNavegar
                 onClick={manejarClicBotonInicio}

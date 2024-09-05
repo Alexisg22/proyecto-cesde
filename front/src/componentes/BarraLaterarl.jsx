@@ -73,13 +73,13 @@ export const BarraLaterarl = ({ onCambioVisibilidadColumna, visibilidadInicial, 
 
           {/* Genera un checkbox para cada columna, excepto "Nit de empresa" si no es aplicable */}
           {Object.entries(visibilidadColumna).map(([key, value]) => (
-            (key !== 'nitEmpresa' || procesoSelect === 'empresas' || procesoSelect === 'general') && (
+            (key !== 'nombreEmpresa' || procesoSelect === 'empresas' || procesoSelect === 'general') && (
               <CheckboxBarraLateral
                 key={key}
                 id={key}
                 value={key}
                 // Muestra el nombre de la columna con formato adecuado
-                label={key === 'nitEmpresa' ? 'Nit de empresa' : key.replace(/([A-Z])/g, ' $1').replace(/^./g, str => str.toUpperCase())}
+                label={key === 'nombreEmpresa' ? 'Nombre de empresa' : key.replace(/([A-Z])/g, ' $1').replace(/^./g, str => str.toUpperCase())}
                 chequeado={value} // Estado de visibilidad de la columna
                 onChange={() => manejarCambioCasillaVerificacion(key)} // Función que maneja el cambio de estado de la columna
               />

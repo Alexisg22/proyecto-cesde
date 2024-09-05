@@ -53,14 +53,23 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
             setSeleccionOpcion('');
             setValorInput('');
         }
-    };
+    }
 
     // Elimina un filtro de la lista de filtros seleccionados
     const eliminarFiltro = (index) => {
         setFiltrosSeleccionados(filtrosSeleccionados.filter((_, i) => i !== index));
     };
 
-
+    const buscarConFiltros = () => {
+        // Si no hay filtros seleccionados, reinicia el valor total de gestiones a 0
+        if (filtrosSeleccionados.length <= 1) {
+            setValorGestionTotal(0);
+            valorLlamadasRef.current = 0
+            valorWhatsappRef.current = 0
+        }
+        // Luego llama a la función pasada como prop para realizar la búsqueda
+        buscarAspirantesConFiltros();
+    };
 
     if (!modalAbierto) return null;
     
@@ -91,10 +100,10 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
                                 <option value="estado ultima gestion">Estado ultima gestion</option>
                                 <option value="dias ultima gestion">Días de la última gestión</option>
                                 <option value="fecha ultima gestion">Fecha de última gestión</option>
-                                <option value="tipificacion gestion final">tipificacion gestion final</option>
+                                <option value="tipificacion ultima gestion">Tipificacion ultima gestion</option>
                                 <option value="programa de formacion">Programa de formación</option>
-                                <option value="sede">Sede</option>
                                 <option value="empresa">Empresa</option>
+                                <option value="sede">Sede</option>
                             </select>                
 
                             {/* Componente ParametroFiltrar para manejar la entrada del valor */}
@@ -119,7 +128,7 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
 
                     <div className='filtrarBD'>
                         <button 
-                            onClick={buscarAspirantesConFiltros} 
+                            onClick={buscarConFiltros} 
                             className='botonVerde' 
                         >
                             {texto}

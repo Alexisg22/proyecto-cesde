@@ -36,6 +36,7 @@
 .btnSubirBD{
     align-items: center;
     justify-content: center;
+    margin-right: 20px;
 }
 
 .textoInicio{
@@ -86,3 +87,22 @@
         }
     
   }
+
+.cerrarSesion{
+    width: 120px;
+    height: 30px;
+    margin-top: 20px;
+    margin-right: 20px;
+    /* margin-left: 120px; */
+    background-color: #13A438;
+    border-radius: 5px;
+    border: solid 1px black;
+    color: white;
+
+    &:hover{
+        background-color: white;
+        color: #13A438;
+        cursor: pointer;
+        
+    }
+}

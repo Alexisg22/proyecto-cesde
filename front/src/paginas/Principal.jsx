@@ -6,8 +6,21 @@ import { Estadisticas } from "../componentes/Estadisticas.jsx";
 import "../estilos/Asesores.css";
 import { obtenerEstadisticas } from "../api/estadisticas.api.js";
 const Tabla = lazy (() => import("../componentes/Tabla.jsx"));
+import { useNavigate } from 'react-router-dom'; // Importa el hook useNavigate
 
 export const Principal = () => {
+
+  const token = localStorage.getItem('token'); // Obtén el token del localStorage
+  const navigate = useNavigate(); // Inicializa el hook useNavigate
+  const [isLoading, setIsLoading] = useState(true); // Estado para manejar la carga
+
+  useEffect(() => {
+    if (!token) {
+      navigate('/'); // Redirige al inicio o a la página de login si no hay token
+    } else {
+      setIsLoading(false); // Establece isLoading en false cuando el token esté presente
+    }
+  }, [token, navigate]);
 
   const [procesoSelect, setProcesoSelect] = useState("general");
   const [barraLateralKey, setBarraLateralKey] = useState(0);
@@ -24,7 +37,7 @@ export const Principal = () => {
     diasUltGestión: false,
     fechaUltGestión: true,
     gestiónFinal: true,
-    tipificaciónGestiónFinal: true,
+    tipificacionUltimaGestion: true,
     sede: false,
     programaFormación: false,
   });
@@ -37,7 +50,6 @@ export const Principal = () => {
   const [modalOculto, setModalOculto] = useState(false);
   const [modalOcultoSubirBD, setModalOcultoSubirBD] = useState(false)
 
-
   useEffect(() =>{
     setFechaInicio('')
     setFechaFin('')
@@ -49,6 +61,7 @@ export const Principal = () => {
 
       //evaluo si existe la fecha incio y la fech fin que viene desde estadisticas
       let nuevoProceso = "";
+      let proceso = "";
       if (fechaInicio != "" && fechaFin != "") {
         if (procesoSelect == "tecnicos") {
           nuevoProceso = `fechas/?fecha_inicio=${fechaInicio}&fecha_fin=${fechaFin}&proceso_nombre=técnicos`;
@@ -57,7 +70,7 @@ export const Principal = () => {
         } else if (procesoSelect == "extensiones") {
           nuevoProceso = `fechas/?fecha_inicio=${fechaInicio}&fecha_fin=${fechaFin}&proceso_nombre=extenciones`;
         } else {
-          nuevoProceso = `fechas/?fecha_inicio=${fechaInicio}&fecha_fin=${fechaFin}`;
+          nuevoProceso = `fechas/?fecha_inicio=${fechaInicio}&fecha_fin=${fechaFin}&proceso_nombre`;
         }
 
         const respuesta = await obtenerEstadisticas(nuevoProceso);
@@ -74,26 +87,26 @@ export const Principal = () => {
           cantidadMatriculas:
             estadisticasGenerales.estadisticas.find(
               (e) =>
-                e?.gestiones__estado__nombre?.toLowerCase() === "matriculado"
+                e?.estado__nombre?.toLowerCase() === "matriculado"
             )?.count || 0,
           cantidadLiquidaciones:
             estadisticasGenerales.estadisticas.find(
-              (e) => e?.gestiones__estado__nombre?.toLowerCase() === "liquidado"
+              (e) => e?.estado__nombre?.toLowerCase() === "liquidado"
             )?.count || 0,
           enGestion:
             estadisticasGenerales.estadisticas.find(
               (e) =>
-                e?.gestiones__estado__nombre?.toLowerCase() === "en gestión"
+                e?.estado__nombre?.toLowerCase() === "en gestión"
             )?.count || 0,
           sinGestion:
             estadisticasGenerales.estadisticas.find(
               (e) =>
-                e?.gestiones__estado__nombre?.toLowerCase() === "sin gestión"
+                e?.estado__nombre?.toLowerCase() === "sin gestión"
             )?.count || 0,
           cancelados:
             estadisticasGenerales.estadisticas.find(
               (e) =>
-                e?.gestiones__estado__nombre?.toLowerCase() === "descartado"
+                e?.estado__nombre?.toLowerCase() === "descartado"
             )?.count || 0, // Puedes agregar lógica adicional para calcular cancelados si es necesario
           noGestionable: 0, // Puedes agregar lógica adicional para calcular noGestionable si es necesario
         };
@@ -101,17 +114,21 @@ export const Principal = () => {
         setEstadisticas(mapeado);
       } else {
         if (procesoSelect == "tecnicos") {
-          nuevoProceso = "proceso-tecnicos/";
+          nuevoProceso = "proceso-técnicos/";
+          proceso = "tecnicos"
         } else if (procesoSelect == "empresas") {
           nuevoProceso = "proceso-empresa/";
+          proceso = "empresa"
         } else if (procesoSelect == "extensiones") {
-          nuevoProceso = "proceso-extensiones/";
+          nuevoProceso = "proceso-extenciones/";
+          proceso = "extenciones"
         } else {
           nuevoProceso = "";
+          proceso = "generales"
         }
 
         const respuesta = await obtenerEstadisticas(nuevoProceso);
-        const estadisticasGenerales = respuesta.data.estadisticas_generales;
+        const estadisticasGenerales = respuesta.data[`estadisticas_${proceso}`];
         const mapeado = {
           contactabilidad:
             estadisticasGenerales.contactabilidad.percentage.toFixed(2) + " %",
@@ -122,24 +139,24 @@ export const Principal = () => {
           cantidadMatriculas:
             estadisticasGenerales.estadisticas_basicas.find(
               (e) =>
-                e?.gestiones__estado__nombre?.toLowerCase() == "matriculado"
+                e?.estado__nombre?.toLowerCase() == "matriculado"
             )?.count || 0,
           cantidadLiquidaciones:
             estadisticasGenerales.estadisticas_basicas.find(
-              (e) => e?.gestiones__estado__nombre?.toLowerCase() == "liquidado"
+              (e) => e?.estado__nombre?.toLowerCase() == "liquidado"
             )?.count || 0,
           enGestion:
             estadisticasGenerales.estadisticas_basicas.find(
-              (e) => e?.gestiones__estado__nombre?.toLowerCase() == "en gestión"
+              (e) => e?.estado__nombre?.toLowerCase() == "en gestión"
             )?.count || 0,
           sinGestion:
             estadisticasGenerales.estadisticas_basicas.find(
               (e) =>
-                e?.gestiones__estado__nombre?.toLowerCase() == "sin gestión"
+                e?.estado__nombre?.toLowerCase() == "sin gestión"
             )?.count || 0,
           cancelados:
             estadisticasGenerales.estadisticas_basicas.find(
-              (e) => e?.gestiones__estado__nombre?.toLowerCase() == "descartado"
+              (e) => e?.estado__nombre?.toLowerCase() == "descartado"
             )?.count || 0, // Puedes agregar lógica adicional para calcular cancelados si es necesario
           noGestionable: 0, // Puedes agregar lógica adicional para calcular noGestionable si es necesario
         };
@@ -157,10 +174,10 @@ export const Principal = () => {
     if (procesoSelect === "empresas" || procesoSelect === "general") {
       setVisibilidadColumna((prevState) => ({
         ...prevState,
-        nitEmpresa: false, // Inicialmente no visible
+        nombreEmpresa: false, // Inicialmente no visible
       }));
     } else {
-      const { nitEmpresa, ...restVisibilidad } = visibilidadColumna;
+      const { nombreEmpresa, ...restVisibilidad } = visibilidadColumna;
       setVisibilidadColumna(restVisibilidad);
     }
   }, [procesoSelect]);
