@@ -49,7 +49,7 @@ const Registro = () => {
       navigate('/inicio'); // Navega a /inicio si el token es válido
     } else if (inputUsuario.length === 0 && inputContraseña.length === 0) {
       setAbrirModalAspiranteSinGesiones(true);
-      setTextoModal('Llena ambos campos');
+      setTextoModal('Completa ambos los campos');
     } else if (inputUsuario.length === 0) {
       setAbrirModalAspiranteSinGesiones(true);
       setTextoModal('Llena el campo de Usuario');
