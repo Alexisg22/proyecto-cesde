@@ -79,6 +79,10 @@ export const Principal = () => {
 
         const contactabilidad = respuesta.data.contactabilidad;
 
+        const promedioLlamada = respuesta.data.promedio_tiempo_llamada;
+
+        const promedioWhatsApp = respuesta.data.promedio_tiempo_whatsapp;
+
         const mapeado = {
           contactabilidad:
             contactabilidad.contactabilidad.percentage.toFixed(2) + " %",
@@ -108,7 +112,10 @@ export const Principal = () => {
               (e) =>
                 e?.estado__nombre?.toLowerCase() === "descartado"
             )?.count || 0, // Puedes agregar lógica adicional para calcular cancelados si es necesario
-          noGestionable: 0, // Puedes agregar lógica adicional para calcular noGestionable si es necesario
+          noGestionable: 0,
+          tiempoLlamada: promedioLlamada,
+          tiempoWhatsApp:promedioWhatsApp,
+          // Puedes agregar lógica adicional para calcular noGestionable si es necesario
         };
 
         setEstadisticas(mapeado);
@@ -158,7 +165,9 @@ export const Principal = () => {
             estadisticasGenerales.estadisticas_basicas.find(
               (e) => e?.estado__nombre?.toLowerCase() == "descartado"
             )?.count || 0, // Puedes agregar lógica adicional para calcular cancelados si es necesario
-          noGestionable: 0, // Puedes agregar lógica adicional para calcular noGestionable si es necesario
+          noGestionable: 0,
+          tiempoLlamada: estadisticasGenerales.promedio_tiempo_llamada,
+          tiempoWhatsApp:estadisticasGenerales.promedio_tiempo_whatsapp, // Puedes agregar lógica adicional para calcular noGestionable si es necesario
         };
         setEstadisticas(mapeado);
       }

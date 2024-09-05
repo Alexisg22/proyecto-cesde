@@ -13,6 +13,12 @@
 
 .asesoresBuscador{
     margin-top: 2em;
+    position: sticky;
+    top: 0%;
+}
+
+.asesoresTabla{
+    overflow-y: auto;
 }
 
 .asesoresContenedor{
