@@ -1,27 +1,71 @@
-import '../estilos/Estadisticas.css'
-import '../estilos/Estadistica.css'
-import { Estadistica } from './Estadistica.jsx'
-import React from 'react'
+import { Estadistica } from './Estadistica.jsx';
+import React, { useEffect, useState } from 'react';
+import '../estilos/Estadistica.css';
+import '../estilos/Estadisticas.css';
 
-export const Estadisticas = () => {
+
+export const Estadisticas = ({estadisticas, fechaInicio, fechaFin, setFechaInicio, setFechaFin, tituloEstadisticas}) => {
+
+  const hoy = new Date().toISOString().split('T')[0];
+      
+    if(!estadisticas){
+      return
+    }
+      
+  const manejarCambioFechaInicio = (e) => {
+    setFechaInicio(e.target.value)
+  }
+
+  const manejarCambioFechaFin = (e) => {
+    setFechaFin(e.target.value)
+  } 
+  
   return (
     <>
     <div className='contenedorEstadistica'>
         <section className='contenidoEstadistica'>
 
             <div className='titulo'>
-                <h1>Estadisticas Generales</h1>
-            </div>
+                <h1 className='tituloEstadisticas'>Estadísticas {tituloEstadisticas}</h1>
+                <div className="formularioFecha">
+          
+                  <div className="contenedorFechasEstadisticas">
+                    <div className="contenedorFechaIndividual">
+                      <input
+                        type="date"
+                        value={fechaInicio}
+                        onChange={manejarCambioFechaInicio}
+                        className="fechaEntrada"
+                        max={hoy}
+                      />
+                    </div>
+                    <span className="separadorFechas">a</span>
+                    <div className="contenedorFechaIndividual">
+                      <input
+                      type="date"
+                      value={fechaFin}
+                      onChange={manejarCambioFechaFin}
+                      className="fechaEntrada"
+                      max={hoy}
+                    />
+                    </div>
+                  </div> 
+                </div>
+                </div>
+            
+
             <div className='contenido'>
             
-                <Estadistica id='estadistica1' label='estadistica 1' dato='dato 1'/>
-                <Estadistica id='estadistica2' label='estadistica 2' dato='dato 2'/>
-                <Estadistica id='estadistica3' label='estadistica 3' dato='dato 3'/>
-                <Estadistica id='estadistica4' label='estadistica 4' dato='dato 4'/>
-                <Estadistica id='estadistica5' label='estadistica 5' dato='dato 5'/>
-                <Estadistica id='estadistica6' label='estadistica 6' dato='dato 6'/>
-                <Estadistica id='estadistica7' label='estadistica 7' dato='dato 7'/>
-                <Estadistica id='estadistica8' label='estadistica 8' dato='dato 8'/>
+                <Estadistica id='contactabilidad' label='Contactabilidad' dato={estadisticas.contactabilidad} />
+                <Estadistica id='noContactabilidad' label='No contactabilidad' dato={estadisticas.noContactabilidad} />
+                <Estadistica id='cantidadMatriculas' label='Cantidad de matrículas' dato={estadisticas.cantidadMatriculas} />
+                <Estadistica id='cantidadLiquidaciones' label='Cantidad de liquidaciones' dato={estadisticas.cantidadLiquidaciones} />
+                <Estadistica id='enGestion' label='En gestión' dato={estadisticas.enGestion} />
+                <Estadistica id='sinGestion' label='Sin gestión' dato={estadisticas.sinGestion} />  
+                <Estadistica id='cancelado' label='Cancelados' dato={estadisticas.cancelados} />
+                <Estadistica id='tiempoLlamada' label='Tiempo promedio Llamada (Min)' dato={estadisticas.tiempoLlamada} />
+                <Estadistica id='tiempoWhatsApp' label='Tiempo promedio WhatsApp (Min)' dato={estadisticas.tiempoWhatsApp}/>
+               
             </div>
 
         </section>
@@ -31,4 +75,3 @@ export const Estadisticas = () => {
     
   )
 }
-

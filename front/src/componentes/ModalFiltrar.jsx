@@ -1,66 +1,141 @@
-import { BotonVerde } from './BotonVerde.jsx'
-import React, {useState} from 'react'
-import '../estilos/ModalFiltrar.css'
+import React, { useState, useRef, useEffect } from 'react';
+import '../estilos/ModalFiltrar.css';
+import { ParametroFiltrar } from './ParametroFiltrar.jsx';
+
+// Definición del componente ModalFiltrar
+export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados, setFiltrosSeleccionados, cerrarModal, modalAbierto }) => {
+    // Estados locales del componente
+    const [seleccionOpcion, setSeleccionOpcion] = useState(''); // Opción seleccionada en el dropdown
+    const [valorInput, setValorInput] = useState(''); // Valor ingresado en el input
+    const [valorGestionTotal, setValorGestionTotal] = useState(0); // Valor total de gestiones
+    const valorLlamadasRef = useRef(0); // Inicializa con 0
+    const valorWhatsappRef = useRef(0); // Inicializa con 0
 
 
-export const ModalFiltrar = ({cerrarModal, modalAbierto}) => {
+    const cambioSeleccion = (e) => {
+        setSeleccionOpcion(e.target.value);
+    };
 
-    //Estado para almacenar la opción seleccionada
-    const [seleccionOpcion, setSeleccionOpcion] = useState('');
-    const [filtrosAgregados, setFiltrosAgregados] = useState([{}])
-    // Función para manejar el cambio en el seleccion
-    const cambioSeleccion = (event) => {
-        setSeleccionOpcion(event.target.value);
-        setFiltrosAgregados(...setSeleccionOpcion)
-        console.log(filtrosAgregados)
-      };
+    // Maneja el cambio en el valor del input
+    const cambioValorInput = (e) => {
+        setValorInput(e.target.value);
+        
+        const nuevoValorGestion = parseFloat(e.target.value) || 0; // Convertir a número, manejar caso de entrada 
 
-    if(!modalAbierto) return
+        if (seleccionOpcion === 'cantidad llamadas') {
+            valorLlamadasRef.current = nuevoValorGestion;
+        } else if (seleccionOpcion === 'cantidad whatsapp') {
+            valorWhatsappRef.current = nuevoValorGestion;
+        }
+        // Actualiza la referencia para el valor total de gestiones
+        const valorTotal = valorLlamadasRef.current + valorWhatsappRef.current;
+        setValorGestionTotal(valorTotal);
+    };
 
-  return (
-    <>
-    <div className='contenedorFiltrar'> 
-            <div className='modalFiltrar'>
-                 <div className='botonCerrar'>
-                    <button className='cerrarModal' onClick={cerrarModal}>X</button>
-                </div>
-            <h1>Filtrar datos</h1>
-                <div className='contenedorFiltros'>
+    // Maneja la adición de un nuevo filtro
+    const agregarFiltro = (event) => {
+        event.preventDefault(); // Previene el comportamiento por defecto del formulario
 
-                    <select name="filtro" id="filtro" className='seleccionDeFiltro' value={seleccionOpcion} onChange={cambioSeleccion}>
+        // Solo agrega el filtro si hay una opción seleccionada y un valor ingresado
+        if (seleccionOpcion && valorInput) {
+            // Verifica si el filtro ya existe en la lista
+            const filtroExistente = filtrosSeleccionados.find((filtro) => filtro.filtro === seleccionOpcion);
 
-                        <option value={null}>Selecione los filtros</option>
-                        <option value="Fecha de gestion">Fecha de gestion</option>
-                        <option value="diasUltimaGestion">Dias de la ultima gestion</option>
-                        <option value="mejorGestion">Mejor gestion</option>
-                        <option value="cantidadGestiones">Cantidad de gestiondes</option>
-                        <option value="cantidadLlamadas">Cantidad de llamadas</option>
-                        <option value="cantidadSms">Cantidad de SMS</option>
-                        <option value="cantidadWhatsapp">Cantidad de Whatsapp</option>
-                        <option value="fechaUltimaGestion">Fecha de ultima gestion</option>
-                        <option value="estado">Estado de la gestion</option>
+            // Si el filtro existe, actualiza su valor; si no, lo agrega a la lista
+            if (filtroExistente) {
+                setFiltrosSeleccionados(filtrosSeleccionados.map((filtro) =>
+                    filtro.filtro === seleccionOpcion ? { ...filtro, valor: valorInput } : filtro
+                ));
+            } else {
+                setFiltrosSeleccionados([...filtrosSeleccionados, { filtro: seleccionOpcion, valor: valorInput }]);
+            }
+            // Limpia los valores de selección y input después de agregar el filtro
+            setSeleccionOpcion('');
+            setValorInput('');
+        }
+    }
 
-                    </select>                
-                    
-                    <input type="text" className='campoFiltro' />
+    // Elimina un filtro de la lista de filtros seleccionados
+    const eliminarFiltro = (index) => {
+        setFiltrosSeleccionados(filtrosSeleccionados.filter((_, i) => i !== index));
+    };
 
-                </div>
+    const buscarConFiltros = () => {
+        // Si no hay filtros seleccionados, reinicia el valor total de gestiones a 0
+        if (filtrosSeleccionados.length <= 1) {
+            setValorGestionTotal(0);
+            valorLlamadasRef.current = 0
+            valorWhatsappRef.current = 0
+        }
+        // Luego llama a la función pasada como prop para realizar la búsqueda
+        buscarAspirantesConFiltros();
+    };
 
-                <div className='filtrosSeleccionados'>
+    if (!modalAbierto) return null;
+    
+    // console.log(filtrosSeleccionados);
 
+    // Actualiza el texto basado en la cantidad de filtros seleccionados
+    const cantidadFiltros = filtrosSeleccionados.length;
+    const texto = cantidadFiltros === 0 ? 'Sin filtros' : 'Filtrar';
+
+    return (
+        <>
+            <div className='contenedorFiltrar'> 
+                <div className='modalFiltrar'>
+                    <div className='botonCerrar'>
+                        {/* Botón para cerrar el modal */}
+                        <button className='cerrarModal' onClick={cerrarModal}>X</button>
+                    </div>
+                    <h1>Filtrar datos</h1>
                     <div>
-                        {seleccionOpcion && (<p>Has seleccionado: {seleccionOpcion}</p>)}
+                        <form className='formularioFiltros' onSubmit={agregarFiltro}>
+                            <select name="filtro" id="filtro" className='seleccionDeFiltro' value={seleccionOpcion} onChange={cambioSeleccion} required>
+                                <option value="">Seleccione los filtros</option>
+                                {/* Opciones para el dropdown */}
+                                <option value="cantidad llamadas">Cantidad de llamadas</option>
+                                <option value="cantidad whatsapp">Cantidad de Whatsapp</option>
+                                <option value="cantidad gestiones">Cantidad de gestiones</option>
+                                <option value="mejor gestion">Mejor gestión</option>
+                                <option value="estado ultima gestion">Estado ultima gestion</option>
+                                <option value="dias ultima gestion">Días de la última gestión</option>
+                                <option value="fecha ultima gestion">Fecha de última gestión</option>
+                                <option value="tipificacion ultima gestion">Tipificacion ultima gestion</option>
+                                <option value="programa de formacion">Programa de formación</option>
+                                <option value="empresa">Empresa</option>
+                                <option value="sede">Sede</option>
+                            </select>                
+
+                            {/* Componente ParametroFiltrar para manejar la entrada del valor */}
+                            <ParametroFiltrar seleccionOpcion={seleccionOpcion} cambioValorInput={cambioValorInput} valorGestionTotal={valorGestionTotal} />
+
+                            <button className='btnAgregarFiltro' type='submit'>Agregar filtro</button>
+                        </form>
                     </div>
 
-                </div>
+                    <div className='filtrosSeleccionados'>
+                        {filtrosSeleccionados.length > 0 ? (
+                            filtrosSeleccionados.map((filtro, index) => (
+                                <div key={index}>
+                                    <span> Filtro seleccionado: {filtro.filtro}: {filtro.valor}</span> 
+                                    <button className='btnEliminarFiltro' onClick={() => eliminarFiltro(index)}> X </button>
+                                </div>
+                            ))
+                        ) : (
+                            <p></p>
+                        )}
+                    </div>
 
-                <div className='botonFiltrar'>
-                    <BotonVerde ide={'botonVerde'} texto={'Filtrar'}/>
+                    <div className='filtrarBD'>
+                        <button 
+                            onClick={buscarConFiltros} 
+                            className='botonVerde' 
+                        >
+                            {texto}
+                        </button>
+                    </div>
                 </div>
-                
-        </div>
-    </div>
-  </>
-  )
-}
-
+            </div>
+        </>
+    );
+};

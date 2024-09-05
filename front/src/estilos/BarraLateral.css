@@ -1,11 +1,15 @@
 .barraLateral{
     width: 22vw;
-    height: 127.7vh;
+    height: 139vh;
     background-color: #DDD;
     gap:3em;  
     border-radius: 5px;
     margin-right: 1rem;
     margin-left: 10px;
+}
+
+hr{
+    margin-bottom: 2em;
 }
 
 .formularioCheckbox{
@@ -25,7 +29,7 @@
 }
 
 .hrBarraNavegaion{
-    margin-top: 1.5em;
+    margin-top: 1rem;
 }
 
 input[type="checkbox"]{
@@ -36,4 +40,6 @@ input[type="checkbox"]{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    margin-bottom: 5em;
 }

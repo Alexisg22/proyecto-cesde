@@ -1,11 +1,13 @@
 .contenedorPrincipal{
+    width: 100%;
     display: flex;
-    
+    /* justify-content: space-between; */
+    height: 6rem;
 }
 
 .contenedorLogoAndes{
-    width: 150px;
-    height: 80px;
+    width: 15%;
+    height: 70px;
     text-align: center;
     display: flex;
     align-items: center;
@@ -14,31 +16,93 @@
     margin-left: 20px;
 }
 
+.contenedorSelectProceso{
+    width: 15%;
+}
+
 #logoAndes{
     height: 100%;
     width: 100%;
     object-fit: contain;
 }
 
-.buscador{  
-    width: 600px;
-    height: 35px;
-    background-color: #DDDDDD;
-    margin-top: 20px;
-    margin-right: 50px;
-    border: 1px solid black;
-    border-radius: 5px;
+.contenedorBotones{
+    height: 100%;
+    margin-top: 5px;
     display: flex;
-    justify-content: end;
+
+}
+
+.btnSubirBD{
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.textoInicio{
+    width: 50%;
+    font-size: 2rem;
+    margin-top: 3vh;
     text-align: center;
-
-    .material-symbols-outlined {
-        font-size: 38px;
-      }
-
-      &:hover{
-        cursor: pointer;
-      }
+    padding-right: 5em;
+}
+#asesores{
+    width: 50%;
+    font-size: 2rem;
+    margin-top: 3vh;
+    text-align: start;
+    padding-right: 3em;
 }
 
 
+.filtroAspirante{
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+    height: 2em;
+    width: 100%;  
+    border: 1px solid black;
+
+}
+
+#asesoresFiltro{
+    display: none;
+}
+
+.btn-descargar {
+    background-color: #13A438; 
+    color: rgb(0, 0, 0); 
+    border: none; 
+    padding: 6px 9px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 14px; 
+    border: 1px solid black;
+    margin-top: 3.3vh;
+    margin-left: 3vh;
+
+        &:hover{
+            background-color: rgb(255, 255, 255);
+            color: #13A438;
+        }
+    
+  }
+
+.cerrarSesion{
+    width: 120px;
+    height: 30px;
+    margin-top: 20px;
+    margin-right: 20px;
+    /* margin-left: 120px; */
+    background-color: #13A438;
+    border-radius: 5px;
+    border: solid 1px black;
+    color: white;
+
+    &:hover{
+        background-color: white;
+        color: #13A438;
+        cursor: pointer;
+        
+    }
+}

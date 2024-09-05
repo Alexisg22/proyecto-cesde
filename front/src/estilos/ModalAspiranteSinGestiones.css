@@ -1,0 +1,62 @@
+.modalAspiranteSinGestiones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vw;
+    height: 50vh;
+    background-color: #fff;
+    position: fixed;
+    top: 20%;
+    left: 23%;
+    z-index: 1;
+    border-radius: 5px;
+    box-shadow: 0 .4rem .8rem #0005;
+
+    & h2{
+        margin-top: 1em;
+    }
+}
+
+.btnCerrarModalAspiranteSingestion{
+    display: flex;
+    width: 100%;
+    & button{
+        width: 2.5em;
+        height: 2.5em;
+        position: fixed;
+        left: 80%;
+        margin-top: 1em;
+    }
+ 
+    & button:hover{
+        cursor: pointer;
+        background-color: red;
+        border: 1px solid black;
+        border-radius: 2px;
+    }
+}
+.contenedorTexto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icono{
+    font-size: 5rem;
+    color: red;
+    text-align: center;  
+    font-weight:900;
+    margin-top: .8em ;
+    border-radius: 50px;
+    border: 3px solid red;
+    width: 1.5em;
+    box-shadow: 0 .4rem .8rem #0005;
+}
+
+.textoAspiranteSinGestion{
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 1.8em;
+}

@@ -1,11 +1,10 @@
 .modalSubirBD{
     width: 74vw;
-    height: 80vh;
+    height: 82vh;
     background-color: #DDDDDD;
     position: fixed;
     top: 10%;
     left: 15%;
-    z-index: 1;
     text-align: center;
     border-radius: 5px;
 
@@ -14,11 +13,12 @@
     }
 }
 
-.contenedorBotones{
+.contenedorBotonesBD{
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    flex-wrap: wrap;
+    gap: 2em;
 }
 
 .contenedorSubirBD{
@@ -27,14 +27,19 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 142%;
+    height:163vh;
     background-color: rgba(0, 0, 0, 0.5); 
 } 
+.tituloSubirBD{
+    font-size: 2rem;
+}
 
-.contenedorBotones{
+.contenedorBotonesBD{
+    padding: 2em;
+    height: 30vh;
     display: flex;
     justify-content: space-around;
-    margin-top: 8em;
+    margin-top: 1.5rem;
 }
 
 .botonCerrar{
@@ -54,7 +59,57 @@
     border-radius: 2px;
     cursor: pointer;
 }
+ 
+.contenedorInpuSubirBD{
+    width: 15em;
+}
 
-.botonGuardar{
+.labelSubirBD{
+    width: 100%;
+    height: 60px;
     margin-top: 4em;
+    background-color: #13A438;
+    border-radius: 5px;
+    border: solid 1px black;
+    color: white;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover{
+        background-color: white;
+        color: #13A438;
+        cursor: pointer;
+    }
+}
+
+.inputSubirBD{
+    display: none;
+}
+
+.nombreArchivo{
+    margin-top: .8em;
+    font-size: 1rem;
+    background-color: #13a43777;
+    padding: .5em;
+    border-radius: 5px;
+  
+}
+
+.inputEnviarFormulario{
+    width: 200px;
+    height: 60px;
+    margin-top: 6em;
+    background-color: #13A438;
+    border-radius: 5px;
+    border: solid 1px black; 
+    color: white;
+    font-size: 1.1em;
+
+    &:hover{
+        background-color: white;
+        color: #13A438;
+        cursor: pointer;
+    }
 }

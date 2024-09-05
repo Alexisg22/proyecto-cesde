@@ -12,15 +12,17 @@ body{
     display: flex;
     flex-direction: column;
     padding: 5px;
-    height: 45vh;
-    width: 74vw;
+    height: 57vh;
+    max-width: 74vw;
     background-color: #DDDDDD;
     border-radius: 5px;
     bottom: 10px;
+    margin-bottom: 1em;
     
     & .titulo {
-        margin: 0;
-        text-align: center;
+        margin: 0.5em 0em 2em 0.5em;
+        display: flex;
+        width: 100%;
     }
 
     & .contenido{
@@ -33,3 +35,27 @@ body{
         
     }
 }
+
+.contenedorFechasEstadisticas{
+    display: flex;
+    align-items: center;
+    gap:.5em;
+}
+
+.tituloEstadisticas{
+    padding-left: 10em;
+    width: 65%;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.formularioFecha{
+    width: 35%;
+}
+
+@media (max-width: 940px) {
+    .contenedorFechasEstadisticas {
+      display: block;
+      margin-left: 5em;
+    }
+  }

@@ -1,50 +1,27 @@
 import React, { useState } from 'react'
+import { Principal } from './paginas/Principal.jsx'
+import { Asesores } from './paginas/Asesores.jsx'
 import ReactDOM from 'react-dom/client'
-import Tabla from './componentes/Tabla.jsx'
-import { Encabezado } from './componentes/Encabezado.jsx'
-import { BarraLaterarl } from './componentes/BarraLaterarl.jsx'
-import { Estadisticas } from './componentes/Estadisticas.jsx'
-import "./estilos/Main.css"
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Registro from './paginas/Registro.jsx';
 
 function App() {
-  const [visibilidadColumna, setVisibilidadColumna] = useState({
-    'seleccionarTodos': false,
-    'celular': true,
-    'nit': false,
-    'nombreCompleto': true,
-    'cantLlamadas': true,
-    'cantMensajesDeTexto': false,
-    'cantWhatsapps': false,
-    'cantGestiones': true,
-    'mejorGestion': true,
-    'estadoAspirante': true,
-    'diasHabilesUlt.Gestion': false,
-    'fechaUltGestion': true,
-    'estadoUltGestion': true,
-    'celularAdicional': false,
-    'empresa': false,
-  });
-
-  const manejarCambioVisibilidadColumna = (nuevaVisibilidad) => {
-    setVisibilidadColumna(nuevaVisibilidad);
-  };
 
   return (
     <React.Fragment>
-      <Encabezado />
-      <main className="contenedorPrincipal">
-        <BarraLaterarl onCambioVisibilidadColumna={manejarCambioVisibilidadColumna} visibilidadInicial={visibilidadColumna} />
-        <div className="contenedorSecundario">
-          <Tabla visibilidadColumna={visibilidadColumna} />
-          <Estadisticas />
-        </div>
-      </main>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Registro />} />
+          <Route path="/inicio" element={<Principal />}/>
+          <Route path="/asesores" element={<Asesores />} />
+        </Routes>
+      </Router>
     </React.Fragment>
   );
 }
 ReactDOM.createRoot(document.getElementById('root')).render(
 
   <React.StrictMode>
-    <App/> 
+      <App />
   </React.StrictMode>,
 )

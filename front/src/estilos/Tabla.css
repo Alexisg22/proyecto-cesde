@@ -3,16 +3,11 @@
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
-}
-
-body {
-    min-height: 100vh;
-    background: rgb(255, 255, 255);
-    display: flex;
+    font-size: small;
 }
 
 main.tabla {
-    width: 74vw;
+    max-width: 74vw;
     height: 80vh;
     background-color: #fff5;
     backdrop-filter: blur(7px);
@@ -20,6 +15,7 @@ main.tabla {
     border-radius: 5px;
     overflow: hidden;
     margin-bottom: 1rem;
+    padding-bottom: 3em;
 }
 
 .encabezadoTabla {
@@ -33,8 +29,7 @@ main.tabla {
 }
 
 .encabezadoTabla .espacioBuscador {
-    width: 35%;
-    height: 100%;
+    width: 40%;
     background-color: #fff5;
     padding: 0 .8rem;
     border-radius: 2rem;
@@ -42,6 +37,7 @@ main.tabla {
     justify-content: center;
     align-items: center;
     transition: .2s;
+    box-shadow: 0 .1rem .4rem #0002;
 }
 
 .encabezadoTabla .espacioBuscador:hover {
@@ -61,6 +57,7 @@ main.tabla {
     background-color: transparent;
     border: none;
     outline: none;
+    height: 3em;
 }
 
 .cuerpoTabla {
@@ -121,24 +118,36 @@ main.tabla {
 
 .matriculado {
     background-color: #13A438;
-    color: #084F21;
-    padding: .4rem 0;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    text-align: center;
+    height: 3rem;
+}
+
+.en{
+    background-color: #e5ff23;
+    padding: 1rem 2rem;
     border-radius: 2rem;
     text-align: center;
 }
 
-.cancelado {
+.sin{
+    background-color: rgb(254, 178, 46);
+    padding: 1rem 2rem ;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.descartado {
     background-color: #FF571D;
-    color: #8c001a;
-    padding: .4rem 0;
+    padding: 1rem 2rem;
     border-radius: 2rem;
     text-align: center;
 }
 
 .liquidado {
-    background-color: #14CDE0;
-    color: #005b7f;
-    padding: .4rem 0;
+    background-color: #30eafa;
+    padding: 1rem .8rem;
     border-radius: 2rem;
     text-align: center;
 }
@@ -178,12 +187,14 @@ main.tabla {
     margin-left: 0.5rem; 
     transition: background-color 0.2s;
     text-align: center;
+    height: 2.5em;
 
 }
 
 .filtrar{
     margin-bottom: 1rem;
     margin-right: 10px;
+    color: white;
 }
 
 .botonBuscar:hover {
@@ -199,7 +210,7 @@ main.tabla {
     z-index: 2; 
 }
 
-.cabezaTabla th:nth-child(3) {
+.cabezaTabla th:nth-child(2) {
     left: 7rem;     
     z-index: 2;
 }
@@ -211,7 +222,7 @@ main.tabla {
     position: sticky;
 }
 
-.cuerpoTabla tr:nth-child(odd) td:nth-child(3){
+.cuerpoTabla tr:nth-child(odd) td:nth-child(2){
     left: 7rem;
     background-color: #ffffff;
     position: sticky;
@@ -222,7 +233,7 @@ main.tabla {
     background-color: #e3e3e3;
     position: sticky;
 }
-.cuerpoTabla tr:nth-child(even) td:nth-child(3) {
+.cuerpoTabla tr:nth-child(even) td:nth-child(2) {
     left: 7rem;
     background-color: #e3e3e3;
     position: sticky;
@@ -233,14 +244,59 @@ main.tabla {
     border-radius: 10px;
 }
 
-/* tbody td:first-child{
-    left: 0; 
-    position: sticky;
-    background-color: white;
+.tablaEscondida{
+    display: none;
 }
 
-tbody td:nth-child(3) {
-    left: 6rem; 
-    position: sticky;
+.filtrar-exportar {
+    display: flex;
+    gap: 10px; /* Ajusta este valor según el espacio que quieras entre los botones */
+    align-items: center;
+  }
+  
+.noDescargar{
+    display: none;
+}
+  
+.descargar {
+    background-color: #13A438; 
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 0.5rem 0.7rem; 
+    border: solid 1px black;
+    margin-top: .9em;
+    text-decoration: none;
+    margin-right: 0.8em;
+    text-align: center;
+    color: white;
+  }
+  
+.descargar:hover {
     background-color: white;
-} */
+        color: #13A438;
+        cursor: pointer;
+  }
+
+/* modal cargando */
+.modal-cargando {
+    position: absolute;
+    top: 25em;
+    left: 52em;
+    display: inline-block; /* Permite que el contenido de alrededor siga fluyendo */
+    background-color: rgba(255, 255, 255, 0.9); /* Color de fondo ligeramente translúcido */
+    padding: 30px;
+    /* border: 1px solid #ccc; */
+    border-radius: 5px;
+    ; /* Asegura que esté por encima de otros elementos */
+    z-index: 10
+  }
+  
+  .textoCargando{
+    font-size: 2rem;
+    color: #333;
+    z-index: 10
+  }
+
+  .ocultarCargando{
+    opacity: 0;
+  }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Django #
 *.log
 *.pot
@@ -136,3 +137,7 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+=======
+node_modules/@next/swc-win32-x64-msvc/next-swc.win32-x64-msvc.node
+node_modules/
+>>>>>>> 0b5d9cb149ac57facb642b72a501369d62022676

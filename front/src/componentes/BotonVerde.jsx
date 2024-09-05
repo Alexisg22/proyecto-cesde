@@ -1,13 +1,14 @@
 import React from 'react'
 import "../estilos/BotonVerde.css"
-import { ModalAsesores } from '../componentes/ModalAsesores.jsx'
+import { ModalFiltrar } from '../componentes/ModalFiltrar.jsx'
 
-export const BotonVerde = ({setModalAbierto, modalAbierto, texto, ide}) => {
+export const BotonVerde = ({setModalAbierto, modalAbierto, texto, ide,ocultarModalCargando}) => {
 
   return (
     <div>
-        {(ModalAsesores) ? <button onClick={()=>{setModalAbierto(!modalAbierto)}} className={ide}>{texto}</button> 
-        : <button className='botonVerde'>{texto}</button>}
+        {(ModalFiltrar) ? <button onClick={()=>{setModalAbierto(!modalAbierto); ocultarModalCargando()}} className={ide}>{texto}</button> 
+        : <button onClick={()=>{setModalAbierto(!modalAbierto)}} className='botonVerde'>{texto}</button>}
     </div>
+
   )
 }
