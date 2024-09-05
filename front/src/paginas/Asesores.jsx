@@ -24,6 +24,8 @@ export const Asesores = () => {
     { id: 'cantGestionesEmpresa', etiqueta: 'Cant. Gestiones Empresas' },
     { id: 'cantGestionesTecnicos', etiqueta: 'Cant. Gestiones Técnicos' },
     { id: 'cantGestionesExtensiones', etiqueta: 'Cant. Gestiones Extensiones' },
+    { id: 'tiempoPromedioWhatsApp', etiqueta: 'Tiempo Prom. WhatsApps (Min)' },
+    { id: 'tiempoPromedioLlamada', etiqueta: 'Tiempo Prom. Llamadas (Min)' },
   ];
   
   const encabezados = columnas.map(columna => ({
@@ -80,6 +82,8 @@ export const Asesores = () => {
           cantGestionesEmpresa: asesor.cantidad_gestiones_empresa,
           cantGestionesTecnicos: asesor.cantidad_gestiones_tecnicos,
           cantGestionesExtensiones: asesor.cantidad_gestiones_extensiones,
+          tiempoPromedioWhatsApp: asesor.tiempo_promedio_whatsapp,
+          tiempoPromedioLlamada: asesor.tiempo_promedio_llamada,
         }));
        
         setAsesores(mapeado)
@@ -111,6 +115,8 @@ export const Asesores = () => {
           cantGestionesEmpresa: asesor.cantidad_gestiones_empresa,
           cantGestionesTecnicos: asesor.cantidad_gestiones_tecnicos,
           cantGestionesExtensiones: asesor.cantidad_gestiones_extensiones,
+          tiempoPromedioWhatsApp: asesor.tiempo_promedio_whatsapp,
+          tiempoPromedioLlamada: asesor.tiempo_promedio_llamada,
         }));
        
         setAsesores(mapeado)
@@ -142,6 +148,8 @@ export const Asesores = () => {
           cantGestionesEmpresa: asesor.cantidad_gestiones_empresa,
           cantGestionesTecnicos: asesor.cantidad_gestiones_tecnicos,
           cantGestionesExtensiones: asesor.cantidad_gestiones_extensiones,
+          tiempoPromedioWhatsApp: asesor.tiempo_promedio_whatsapp,
+          tiempoPromedioLlamada: asesor.tiempo_promedio_llamada,
         }))
         
         setAsesores(mapeado)
@@ -167,6 +175,8 @@ export const Asesores = () => {
           cantGestionesEmpresa: asesor.cantidad_gestiones_empresa,
           cantGestionesTecnicos: asesor.cantidad_gestiones_tecnicos,
           cantGestionesExtensiones: asesor.cantidad_gestiones_extensiones,
+          tiempoPromedioWhatsApp: asesor.tiempo_promedio_whatsapp,
+          tiempoPromedioLlamada: asesor.tiempo_promedio_llamada,
         }))
         
         setAsesores(mapeado)

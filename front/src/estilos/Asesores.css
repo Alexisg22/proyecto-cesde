@@ -13,12 +13,18 @@
 
 .asesoresBuscador{
     margin-top: 2em;
+    position: sticky;
+    top: 0%;
+}
+
+.asesoresTabla{
+    overflow-y: auto;
 }
 
 .asesoresContenedor{
     width: 85vw;
     background-color: #fff;
     box-shadow: 0 .4rem .8rem #0005;
-    overflow-y: auto;
     margin-bottom: 3em;
+    overflow-y: auto;
 }
