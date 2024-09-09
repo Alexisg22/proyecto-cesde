@@ -3,35 +3,37 @@
     max-height: calc(89% - 1.6rem);
     margin: .8rem auto;
     border-radius: .6rem;
+    overflow: auto; /* Habilitar scroll en el eje Y */
+    overflow: overlay;
 }
 
 .cuerpoTablaAsesores::-webkit-scrollbar {
-    width: 0.5rem;
-    height: 0.5rem;
+    width: 0.5rem; /* Ancho del scroll */
+    height: 0.5rem; /* Altura del scroll horizontal */
 }
 
 .cuerpoTablaAsesores::-webkit-scrollbar-thumb {
-    border-radius: .5rem;
-    background-color: #0004;
-    visibility: hidden;
+    border-radius: .5rem; /* Redondear los bordes del scrollbar */
+    background-color: #0004; /* Color del scrollbar */
+    visibility: hidden; /* Oculto por defecto */
 }
 
 .cuerpoTablaAsesores:hover::-webkit-scrollbar-thumb {
-    visibility: visible;
+    visibility: visible; /* Aparece al hacer hover en el cuerpo de la tabla */
 }
 
 .cuerpoTablaAsesores tr:nth-child(even) {
-    background-color: #e3e3e3;
+    background-color: #e3e3e3; /* Colorea filas pares */
 }
 
 .tablaAsesores {
     width: 100%;
-    overflow-y: auto;
+    overflow-y: auto; /* Asegura que el contenido tenga scroll vertical */
 }
 
 .tablaAsesores, th, td {
     border-collapse: collapse;
-    text-align: left;
+    text-align: left; /* Alinear el texto a la izquierda */
 }
 
 .cabezaTablaAsesores th {
@@ -39,18 +41,17 @@
     top: 0; 
     background-color: #d5d1defe; 
     text-transform: capitalize;
-    z-index: 1; 
-    
+    z-index: 1; /* Asegura que la cabecera esté sobre el contenido */
 }
 
 .cuerpoTablaAsesores tr.hide td img {
     width: 0;
     height: 0;
     transition: .2s ease-in-out .5s;
+    overflow: overlay; /* Añadir overlay al hover */
 }
 
-
-.cabezaTablaAasesores th span.icon-arrow {
+.cabezaTablaAsesores th span.icon-arrow {
     display: inline-block;
     width: 1.3rem;
     height: 1.3rem;
@@ -63,11 +64,11 @@
 }
 
 .cabezaTablaAsesores th:hover span.icon-arrow {
-    border: 1.4px solid #6c00bd;
+    border: 1.4px solid #6c00bd; /* Cambia el color del borde al hacer hover */
 }
 
 .cabezaTablaAsesores th:hover {
-    color: #13A438;
+    color: #13A438; /* Cambia el color del texto al hacer hover */
 }
 
 .cabezaTablaAsesores th.active span.icon-arrow {
@@ -75,7 +76,7 @@
     color: #fff;
 }
 
-.filaTablaAsesores:hover{
+.filaTablaAsesores:hover {
     border: 1px solid black;
     border-radius: 10px;
 }

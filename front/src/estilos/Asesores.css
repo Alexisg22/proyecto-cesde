@@ -1,4 +1,4 @@
-.asesoresMain{
+.asesoresMain {
     width: 98vw;
     height: 96vh;  
     display: flex;
@@ -6,56 +6,69 @@
     align-items: center;
 }
 
-.asesoresEncabezado{
+.asesoresEncabezado {
     padding: 1em;
     width: 92vw;
 }
 
-.asesoresBuscador{
+.asesoresBuscador {
     margin-top: 2em;
     position: sticky;
     top: 0%;
 }
 
-.asesoresTabla{
-    overflow-y: auto;
-}
-
-.asesoresContenedor{
+.asesoresContenedor {
     width: 85vw;
     background-color: #fff;
     box-shadow: 0 .4rem .8rem #0005;
     margin-bottom: 3em;
-    /* Asegúrate de que el contenedor esté centrado */
     display: flex;
     flex-direction: column;
-    padding: 1em; 
+    padding: 1em;
+}
 
+/* Ajustes en el contenedor de la tabla para aplicar scroll */
+.tablaAsesoresContenedor {
+    width: 100%;
+    max-height: 60vh; /* Ajusta la altura máxima */
+    overflow: auto; /* Habilita el scroll en el eje Y */
+    overflow: overlay;
 }
 
 .tablaAsesores {
-    display: block;
-    max-height: 60vh; /* Ajusta esta altura según sea necesario */
-    overflow-y: auto; /* Scroll solo vertical */
+    width: 100%;
     border-collapse: collapse;
 }
 
 .cabezaTablaAsesores {
     position: sticky;
     top: 0;
-    background: #fff; /* Color de fondo para el encabezado */
-    z-index: 1; /* Asegúrate de que el encabezado esté encima de las filas */
+    background: #fff; /* Fondo blanco para el encabezado */
+    z-index: 1; /* Encabezado siempre visible */
 }
 
 .cuerpoTablaAsesores tr:nth-child(even) {
-    background-color: #f2f2f2; /* Alterna el color de fondo para las filas */
+    background-color: #f2f2f2; /* Alterna el color de las filas pares */
 }
 
-.tablaAsesoresContenedor {
-    width: 100%;
-    max-height: 60vh; /* Ajusta esta altura según sea necesario */
-    border: 1px solid #ddd; /* Añade un borde al contenedor para visibilidad */
+/* Personalización del scroll */
+.tablaAsesoresContenedor::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
 }
 
+.tablaAsesoresContenedor::-webkit-scrollbar-thumb {
+    border-radius: .5rem;
+    background-color: #0004;
+    visibility: hidden;
+}
 
+.tablaAsesoresContenedor:hover::-webkit-scrollbar-thumb {
+    visibility: visible; /* Muestra el scroll al hacer hover */
+}
 
+/* Hover para filas */
+.filaTablaAsesores:hover {
+    border: 1px solid black;
+    border-radius: 10px;
+}
