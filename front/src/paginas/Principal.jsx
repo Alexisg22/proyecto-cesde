@@ -29,6 +29,7 @@ export const Principal = () => {
     celular: true,
     nit: false,
     nombreCompleto: true,
+    correo: true,
     cantidadLlamadas: true,
     cantWhatsapps: false,
     cantGestiones: true,

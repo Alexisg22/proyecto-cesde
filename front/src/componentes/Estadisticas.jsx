@@ -62,10 +62,9 @@ export const Estadisticas = ({estadisticas, fechaInicio, fechaFin, setFechaInici
                 <Estadistica id='cantidadLiquidaciones' label='Cantidad de liquidaciones' dato={estadisticas.cantidadLiquidaciones} />
                 <Estadistica id='enGestion' label='En gestión' dato={estadisticas.enGestion} />
                 <Estadistica id='sinGestion' label='Sin gestión' dato={estadisticas.sinGestion} />  
-                <Estadistica id='cancelado' label='Cancelados' dato={estadisticas.cancelados} />
+                <Estadistica id='cancelado' label='Descartados' dato={estadisticas.cancelados} />
                 <Estadistica id='tiempoLlamada' label='Tiempo promedio Llamada (Min)' dato={estadisticas.tiempoLlamada} />
                 <Estadistica id='tiempoWhatsApp' label='Tiempo promedio WhatsApp (Min)' dato={estadisticas.tiempoWhatsApp}/>
-               
             </div>
 
         </section>
