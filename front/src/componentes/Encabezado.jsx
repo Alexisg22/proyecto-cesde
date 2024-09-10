@@ -38,7 +38,7 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, texto
           <form id={vista}>
             <select className='filtroAspirante' onChange={seleccionarProceso}>
               <option value="general">General</option>
-              <option value="empresas">Empresa</option>
+              <option value="empresas">Empresas</option>
               <option value="tecnicos">Técnicos</option>
               <option value="extensiones">Extensiones</option>             
             </select>
