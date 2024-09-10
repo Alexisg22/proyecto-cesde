@@ -20,7 +20,7 @@ export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
     const [nombreArchivo3, setNombreArchivo3] = useState('');
     const [nombreArchivo4, setNombreArchivo4] = useState('');
 
-    // Función para capturar el nombre del archivo seleccionado en cada input
+    // Función para capturar el nombre del archivo. seleccionado en cada input
     const capturarNombreInput = (e) => {
         const archivo = e.target.files[0]; // Obtiene el archivo seleccionado
         const idInput = e.target.id; // Obtiene el ID del input que disparó el evento
