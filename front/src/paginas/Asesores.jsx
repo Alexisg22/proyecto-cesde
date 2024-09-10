@@ -11,7 +11,6 @@ export const Asesores = () => {
   const token = localStorage.getItem('token'); // Obtén el token del localStorage
   const navigate = useNavigate(); // Inicializa el hook useNavigate
   const [isLoading, setIsLoading] = useState(true); // Estado para manejar la carga
-  const [numeroPaginasTotales, setNumeroPaginasTotales] = useState()
 
   const columnas = [
     { id: 'idWolkvox', etiqueta: 'Id Wolkvox' },
@@ -42,6 +41,7 @@ export const Asesores = () => {
   const [fechaInicio, setFechaInicio] = useState('')
   const [fechaFin, setFechaFin] = useState('')
   const [buscarUnAsesor, setBuscarUnAsesor] = useState('') 
+  const [contador, setContador] = useState('')
 
 
    // Redirección temprana si no hay token
@@ -53,16 +53,14 @@ export const Asesores = () => {
     }
   }, [token, navigate]);
 
-  async function traerPaginas(){
+  async function traerContador(){
     
-    let respuesta = await consultarAsesores(1);
-    const totalPaginas = respuesta.data.total_pages;
-    setNumeroPaginasTotales(totalPaginas)
+    let respuesta = await consultarAsesores();
+    const totalAsesores = respuesta.data.asesores_totales;
+    setContador(totalAsesores)
   }
-
-  useEffect(() => {
-    traerPaginas();
-  }, [buscarUnAsesor]);
+ 
+  traerContador()
 
   useEffect(() => {
 
@@ -212,6 +210,7 @@ export const Asesores = () => {
       <div className="asesoresContenedor">
         <div>
           <div className="asesoresBuscador">
+            <label>Cantidad Asesores:{totalAsesores}</label>
             <BuscarAsesores 
               datos={asesores}
               encabezados={encabezados}

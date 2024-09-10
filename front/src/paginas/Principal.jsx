@@ -115,6 +115,7 @@ export const Principal = () => {
             )?.count || 0, // Puedes agregar lógica adicional para calcular cancelados si es necesario
           tiempoLlamada: promedioLlamada,
           tiempoWhatsApp:promedioWhatsApp,
+          enSeleccionTotal:en_seleccion_total,
           // Puedes agregar lógica adicional para calcular noGestionable si es necesario
         };
 
@@ -166,7 +167,8 @@ export const Principal = () => {
               (e) => e?.estado__nombre?.toLowerCase() == "descartado"
             )?.count || 0, // Puedes agregar lógica adicional para calcular cancelados si es necesario
           tiempoLlamada: estadisticasGenerales.promedio_tiempo_llamada,
-          tiempoWhatsApp:estadisticasGenerales.promedio_tiempo_whatsapp, // Puedes agregar lógica adicional para calcular noGestionable si es necesario
+          tiempoWhatsApp:estadisticasGenerales.promedio_tiempo_whatsapp,
+          enSeleccionTotal:estadisticasGenerales.en_seleccion_total, // Puedes agregar lógica adicional para calcular noGestionable si es necesario
         };
         setEstadisticas(mapeado);
       }
