@@ -26,6 +26,39 @@
     background-color: #e3e3e3; /* Colorea filas pares */
 }
 
+.cabezaTablaAsesores th:first-child {
+    left: 0; 
+    z-index: 2; 
+}
+
+.cabezaTablaAsesores th:nth-child(2) {
+    left: 6rem;     
+    z-index: 2;
+}
+
+.cuerpoTablaAsesores tr:nth-child(odd) td:first-child{
+    left: 0;
+    background-color: #ffffff;
+    position: sticky;
+}
+
+.cuerpoTablaAsesores tr:nth-child(odd) td:nth-child(2){
+    left: 6rem;
+    background-color: #ffffff;
+    position: sticky;
+}
+/* Filas pares */
+.cuerpoTablaAsesores tr:nth-child(even) td:first-child{
+    left: 0;
+    background-color: #e3e3e3;
+    position: sticky;
+}
+.cuerpoTablaAsesores tr:nth-child(even) td:nth-child(2) {
+    left: 6rem;
+    background-color: #e3e3e3;
+    position: sticky;
+}
+
 .tablaAsesores {
     width: 100%;
     overflow-y: auto; /* Asegura que el contenido tenga scroll vertical */
