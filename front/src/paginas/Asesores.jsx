@@ -53,15 +53,6 @@ export const Asesores = () => {
     }
   }, [token, navigate]);
 
-  async function traerContador(){
-    
-    let respuesta = await consultarAsesores();
-    const totalAsesores = respuesta.data.asesores_totales;
-    setContador(totalAsesores)
-  }
- 
-  traerContador()
-
   useEffect(() => {
 
     if(buscarUnAsesor != 0 && fechaFin != '' && fechaInicio != ''){
@@ -86,9 +77,11 @@ export const Asesores = () => {
           cantGestionesExtensiones: asesor.cantidad_gestiones_extensiones,
           tiempoPromedioWhatsApp: asesor.tiempo_promedio_whatsapp,
           tiempoPromedioLlamada: asesor.tiempo_promedio_llamada,
+          asesoresTotales : asesor.asesores_totales,
         }));
        
         setAsesores(mapeado)
+        setContador(asesores[0].asesoresTotales)
       }catch (error) {
         {<h1>{'Error no se encuentra el asesor'}</h1>}
       }
@@ -121,9 +114,11 @@ export const Asesores = () => {
           cantGestionesExtensiones: asesor.cantidad_gestiones_extensiones,
           tiempoPromedioWhatsApp: asesor.tiempo_promedio_whatsapp,
           tiempoPromedioLlamada: asesor.tiempo_promedio_llamada,
+          asesoresTotales : asesor.asesores_totales,
         }));
        
         setAsesores(mapeado)
+        setContador(asesores[0].asesoresTotales)
       }catch (error) {
         
         {<h1>{'Error no se encuentra el asesor'}</h1>}
@@ -156,9 +151,11 @@ export const Asesores = () => {
           cantGestionesExtensiones: asesor.cantidad_gestiones_extensiones,
           tiempoPromedioWhatsApp: asesor.tiempo_promedio_whatsapp,
           tiempoPromedioLlamada: asesor.tiempo_promedio_llamada,
+          asesoresTotales : asesor.asesores_totales,
         }))
         
         setAsesores(mapeado)
+        setContador(asesores[0].asesoresTotales)
       }
       cargarAsesores();
     
@@ -170,7 +167,6 @@ export const Asesores = () => {
         const asesores = respuesta.data;
   
         const mapeado = asesores.map((asesor) => ({
-  
           idWolkvox: asesor.id,
           nombreCompleto: asesor.nombre_completo,
           cantLlamadas: asesor.cantidad_llamadas,
@@ -185,9 +181,11 @@ export const Asesores = () => {
           cantGestionesExtensiones: asesor.cantidad_gestiones_extensiones,
           tiempoPromedioWhatsApp: asesor.tiempo_promedio_whatsapp,
           tiempoPromedioLlamada: asesor.tiempo_promedio_llamada,
+          asesoresTotales : asesor.asesores_totales,
         }))
-        
+
         setAsesores(mapeado)
+        setContador(asesores[0].asesoresTotales)
       }
       cargarAsesores();
 
@@ -210,7 +208,7 @@ export const Asesores = () => {
       <div className="asesoresContenedor">
         <div>
           <div className="asesoresBuscador">
-            <label>Cantidad Asesores:{totalAsesores}</label>
+            <label>Cantidad Asesores:{contador}</label>
             <BuscarAsesores 
               datos={asesores}
               encabezados={encabezados}
