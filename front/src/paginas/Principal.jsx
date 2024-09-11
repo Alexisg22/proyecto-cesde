@@ -84,6 +84,8 @@ export const Principal = () => {
 
         const promedioWhatsApp = respuesta.data.promedio_tiempo_whatsapp;
 
+        const seleccionTotal = respuesta.data.en_seleccion_total;
+
         const mapeado = {
           contactabilidad:
             contactabilidad.contactabilidad.percentage.toFixed(2) + " %",
@@ -120,7 +122,7 @@ export const Principal = () => {
             )?.count || 0, // Puedes agregar lógica adicional para calcular cancelados si es necesario
           tiempoLlamada: promedioLlamada,
           tiempoWhatsApp:promedioWhatsApp,
-          enSeleccionTotal:en_seleccion_total,
+          enSeleccionTotal:seleccionTotal,
           // Puedes agregar lógica adicional para calcular noGestionable si es necesario
         };
 
