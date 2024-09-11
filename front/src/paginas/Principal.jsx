@@ -108,10 +108,15 @@ export const Principal = () => {
               (e) =>
                 e?.estado__nombre?.toLowerCase() === "sin gestión"
             )?.count || 0,
-          cancelados:
+          descartados:
             estadisticasGenerales.estadisticas.find(
               (e) =>
                 e?.estado__nombre?.toLowerCase() === "descartado"
+            )?.count || 0,
+          cancelados:
+            estadisticasGenerales.estadisticas.find(
+              (e) =>
+                e?.estado__nombre?.toLowerCase() === "cancelado"
             )?.count || 0, // Puedes agregar lógica adicional para calcular cancelados si es necesario
           tiempoLlamada: promedioLlamada,
           tiempoWhatsApp:promedioWhatsApp,
@@ -162,9 +167,14 @@ export const Principal = () => {
               (e) =>
                 e?.estado__nombre?.toLowerCase() == "sin gestión"
             )?.count || 0,
-          cancelados:
+          descartados:
             estadisticasGenerales.estadisticas_basicas.find(
               (e) => e?.estado__nombre?.toLowerCase() == "descartado"
+            )?.count || 0,
+          cancelados:
+            estadisticasGenerales.estadisticas_basicas.find(
+              (e) =>
+                e?.estado__nombre?.toLowerCase() === "cancelado"
             )?.count || 0, // Puedes agregar lógica adicional para calcular cancelados si es necesario
           tiempoLlamada: estadisticasGenerales.promedio_tiempo_llamada,
           tiempoWhatsApp:estadisticasGenerales.promedio_tiempo_whatsapp,
