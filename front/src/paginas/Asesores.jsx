@@ -56,7 +56,7 @@ export const Asesores = () => {
   async function traerContador(){
     
     let respuesta = await consultarAsesores();
-    const totalAsesores = respuesta.data.asesores_totales;
+    const totalAsesores = respuesta.data.total_asesores;
     setContador(totalAsesores)
   }
  
@@ -69,7 +69,7 @@ export const Asesores = () => {
       async function cargarAsesoress() {
         try {
         const respuesta = await consultarUnAsesorPorFecha(fechaInicio,fechaFin,buscarUnAsesor);
-        const asesores = respuesta.data;
+        const asesores = respuesta.data.results;
         
         const mapeado = asesores.map((asesor) => ( {
           idWolkvox: asesor.id,
@@ -103,7 +103,7 @@ export const Asesores = () => {
       async function cargarAsesoress() {
         try {
         const respuesta = await consultarUnAsesor(buscarUnAsesor);
-        const asesores = respuesta.data;
+        const asesores = respuesta.data.results;
         
   
         const mapeado = asesores.map((asesor) => ( {
@@ -138,7 +138,7 @@ export const Asesores = () => {
     else if(fechaFin != '' && fechaInicio != ''){
       async function cargarAsesores() {
         const respuesta = await consultarAsesoresFecha(fechaInicio, fechaFin);
-        const asesores = respuesta.data;
+        const asesores = respuesta.data.results;
         console.log(asesores);
         const mapeado = asesores.map((asesor) => ({
   
@@ -167,7 +167,7 @@ export const Asesores = () => {
 
         const paginaActual = 1
         const respuesta = await consultarAsesores(paginaActual);
-        const asesores = respuesta.data;
+        const asesores = respuesta.data.results;
   
         const mapeado = asesores.map((asesor) => ({
   
@@ -210,7 +210,7 @@ export const Asesores = () => {
       <div className="asesoresContenedor">
         <div>
           <div className="asesoresBuscador">
-            <label>Cantidad Asesores:{totalAsesores}</label>
+            <label>Cantidad Asesores:{contador}</label>
             <BuscarAsesores 
               datos={asesores}
               encabezados={encabezados}
