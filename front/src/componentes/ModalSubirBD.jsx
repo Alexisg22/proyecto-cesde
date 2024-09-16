@@ -59,7 +59,7 @@ export const ModalSubirBD = ({ cerrarModal, modalAbierto }) => {
             window.location.reload(); // Recarga la página después de que se haya enviado con éxito
         } catch (error) {
             // Captura y muestra errores en caso de que falle la petición
-            console.error('Error al enviar los datos:', error);
+            alert('Error procesando los archivos:', error);
             window.location.reload();
         }
     });

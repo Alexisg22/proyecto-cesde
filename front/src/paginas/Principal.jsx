@@ -84,6 +84,8 @@ export const Principal = () => {
 
         const promedioWhatsApp = respuesta.data.promedio_tiempo_whatsapp;
 
+        const seleccionTotal = respuesta.data.en_seleccion_total;
+
         const mapeado = {
           contactabilidad:
             contactabilidad.contactabilidad.percentage.toFixed(2) + " %",
@@ -108,14 +110,19 @@ export const Principal = () => {
               (e) =>
                 e?.estado__nombre?.toLowerCase() === "sin gestión"
             )?.count || 0,
-          cancelados:
+          descartados:
             estadisticasGenerales.estadisticas.find(
               (e) =>
                 e?.estado__nombre?.toLowerCase() === "descartado"
+            )?.count || 0,
+          cancelados:
+            estadisticasGenerales.estadisticas.find(
+              (e) =>
+                e?.estado__nombre?.toLowerCase() === "cancelado"
             )?.count || 0, // Puedes agregar lógica adicional para calcular cancelados si es necesario
           tiempoLlamada: promedioLlamada,
           tiempoWhatsApp:promedioWhatsApp,
-          enSeleccionTotal:en_seleccion_total,
+          enSeleccionTotal:seleccionTotal,
           // Puedes agregar lógica adicional para calcular noGestionable si es necesario
         };
 
@@ -162,9 +169,14 @@ export const Principal = () => {
               (e) =>
                 e?.estado__nombre?.toLowerCase() == "sin gestión"
             )?.count || 0,
-          cancelados:
+          descartados:
             estadisticasGenerales.estadisticas_basicas.find(
               (e) => e?.estado__nombre?.toLowerCase() == "descartado"
+            )?.count || 0,
+          cancelados:
+            estadisticasGenerales.estadisticas_basicas.find(
+              (e) =>
+                e?.estado__nombre?.toLowerCase() === "cancelado"
             )?.count || 0, // Puedes agregar lógica adicional para calcular cancelados si es necesario
           tiempoLlamada: estadisticasGenerales.promedio_tiempo_llamada,
           tiempoWhatsApp:estadisticasGenerales.promedio_tiempo_whatsapp,
