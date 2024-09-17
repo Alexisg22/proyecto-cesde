@@ -125,21 +125,42 @@ main.tabla {
 }
 
 .en{
-    background-color: #e5ff23;
+    background-color: #abff23;
     padding: 1rem 2rem;
     border-radius: 2rem;
     text-align: center;
 }
 
-.sin{
-    background-color: rgb(254, 178, 46);
+.anulado{
+    background-color: #ff1d1d;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.por{
+    background-color: rgb(254, 233, 46);
+    padding: 1rem 2rem ;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.nuevo{
+    background-color: rgb(46, 205, 254);
+    padding: 1rem 2rem ;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.no{
+    background-color: rgb(254, 133, 46);
     padding: 1rem 2rem ;
     border-radius: 2rem;
     text-align: center;
 }
 
 .descartado {
-    background-color: #FF571D;
+    background-color: #ff1d1d;
     padding: 1rem 2rem;
     border-radius: 2rem;
     text-align: center;
@@ -148,6 +169,13 @@ main.tabla {
 .liquidado {
     background-color: #30eafa;
     padding: 1rem .8rem;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.cancelado{
+    background-color: rgb(164, 46, 254);
+    padding: 1rem 2rem ;
     border-radius: 2rem;
     text-align: center;
 }

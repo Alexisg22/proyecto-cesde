@@ -25,7 +25,11 @@ export const Estadisticas = ({estadisticas, fechaInicio, fechaFin, setFechaInici
     <div className='contenedorEstadistica'>
         <section className='contenidoEstadistica'>
 
+            
+
             <div className='titulo'>
+                <p><strong>Contactabilidad: {estadisticas.contactabilidad}</strong></p>
+                <p><strong>No Contactabilidad: {estadisticas.noContactabilidad}</strong></p>
                 <h1 className='tituloEstadisticas'>Estadísticas {tituloEstadisticas}</h1>
                 <div className="formularioFecha">
           
@@ -56,17 +60,22 @@ export const Estadisticas = ({estadisticas, fechaInicio, fechaFin, setFechaInici
 
             <div className='contenido'>
             
-                <Estadistica id='contactabilidad' label='Contactabilidad' dato={estadisticas.contactabilidad} />
-                <Estadistica id='noContactabilidad' label='No contactabilidad' dato={estadisticas.noContactabilidad} />
-                <Estadistica id='cantidadMatriculas' label='Cantidad de matrículas' dato={estadisticas.cantidadMatriculas} />
-                <Estadistica id='cantidadLiquidaciones' label='Cantidad de liquidaciones' dato={estadisticas.cantidadLiquidaciones} />
+                {/* <Estadistica id='contactabilidad' label='Contactabilidad' dato={estadisticas.contactabilidad} />
+                <Estadistica id='noContactabilidad' label='No contactabilidad' dato={estadisticas.noContactabilidad} /> */}
+                <Estadistica id='cantidadMatriculas' label='Matriculados' dato={estadisticas.cantidadMatriculas} />
+                <Estadistica id='cantidadLiquidaciones' label='Liquidados' dato={estadisticas.cantidadLiquidaciones} />
+                <Estadistica id='enSeguimento' label='En Seguimiento' dato={estadisticas.enSeguimiento} />
                 <Estadistica id='enGestion' label='En gestión' dato={estadisticas.enGestion} />
-                <Estadistica id='sinGestion' label='Sin gestión' dato={estadisticas.sinGestion} />  
+                <Estadistica id='sinGestion' label='Por Gestionar' dato={estadisticas.sinGestion} /> 
                 <Estadistica id='descartados' label='Descartados' dato={estadisticas.descartados} />
                 <Estadistica id='cancelados' label='Cancelados' dato={estadisticas.cancelados} />
+                <Estadistica id='anulados' label='Anulados' dato={estadisticas.anulados} />
+                <Estadistica id='nuevoInteres' label='Nuevo Interés' dato={estadisticas.nuevoInteres} />
+                <Estadistica id='noContactados' label='No Contactados' dato={estadisticas.noContactados} />
+                <Estadistica id='enSeleccionTotal' label='En proceso de selección' dato={estadisticas.enSeleccionTotal}/>
                 <Estadistica id='tiempoLlamada' label='Tiempo promedio Llamada (Min)' dato={estadisticas.tiempoLlamada} />
                 <Estadistica id='tiempoWhatsApp' label='Tiempo promedio WhatsApp (Min)' dato={estadisticas.tiempoWhatsApp}/>
-                <Estadistica id='enSeleccionTotal' label='En proceso de selección' dato={estadisticas.enSeleccionTotal}/>
+                <Estadistica id='totalAspirantes' label='Total Aspirantes' dato={estadisticas.totalAspirantes}/>
             </div>
 
         </section>

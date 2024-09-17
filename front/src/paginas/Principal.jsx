@@ -103,17 +103,22 @@ export const Principal = () => {
           enGestion:
             estadisticasGenerales.estadisticas.find(
               (e) =>
-                e?.estado__nombre?.toLowerCase() === "en gestión"
+                e?.estado__nombre?.toLowerCase() === "en seguimiento"
             )?.count || 0,
           sinGestion:
             estadisticasGenerales.estadisticas.find(
               (e) =>
-                e?.estado__nombre?.toLowerCase() === "sin gestión"
+                e?.estado__nombre?.toLowerCase() === "por gestionar"
             )?.count || 0,
           descartados:
             estadisticasGenerales.estadisticas.find(
               (e) =>
                 e?.estado__nombre?.toLowerCase() === "descartado"
+            )?.count || 0,
+          noContactados:
+            estadisticasGenerales.estadisticas.find(
+              (e) =>
+                e?.estado__nombre?.toLowerCase() === "no contactado"
             )?.count || 0,
           cancelados:
             estadisticasGenerales.estadisticas.find(
@@ -160,27 +165,48 @@ export const Principal = () => {
             estadisticasGenerales.estadisticas_basicas.find(
               (e) => e?.estado__nombre?.toLowerCase() == "liquidado"
             )?.count || 0,
-          enGestion:
+          enSeguimiento:
             estadisticasGenerales.estadisticas_basicas.find(
-              (e) => e?.estado__nombre?.toLowerCase() == "en gestión"
+              (e) => e?.estado__nombre?.toLowerCase() == "en seguimiento"
             )?.count || 0,
           sinGestion:
             estadisticasGenerales.estadisticas_basicas.find(
               (e) =>
-                e?.estado__nombre?.toLowerCase() == "sin gestión"
+                e?.estado__nombre?.toLowerCase() == "por gestionar"
             )?.count || 0,
           descartados:
             estadisticasGenerales.estadisticas_basicas.find(
               (e) => e?.estado__nombre?.toLowerCase() == "descartado"
+            )?.count || 0,
+          noContactados:
+            estadisticasGenerales.estadisticas_basicas.find(
+              (e) => e?.estado__nombre?.toLowerCase() == "no contactado"
+            )?.count || 0,
+          anulados:
+            estadisticasGenerales.estadisticas_basicas.find(
+              (e) => e?.estado__nombre?.toLowerCase() == "anulado"
+            )?.count || 0,
+          nuevoInteres:
+            estadisticasGenerales.estadisticas_basicas.find(
+              (e) => e?.estado__nombre?.toLowerCase() == "nuevo interes"
+            )?.count || 0,
+          enGestion:
+            estadisticasGenerales.estadisticas_basicas.find(
+              (e) => e?.estado__nombre?.toLowerCase() == "en gestión"
             )?.count || 0,
           cancelados:
             estadisticasGenerales.estadisticas_basicas.find(
               (e) =>
                 e?.estado__nombre?.toLowerCase() === "cancelado"
             )?.count || 0, // Puedes agregar lógica adicional para calcular cancelados si es necesario
+          enSeleccionTotal:
+            estadisticasGenerales.estadisticas_basicas.find(
+              (e) =>
+                e?.estado__nombre?.toLowerCase() === "en proceso de selección"
+            )?.count || 0, // Puedes agregar lógica adicional para calcular cancelados si es necesario
           tiempoLlamada: estadisticasGenerales.promedio_tiempo_llamada,
           tiempoWhatsApp:estadisticasGenerales.promedio_tiempo_whatsapp,
-          enSeleccionTotal:estadisticasGenerales.en_seleccion_total, // Puedes agregar lógica adicional para calcular noGestionable si es necesario
+          totalAspirantes:estadisticasGenerales.total_aspirantes
         };
         setEstadisticas(mapeado);
       }

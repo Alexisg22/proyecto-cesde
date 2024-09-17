@@ -30,7 +30,7 @@ body{
         flex-wrap: wrap;
         text-align: center;
         justify-content: center;
-        gap: 2.5em;
+        gap: 1.2em;
         margin: 15px;   
         
     }
@@ -43,10 +43,9 @@ body{
 }
 
 .tituloEstadisticas{
-    padding-left: 10em;
-    width: 65%;
+    width: 50%;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
 }
 
 .formularioFecha{
