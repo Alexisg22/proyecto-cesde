@@ -86,6 +86,8 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
         sede: datos.sede,
         programaFormación: datos.programa_formacion,
         nombreEmpresa: datos.nombre_empresa,
+        mesIngreso: aspirante.mes_ingreso,
+        fechaModificacion: aspirante.fecha_modificacion
       }]
       setNumeroPaginas(1);
       setAspirantes(mapeado);
@@ -125,6 +127,8 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
           programaFormacion: '',
           sede: '',
           nombreEmpresa: '',
+          mesIngreso: '',
+          fechaModificacion:''
         };
 
         aplicarFiltrosAspirantes.map((filtro) => {
@@ -162,6 +166,11 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
             case 'empresa':
               objetoFiltros.nombreEmpresa = filtro.valor;
               break;
+            case 'mes de ingreso':
+              objetoFiltros.mesIngreso = filtro.valor;
+              break;
+            case 'fecha modificacion':
+              objetoFiltros.fechaModificacion = filtro.valor;
             default:
               break;
           }
@@ -193,6 +202,8 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
         sede: aspirante.sede,
         programaFormación: aspirante.programa_formacion,
         nombreEmpresa: aspirante.nombre_empresa,
+        mesIngreso: aspirante.mes_ingreso,
+        fechaModificacion: aspirante.fecha_modificacion
       }));
 
       if (mapeado.length === 0) {
@@ -237,6 +248,8 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
         programaFormacion: '',
         sede: '',
         nombreEmpresa: '',
+        mesIngreso:'',
+        fechaModificacion:''
       };
 
       aplicarFiltrosAspirantes.map((filtro) => {
@@ -274,6 +287,11 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
           case 'empresa':
             objetoFiltros.nombreEmpresa = filtro.valor;
             break;
+          case 'mes de ingreso':
+            objetoFiltros.mesIngreso = filtro.valor;
+            break;
+          case 'fecha modificacion': 
+            objetoFiltros.fechaModificacion = filtro.valor;
           default:
             break;
         }
@@ -311,6 +329,8 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
         sede: aspirante.sede,
         programaFormación: aspirante.programa_formacion,
         nombreEmpresa: aspirante.nombre_empresa,
+        mesIngreso: aspirante.mes_ingreso,
+        fechaModificacion: aspirante.fecha_modificacion
       }));
   
       setNombre("descargar")
@@ -359,6 +379,8 @@ function Tabla({ visibilidadColumna, procesoSelect, modalOculto, setModalOculto,
     { id: 'sede', etiqueta: 'Sede' },
     { id: 'programaFormación', etiqueta: 'Programa de Formación' },
     { id: 'nombreEmpresa', etiqueta: 'Nombre empresa' },
+    { id: 'mesIngreso', etiqueta: 'Mes de ingreso'},
+    { id: 'fechaModificacion', etiqueta: 'Fecha Modificacion'}
   ];
 
   const encabezados = columnas

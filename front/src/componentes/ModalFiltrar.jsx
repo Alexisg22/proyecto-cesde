@@ -104,6 +104,7 @@ export const ModalFiltrar = ({ buscarAspirantesConFiltros, filtrosSeleccionados,
                                 <option value="programa de formacion">Programa de formación</option>
                                 <option value="empresa">Empresa</option>
                                 <option value="sede">Sede</option>
+                                <option value="mes de ingreso">Mes de ingreso</option>
                             </select>                
 
                             {/* Componente ParametroFiltrar para manejar la entrada del valor */}

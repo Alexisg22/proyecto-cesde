@@ -75,6 +75,23 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGesti
   }, []);
 
   switch (seleccionOpcion) {
+    case 'mes de ingreso':
+      return <select className="campoFiltro" onChange={cambioValorInput} required >
+          <option value=""></option>
+          <option value="Enero">Enero</option>
+          <option value="Febrero">Febrero</option>
+          <option value="Marzo">Marzo</option>
+          <option value="Abril">Abril</option>
+          <option value="Mayo">Mayo</option>
+          <option value="Junio">Junio</option>
+          <option value="Julio">Julio</option>
+          <option value="Agosto">Agosto</option>
+          <option value="Septiembre">Septiembre</option>
+          <option value="Octubre">Octubre</option>
+          <option value="Noviembre">Noviembre</option>
+          <option value="Diciembre">Diciembre</option>
+      </select>;
+      
     case "dias ultima gestion":
     case "cantidad llamadas":
     case "cantidad whatsapp":
@@ -158,7 +175,6 @@ export function validarTipoInput({ seleccionOpcion, cambioValorInput, valorGesti
           ))}
         </select>
       );
-
     default:
       return null;
   }

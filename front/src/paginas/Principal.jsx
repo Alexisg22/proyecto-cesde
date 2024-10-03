@@ -41,6 +41,8 @@ export const Principal = () => {
     tipificacionUltimaGestion: true,
     sede: false,
     programaFormación: false,
+    mesIngreso: false,
+    fechaModificacion: false
   });
   //este estado es el que guarda todas las estadisticas recibidas desde la api
   const [estadisticas, setEstadisticas] = useState();

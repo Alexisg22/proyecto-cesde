@@ -27,14 +27,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #13A438; /* Fondo verde */
+    background-color: #fff; 
 }
 
 .welcome-section img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Acomoda la imagen al tamaño del contenedor */
-    border-radius: 0; /* Remueve bordes redondeados de la imagen */
+    width: 80%;
+    height: 40%;
 }
 
 .login-section {

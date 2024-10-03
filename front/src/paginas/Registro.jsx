@@ -68,7 +68,7 @@ const Registro = () => {
       <div className="login-container">
         <div className="login-box">
           <div className="welcome-section">
-            <img src='/imagenes/Nosotros.jpg' alt="Imagen de bienvenida" />
+            <img src='/imagenes/logo.png' alt="Imagen de bienvenida" />
           </div>
           <div className="login-section">
             <h1 className='titulo'>¡Bienvenidos!</h1>
