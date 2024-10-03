@@ -81,55 +81,67 @@ export const Principal = () => {
         const estadisticasGenerales = respuesta.data.estadisticas_por_fechas;
 
         const contactabilidad = respuesta.data.contactabilidad;
-
+        
         const promedioLlamada = respuesta.data.promedio_tiempo_llamada;
 
         const promedioWhatsApp = respuesta.data.promedio_tiempo_whatsapp;
-
-        const seleccionTotal = respuesta.data.en_seleccion_total;
-
+        
         const mapeado = {
           contactabilidad:
             contactabilidad.contactabilidad.percentage.toFixed(2) + " %",
           noContactabilidad:
             contactabilidad.no_contactabilidad.percentage.toFixed(2) + " %",
-          cantidadMatriculas:
+            cantidadMatriculas:
             estadisticasGenerales.estadisticas.find(
               (e) =>
-                e?.estado__nombre?.toLowerCase() === "matriculado"
+                e?.estado__nombre?.toLowerCase() == "matriculado"
             )?.count || 0,
           cantidadLiquidaciones:
             estadisticasGenerales.estadisticas.find(
-              (e) => e?.estado__nombre?.toLowerCase() === "liquidado"
+              (e) => e?.estado__nombre?.toLowerCase() == "liquidado"
             )?.count || 0,
-          enGestion:
+          enSeguimiento:
             estadisticasGenerales.estadisticas.find(
-              (e) =>
-                e?.estado__nombre?.toLowerCase() === "en seguimiento"
+              (e) => e?.estado__nombre?.toLowerCase() == "en seguimiento"
             )?.count || 0,
           sinGestion:
             estadisticasGenerales.estadisticas.find(
               (e) =>
-                e?.estado__nombre?.toLowerCase() === "por gestionar"
+                e?.estado__nombre?.toLowerCase() == "por gestionar"
             )?.count || 0,
           descartados:
             estadisticasGenerales.estadisticas.find(
-              (e) =>
-                e?.estado__nombre?.toLowerCase() === "descartado"
+              (e) => e?.estado__nombre?.toLowerCase() == "descartado"
             )?.count || 0,
           noContactados:
             estadisticasGenerales.estadisticas.find(
-              (e) =>
-                e?.estado__nombre?.toLowerCase() === "no contactado"
+              (e) => e?.estado__nombre?.toLowerCase() == "no contactado"
+            )?.count || 0,
+          anulados:
+            estadisticasGenerales.estadisticas.find(
+              (e) => e?.estado__nombre?.toLowerCase() == "anulado"
+            )?.count || 0,
+          nuevoInteres:
+            estadisticasGenerales.estadisticas.find(
+              (e) => e?.estado__nombre?.toLowerCase() == "nuevo interes"
+            )?.count || 0,
+          enGestion:
+            estadisticasGenerales.estadisticas.find(
+              (e) => e?.estado__nombre?.toLowerCase() == "en gestión"
             )?.count || 0,
           cancelados:
             estadisticasGenerales.estadisticas.find(
               (e) =>
                 e?.estado__nombre?.toLowerCase() === "cancelado"
             )?.count || 0, // Puedes agregar lógica adicional para calcular cancelados si es necesario
+          enSeleccionTotal:
+            estadisticasGenerales.estadisticas.find(
+              (e) =>
+                e?.estado__nombre?.toLowerCase() === "en proceso de selección"
+            )?.count || 0, // Puedes agregar lógica adicional para calcular cancelados si es necesario
           tiempoLlamada: promedioLlamada,
           tiempoWhatsApp:promedioWhatsApp,
-          enSeleccionTotal:seleccionTotal,
+          totalAspirantes: estadisticasGenerales.total_aspirantes
           // Puedes agregar lógica adicional para calcular noGestionable si es necesario
         };
 
