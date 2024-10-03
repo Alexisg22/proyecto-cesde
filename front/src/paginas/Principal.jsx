@@ -4,7 +4,7 @@ import { BarraLaterarl } from "../componentes/BarraLaterarl.jsx";
 import { Estadisticas } from "../componentes/Estadisticas.jsx";
 // import Tabla from "../componentes/Tabla.jsx";
 import "../estilos/Asesores.css";
-import { obtenerEstadisticas } from "../api/estadisticas.api.js";
+import { obtenerEstadisticas, obtenerEstadisticasPorFecha } from "../api/estadisticas.api.js";
 const Tabla = lazy (() => import("../componentes/Tabla.jsx"));
 import { useNavigate } from 'react-router-dom'; // Importa el hook useNavigate
 
@@ -23,6 +23,7 @@ export const Principal = () => {
   }, [token, navigate]);
 
   const [procesoSelect, setProcesoSelect] = useState("general");
+  const [mesSelect, setMesSelect] = useState("");
   const [barraLateralKey, setBarraLateralKey] = useState(0);
   const [tablaKey, setTablaKey] = useState(0);
   const [visibilidadColumna, setVisibilidadColumna] = useState({
@@ -56,7 +57,7 @@ export const Principal = () => {
   useEffect(() =>{
     setFechaInicio('')
     setFechaFin('')
-  },[procesoSelect])
+  },[procesoSelect, mesSelect])
 
   useEffect(() => {
     async function cargarEstadisticas() {
@@ -148,9 +149,16 @@ export const Principal = () => {
           nuevoProceso = "";
           proceso = "generales"
         }
-
-        const respuesta = await obtenerEstadisticas(nuevoProceso);
-        const estadisticasGenerales = respuesta.data[`estadisticas_${proceso}`];
+        let estadisticasGenerales;
+        if (procesoSelect != ""){
+          const respuesta = await obtenerEstadisticas(nuevoProceso);
+          estadisticasGenerales = respuesta.data[`estadisticas_${proceso}`];
+        }
+        else if(respuestaMes != ""){
+          const respuesta = await obtenerEstadisticasPorFecha(mesSelect);
+          estadisticasGenerales = respuesta.data[`estadisticas_mes`];
+        }
+        
         const mapeado = {
           contactabilidad:
             estadisticasGenerales.contactabilidad.percentage.toFixed(2) + " %",
@@ -251,6 +259,7 @@ export const Principal = () => {
         ide={"aspirantes"}
         vista={"aspirantesFiltro"}
         setProcesoSelect={setProcesoSelect}
+        setMesSelect={setMesSelect}
         ocultarModalCargando={ocultarModalCargando}
         setModalOculto={setModalOculto}
       />

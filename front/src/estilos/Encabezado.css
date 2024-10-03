@@ -46,6 +46,7 @@
     text-align: center;
     padding-right: 5em;
 }
+
 #asesores{
     width: 50%;
     font-size: 2rem;
@@ -63,6 +64,16 @@
     width: 100%;  
     border: 1px solid black;
 
+}
+
+.filtroMes{
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+    height: 2em;
+    width: 100%;  
+    border: 1px solid black;
+    margin-left: 1vw;
 }
 
 #asesoresFiltro{
