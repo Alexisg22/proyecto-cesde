@@ -34,6 +34,7 @@ export const Estadisticas = ({estadisticas, fechaInicio, fechaFin, mesEstadistic
                 <h1 className='tituloEstadisticas'>Estadísticas {tituloEstadisticas}</h1>
                 <div className='contenedorSelectMes'>
                       <form>
+                        <p>Mes de ingreso</p>
                         <select className='filtroMes' value={mesEstadisticas} onChange={manejarCambioMes} >
                           <option value="Mes">Mes</option>
                           <option value="Enero">Enero</option>
