@@ -49,10 +49,10 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, texto
           </form>
         </div>
 
-        <div className='contenedorSelectFecha'>
+        <div className='contenedorSelectMes'>
           <form id={vista}>
             <select className='filtroMes' onChange={seleccionarMes}>
-              <option value="">Mes</option>
+              <option value="Mes">Mes</option>
               <option value="Enero">Enero</option>
               <option value="Febrero">Febrero</option>
               <option value="Marzo">Marzo</option>

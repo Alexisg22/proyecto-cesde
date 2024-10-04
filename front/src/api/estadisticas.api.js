@@ -4,7 +4,11 @@ export const obtenerEstadisticas = (proceso) =>{
   return axios.get(`http://localhost:8000/cesde/estadisticas/${proceso}`);
 }
 
-export const obtenerEstadisticasPorFecha = (mes) =>{
-  return axios.get(`http://localhost:8000/cesde/estadisticas/mes/?mes=${mes}`);
+export const obtenerEstadisticasPorMesYProceso = (url) =>{
+  return axios.get(`http://localhost:8000/cesde/estadisticas/${url}`);
+}
+
+export const obtenerEstadisticasPorMes = (mes) =>{
+  return axios.get(`http://localhost:8000/cesde/estadisticas/mes/${mes}`);
 }
 

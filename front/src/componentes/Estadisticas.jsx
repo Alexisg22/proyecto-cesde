@@ -59,9 +59,6 @@ export const Estadisticas = ({estadisticas, fechaInicio, fechaFin, setFechaInici
             
 
             <div className='contenido'>
-            
-                {/* <Estadistica id='contactabilidad' label='Contactabilidad' dato={estadisticas.contactabilidad} />
-                <Estadistica id='noContactabilidad' label='No contactabilidad' dato={estadisticas.noContactabilidad} /> */}
                 <Estadistica id='cantidadMatriculas' label='Matriculados' dato={estadisticas.cantidadMatriculas} />
                 <Estadistica id='cantidadLiquidaciones' label='Liquidados' dato={estadisticas.cantidadLiquidaciones} />
                 <Estadistica id='enSeguimento' label='En Seguimiento' dato={estadisticas.enSeguimiento} />
