@@ -6,7 +6,7 @@ import { BotonNavegar } from './BotonNavegar.jsx';
 import "../estilos/Encabezado.css"
 
 
-export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, textoEncabezado, vista, setProcesoSelect, setMesSelect, ocultarModalCargando, setModalOculto }) => {
+export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, textoEncabezado, vista, setProcesoSelect, ocultarModalCargando, setModalOculto }) => {
   const [modalAbierto, setModalAbierto] = useState(false)
 
 
@@ -18,10 +18,6 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, texto
 
   const seleccionarProceso = (e) =>{
     setProcesoSelect(e.target.value)
-  }
-
-  const seleccionarMes = (e) =>{
-    setMesSelect(e.target.value)
   }
 
   const manejarCerrarSesion = () => {
@@ -45,26 +41,6 @@ export const Encabezado = ({ ide, mostrarBotonSubirBD, mostrarBotonInicio, texto
               <option value="empresas">Empresas</option>
               <option value="tecnicos">Técnicos</option>
               <option value="extensiones">Extensiones</option>             
-            </select>
-          </form>
-        </div>
-
-        <div className='contenedorSelectMes'>
-          <form id={vista}>
-            <select className='filtroMes' onChange={seleccionarMes}>
-              <option value="Mes">Mes</option>
-              <option value="Enero">Enero</option>
-              <option value="Febrero">Febrero</option>
-              <option value="Marzo">Marzo</option>
-              <option value="Abril">Abril</option>             
-              <option value="Mayo">Mayo</option>             
-              <option value="Junio">Junio</option>             
-              <option value="Julio">Julio</option>             
-              <option value="Agosto">Agosto</option>             
-              <option value="Septiembre">Septiembre</option>             
-              <option value="Octubre">Octubre</option>             
-              <option value="Noviembre">Noviembre</option>             
-              <option value="Diciembre">Diciembre</option>             
             </select>
           </form>
         </div>

@@ -42,6 +42,14 @@ body{
     gap:.5em;
 }
 
+.contenedorSelectMes{
+    width: 15%;
+}
+
+.filtroMes{
+    margin-right: 1em;
+}
+
 .tituloEstadisticas{
     width: 50%;
     text-align: center;

@@ -4,7 +4,7 @@ import { BarraLaterarl } from "../componentes/BarraLaterarl.jsx";
 import { Estadisticas } from "../componentes/Estadisticas.jsx";
 // import Tabla from "../componentes/Tabla.jsx";
 import "../estilos/Asesores.css";
-import { obtenerEstadisticas, obtenerEstadisticasPorMes, obtenerEstadisticasPorMesYProceso } from "../api/estadisticas.api.js";
+import { obtenerEstadisticas, obtenerEstadisticasPorMesYProceso} from "../api/estadisticas.api.js";
 const Tabla = lazy (() => import("../componentes/Tabla.jsx"));
 import { useNavigate } from 'react-router-dom'; // Importa el hook useNavigate
 
@@ -23,7 +23,6 @@ export const Principal = () => {
   }, [token, navigate]);
 
   const [procesoSelect, setProcesoSelect] = useState("general");
-  const [mesSelect, setMesSelect] = useState("Mes");
   const [barraLateralKey, setBarraLateralKey] = useState(0);
   const [tablaKey, setTablaKey] = useState(0);
   const [visibilidadColumna, setVisibilidadColumna] = useState({
@@ -51,13 +50,15 @@ export const Principal = () => {
   // estos estados son los que controlan las fechas de las estadisticas
   const [fechaInicio, setFechaInicio] = useState("");
   const [fechaFin, setFechaFin] = useState("");
+  const [mesEstadisticas, setMesEstadisticas] = useState("Mes")
   const [modalOculto, setModalOculto] = useState(false);
   const [modalOcultoSubirBD, setModalOcultoSubirBD] = useState(false)
 
   useEffect(() =>{
     setFechaInicio('')
     setFechaFin('')
-  },[procesoSelect, mesSelect])
+    setMesEstadisticas("Mes")
+  },[procesoSelect])
 
   useEffect(() => {
     async function cargarEstadisticas() {
@@ -147,7 +148,93 @@ export const Principal = () => {
         };
 
         setEstadisticas(mapeado);
-      } else {
+      } 
+      else if (mesEstadisticas != "Mes"){
+        if (procesoSelect == "tecnicos") {
+          nuevoProceso = `proceso-técnicos/?mes=${mesEstadisticas}`;
+          proceso = "tecnicos"
+        } else if (procesoSelect == "empresas") {
+          nuevoProceso = `proceso-empresa/?mes=${mesEstadisticas}`;
+          proceso = "empresa"
+        } else if (procesoSelect == "extensiones") {
+          nuevoProceso = `proceso-extenciones/?mes=${mesEstadisticas}`;
+          proceso = "extenciones"
+        } else {
+          nuevoProceso = `mes/?mes=${mesEstadisticas}`;
+        }
+        let estadisticasGenerales
+        const respuesta = await obtenerEstadisticasPorMesYProceso(nuevoProceso);
+
+        if (procesoSelect == "general") {
+          estadisticasGenerales = respuesta.data[`estadisticas_mes`];
+        }else{
+          estadisticasGenerales = respuesta.data[`estadisticas_${proceso}`];
+        }
+
+        const mapeado = {
+          contactabilidad:
+            estadisticasGenerales.contactabilidad.percentage.toFixed(2) + " %",
+          noContactabilidad:
+            estadisticasGenerales.no_contactabilidad.percentage.toFixed(2) +
+            " %",
+          // porcentajeConvercion: estadisticasGenerales.contactabilidad.percentage,
+          cantidadMatriculas:
+            estadisticasGenerales.estadisticas_basicas.find(
+              (e) =>
+                e?.estado__nombre?.toLowerCase() == "matriculado"
+            )?.count || 0,
+          cantidadLiquidaciones:
+            estadisticasGenerales.estadisticas_basicas.find(
+              (e) => e?.estado__nombre?.toLowerCase() == "liquidado"
+            )?.count || 0,
+          enSeguimiento:
+            estadisticasGenerales.estadisticas_basicas.find(
+              (e) => e?.estado__nombre?.toLowerCase() == "en seguimiento"
+            )?.count || 0,
+          sinGestion:
+            estadisticasGenerales.estadisticas_basicas.find(
+              (e) =>
+                e?.estado__nombre?.toLowerCase() == "por gestionar"
+            )?.count || 0,
+          descartados:
+            estadisticasGenerales.estadisticas_basicas.find(
+              (e) => e?.estado__nombre?.toLowerCase() == "descartado"
+            )?.count || 0,
+          noContactados:
+            estadisticasGenerales.estadisticas_basicas.find(
+              (e) => e?.estado__nombre?.toLowerCase() == "no contactado"
+            )?.count || 0,
+          anulados:
+            estadisticasGenerales.estadisticas_basicas.find(
+              (e) => e?.estado__nombre?.toLowerCase() == "anulado"
+            )?.count || 0,
+          nuevoInteres:
+            estadisticasGenerales.estadisticas_basicas.find(
+              (e) => e?.estado__nombre?.toLowerCase() == "nuevo interes"
+            )?.count || 0,
+          enGestion:
+            estadisticasGenerales.estadisticas_basicas.find(
+              (e) => e?.estado__nombre?.toLowerCase() == "en gestión"
+            )?.count || 0,
+          cancelados:
+            estadisticasGenerales.estadisticas_basicas.find(
+              (e) =>
+                e?.estado__nombre?.toLowerCase() === "cancelado"
+            )?.count || 0, // Puedes agregar lógica adicional para calcular cancelados si es necesario
+          enSeleccionTotal:
+            estadisticasGenerales.estadisticas_basicas.find(
+              (e) =>
+                e?.estado__nombre?.toLowerCase() === "en proceso de selección"
+            )?.count || 0, // Puedes agregar lógica adicional para calcular cancelados si es necesario
+          tiempoLlamada: estadisticasGenerales.promedio_tiempo_llamada,
+          tiempoWhatsApp:estadisticasGenerales.promedio_tiempo_whatsapp,
+          totalAspirantes:estadisticasGenerales.total_aspirantes
+        };
+        setEstadisticas(mapeado);
+
+      }
+      
+      else {
         if (procesoSelect == "tecnicos") {
           nuevoProceso = "proceso-técnicos/";
           proceso = "tecnicos"
@@ -161,27 +248,10 @@ export const Principal = () => {
           nuevoProceso = "";
           proceso = "generales"
         }
-        const mes = `?mes=${mesSelect}`
-        
-        let estadisticasGenerales;
-        let respuesta
-        if (procesoSelect != "general" && mesSelect != "Mes" ){
-          const url = `${nuevoProceso}?mes=${mesSelect}`
-          respuesta = await obtenerEstadisticasPorMesYProceso(url) 
-          estadisticasGenerales = respuesta.data[`estadisticas_${proceso}`];   
-        }
-        else if(mesSelect != "Mes"){
-          respuesta = await obtenerEstadisticasPorMes(mes);
-          estadisticasGenerales = respuesta.data[`estadisticas_mes`];
-        }
-        else if(procesoSelect != "general"){
-          respuesta = await obtenerEstadisticas(nuevoProceso);
-          estadisticasGenerales = respuesta.data[`estadisticas_${proceso}`];
-        }
-        else{
-          respuesta = await obtenerEstadisticas(nuevoProceso);
-          estadisticasGenerales = respuesta.data[`estadisticas_${proceso}`];
-        }
+      
+        const respuesta = await obtenerEstadisticas(nuevoProceso);
+
+        const estadisticasGenerales = respuesta.data[`estadisticas_${proceso}`];
 
         const mapeado = {
           contactabilidad:
@@ -246,7 +316,7 @@ export const Principal = () => {
       }
     }
     cargarEstadisticas();
-  }, [procesoSelect, fechaFin, mesSelect]);
+  }, [procesoSelect, mesEstadisticas, fechaFin]);
 
   const manejarCambioVisibilidadColumna = (nuevaVisibilidad) => {
     setVisibilidadColumna(nuevaVisibilidad);
@@ -283,7 +353,6 @@ export const Principal = () => {
         ide={"aspirantes"}
         vista={"aspirantesFiltro"}
         setProcesoSelect={setProcesoSelect}
-        setMesSelect={setMesSelect}
         ocultarModalCargando={ocultarModalCargando}
         setModalOculto={setModalOculto}
       />
@@ -302,7 +371,6 @@ export const Principal = () => {
               key={tablaKey}
               visibilidadColumna={visibilidadColumna}
               procesoSelect={procesoSelect}
-              mesSelect={mesSelect}
               modalOculto={modalOculto}
               setModalOculto={setModalOculto}
               ocultarModalCargando={ocultarModalCargando}
@@ -314,6 +382,8 @@ export const Principal = () => {
             fechaFin={fechaFin}
             setFechaInicio={setFechaInicio}
             setFechaFin={setFechaFin}
+            mesEstadisticas={mesEstadisticas}
+            setMesEstadisticas={setMesEstadisticas}
             tituloEstadisticas={procesoSelect}
           />
         </div>

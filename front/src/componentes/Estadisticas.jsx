@@ -4,7 +4,7 @@ import '../estilos/Estadistica.css';
 import '../estilos/Estadisticas.css';
 
 
-export const Estadisticas = ({estadisticas, fechaInicio, fechaFin, setFechaInicio, setFechaFin, tituloEstadisticas}) => {
+export const Estadisticas = ({estadisticas, fechaInicio, fechaFin, mesEstadisticas, setMesEstadisticas, setFechaInicio, setFechaFin, tituloEstadisticas}) => {
 
   const hoy = new Date().toISOString().split('T')[0];
       
@@ -19,20 +19,40 @@ export const Estadisticas = ({estadisticas, fechaInicio, fechaFin, setFechaInici
   const manejarCambioFechaFin = (e) => {
     setFechaFin(e.target.value)
   } 
+
+  const manejarCambioMes = (e) => {
+    setMesEstadisticas(e.target.value)
+  }
   
   return (
     <>
     <div className='contenedorEstadistica'>
         <section className='contenidoEstadistica'>
-
-            
-
             <div className='titulo'>
                 <p><strong>Contactabilidad: {estadisticas.contactabilidad}</strong></p>
                 <p><strong>No Contactabilidad: {estadisticas.noContactabilidad}</strong></p>
                 <h1 className='tituloEstadisticas'>Estadísticas {tituloEstadisticas}</h1>
+                <div className='contenedorSelectMes'>
+                      <form>
+                        <select className='filtroMes' value={mesEstadisticas} onChange={manejarCambioMes} >
+                          <option value="Mes">Mes</option>
+                          <option value="Enero">Enero</option>
+                          <option value="Febrero">Febrero</option>
+                          <option value="Marzo">Marzo</option>
+                          <option value="Abril">Abril</option>             
+                          <option value="Mayo">Mayo</option>             
+                          <option value="Junio">Junio</option>             
+                          <option value="Julio">Julio</option>             
+                          <option value="Agosto">Agosto</option>             
+                          <option value="Septiembre">Septiembre</option>             
+                          <option value="Octubre">Octubre</option>             
+                          <option value="Noviembre">Noviembre</option>             
+                          <option value="Diciembre">Diciembre</option>             
+                        </select>
+                      </form>
+                    </div>
                 <div className="formularioFecha">
-          
+
                   <div className="contenedorFechasEstadisticas">
                     <div className="contenedorFechaIndividual">
                       <input

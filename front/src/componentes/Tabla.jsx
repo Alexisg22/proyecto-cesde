@@ -17,7 +17,6 @@ import { ModalAspiranteSinGestiones } from "./ModalAspiranteSinGestiones.jsx";
 function Tabla({
   visibilidadColumna,
   procesoSelect,
-  mesSelect,
   modalOculto,
   setModalOculto,
   ocultarModalCargando,
@@ -42,10 +41,7 @@ function Tabla({
   const [buscarUnAspirante, setBuscarUnAspirante] = useState("");
   const [textoModal, setTextoModal] = useState("");
   const [cargando, setCargando] = useState(true);
-  const [nombre, setNombre] = useState("noDescargar");
-
-  // console.log(mesSelect);
-  
+  const [nombre, setNombre] = useState("noDescargar");  
 
   const buscarAspirantesConFiltros = () => {
     setAplicarFiltrosAspirantes(filtrosSeleccionados);
@@ -67,7 +63,6 @@ function Tabla({
     traerPaginas();
   }, [
     procesoSelect,
-    mesSelect,
     aplicarFiltrosAspirantes,
     buscarUnAspirante,
     paginaActualizada,
@@ -144,7 +139,7 @@ function Tabla({
             programaFormacion: "",
             sede: "",
             nombreEmpresa: "",
-            mesIngreso: mesSelect,
+            mesIngreso: "",
             fechaModificacion: "",
           };
 
@@ -193,25 +188,9 @@ function Tabla({
             }
           });
           respuesta = await obtenerTodosAspirantesConFiltros(objetoFiltros, paginaActualizada);
-        } 
-        
-        else if (procesoSelect == "general" && mesSelect == "Mes") {
-          respuesta = await obtenerAspirantesProceso(nuevoProceso,paginaActualizada);
+        } else {
+          respuesta = await obtenerAspirantesProceso(nuevoProceso, paginaActualizada)
         }
-
-        else if (mesSelect != "Mes" && procesoSelect == "general") { 
-          respuesta = await obtenerTodosAspirantesMes(mesSelect, paginaActualizada)
-        } 
-
-        else if (procesoSelect != "general" && mesSelect == "Mes") {
-          respuesta = await obtenerAspirantesProceso(nuevoProceso,paginaActualizada);
-        }
-
-        else if (procesoSelect != "general" && mesSelect != "Mes") {
-          const url = `${nuevoProceso}?mes=${mesSelect}&page=${paginaActualizada}`
-          respuesta = await obtenerTodosAspirantesMesYProceso(url)
-        }
-
         const paginas = respuesta.data.total_pages;
         setNumeroPaginas(paginas);
         const aspirantes = respuesta.data.results;
@@ -280,7 +259,7 @@ function Tabla({
         programaFormacion: "",
         sede: "",
         nombreEmpresa: "",
-        mesIngreso: mesSelect,
+        mesIngreso: "",
         fechaModificacion: "",
       };
 
@@ -390,7 +369,6 @@ function Tabla({
     cargarDatos();
   }, [
     procesoSelect,
-    mesSelect,
     aplicarFiltrosAspirantes,
     buscarUnAspirante,
     paginaActualizada // Aseguramos que el efecto se ejecute cuando cambie la página
@@ -398,7 +376,7 @@ function Tabla({
 
   useEffect(() => {
     setNombre("noDescargar");
-  }, [procesoSelect, mesSelect, aplicarFiltrosAspirantes, paginaActualizada]);
+  }, [procesoSelect, aplicarFiltrosAspirantes, paginaActualizada]);
 
   const manejarClickFilaAspirantes = (celular, cantGestionesAspirante) => {
     if (cantGestionesAspirante === 0) {

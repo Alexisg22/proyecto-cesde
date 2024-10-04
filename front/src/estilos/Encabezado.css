@@ -20,10 +20,6 @@
     width: 15%;
 }
 
-.contenedorSelectMes{
-    width: 15%;
-}
-
 #logoAndes{
     height: 100%;
     width: 100%;
@@ -67,17 +63,6 @@
     height: 2em;
     width: 100%;  
     border: 1px solid black;
-
-}
-
-.filtroMes{
-    display: flex;
-    justify-content: center;
-    margin-top: 2em;
-    height: 2em;
-    width: 100%;  
-    border: 1px solid black;
-    margin-left: 1vw;
 }
 
 #asesoresFiltro{
