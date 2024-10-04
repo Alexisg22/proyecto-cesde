@@ -8,7 +8,9 @@ import {
   obtenerAspirantesProceso,
   obtenerTodosAspirantesConFiltros,
   obtenerUnAspirante,
+  obtenerTodosAspirantesMesYProceso,
 } from "../api/aspirantes.api.js";
+import { obtenerTodosAspirantesMes } from "../api/traerAspirantesPorMes.js";
 import "../estilos/Tabla.css";
 import { ModalAspiranteSinGestiones } from "./ModalAspiranteSinGestiones.jsx";
 
@@ -42,6 +44,9 @@ function Tabla({
   const [cargando, setCargando] = useState(true);
   const [nombre, setNombre] = useState("noDescargar");
 
+  // console.log(mesSelect);
+  
+
   const buscarAspirantesConFiltros = () => {
     setAplicarFiltrosAspirantes(filtrosSeleccionados);
     setModalAbierto(false);
@@ -56,7 +61,7 @@ function Tabla({
     let respuesta = await obtenerTodosAspirantesConFiltros("", 1);
     const totalPaginas = respuesta.data.total_pages;
     setNumeroPaginasTotales(totalPaginas);
-  }
+  }  
 
   useEffect(() => {
     traerPaginas();
@@ -110,7 +115,6 @@ function Tabla({
     } else {
       let nuevoProceso = "";
       let procesoBusqueda = "";
-      let entro= "";
       if (procesoSelect === "tecnicos") {
         nuevoProceso = "proceso-tecnico/";
         procesoBusqueda = "Técnicos";
@@ -140,7 +144,7 @@ function Tabla({
             programaFormacion: "",
             sede: "",
             nombreEmpresa: "",
-            mesIngreso: "",
+            mesIngreso: mesSelect,
             fechaModificacion: "",
           };
 
@@ -188,37 +192,29 @@ function Tabla({
                 break;
             }
           });
-          respuesta = await obtenerTodosAspirantesConFiltros(
-            objetoFiltros,
-            paginaActualizada
-          );
-          entro = "donde no era"
-        } else if (procesoSelect == "general" && mesSelect == "Mes") {
-          respuesta = await obtenerAspirantesProceso(
-            nuevoProceso,
-            paginaActualizada
-          );
-          entro = "en la primera"
-        } else if (mesSelect != "Mes") { 
-          respuesta = await obtenerTodosAspirantesMes(mesSelect, paginaActual);
-          entro = "en la segunda"
-        } else if (procesoSelect != "general") {
-          respuesta = await obtenerAspirantesProceso(
-            nuevoProceso,
-            paginaActualizada
-          );
-          entro = "en la tercera"
-        }else if (procesoSelect != "general" && mesSelect != "Mes") {
-          respuesta = await obtenerTodosAspirantesMesYProceso(nuevoProceso, mesSelect, paginaActualizada)
-          entro = "ultima"
+          respuesta = await obtenerTodosAspirantesConFiltros(objetoFiltros, paginaActualizada);
+        } 
+        
+        else if (procesoSelect == "general" && mesSelect == "Mes") {
+          respuesta = await obtenerAspirantesProceso(nuevoProceso,paginaActualizada);
+        }
+
+        else if (mesSelect != "Mes" && procesoSelect == "general") { 
+          respuesta = await obtenerTodosAspirantesMes(mesSelect, paginaActualizada)
+        } 
+
+        else if (procesoSelect != "general" && mesSelect == "Mes") {
+          respuesta = await obtenerAspirantesProceso(nuevoProceso,paginaActualizada);
+        }
+
+        else if (procesoSelect != "general" && mesSelect != "Mes") {
+          const url = `${nuevoProceso}?mes=${mesSelect}&page=${paginaActualizada}`
+          respuesta = await obtenerTodosAspirantesMesYProceso(url)
         }
 
         const paginas = respuesta.data.total_pages;
         setNumeroPaginas(paginas);
         const aspirantes = respuesta.data.results;
-        console.log( aspirantes);
-        console.log(entro)
-        
 
         const mapeado = aspirantes.map((aspirante) => ({
           celular: aspirante.celular,
@@ -284,7 +280,7 @@ function Tabla({
         programaFormacion: "",
         sede: "",
         nombreEmpresa: "",
-        mesIngreso: "",
+        mesIngreso: mesSelect,
         fechaModificacion: "",
       };
 
@@ -377,17 +373,27 @@ function Tabla({
   }
   
   useEffect(() => {
-    cargarAspirantes();
+    const cargarDatos = async () => {
+      setCargando(true);
+      try {
+        await cargarAspirantes();
+        if (numeroPaginas > 0) {
+          await descargarAspirantes(numeroPaginasTotales);
+        }
+      } catch (error) {
+        console.error("Error al cargar datos:", error);
+      } finally {
+        setCargando(false);
+      }
+    };
 
-    if (numeroPaginas > 0) {
-      descargarAspirantes(numeroPaginasTotales);
-    }
+    cargarDatos();
   }, [
     procesoSelect,
     mesSelect,
     aplicarFiltrosAspirantes,
     buscarUnAspirante,
-    paginaActualizada,
+    paginaActualizada // Aseguramos que el efecto se ejecute cuando cambie la página
   ]);
 
   useEffect(() => {
@@ -420,10 +426,7 @@ function Tabla({
     { id: "diasUltGestión", etiqueta: "Dias Ult. Gestión" },
     { id: "fechaUltGestión", etiqueta: "Fecha Ult. Gestión" },
     { id: "gestiónFinal", etiqueta: "Gestión final" },
-    {
-      id: "tipificacionUltimaGestion",
-      etiqueta: "Tipificación Ultima Gestión",
-    },
+    {id: "tipificacionUltimaGestion", etiqueta: "Tipificación Ultima Gestión"},
     { id: "sede", etiqueta: "Sede" },
     { id: "programaFormación", etiqueta: "Programa de Formación" },
     { id: "nombreEmpresa", etiqueta: "Nombre empresa" },
@@ -458,6 +461,7 @@ function Tabla({
       setBuscarUnAspirante("");
     }
   }, [inputBuscadorAspirante]);
+
 
   return (
     <>
